@@ -1,0 +1,35 @@
+# Environment variables
+.env
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+
+# Distribution / packaging
+dist/
+build/
+*.egg-info/
+
+# Virtual environments
+venv/
+env/
+ENV/
+
+# IDE files
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Cache and data directories
+.cache/
+data/*.json
+
+# Results
+results/
+
+# OS files
+.DS_Store
+Thumbs.db 
