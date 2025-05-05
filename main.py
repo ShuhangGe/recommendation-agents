@@ -221,7 +221,7 @@ def main():
     # If the user wants to list available models, print them and exit
     if args.list_models:
         print(config.list_available_models())
-        return
+        # return
     
     # Override config if command-line arguments are provided
     config.MAX_ITERATIONS = args.max_iterations
