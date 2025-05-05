@@ -127,17 +127,40 @@ RECOMMENDATION_MODEL=gpt-4
    python run_recommendation.py --user-id user1 --recommendation-model gpt-3.5-turbo
    ```
 
-3. **Run an Optimization Loop**:
+3. **Run the Complete System (main.py)**:
+   ```bash
+   python main.py --recommendation-model gpt-3.5-turbo --evaluation-model gpt-4 --optimizer-model gpt-4
+   ```
+   
+   Available options for `main.py`:
+   - `--max-iterations`: Maximum optimization iterations (default: 10)
+   - `--score-threshold`: Score threshold to stop optimization (default: 0.8)
+   - `--recommendation-model`: Model for recommendations
+   - `--evaluation-model`: Model for evaluations
+   - `--optimizer-model`: Model for prompt optimization
+   - `--story-model`: Model for generating stories
+   - `--user-model`: Model for generating user profiles
+   - `--story-count`: Number of stories to generate (default: 100)
+   - `--user-count`: Number of test users to generate (default: 5)
+   - `--regenerate-data`: Force regeneration of stories and users
+   - `--list-models`: Display all available models and exit
+
+   Example with multiple options:
+   ```bash
+   python main.py --recommendation-model gemini-1.5-flash --evaluation-model gpt-4 --max-iterations 15 --score-threshold 0.85
+   ```
+
+4. **Run an Optimization Loop**:
    ```bash
    ./run_optimization.sh --recommendation-model gpt-3.5-turbo --evaluation-model gpt-4
    ```
 
-4. **Test a Specific Task with Different Models**:
+5. **Test a Specific Task with Different Models**:
    ```bash
    python test_task.py --task recommendation --model gpt-4 --user-id user1
    ```
 
-5. **Compare Multiple Models**:
+6. **Compare Multiple Models**:
    ```bash
    ./compare_models.sh --task recommendation --models "gpt-3.5-turbo,gpt-4,gemini-1.5-flash"
    ```
