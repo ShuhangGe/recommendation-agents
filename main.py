@@ -1,9 +1,8 @@
 """
 Main module for the Sekai Recommendation Agent system.
-Orchestrates the agents in an optimization loop.
+Uses the agent-based architecture for intelligent recommendations.
 """
 import argparse
-import csv
 import json
 import os
 import time
@@ -11,7 +10,7 @@ from typing import List, Dict, Any
 
 import config
 import utils
-from agents import RecommendationAgent, EvaluationAgent, PromptOptimizerAgent
+from agents import AdaptiveRecommendationAgent, AdaptiveEvaluationAgent
 
 def setup_directories():
     """Create necessary directories."""
@@ -19,117 +18,9 @@ def setup_directories():
     os.makedirs(config.RESULTS_DIR, exist_ok=True)
     os.makedirs(config.CACHE_DIR, exist_ok=True)
 
-def save_results(results: List[Dict[str, Any]]):
+def run_agent_system(args):
     """
-    Save optimization results to CSV.
-    
-    Args:
-        results: List of optimization results
-    """
-    os.makedirs(config.RESULTS_DIR, exist_ok=True)
-    results_file = os.path.join(config.RESULTS_DIR, config.RESULTS_FILE)
-    
-    # Write to CSV
-    with open(results_file, 'w', newline='') as f:
-        fieldnames = ['iteration', 'score', 'timestamp']
-        writer = csv.DictWriter(f, fieldnames=fieldnames)
-        
-        writer.writeheader()
-        for result in results:
-            writer.writerow(result)
-    
-    print(f"Results saved to {results_file}")
-    
-    # Save the latest prompt and score
-    if results:
-        latest_prompt_file = os.path.join(config.RESULTS_DIR, "latest_prompt.txt")
-        with open(latest_prompt_file, 'w') as f:
-            f.write(results[-1].get('prompt', ''))
-
-def should_stop_optimization(results: List[Dict[str, Any]]) -> bool:
-    """
-    Determine if optimization should stop.
-    
-    Args:
-        results: List of optimization results
-        
-    Returns:
-        True if optimization should stop, False otherwise
-    """
-    # If we don't have enough results, continue
-    if len(results) < 3:
-        return False
-    
-    # Check if we've reached the maximum number of iterations
-    if len(results) >= config.MAX_ITERATIONS:
-        print(f"Reached maximum iterations ({config.MAX_ITERATIONS}), stopping")
-        return True
-    
-    # Check if we've reached the score threshold
-    latest_score = results[-1]['score']
-    if latest_score >= config.SCORE_THRESHOLD:
-        print(f"Reached score threshold ({config.SCORE_THRESHOLD}), stopping")
-        return True
-    
-    # Enhanced plateau detection:
-    # 1. Calculate more trend indicators
-    # 2. Use different thresholds for different streak lengths
-    # 3. Consider both absolute and relative improvements
-    
-    # Check if we have enough iterations for advanced detection
-    if len(results) >= 5:
-        # Get the last 5 scores
-        recent_scores = [r['score'] for r in results[-5:]]
-        
-        # Calculate absolute improvements
-        abs_improvements = [recent_scores[i] - recent_scores[i-1] for i in range(1, len(recent_scores))]
-        
-        # Calculate relative improvements (percentage)
-        rel_improvements = [abs_improvements[i] / recent_scores[i-1] if recent_scores[i-1] > 0 else 0 
-                            for i in range(len(abs_improvements))]
-        
-        # Calculate moving average
-        moving_avg = sum(recent_scores[-3:]) / 3
-        
-        # Check for extended plateau (more iterations with smaller threshold)
-        extended_plateau = all(imp < config.IMPROVEMENT_THRESHOLD/2 for imp in abs_improvements)
-        
-        # Check for oscillating scores but no improvement
-        oscillating = any(imp > 0 for imp in abs_improvements) and sum(abs_improvements) < config.IMPROVEMENT_THRESHOLD
-        
-        # Calculate average improvement over last 4 iterations
-        avg_improvement = sum(abs_improvements) / len(abs_improvements) if abs_improvements else 0
-        
-        # Detect strict plateau (3 consecutive iterations with minimal improvement)
-        strict_plateau = all(imp < config.IMPROVEMENT_THRESHOLD for imp in abs_improvements[-3:])
-        
-        # Decision logic
-        if extended_plateau:
-            print(f"Extended plateau detected over 5 iterations (improvements: {abs_improvements})")
-            return True
-        elif oscillating and len(results) > 7:
-            print(f"Oscillating scores with no overall improvement (improvements: {abs_improvements})")
-            return True
-        elif avg_improvement < config.IMPROVEMENT_THRESHOLD/2 and len(results) > 6:
-            print(f"Low average improvement: {avg_improvement:.6f} over last {len(abs_improvements)} iterations")
-            return True
-        elif strict_plateau:
-            print(f"Strict plateau detected (last 3 improvements: {abs_improvements[-3:]})")
-            return True
-    else:
-        # Fall back to the original simpler check for early iterations
-        recent_scores = [r['score'] for r in results[-3:]]
-        improvements = [recent_scores[i] - recent_scores[i-1] for i in range(1, len(recent_scores))]
-        
-        if all(imp < config.IMPROVEMENT_THRESHOLD for imp in improvements):
-            print(f"Score has plateaued (improvements: {improvements}), stopping")
-            return True
-    
-    return False
-
-def run_optimization_loop(args):
-    """
-    Run the optimization loop with all agents.
+    Run the agent-based recommendation system.
     
     Args:
         args: Command-line arguments
@@ -158,97 +49,125 @@ def run_optimization_loop(args):
     print(f"Loaded {len(all_stories)} stories and {len(all_users)} users")
     
     # Initialize agents with specified models
-    recommendation_agent = RecommendationAgent(all_stories, model_name=args.recommendation_model)
-    evaluation_agent = EvaluationAgent(all_stories, model_name=args.evaluation_model)
-    prompt_optimizer = PromptOptimizerAgent(model_name=args.optimizer_model)
+    recommendation_agent = AdaptiveRecommendationAgent(all_stories, model_name=args.recommendation_model)
+    evaluation_agent = AdaptiveEvaluationAgent(all_stories, model_name=args.evaluation_model)
     
-    # Optimization loop
+    # Set goals for agents
+    recommendation_agent.set_goal("Provide highly relevant story recommendations to users")
+    recommendation_agent.set_goal("Adapt recommendation strategy based on user preferences")
+    recommendation_agent.set_goal("Explain the recommendation process")
+    
+    evaluation_agent.set_goal("Accurately assess recommendation quality")
+    evaluation_agent.set_goal("Identify strengths and weaknesses in recommendations")
+    evaluation_agent.set_goal("Provide actionable feedback for improvement")
+    
+    # Run tests for each user
     results = []
-    current_prompt = recommendation_agent.current_prompt
+    total_score = 0.0
     
-    print("Starting optimization loop...")
-    
-    iteration = 0
-    while True:
-        iteration += 1
-        print(f"\n--- Iteration {iteration} ---")
+    for user in all_users:
+        print(f"\nProcessing user {user['id']}...")
+        user_profile = user['profile']
         
-        # Step 1: Evaluate current prompt on all users
-        evaluation_results = []
-        total_score = 0.0
+        # Step 1: Extract preferences
+        extracted_tags = evaluation_agent._extract_preferences(user_profile)
+        print(f"Extracted tags: {extracted_tags}")
         
-        for user in all_users:
-            print(f"\nEvaluating for user {user['id']}...")
-            score, details = evaluation_agent.evaluate(
-                recommendation_agent, 
-                user['profile'],
-                tag_model=args.evaluation_model,
-                ground_truth_model=args.evaluation_model,
-                recommendation_model=args.recommendation_model
-            )
-            print(f"Score: {score:.4f}")
-            
-            evaluation_results.append(details)
-            total_score += score
-        
-        avg_score = total_score / len(all_users)
-        print(f"\nAverage score: {avg_score:.4f}")
-        
-        # Save results
-        result = {
-            'iteration': iteration,
-            'score': avg_score,
-            'timestamp': time.time(),
-            'prompt': current_prompt
+        # Step 2: Prepare input for recommendation agent
+        recommendation_input = {
+            "preferences": extracted_tags,
+            "profile": user_profile,
+            "past_interactions": []
         }
-        results.append(result)
         
-        # Step 2: Check if we should stop
-        if should_stop_optimization(results):
-            break
+        # Step 3: Run recommendation cycle
+        print("\nGenerating recommendations...")
+        start_time = time.time()
+        rec_result = recommendation_agent.run_perception_reasoning_action_loop(recommendation_input)
+        recommended_stories = rec_result.get("recommended_stories", [])
+        strategy_used = rec_result.get("strategy_used", "unknown")
+        print(f"Used strategy: {strategy_used}")
         
-        # Step 3: Optimize prompt
-        print("\nOptimizing prompt...")
-        optimized_prompt = prompt_optimizer.optimize(
-            current_prompt, 
-            evaluation_results, 
-            all_stories,
-            model_name=args.optimizer_model
-        )
+        # Step 4: Evaluate recommendations
+        print("\nEvaluating recommendations...")
+        evaluation_input = {
+            "user_profile": user_profile,
+            "recommended_stories": recommended_stories,
+            "extracted_tags": extracted_tags,
+            "metric": args.metric
+        }
         
-        # Step 4: Update recommendation agent with new prompt
-        recommendation_agent.update_prompt(optimized_prompt)
-        current_prompt = optimized_prompt
+        eval_result = evaluation_agent.run_perception_reasoning_action_loop(evaluation_input)
+        score = eval_result.get("score", 0.0)
+        total_score += score
         
-        print(f"Prompt updated (length: {len(current_prompt)} chars)")
+        elapsed_time = time.time() - start_time
+        
+        # Store results
+        user_result = {
+            "user_id": user['id'],
+            "score": score,
+            "strategy": strategy_used,
+            "elapsed_time": elapsed_time,
+            "timestamp": time.time()
+        }
+        results.append(user_result)
+        
+        # Print recommendations
+        print(f"\nScore: {score:.4f}")
+        print("\nTop recommended stories:")
+        for i, story in enumerate(recommended_stories[:5], 1):
+            print(f"{i}. {story['title']} (ID: {story['id']})")
+        
+        # Check if we should print strengths and weaknesses
+        if args.verbose and "quality_analysis" in eval_result:
+            quality_analysis = eval_result.get("quality_analysis", {})
+            
+            if quality_analysis.get("strengths"):
+                print("\nRecommendation Strengths:")
+                for strength in quality_analysis.get("strengths", [])[:3]:
+                    print(f"- {strength.get('description', '')}")
+                    
+            if quality_analysis.get("weaknesses"):
+                print("\nRecommendation Weaknesses:")
+                for weakness in quality_analysis.get("weaknesses", [])[:3]:
+                    print(f"- {weakness.get('description', '')}")
     
-    # Save final results
-    save_results(results)
-    print("\nOptimization complete!")
+    # Calculate and print average score
+    avg_score = total_score / len(all_users)
+    print(f"\nAverage score across all users: {avg_score:.4f}")
     
-    # Print final stats
-    best_result = max(results, key=lambda r: r['score'])
-    print(f"\nBest result: Iteration {best_result['iteration']}, Score: {best_result['score']:.4f}")
+    # Save results
+    if args.save_results:
+        os.makedirs(config.RESULTS_DIR, exist_ok=True)
+        results_file = os.path.join(config.RESULTS_DIR, "agent_results.json")
+        with open(results_file, 'w') as f:
+            json.dump({
+                "results": results,
+                "average_score": avg_score,
+                "timestamp": time.time()
+            }, f, indent=2)
+        print(f"Results saved to {results_file}")
+    
+    return avg_score, results
 
 def main():
     """Main entry point."""
-    parser = argparse.ArgumentParser(description='Sekai Recommendation Agent System')
+    parser = argparse.ArgumentParser(description='Sekai Agent-Based Recommendation System')
     
     # Basic configuration
-    parser.add_argument('--max-iterations', type=int, default=config.MAX_ITERATIONS, 
-                        help=f'Maximum number of optimization iterations (default: {config.MAX_ITERATIONS})')
-    parser.add_argument('--score-threshold', type=float, default=config.SCORE_THRESHOLD,
-                        help=f'Score threshold for stopping optimization (default: {config.SCORE_THRESHOLD})')
+    parser.add_argument('--save-results', action='store_true',
+                        help='Save results to a file')
+    parser.add_argument('--verbose', action='store_true',
+                        help='Print detailed information')
     
     # Model selection
     parser.add_argument('--list-models', action='store_true',
                         help='List all available models and exit')
     parser.add_argument('--recommendation-model', type=str, default=config.RECOMMENDATION_MODEL,
-                        help=f'Model for story recommendations (default: {config.RECOMMENDATION_MODEL})')
+                        help=f'Model for recommendations (default: {config.RECOMMENDATION_MODEL})')
     parser.add_argument('--evaluation-model', type=str, default=config.EVALUATION_MODEL,
                         help=f'Model for evaluations (default: {config.EVALUATION_MODEL})')
-    parser.add_argument('--optimizer-model', type=str, default=config.OPTIMIZER_MODEL,
-                        help=f'Model for prompt optimization (default: {config.OPTIMIZER_MODEL})')
     parser.add_argument('--story-model', type=str, default=config.STORY_GENERATION_MODEL,
                         help=f'Model for generating stories (default: {config.STORY_GENERATION_MODEL})')
     parser.add_argument('--user-model', type=str, default=config.USER_GENERATION_MODEL,
@@ -262,16 +181,16 @@ def main():
     parser.add_argument('--regenerate-data', action='store_true',
                         help='Force regeneration of stories and users, even if they already exist')
     
+    # Evaluation settings
+    parser.add_argument('--metric', type=str, choices=['precision@10', 'recall', 'semantic_overlap'],
+                        default=config.METRIC, help=f'Evaluation metric to use (default: {config.METRIC})')
+    
     args = parser.parse_args()
     
     # If the user wants to list available models, print them and exit
     if args.list_models:
         print(config.list_available_models())
-        # return
-    
-    # Override config if command-line arguments are provided
-    config.MAX_ITERATIONS = args.max_iterations
-    config.SCORE_THRESHOLD = args.score_threshold
+        return
     
     # If regenerate data flag is set, remove existing data files
     if args.regenerate_data:
@@ -289,8 +208,8 @@ def main():
         except Exception as e:
             print(f"Error clearing data files: {str(e)}")
     
-    # Run the optimization loop with parsed arguments
-    run_optimization_loop(args)
+    # Run the agent system with parsed arguments
+    run_agent_system(args)
 
 if __name__ == "__main__":
     main() 

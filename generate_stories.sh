@@ -1,5 +1,5 @@
 #!/bin/bash
-# Script to generate stories using OpenAI models
+# Script to generate stories for the agent-based recommendation system
 
 # Default values
 MODEL="gpt-3.5-turbo"
@@ -46,6 +46,6 @@ if $REGEN; then
 fi
 
 # Run the main script with story generation only
-python main.py --story-model "$MODEL" --story-count "$COUNT" $REGEN_FLAG --max-iterations 0
+python main.py --story-model "$MODEL" --story-count "$COUNT" $REGEN_FLAG --save-results
 
 echo "Story generation complete. Check the data directory for results." 
