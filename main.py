@@ -71,13 +71,59 @@ def should_stop_optimization(results: List[Dict[str, Any]]) -> bool:
         print(f"Reached score threshold ({config.SCORE_THRESHOLD}), stopping")
         return True
     
-    # Check if the score has plateaued
-    recent_scores = [r['score'] for r in results[-3:]]
-    improvements = [recent_scores[i] - recent_scores[i-1] for i in range(1, len(recent_scores))]
+    # Enhanced plateau detection:
+    # 1. Calculate more trend indicators
+    # 2. Use different thresholds for different streak lengths
+    # 3. Consider both absolute and relative improvements
     
-    if all(imp < config.IMPROVEMENT_THRESHOLD for imp in improvements):
-        print(f"Score has plateaued (improvements: {improvements}), stopping")
-        return True
+    # Check if we have enough iterations for advanced detection
+    if len(results) >= 5:
+        # Get the last 5 scores
+        recent_scores = [r['score'] for r in results[-5:]]
+        
+        # Calculate absolute improvements
+        abs_improvements = [recent_scores[i] - recent_scores[i-1] for i in range(1, len(recent_scores))]
+        
+        # Calculate relative improvements (percentage)
+        rel_improvements = [abs_improvements[i] / recent_scores[i-1] if recent_scores[i-1] > 0 else 0 
+                            for i in range(len(abs_improvements))]
+        
+        # Calculate moving average
+        moving_avg = sum(recent_scores[-3:]) / 3
+        
+        # Check for extended plateau (more iterations with smaller threshold)
+        extended_plateau = all(imp < config.IMPROVEMENT_THRESHOLD/2 for imp in abs_improvements)
+        
+        # Check for oscillating scores but no improvement
+        oscillating = any(imp > 0 for imp in abs_improvements) and sum(abs_improvements) < config.IMPROVEMENT_THRESHOLD
+        
+        # Calculate average improvement over last 4 iterations
+        avg_improvement = sum(abs_improvements) / len(abs_improvements) if abs_improvements else 0
+        
+        # Detect strict plateau (3 consecutive iterations with minimal improvement)
+        strict_plateau = all(imp < config.IMPROVEMENT_THRESHOLD for imp in abs_improvements[-3:])
+        
+        # Decision logic
+        if extended_plateau:
+            print(f"Extended plateau detected over 5 iterations (improvements: {abs_improvements})")
+            return True
+        elif oscillating and len(results) > 7:
+            print(f"Oscillating scores with no overall improvement (improvements: {abs_improvements})")
+            return True
+        elif avg_improvement < config.IMPROVEMENT_THRESHOLD/2 and len(results) > 6:
+            print(f"Low average improvement: {avg_improvement:.6f} over last {len(abs_improvements)} iterations")
+            return True
+        elif strict_plateau:
+            print(f"Strict plateau detected (last 3 improvements: {abs_improvements[-3:]})")
+            return True
+    else:
+        # Fall back to the original simpler check for early iterations
+        recent_scores = [r['score'] for r in results[-3:]]
+        improvements = [recent_scores[i] - recent_scores[i-1] for i in range(1, len(recent_scores))]
+        
+        if all(imp < config.IMPROVEMENT_THRESHOLD for imp in improvements):
+            print(f"Score has plateaued (improvements: {improvements}), stopping")
+            return True
     
     return False
 

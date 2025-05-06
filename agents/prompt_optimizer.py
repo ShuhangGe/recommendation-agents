@@ -57,11 +57,26 @@ class PromptOptimizerAgent:
         # Check model type and use appropriate API
         model_type = config.get_model_type(model_to_use)
         
+        # Use dynamic temperature strategy based on iteration
+        # Higher iterations get increasingly explorative temperature
+        # This helps escape local optima in later iterations
+        import math
+        import random
+        
+        # Calculate base temperature (increases with iterations)
+        base_temp = min(0.7 + (self.iteration * 0.05), 1.3)  # Starting at 0.7, max 1.3
+        
+        # Add small random variation 
+        temperature = max(0.5, min(1.4, base_temp + random.uniform(-0.1, 0.1)))
+        
+        print(f"Using temperature {temperature:.2f} for optimization in iteration {self.iteration}")
+        
         for attempt in range(max_retries):
             try:
                 if model_type == config.MODEL_TYPE_GOOGLE:
                     model = genai.GenerativeModel(model_to_use)
-                    response = model.generate_content(prompt)
+                    generation_config = {"temperature": temperature}
+                    response = model.generate_content(prompt, generation_config=generation_config)
                     optimized_prompt = response.text.strip()
                 elif model_type == config.MODEL_TYPE_OPENAI:
                     import openai
@@ -77,7 +92,7 @@ class PromptOptimizerAgent:
                         response = client.chat.completions.create(
                             model=model_to_use,
                             messages=messages,
-                            temperature=0.7,
+                            temperature=temperature,
                             max_tokens=1000
                         )
                         optimized_prompt = response.choices[0].message.content.strip()
@@ -94,7 +109,7 @@ class PromptOptimizerAgent:
                     self.prompt_cache.add_prompt(
                         optimized_prompt, 
                         avg_score, 
-                        {"iteration": self.iteration}
+                        {"iteration": self.iteration, "temperature": temperature}
                     )
                     return optimized_prompt
                 
@@ -141,6 +156,42 @@ class PromptOptimizerAgent:
                     "score": result["score"]
                 })
         
+        # Calculate detailed metrics to help guide optimization
+        avg_successful_score = sum(c["score"] for c in successful_cases) / len(successful_cases) if successful_cases else 0
+        avg_unsuccessful_score = sum(c["score"] for c in unsuccessful_cases) / len(unsuccessful_cases) if unsuccessful_cases else 0
+        
+        # Find most frequent tags in ground truth vs recommendations
+        all_ground_truth_ids = []
+        all_recommended_ids = []
+        all_tags = set()
+        
+        for result in evaluation_results:
+            all_ground_truth_ids.extend(result["ground_truth_ids"])
+            all_recommended_ids.extend(result["recommended_ids"])
+            all_tags.update(result["extracted_tags"])
+        
+        # Create iteration-specific guidance
+        if self.iteration >= 5:
+            # For later iterations, suggest more significant prompt changes
+            iteration_guidance = """
+            IMPORTANT: The optimization process appears to be plateauing. Make significant structural changes 
+            to the prompt now - consider completely different approaches rather than incremental improvements.
+            Be creative and divergent in your thinking. Consider:
+            1. Different ordering of information
+            2. Different emphases on story attributes vs user preferences
+            3. Different reasoning processes to match stories to users
+            4. Different ways to interpret user tags and map them to stories
+            """
+        else:
+            # For earlier iterations, suggest more focused improvements
+            iteration_guidance = """
+            Focus on addressing specific weaknesses in the current prompt, such as:
+            1. How accurately it interprets user preferences
+            2. How well it matches preferences to story attributes
+            3. How it handles ambiguous or conflicting preferences
+            4. How it ranks stories when many appear relevant
+            """
+            
         # Create the optimization prompt
         return f"""
         You are a prompt optimization expert. Your task is to improve a prompt for a story recommendation system.
@@ -151,6 +202,13 @@ class PromptOptimizerAgent:
         ```
         
         Current average evaluation score: {avg_score:.4f} using {config.METRIC} metric.
+        Iteration: {self.iteration}
+        
+        PERFORMANCE ANALYSIS:
+        - Successful case average score: {avg_successful_score:.4f} ({len(successful_cases)} cases)
+        - Unsuccessful case average score: {avg_unsuccessful_score:.4f} ({len(unsuccessful_cases)} cases)
+        
+        {iteration_guidance}
         
         Successful recommendation cases:
         {json.dumps(successful_cases, indent=2)}
@@ -166,6 +224,12 @@ class PromptOptimizerAgent:
         2. Improve the precision of recommendations
         3. Handle diverse user preferences more effectively
         4. Be concise yet comprehensive
+        
+        The prompt should provide clear guidance on how to:
+        - Properly weight different user preferences
+        - Handle potentially conflicting preferences
+        - Consider both explicit and implicit matches between preferences and stories
+        - Apply reasoning to find the most suitable stories, not just keyword matching
         
         Return ONLY the improved prompt without any explanation or additional text.
         """
