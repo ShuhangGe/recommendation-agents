@@ -42,6 +42,7 @@ class AdaptiveRecommendationAgent(Agent):
         
         # Save the default prompt for recommendations
         self.default_prompt = self._create_default_prompt()
+        self.current_prompt = self.default_prompt
         
         # Set initial goals
         self.set_goal("Provide highly relevant story recommendations to users")
@@ -57,6 +58,28 @@ class AdaptiveRecommendationAgent(Agent):
         Consider the user's explicit preferences but also try to infer implicit preferences.
         Balance relevance with diversity in your recommendations.
         """
+    
+    def get_current_prompt(self) -> str:
+        """
+        Get the current recommendation prompt.
+        
+        Returns:
+            Current prompt text
+        """
+        return self.current_prompt
+    
+    def update_prompt(self, new_prompt: str):
+        """
+        Update the recommendation prompt.
+        
+        Args:
+            new_prompt: New prompt text
+        """
+        if new_prompt and len(new_prompt) > 20:  # Basic validation
+            self.current_prompt = new_prompt
+            self.logger.info("Updated recommendation prompt")
+        else:
+            self.logger.warning("Invalid prompt update ignored")
     
     def perceive(self, input_data: Dict[str, Any]) -> Dict[str, Any]:
         """
@@ -296,6 +319,17 @@ class AdaptiveRecommendationAgent(Agent):
         if diversify and "diversity_boost" in self.tools:
             recommendations = self.tools["diversity_boost"](recommendations, combined_preferences)
         
+        # For more personalization, we can refine recommendations using the current prompt
+        if hasattr(self, 'current_prompt') and self.current_prompt:
+            refined_recommendations = self._generate_recommendations_with_prompt(
+                recommendations, 
+                combined_preferences,
+                strategy
+            )
+            # If refinement successful, use the refined recommendations
+            if refined_recommendations:
+                recommendations = refined_recommendations
+        
         # Generate explanation for recommendations
         explanation = self._generate_explanation(
             recommendations, 
@@ -318,6 +352,56 @@ class AdaptiveRecommendationAgent(Agent):
         
         self.logger.info(f"Generated {len(recommendations)} recommendations")
         return result
+    
+    def _generate_recommendations_with_prompt(self, initial_recommendations: List[Dict[str, Any]], 
+                                             preferences: Dict[str, float], 
+                                             strategy: str) -> List[Dict[str, Any]]:
+        """
+        Refine recommendations using the current prompt with LLM.
+        
+        Args:
+            initial_recommendations: Initial recommendations from strategy
+            preferences: User preference tags and weights
+            strategy: Strategy used for initial recommendations
+            
+        Returns:
+            Refined list of recommended stories
+        """
+        try:
+            # Create a prompt with initial recommendations and user preferences
+            user_prompt = f"""
+            User preferences: {json.dumps(list(preferences.keys()))}
+            
+            Initial recommendations: 
+            {json.dumps([{"id": s["id"], "title": s["title"], "tags": s["tags"]} for s in initial_recommendations[:5]], indent=2)}
+            
+            Using strategy: {strategy}
+            """
+            
+            # Combine with the current optimization prompt
+            full_prompt = f"{self.current_prompt}\n\n{user_prompt}\n\nReturn the IDs of the top 10 recommended stories in JSON format as a list."
+            
+            # Generate recommendations using LLM
+            response = generate_with_model(
+                prompt=full_prompt,
+                model_name=self.model_name,
+                system_message="You are an expert recommendation system for stories.",
+                temperature=0.7
+            )
+            
+            # Extract JSON list of IDs
+            if "[" in response and "]" in response:
+                json_str = response[response.find("["):response.rfind("]")+1]
+                recommended_ids = json.loads(json_str)
+                
+                # Convert IDs to story objects
+                return self.get_stories_by_ids(recommended_ids)
+                
+        except Exception as e:
+            self.logger.error(f"Error generating recommendations with prompt: {str(e)}")
+        
+        # Return the original recommendations if anything fails
+        return initial_recommendations
     
     def _similarity_search(self, preferences: Dict[str, float], num_results: int = 10) -> List[Dict[str, Any]]:
         """

@@ -6,6 +6,7 @@ based on the user's preferences and context.
 import argparse
 import json
 import time
+import os
 from typing import Dict, Any, List
 
 import config
@@ -19,7 +20,7 @@ def run_agent_recommendation(user_profile: str, past_interactions: List[Dict[str
     Run the agent-based recommendation process for a user.
     
     Args:
-        user_profile: User profile text
+        user_profile: User profile text or "all" to process all users
         past_interactions: Optional list of past user interactions
         recommendation_model: Optional model for recommendation agent
         evaluation_model: Optional model for evaluation agent
@@ -31,26 +32,17 @@ def run_agent_recommendation(user_profile: str, past_interactions: List[Dict[str
     # Setup
     utils.load_api_keys()
     
-    # Load data
-    seed_stories, seed_users = utils.load_seed_data()
+    # Check if data files exist
+    if not os.path.exists(config.STORY_DATA_FILE):
+        raise FileNotFoundError(f"Story data file not found: {config.STORY_DATA_FILE}. Please run ./generate_data.sh first.")
     
-    # Check if we have expanded data already
-    try:
-        all_stories = utils.expand_stories(seed_stories)
-        all_users = utils.generate_test_users(seed_users)
-    except Exception as e:
-        print(f"Error loading expanded data: {str(e)}")
-        print("Using seed data only.")
-        all_stories = seed_stories
-        all_users = seed_users
-        
-    # Find matching user if user_profile is an ID
-    if user_profile in [u['id'] for u in all_users]:
-        for user in all_users:
-            if user['id'] == user_profile:
-                user_profile = user['profile']
-                print(f"Using profile for user {user['id']}")
-                break
+    if not os.path.exists(config.USER_PROFILES_FILE):
+        raise FileNotFoundError(f"User profiles file not found: {config.USER_PROFILES_FILE}. Please run ./generate_data.sh first.")
+    
+    # Load data from pre-generated files
+    print(f"🔄 Loading data from {config.STORY_DATA_FILE} and {config.USER_PROFILES_FILE}...")
+    all_stories = utils.load_stories()
+    all_users = utils.load_user_profiles()
     
     # Initialize agents with specified models
     recommendation_agent = AdaptiveRecommendationAgent(all_stories, model_name=recommendation_model)
@@ -66,7 +58,81 @@ def run_agent_recommendation(user_profile: str, past_interactions: List[Dict[str
     
     if verbose:
         print("\n=== ADAPTIVE RECOMMENDATION PROCESS ===")
-        print(f"User Profile: {user_profile[:100]}...")
+    else:
+        print("\n🚀 ADAPTIVE RECOMMENDATION PROCESS")
+        print("-" * 50)
+    
+    print(f"📚 Loaded {len(all_stories)} stories")
+    print(f"👥 Loaded {len(all_users)} user profiles")
+    print(f"👥 Recommendation model: {recommendation_model}")
+    print(f"⚖️ Evaluation model: {evaluation_model}")
+    
+    # Process all users if requested
+    if user_profile == "all":
+        # Process all users and return aggregated results
+        all_results = []
+        total_score = 0.0
+        
+        print(f"\n👥 Processing all {len(all_users)} users...")
+        
+        for user in all_users:
+            print(f"\n👤 User {user['id']}:")
+            user_result = process_single_user(
+                user['profile'],
+                recommendation_agent,
+                evaluation_agent,
+                past_interactions,
+                verbose
+            )
+            all_results.append({
+                "user_id": user['id'],
+                **user_result
+            })
+            total_score += user_result.get("primary_score", 0.0)
+        
+        # Calculate average score
+        avg_score = total_score / len(all_users) if all_users else 0.0
+        print(f"\n📈 Average score across all users: {avg_score:.4f}")
+        print(f"⏱️ Total time: {time.time() - start_time:.2f} seconds")
+        
+        # Return aggregated results
+        return {
+            "results": all_results,
+            "average_score": avg_score,
+            "elapsed_time": time.time() - start_time,
+            "user_count": len(all_users)
+        }
+    else:
+        # Process a single user based on the provided profile
+        if verbose:
+            print(f"User Profile: {user_profile[:100]}...")
+        else:
+            print(f"👤 Processing single user profile...")
+        
+        return process_single_user(
+            user_profile,
+            recommendation_agent,
+            evaluation_agent,
+            past_interactions,
+            verbose
+        )
+
+def process_single_user(user_profile: str, recommendation_agent, evaluation_agent, 
+                         past_interactions: List[Dict[str, Any]] = None, verbose: bool = False) -> Dict[str, Any]:
+    """
+    Process a single user for recommendation and evaluation.
+    
+    Args:
+        user_profile: User profile text
+        recommendation_agent: Recommendation agent instance
+        evaluation_agent: Evaluation agent instance
+        past_interactions: Optional list of past user interactions
+        verbose: Whether to print detailed information
+        
+    Returns:
+        Dictionary with results
+    """
+    start_time = time.time()
     
     # Step 1: Extract preferences
     extracted_tags = evaluation_agent._extract_preferences(user_profile)
@@ -74,6 +140,8 @@ def run_agent_recommendation(user_profile: str, past_interactions: List[Dict[str
     if verbose:
         print(f"\n== Extracted User Preferences ==")
         print(f"Tags: {extracted_tags}")
+    else:
+        print(f"🔍 Extracting preferences...")
     
     # Step 2: Prepare input for recommendation agent
     recommendation_input = {
@@ -83,7 +151,7 @@ def run_agent_recommendation(user_profile: str, past_interactions: List[Dict[str
     }
     
     # Step 3: Run full perception-reasoning-action cycle
-    print("\nGenerating recommendations...")
+    print("📚 Generating recommendations...")
     rec_result = recommendation_agent.run_perception_reasoning_action_loop(recommendation_input)
     
     if verbose:
@@ -108,95 +176,88 @@ def run_agent_recommendation(user_profile: str, past_interactions: List[Dict[str
     
     # Step 4: Log the results
     recommended_stories = rec_result.get("recommended_stories", [])
+    recommendation_strategy = rec_result.get("strategy_used", "unknown")
     explanation = rec_result.get("explanation", "")
-    strategy_used = rec_result.get("strategy_used", "unknown")
+    
+    # Print minimal recommendation info if not verbose
+    if not verbose:
+        print(f"✨ Using strategy: {recommendation_strategy}")
+        print(f"📋 Found {len(recommended_stories)} stories")
     
     # Step 5: Evaluate recommendations
-    print("\nEvaluating recommendations...")
+    print("⚖️ Evaluating recommendations...")
     
-    # Prepare input for evaluation agent
+    # Prepare evaluation input
     evaluation_input = {
         "user_profile": user_profile,
         "recommended_stories": recommended_stories,
-        "extracted_tags": extracted_tags,
-        "metric": "precision@10"
+        "extracted_tags": extracted_tags
     }
     
-    # Run evaluation
+    # Run evaluation agent
     eval_result = evaluation_agent.run_perception_reasoning_action_loop(evaluation_input)
     
-    if verbose:
-        # Print evaluation perceptions
-        eval_perceptions = evaluation_agent.memory.get_from_short_term("latest_perceptions", {})
-        print("\n== Evaluation Perceptions ==")
-        print(f"Profile Complexity: {eval_perceptions.get('profile_complexity', {}).get('level', 'unknown')}")
-        print(f"Recommendation Diversity: {eval_perceptions.get('recommendation_diversity', {}).get('level', 'unknown')}")
-        print(f"Tag Relevance: {eval_perceptions.get('tag_relevance', {}).get('level', 'unknown')}")
-        
-        # Print evaluation reasoning
-        eval_plan = evaluation_agent.memory.context[-2]["content"] if len(evaluation_agent.memory.context) >= 2 else {}
-        print("\n== Evaluation Reasoning ==")
-        print(f"Metrics Used: {', '.join(eval_plan.get('metrics_to_use', ['unknown']))}")
-        print(f"Detail Level: {eval_plan.get('detail_level', 'unknown')}")
-        print(f"Weighted Scoring: {eval_plan.get('use_weighted_scoring', False)}")
-    
-    # Calculate elapsed time
+    # Process evaluation results
+    scores = eval_result.get("scores", {})
+    primary_score = eval_result.get("score", 0.0)
+    quality_analysis = eval_result.get("quality_analysis", {})
     elapsed_time = time.time() - start_time
     
-    # Prepare the final results
-    scores = eval_result.get("scores", {})
-    quality_analysis = eval_result.get("quality_analysis", {})
-    
+    # Prepare results
     results = {
-        "recommendations": [{
-            "id": story["id"],
-            "title": story["title"],
-            "tags": story["tags"]
-        } for story in recommended_stories],
+        "recommended_stories": recommended_stories,
+        "recommendation_strategy": recommendation_strategy,
         "explanation": explanation,
-        "strategy": strategy_used,
         "scores": scores,
-        "primary_score": eval_result.get("score", 0.0),
-        "strengths": quality_analysis.get("strengths", []),
-        "weaknesses": quality_analysis.get("weaknesses", []),
+        "primary_score": primary_score,
+        "quality_analysis": quality_analysis,
         "elapsed_time": elapsed_time
     }
     
-    # Print recommendations
-    print("\n== Recommended Stories ==")
-    for i, story in enumerate(recommended_stories[:5], 1):
-        print(f"{i}. {story['title']} (ID: {story['id']})")
+    # Print stories and scores
+    print(f"\n📊 Evaluation Score: {primary_score:.4f}")
+    
+    # Print detailed info if verbose
+    if verbose:
+        # Print recommended stories
+        print("\n== Recommended Stories ==")
+        for i, story in enumerate(recommended_stories[:5], 1):
+            print(f"{i}. {story['title']} (ID: {story['id']})")
+            print(f"   - {story['summary'][:100]}...")
         
-    # Print explanation
-    print(f"\n== Explanation ==\n{explanation}")
-    
-    # Print scores
-    print("\n== Evaluation Scores ==")
-    for metric, score in scores.items():
-        print(f"{metric}: {score:.4f}")
-    
-    # Print strengths and weaknesses
-    if quality_analysis.get("strengths"):
-        print("\n== Recommendation Strengths ==")
-        for strength in quality_analysis.get("strengths", [])[:3]:
-            print(f"- {strength.get('description', '')}")
+        # Print explanation
+        print(f"\n== Explanation ==\n{explanation}")
+        
+        # Print scores
+        print("\n== Evaluation Scores ==")
+        for metric, score in scores.items():
+            print(f"{metric}: {score:.4f}")
+        
+        # Print strengths and weaknesses
+        if quality_analysis.get("strengths"):
+            print("\n== Recommendation Strengths ==")
+            for strength in quality_analysis.get("strengths", [])[:3]:
+                print(f"- {strength.get('description', '')}")
+                
+        if quality_analysis.get("weaknesses"):
+            print("\n== Recommendation Weaknesses ==")
+            for weakness in quality_analysis.get("weaknesses", [])[:3]:
+                print(f"- {weakness.get('description', '')}")
+    else:
+        # Print brief strengths/weaknesses
+        if quality_analysis.get("strengths"):
+            print("✅ Top strength: " + quality_analysis.get("strengths", [])[0].get('description', ''))
             
-    if quality_analysis.get("weaknesses"):
-        print("\n== Recommendation Weaknesses ==")
-        for weakness in quality_analysis.get("weaknesses", [])[:3]:
-            print(f"- {weakness.get('description', '')}")
+        if quality_analysis.get("weaknesses"):
+            print("⚠️ Top weakness: " + quality_analysis.get("weaknesses", [])[0].get('description', ''))
     
-    print(f"\nProcess completed in {elapsed_time:.2f} seconds")
+    print(f"⏱️ Process completed in {elapsed_time:.2f} seconds")
     
     return results
 
 def main():
     """Main entry point."""
     parser = argparse.ArgumentParser(description='Run Agent-Based Recommendation System')
-    
-    # User options
-    parser.add_argument('--user-id', type=str, help='User ID to test (e.g., user1)')
-    parser.add_argument('--profile', type=str, help='User profile text (alternative to user-id)')
     
     # Model selection
     parser.add_argument('--list-models', action='store_true',
@@ -219,17 +280,9 @@ def main():
         print(config.list_available_models())
         return
     
-    # Get user profile
-    user_profile = None
-    
-    if args.user_id:
-        user_profile = args.user_id  # Will look up the profile in the function
-    elif args.profile:
-        user_profile = args.profile
-    else:
-        # Use the default user profile
-        user_profile = "user1"
-        print(f"Using default user: {user_profile}")
+    # Always use all users
+    user_profile = "all"
+    print("Using all available users")
     
     # Run the agent recommendation process
     results = run_agent_recommendation(

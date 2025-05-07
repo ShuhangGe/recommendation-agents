@@ -1,63 +1,152 @@
-# Sekai Recommendation Agent System
+# Sekai Agent-Based Recommendation System
 
-A multi-agent recommendation system for interactive stories that leverages both Google's Gemini and OpenAI models.
+A sophisticated multi-agent recommendation system for interactive stories that leverages both Google's Gemini and OpenAI models, built on an advanced agent-based architecture.
 
 ## 📋 Table of Contents
 
 - [Overview](#overview)
+- [Agent-Based Architecture](#agent-based-architecture)
+- [Pipeline Explanation](#pipeline-explanation)
 - [Features](#features)
-- [System Architecture](#system-architecture)
 - [Installation](#installation)
-- [Configuration](#configuration)
-- [Usage Guide](#usage-guide)
-- [Scripts Explained](#scripts-explained)
-- [Available Models](#available-models)
+- [Usage](#usage)
+- [Agents Explained](#agents-explained)
+- [Core Components](#core-components)
+- [Command-Line Options](#command-line-options)
+- [Models](#models)
 - [Evaluation Metrics](#evaluation-metrics)
-- [Performance Optimization](#performance-optimization)
+- [Comparing with Workflow-Based Approach](#comparing-with-workflow-based-approach)
 - [Contributing](#contributing)
 - [License](#license)
 
 ## 🌟 Overview
 
-The Sekai Recommendation Agent System is an advanced recommendation engine designed to suggest relevant interactive stories to users based on their preferences. The system employs multiple agent types working in conjunction to continuously optimize recommendations through an autonomous feedback loop.
+The Sekai Agent-Based Recommendation System represents an evolution in recommendation systems, using an advanced agent-based architecture. Unlike traditional recommendation systems that follow fixed workflows, this system employs intelligent agents with perception, reasoning, and action capabilities to dynamically adapt to user preferences and context.
 
 Key capabilities:
-- Personalized story recommendations based on user preferences
-- Multi-model support (OpenAI and Google Gemini)
-- Automatic prompt optimization
-- Comprehensive evaluation metrics
-- Extensible architecture for new models and features
+- Personalized story recommendations with dynamic strategy selection
+- Advanced perception of user preferences (both explicit and implicit)
+- Intelligent reasoning about recommendation strategies
+- Detailed explanation of recommendation decisions
+- Comprehensive quality evaluation with actionable feedback
+- Adaptive prompt optimization for continuous improvement
+
+## 🤖 Agent-Based Architecture
+
+The system is built on a core agent framework that provides fundamental agent capabilities:
+
+```
+┌─────────────────────────────────────┐
+│            Agent Core               │
+│  ┌─────────┐ ┌──────┐ ┌──────────┐  │
+│  │Perception│ │Reason│ │  Action  │  │
+│  └─────────┘ └──────┘ └──────────┘  │
+│  ┌─────────────────────────────────┐│
+│  │             Memory              ││
+│  │ ┌─────────┐      ┌───────────┐ ││
+│  │ │Short-term│      │Long-term  │ ││
+│  │ └─────────┘      └───────────┘ ││
+│  └─────────────────────────────────┘│
+└─────────────────────────────────────┘
+```
+
+This architecture is implemented with three key specialized agents:
+
+1. **Adaptive Recommendation Agent**: Dynamically selects the most appropriate recommendation strategy based on user profile analysis
+   - Different strategies: similarity search, tag-based search, hybrid search, diversity boost
+   - Explained recommendations with context-appropriate detail levels
+
+2. **Adaptive Evaluation Agent**: Intelligently assesses recommendation quality using multiple metrics
+   - Analyzes recommendation strengths and weaknesses
+   - Provides actionable feedback for improvement
+   - Adapts evaluation strategy to user profile complexity
+
+3. **Adaptive Optimizer Agent**: Analyzes evaluation results to optimize recommendation prompts
+   - Identifies patterns in successful and unsuccessful recommendations
+   - Generates improved prompts based on evaluation feedback
+   - Adapts optimization strategy based on performance trends
+
+Together, these agents form a comprehensive recommendation system that can understand user preferences, generate relevant recommendations, evaluate their quality, and continuously improve over time.
+
+## 🔄 Pipeline Explanation
+
+The Sekai Agent-Based Recommendation System follows a sophisticated pipeline that orchestrates the interactions between the three specialized agents:
+
+### Initial Setup and Data Loading
+
+The pipeline begins with:
+1. Loading API keys for language models (OpenAI/Google)
+2. Creating necessary directories for data, results, and logs
+3. Loading and expanding seed story data and user profiles
+4. Setting up comprehensive logging infrastructure
+
+### Three-Agent Workflow
+
+The core recommendation workflow involves these stages:
+
+#### Stage 1: Recommendation Generation
+1. **Extract User Preferences**: The evaluation agent extracts explicit and implicit preferences from user profiles
+2. **Generate Recommendations**: The recommendation agent:
+   - Perceives user context through profile analysis
+   - Reasons about the optimal strategy (similarity search, tag-based, hybrid, etc.)
+   - Executes the chosen strategy to produce personalized recommendations
+
+#### Stage 2: Quality Evaluation
+1. **Evaluate Recommendations**: The evaluation agent:
+   - Analyzes profile complexity and recommendation diversity
+   - Selects appropriate metrics (precision@10, recall, semantic overlap)
+   - Generates "ground truth" recommendations for comparison
+   - Calculates quality scores and identifies strengths/weaknesses
+
+#### Stage 3: Prompt Optimization
+1. **Optimize Recommendations**: The optimizer agent:
+   - Analyzes patterns in successful and unsuccessful recommendations
+   - Selects an optimization strategy based on score trends
+   - Generates an improved prompt for the recommendation agent
+   - Stores successful prompts in cache for future use
+
+### Optimization Loop
+
+The system runs an iterative optimization process:
+
+1. For each iteration:
+   - Process each test user through all three agents
+   - Calculate average score across all users
+   - Generate an improved prompt based on evaluation results
+   - Update the recommendation agent with the new prompt
+
+2. The loop continues until:
+   - Maximum iterations are reached
+   - Score threshold is exceeded
+   - Improvement falls below the minimum threshold
+
+3. The system tracks:
+   - Score progression over iterations
+   - Prompt changes and their impact
+   - User-specific performance metrics
+
+### Output and Analysis
+
+The system produces:
+1. Timestamped logs of the entire process
+2. CSV and JSON files with detailed performance metrics
+3. Visualizations of optimization progress
+4. Comprehensive quality analysis for each user
+
+This pipeline combines the strengths of all three agents to create a system that continuously improves its recommendation capability through an adaptive, intelligent process.
 
 ## ✨ Features
 
-- **Model Flexibility**: Seamlessly switch between different AI models (OpenAI GPT models and Google Gemini models)
-- **Task-Specific Model Selection**: Specify different models for different tasks (recommendations, evaluations, optimizations)
-- **Prompt Optimization**: Autonomous improvement of recommendation prompts based on performance
-- **Caching System**: Efficient caching for embeddings and successful prompts
-- **Comprehensive Evaluation**: Multiple metrics for measuring recommendation quality
-- **User Profile Analysis**: Extract user preferences from freeform text profiles
-- **Story Generation**: Generate synthetic story data for testing and training
-- **Visualization**: Track optimization progress with result metrics
-
-## 🏗️ System Architecture
-
-The system consists of three primary agent types:
-
-1. **Recommendation Agent**: Generates story recommendations for users based on their preference tags
-   - Accepts any compatible model for inference
-   - Uses a prompt-based approach for story ranking
-
-2. **Evaluation Agent**: Assesses recommendation quality by simulating user preferences
-   - Extracts preference tags from user profiles
-   - Generates "ground truth" recommendations for comparison
-   - Calculates quality metrics
-
-3. **Prompt-Optimizer Agent**: Improves recommendation prompts based on evaluation feedback
-   - Analyzes successful and unsuccessful recommendation cases
-   - Proposes prompt tweaks to improve performance
-   - Maintains a cache of successful prompts
-
-The system operates in an optimization loop: recommend → evaluate → optimize → repeat.
+- **Adaptive Strategy Selection**: Dynamically chooses the best recommendation strategy based on user preferences
+- **Multi-faceted User Analysis**: Extracts explicit and infers implicit preferences from user profiles
+- **Memory System**: Short-term and long-term memory for tracking context across interactions
+- **Tool System**: Specialized tools for different recommendation, evaluation, and optimization tasks
+- **Explanation System**: Generate context-appropriate explanations for recommendations
+- **Quality Analysis**: Detailed analysis of recommendation strengths and weaknesses
+- **Prompt Optimization**: Continuous improvement through iterative prompt refinement
+- **Dynamic Diversity**: Adjustable diversity to balance relevance with exploration
+- **Performance Insights**: Detailed metrics on recommendation quality
+- **Comprehensive Logging**: Real-time tracking of optimization progress with detailed analytics
 
 ## 🛠️ Installation
 
@@ -72,6 +161,7 @@ The system operates in an optimization loop: recommend → evaluate → optimize
    ```bash
    git clone https://github.com/ShuhangGe/recommendation-agents.git
    cd recommendation-agents
+   git checkout agent-based-system
    ```
 
 2. Create a virtual environment:
@@ -91,148 +181,200 @@ The system operates in an optimization loop: recommend → evaluate → optimize
    OPENAI_API_KEY=your_openai_api_key_here
    ```
 
-## ⚙️ Configuration
+## 🚀 Usage
 
-The system is configured via the `config.py` file, which includes:
+### Generating Story Data
 
-- API keys (loaded from `.env`)
-- Available models and their types
-- Default models for each task
-- File paths and cache settings
-- Evaluation metrics
-- Optimization parameters
+Before running the recommendation system, you need to generate story data:
 
-You can override configuration options via environment variables or command-line arguments.
-
-### Environment Variables
-
-Examples:
-```
-MAX_ITERATIONS=15
-SCORE_THRESHOLD=0.85
-RECOMMENDATION_MODEL=gpt-4
+```bash
+./generate_stories.sh --model gpt-4o-mini --count 100 --regenerate
 ```
 
-## 🚀 Usage Guide
+This will generate 100 stories using the specified model and save them to the data directory.
 
-### Basic Usage
+### Running the Agent-Based Recommendation System
 
-1. **Generate Story Data**:
-   ```bash
-   ./generate_stories.sh --model gpt-3.5-turbo --count 100
-   ```
+Run the main script to execute the agent-based recommendation system:
 
-2. **Run a Recommendation Test**:
-   ```bash
-   python run_recommendation.py --user-id user1 --recommendation-model gpt-3.5-turbo
-   ```
-
-3. **Run the Complete System (main.py)**:
-   ```bash
-   python main.py --recommendation-model gpt-3.5-turbo --evaluation-model gpt-4 --optimizer-model gpt-4
-   ```
-   
-   Available options for `main.py`:
-   - `--max-iterations`: Maximum optimization iterations (default: 10)
-   - `--score-threshold`: Score threshold to stop optimization (default: 0.8)
-   - `--recommendation-model`: Model for recommendations
-   - `--evaluation-model`: Model for evaluations
-   - `--optimizer-model`: Model for prompt optimization
-   - `--story-model`: Model for generating stories
-   - `--user-model`: Model for generating user profiles
-   - `--story-count`: Number of stories to generate (default: 100)
-   - `--user-count`: Number of test users to generate (default: 5)
-   - `--regenerate-data`: Force regeneration of stories and users
-   - `--list-models`: Display all available models and exit
-
-   Example with multiple options:
-   ```bash
-   python main.py --recommendation-model gemini-1.5-flash --evaluation-model gpt-4 --max-iterations 15 --score-threshold 0.85
-   ```
-
-4. **Run an Optimization Loop**:
-   ```bash
-   ./run_optimization.sh --recommendation-model gpt-3.5-turbo --evaluation-model gpt-4
-   ```
-
-5. **Test a Specific Task with Different Models**:
-   ```bash
-   python test_task.py --task recommendation --model gpt-4 --user-id user1
-   ```
-
-6. **Compare Multiple Models**:
-   ```bash
-   ./compare_models.sh --task recommendation --models "gpt-3.5-turbo,gpt-4,gemini-1.5-flash"
-   ```
-
-### Advanced Usage
-
-For more control, use the Python API directly:
-
-```python
-from agents import RecommendationAgent, EvaluationAgent
-import utils
-
-# Load data
-stories, users = utils.load_seed_data()
-all_stories = utils.expand_stories(stories, target_count=100)
-
-# Initialize agents with specific models
-rec_agent = RecommendationAgent(all_stories, model_name="gpt-4")
-eval_agent = EvaluationAgent(all_stories, model_name="gemini-1.5-pro")
-
-# Extract user preferences
-user_profile = users[0]['profile']
-tags = eval_agent.extract_tags(user_profile)
-
-# Generate recommendations
-recommendations = rec_agent.recommend(tags)
-
-# Get full story details
-recommended_stories = rec_agent.get_stories_by_ids(recommendations)
+```bash
+python main.py --recommendation-model gpt-4o-mini --evaluation-model gpt-4o-mini --optimizer-model gpt-4o-mini --verbose --enable-optimization
 ```
 
-## 📜 Scripts Explained
+### Using the Run Script
 
-The repository includes several utility scripts:
+Alternatively, use the provided shell script:
 
-1. **`generate_stories.sh`**: Generates synthetic story data
-   - `--model`: Model to use for generation
-   - `--count`: Number of stories to generate
-   - `--regenerate`: Force regeneration of existing data
+```bash
+./run_agent_system.sh --recommendation-model gpt-4o-mini --evaluation-model gpt-4o-mini --optimizer-model gpt-4o-mini --verbose --enable-optimization
+```
 
-2. **`run_recommendation.py`**: Tests recommendations for a specific user
-   - `--user-id`: ID of the user to test
-   - `--recommendation-model`: Model for story recommendations
-   - `--evaluation-model`: Model for evaluations
-   - `--metric`: Evaluation metric to use
+## 🧠 Agents Explained
 
-3. **`run_optimization.sh`**: Runs a complete optimization cycle
-   - `--recommendation-model`: Model for recommendations
-   - `--evaluation-model`: Model for evaluations
-   - `--optimizer-model`: Model for optimization
-   - `--iterations`: Maximum iterations
+### Agent Core
 
-4. **`test_task.py`**: Tests a specific task with a specific model
-   - `--task`: Task to test (recommendation, evaluation, tags, optimization)
-   - `--model`: Model to use for the task
-   - `--user-id`: User ID to test with
+The `Agent` class provides the foundation for all agents with:
 
-5. **`compare_models.sh`**: Compares different models for a specific task
-   - `--task`: Task to test
-   - `--models`: Comma-separated list of models to compare
-   - `--json`: Output results in JSON format
+- **Perception**: Process input data to understand the environment
+- **Reasoning**: Determine the best course of action based on perceptions
+- **Action**: Execute the chosen strategy to achieve goals
+- **Memory**: Store and retrieve information from short and long-term memory
+- **Tools**: Specialized functions that agents can use for specific tasks
+- **Goals**: Explicit objectives that guide the agent's behavior
 
-## 🤖 Available Models
+### Adaptive Recommendation Agent
+
+The recommendation agent:
+
+1. **Perceives** user preferences by:
+   - Extracting explicit preferences from tags
+   - Inferring implicit preferences from profile text
+   - Analyzing preference patterns from past interactions
+   - Determining preference strengths
+
+2. **Reasons** about the best recommendation strategy:
+   - Chooses between similarity search, tag-based search, hybrid search
+   - Decides whether to prioritize diversity
+   - Selects appropriate explanation mode
+   - Weighs different preferences
+
+3. **Acts** by:
+   - Executing the chosen recommendation strategy
+   - Generating personalized recommendations
+   - Creating context-appropriate explanations
+   - Returning detailed results
+
+### Adaptive Evaluation Agent
+
+The evaluation agent:
+
+1. **Perceives** the evaluation context by:
+   - Analyzing user profile complexity
+   - Examining recommendation diversity
+   - Assessing tag relevance to recommendations
+
+2. **Reasons** about the best evaluation approach:
+   - Selects appropriate metrics based on context
+   - Determines whether to use weighted scoring
+   - Decides level of detail for quality analysis
+
+3. **Acts** by:
+   - Calculating multiple quality metrics
+   - Analyzing recommendation strengths and weaknesses
+   - Generating actionable feedback
+   - Providing detailed evaluation results
+
+### Adaptive Optimizer Agent
+
+The optimizer agent:
+
+1. **Perceives** evaluation results by:
+   - Analyzing patterns in successful and unsuccessful recommendations
+   - Identifying strengths and weaknesses in current prompts
+   - Tracking performance trends across iterations
+
+2. **Reasons** about the best optimization approach:
+   - Selects appropriate optimization strategy based on trends
+   - Determines which aspects of the prompt to modify
+   - Decides on the degree of change needed
+
+3. **Acts** by:
+   - Generating improved prompts based on analysis
+   - Providing detailed optimization rationale
+   - Tracking performance across iterations
+   - Adapting strategies when hitting performance plateaus
+
+## 🧩 Core Components
+
+### Agent Memory
+
+Each agent has a memory system with:
+- **Short-term memory**: For temporary, session-based information
+- **Long-term memory**: For persistent information across sessions
+- **Context history**: For tracking conversation and action history
+
+### Agent Tools
+
+Agents have specialized tools for different tasks:
+- **Recommendation tools**: similarity_search, tag_based_search, hybrid_search, diversity_boost
+- **Evaluation tools**: extract_preferences, generate_ground_truth, evaluate_precision, analyze_quality
+- **Optimization tools**: analyze_results, generate_improved_prompt, detect_performance_plateau
+
+### Perception-Reasoning-Action Loop
+
+The core execution model follows a perception-reasoning-action loop:
+1. **Perceive**: Process input data to update understanding
+2. **Reason**: Determine the best strategy based on perceptions
+3. **Act**: Execute the chosen strategy to achieve goals
+
+## 💻 Command-Line Options
+
+### Main Script Options
+
+```
+python main.py [options]
+```
+
+Available options:
+- `--save-results`: Save results to a file
+- `--verbose`: Print detailed information
+- `--list-models`: List all available models and exit
+- `--recommendation-model MODEL`: Model for recommendations
+- `--evaluation-model MODEL`: Model for evaluations
+- `--optimizer-model MODEL`: Model for prompt optimization
+- `--story-model MODEL`: Model for generating stories
+- `--user-model MODEL`: Model for generating user profiles
+- `--story-count NUM`: Number of stories to generate (default: 100)
+- `--user-count NUM`: Number of additional test users to generate (default: 5)
+- `--regenerate-data`: Force regeneration of stories and users
+- `--enable-optimization`: Enable prompt optimization loop
+- `--max-iterations NUM`: Maximum number of optimization iterations (default: 20)
+- `--score-threshold NUM`: Score threshold to stop optimization (default: 0.8)
+- `--improvement-threshold NUM`: Minimum improvement to continue optimization (default: 0.005)
+- `--metric METRIC`: Evaluation metric to use (default: precision@10)
+
+### Agent System Script Options
+
+```
+./run_agent_system.sh [options]
+```
+
+Available options:
+- `--recommendation-model MODEL`: Model for recommendations
+- `--evaluation-model MODEL`: Model for evaluations
+- `--optimizer-model MODEL`: Model for prompt optimization
+- `--user-id USER_ID`: User ID to test (e.g., user1)
+- `--profile TEXT`: User profile text (alternative to user-id)
+- `--verbose`: Print detailed information about the process
+- `--json`: Output results in JSON format
+- `--enable-optimization`: Enable prompt optimization loop
+- `--max-iterations NUM`: Maximum number of optimization iterations
+- `--score-threshold NUM`: Score threshold to stop optimization
+- `--improvement-threshold NUM`: Minimum improvement to continue optimization
+
+### Story Generation Script Options
+
+```
+./generate_stories.sh [options]
+```
+
+Available options:
+- `--model MODEL`: Model to use for generation
+- `--count COUNT`: Number of stories to generate
+- `--regenerate`: Force regeneration of existing data
+
+## 🤖 Models
+
+The system supports both Google Gemini and OpenAI models:
 
 ### Google Models
 - `gemini-1.5-flash`: Fast, efficient model for recommendations
-- `gemini-1.5-pro`: Powerful model for evaluation and optimization
+- `gemini-1.5-pro`: Powerful model for evaluation and complex reasoning
 
 ### OpenAI Models
 - `gpt-3.5-turbo`: Balanced performance and speed
-- `gpt-4`: Most powerful model, best for complex tasks
-- `gpt-4-turbo`: Faster version of GPT-4 with good performance
+- `gpt-4`: Most powerful model for complex reasoning
+- `gpt-4o-mini`: Fast and efficient for most recommendation tasks
 
 To list all available models:
 ```bash
@@ -247,30 +389,41 @@ The system supports multiple evaluation metrics:
 2. **`recall`**: Percentage of ground truth items found in the recommendations
 3. **`semantic_overlap`**: Semantic similarity between recommended and ground truth stories
 
-Configure the metric via:
-```bash
-python run_recommendation.py --metric semantic_overlap
-```
+## 🔄 Comparing with Workflow-Based Approach
 
-## ⚡ Performance Optimization
+The agent-based system offers several advantages over the traditional workflow-based approach:
 
-To optimize system performance:
+### Architecture
 
-1. **Model Selection**: Use faster models for recommendation tasks, premium models for optimization
-   - Example: `gemini-1.5-flash` for recommendations, `gpt-4` for optimization
+| Agent-Based | Workflow-Based |
+|-------------|---------------|
+| Dynamic strategy selection | Fixed recommendation approach |
+| Perception-reasoning-action loop | Linear processing pipeline |
+| Rich memory system | Limited context tracking |
+| Explicit reasoning about approaches | Implicit in code logic |
 
-2. **Caching**: The system caches:
-   - Story embeddings to avoid redundant computation
-   - Successful prompts along with their performance metrics
+### Capabilities
 
-3. **Stopping Rules**: The optimization process stops when:
-   - The evaluation metric plateaus (improvement < 1% over 3 consecutive iterations)
-   - A maximum score threshold is reached (default: 0.8)
-   - The maximum number of iterations is reached (default: 10)
+| Agent-Based | Workflow-Based |
+|-------------|---------------|
+| Multiple recommendation strategies | Single prompt-based approach |
+| Detailed explanation of recommendations | Limited explanation capabilities |
+| Adaptive to user profile complexity | One-size-fits-all approach |
+| Explicit goals and reasoning | Hardcoded logic |
+| Continuous prompt optimization | Manual prompt engineering |
+
+### Performance
+
+Agent-based systems generally provide:
+- More personalized recommendations
+- Better handling of complex user profiles
+- More detailed quality analysis
+- More transparent decision-making
+- Improved performance through continuous optimization
 
 ## 🤝 Contributing
 
-Contributions to the Sekai Recommendation Agent System are welcome! To contribute:
+Contributions to the Sekai Agent-Based Recommendation System are welcome! To contribute:
 
 1. Fork the repository
 2. Create a feature branch (`git checkout -b feature/amazing-feature`)
