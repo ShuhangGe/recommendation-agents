@@ -6,6 +6,7 @@ Agent modules for the Sekai Recommendation Agent system.
 from agents.agent_core import Agent, Memory
 from agents.adaptive_recommendation_agent import AdaptiveRecommendationAgent
 from agents.adaptive_evaluation_agent import AdaptiveEvaluationAgent
+from agents.adaptive_optimizer_agent import AdaptiveOptimizerAgent
 
 __all__ = [
     # Agent core
@@ -14,5 +15,6 @@ __all__ = [
     
     # Adaptive agents
     'AdaptiveRecommendationAgent',
-    'AdaptiveEvaluationAgent'
+    'AdaptiveEvaluationAgent',
+    'AdaptiveOptimizerAgent'
 ] 

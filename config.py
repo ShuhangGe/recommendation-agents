@@ -72,8 +72,8 @@ USER_GENERATION_MODEL = os.getenv("USER_GENERATION_MODEL", DEFAULT_USER_GENERATI
 # File Paths
 DATA_DIR = "data"
 RESULTS_DIR = "results"
-USER_PROFILES_FILE = "user_profiles.json"
-STORY_DATA_FILE = "story_data.json"
+USER_PROFILES_FILE = "./data/user_profiles.json"
+STORY_DATA_FILE = "./data/story_data.json"
 RESULTS_FILE = "optimization_results.csv"
 
 # Cache Settings
