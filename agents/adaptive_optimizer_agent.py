@@ -73,51 +73,41 @@ class AdaptiveOptimizerAgent(Agent):
         current_prompt = input_data.get("current_prompt", "")
         evaluation_results = input_data.get("evaluation_results", [])
         current_score = input_data.get("current_score", 0.0)
-        iteration = input_data.get("iteration", 0)
+        iteration = input_data.get("iteration", 1)
+        edge_cases = input_data.get("edge_cases", [])
         
-        # Get previous scores from history
-        previous_scores = [item["score"] for item in self.optimization_history] if self.optimization_history else []
+        # Group evaluation results by user
+        user_evaluations = {}
+        for result in evaluation_results:
+            user_id = result.get("user_id", "unknown_user")
+            if user_id not in user_evaluations:
+                user_evaluations[user_id] = []
+            user_evaluations[user_id].append(result)
         
-        # Analyze results to identify patterns and edge cases
-        result_analysis = self._analyze_results(evaluation_results, current_score, previous_scores)
+        # Get previous scores and update
+        previous_scores = self.memory.get_from_short_term("previous_scores", [])
+        previous_scores.append(current_score)
+        self.memory.add_to_short_term("previous_scores", previous_scores[-5:])
         
-        # Store the current optimization step in history
-        self.optimization_history.append({
-            "iteration": iteration,
-            "score": current_score,
-            "prompt": current_prompt,
-            "timestamp": time.time()
-        })
+        # Analyze results by user
+        user_analyses = {}
+        for user_id, user_results in user_evaluations.items():
+            user_analyses[user_id] = self._analyze_results(user_results, current_score, previous_scores)
         
-        # Update best score and prompt if improved
-        if current_score > self.best_score:
-            self.best_score = current_score
-            self.best_prompt = current_prompt
-            self.plateau_counter = 0
-        else:
-            self.plateau_counter += 1
+        # Perform overall analysis across all users
+        overall_analysis = self._analyze_results(evaluation_results, current_score, previous_scores)
         
-        # Extract common tags from successful and unsuccessful cases
-        successful_cases = [r for r in evaluation_results if r.get("score", 0) > 0.7]
-        unsuccessful_cases = [r for r in evaluation_results if r.get("score", 0) <= 0.3]
-        
-        successful_tags = self._extract_common_tags(successful_cases)
-        unsuccessful_tags = self._extract_common_tags(unsuccessful_cases)
-        
-        # Analyze score trends
-        score_trend = self._analyze_score_trends(previous_scores + [current_score])
-        
-        # Compile perceptions
         perceptions = {
             "current_prompt": current_prompt,
+            "evaluation_results": evaluation_results,
+            "user_evaluations": user_evaluations,
+            "user_analyses": user_analyses,
+            "overall_analysis": overall_analysis,
             "current_score": current_score,
             "iteration": iteration,
-            "result_analysis": result_analysis,
-            "successful_tags": successful_tags,
-            "unsuccessful_tags": unsuccessful_tags,
-            "score_trend": score_trend,
-            "best_score": self.best_score,
-            "plateau_counter": self.plateau_counter
+            "edge_cases": edge_cases,
+            "previous_scores": previous_scores[-5:],
+            "score_trends": self._analyze_score_trends(previous_scores)
         }
         
         # Store perceptions in memory

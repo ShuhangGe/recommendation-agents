@@ -66,6 +66,7 @@ class AdaptiveEvaluationAgent(Agent):
         recommended_stories = input_data.get("recommended_stories", [])
         metric = input_data.get("metric", config.METRIC)
         existing_tags = input_data.get("extracted_tags", [])
+        user_id = input_data.get("user_id", "unknown_user")
         
         # If we don't have recommended stories but have IDs, get the stories
         if not recommended_stories and recommended_ids:
@@ -76,6 +77,7 @@ class AdaptiveEvaluationAgent(Agent):
         
         # Perceptions about the evaluation task
         perceptions = {
+            "user_id": user_id,
             "user_profile": user_profile,
             "extracted_tags": extracted_tags,
             "recommended_stories": recommended_stories,
@@ -85,10 +87,10 @@ class AdaptiveEvaluationAgent(Agent):
             "tag_relevance": self._analyze_tag_relevance(extracted_tags, recommended_stories)
         }
         
-        # Store perceptions in memory
-        self.memory.add_to_short_term("latest_perceptions", perceptions)
+        # Store perceptions in memory using user-specific storage
+        self.memory.add_user_perception(user_id, perceptions)
         
-        self.logger.info(f"Perceived {len(extracted_tags)} user preferences and {len(recommended_stories)} recommendations")
+        self.logger.info(f"Perceived {len(extracted_tags)} user preferences and {len(recommended_stories)} recommendations for user {user_id}")
         return perceptions
     
     def _analyze_profile_complexity(self, user_profile: str) -> Dict[str, Any]:
@@ -264,7 +266,8 @@ class AdaptiveEvaluationAgent(Agent):
         Returns:
             Plan of action for evaluating recommendations
         """
-        self.logger.info("Reasoning about evaluation strategy")
+        user_id = perceptions.get("user_id", "unknown_user")
+        self.logger.info(f"Reasoning about evaluation strategy for user {user_id}")
         
         # Extract perceptions
         user_profile = perceptions.get("user_profile", "")
@@ -302,6 +305,7 @@ class AdaptiveEvaluationAgent(Agent):
         
         # Combine into a plan
         plan = {
+            "user_id": user_id,
             "metrics_to_use": metrics_to_use,
             "primary_metric": metric,  # User's preferred metric takes precedence
             "use_weighted_scoring": use_weighted_scoring,
@@ -312,7 +316,7 @@ class AdaptiveEvaluationAgent(Agent):
             "generate_ground_truth": extracted_tags and len(extracted_tags) > 2
         }
         
-        self.logger.info(f"Selected metrics: {', '.join(metrics_to_use)}")
+        self.logger.info(f"Selected metrics for user {user_id}: {', '.join(metrics_to_use)}")
         return plan
     
     def act(self, plan: Dict[str, Any]) -> Dict[str, Any]:
@@ -325,13 +329,14 @@ class AdaptiveEvaluationAgent(Agent):
         Returns:
             Dictionary with evaluation results
         """
-        self.logger.info("Executing evaluation plan")
+        user_id = plan.get("user_id", "unknown_user")
+        self.logger.info(f"Executing evaluation plan for user {user_id}")
         
         # Get perceptions from memory
-        perceptions = self.memory.get_from_short_term("latest_perceptions", {})
+        perceptions = self.memory.get_user_perception(user_id, {})
         if not perceptions:
-            self.logger.error("No perceptions found in memory")
-            return {"error": "No perceptions available for evaluation"}
+            self.logger.error(f"No perceptions found in memory for user {user_id}")
+            return {"error": "No perceptions available for evaluation", "user_id": user_id}
             
         # Extract needed data
         user_profile = perceptions.get("user_profile", "")
@@ -402,6 +407,7 @@ class AdaptiveEvaluationAgent(Agent):
             
         # Compile results
         evaluation_results = {
+            "user_id": user_id,
             "extracted_tags": extracted_tags,
             "scores": metric_scores,
             "primary_metric": primary_metric,
@@ -413,9 +419,9 @@ class AdaptiveEvaluationAgent(Agent):
         evaluation_results.update(results)
         
         # Store the result in memory
-        self.memory.add_to_short_term("latest_evaluation", evaluation_results)
+        self.memory.add_to_short_term(f"evaluation_{user_id}", evaluation_results)
         
-        self.logger.info(f"Evaluation complete. Primary score: {primary_score:.4f}")
+        self.logger.info(f"Evaluation complete for user {user_id}. Primary score: {primary_score:.4f}")
         return evaluation_results
     
     def _extract_preferences(self, user_profile: str) -> List[str]:

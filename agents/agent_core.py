@@ -77,6 +77,52 @@ class Memory:
         memory.last_updated = data.get("last_updated", time.time())
         return memory
 
+    def add_user_perception(self, user_id: str, perceptions: Dict[str, Any]):
+        """
+        Add user-specific perceptions to short-term memory.
+        
+        Args:
+            user_id: Identifier for the user
+            perceptions: Dictionary of perceptions for this user
+        """
+        # Create a perceptions dictionary if it doesn't exist
+        if "user_perceptions" not in self.short_term:
+            self.short_term["user_perceptions"] = {}
+            
+        # Store the perceptions for this specific user
+        self.short_term["user_perceptions"][user_id] = perceptions
+        
+        # Also store the most recent perceptions in the standard location for backward compatibility
+        self.short_term["latest_perceptions"] = perceptions
+        
+        # Update timestamp
+        self.last_updated = time.time()
+    
+    def get_user_perception(self, user_id: str, default: Any = None) -> Dict[str, Any]:
+        """
+        Retrieve user-specific perceptions from short-term memory.
+        
+        Args:
+            user_id: Identifier for the user
+            default: Default value to return if no perceptions found
+            
+        Returns:
+            Dictionary of perceptions for the specified user
+        """
+        if "user_perceptions" not in self.short_term:
+            return default
+            
+        return self.short_term["user_perceptions"].get(user_id, default)
+    
+    def get_all_user_perceptions(self) -> Dict[str, Dict[str, Any]]:
+        """
+        Retrieve all user perceptions from short-term memory.
+        
+        Returns:
+            Dictionary mapping user IDs to their perception dictionaries
+        """
+        return self.short_term.get("user_perceptions", {})
+
 
 class Agent(ABC):
     """

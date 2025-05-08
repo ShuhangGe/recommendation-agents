@@ -7,6 +7,7 @@ import random
 from typing import List, Dict, Any, Tuple
 import numpy as np
 from sklearn.metrics.pairwise import cosine_similarity
+import re
 
 import config
 from utils.data_utils import generate_with_model, create_openai_client
@@ -97,9 +98,11 @@ class AdaptiveRecommendationAgent(Agent):
         user_preferences = input_data.get("preferences", [])
         user_profile = input_data.get("profile", "")
         past_interactions = input_data.get("past_interactions", [])
+        user_id = input_data.get("user_id", "unknown_user")
         
         # Analyze user preferences
         perceptions = {
+            "user_id": user_id,
             "explicit_preferences": user_preferences,
             "implied_preferences": self._infer_implicit_preferences(user_profile),
             "preference_patterns": self._analyze_preference_patterns(past_interactions),
@@ -118,10 +121,10 @@ class AdaptiveRecommendationAgent(Agent):
             interests = self._extract_key_interests(user_profile)
             perceptions["apparent_interests"] = interests
         
-        # Store perceptions in memory
-        self.memory.add_to_short_term("latest_perceptions", perceptions)
+        # Store perceptions in memory using user-specific storage
+        self.memory.add_user_perception(user_id, perceptions)
         
-        self.logger.info(f"Perceived {len(user_preferences)} explicit preferences")
+        self.logger.info(f"Perceived {len(user_preferences)} explicit preferences for user {user_id}")
         return perceptions
     
     def _infer_implicit_preferences(self, user_profile: str) -> List[str]:
@@ -222,7 +225,8 @@ class AdaptiveRecommendationAgent(Agent):
         Returns:
             Plan of action for generating recommendations
         """
-        self.logger.info("Reasoning about recommendation strategy")
+        user_id = perceptions.get("user_id", "unknown_user")
+        self.logger.info(f"Reasoning about recommendation strategy for user {user_id}")
         
         # Extract perceptions
         explicit_preferences = perceptions.get("explicit_preferences", [])
@@ -275,6 +279,7 @@ class AdaptiveRecommendationAgent(Agent):
             
         # Create the recommendation plan
         plan = {
+            "user_id": user_id,
             "strategy": strategy,
             "combined_preferences": combined_preferences,
             "diversify": diversify,
@@ -285,7 +290,7 @@ class AdaptiveRecommendationAgent(Agent):
             }
         }
         
-        self.logger.info(f"Selected strategy: {strategy}")
+        self.logger.info(f"Selected strategy: {strategy} for user {user_id}")
         return plan
     
     def act(self, plan: Dict[str, Any]) -> Dict[str, Any]:
@@ -298,10 +303,11 @@ class AdaptiveRecommendationAgent(Agent):
         Returns:
             Dictionary with recommended stories and explanation
         """
-        self.logger.info(f"Generating recommendations using {plan['strategy']} strategy")
+        user_id = plan.get("user_id", "unknown_user")
+        strategy = plan.get("strategy", "hybrid_search")
+        self.logger.info(f"Generating recommendations using {strategy} strategy for user {user_id}")
         
         # Extract plan details
-        strategy = plan.get("strategy", "hybrid_search")
         combined_preferences = plan.get("combined_preferences", {})
         diversify = plan.get("diversify", True)
         explanation_mode = plan.get("explanation_mode", "simple")
@@ -340,6 +346,7 @@ class AdaptiveRecommendationAgent(Agent):
         
         # Return recommendations and explanation
         result = {
+            "user_id": user_id,
             "recommended_ids": [s["id"] for s in recommendations],
             "recommended_stories": recommendations,
             "explanation": explanation,
@@ -348,9 +355,9 @@ class AdaptiveRecommendationAgent(Agent):
         }
         
         # Store the result in memory
-        self.memory.add_to_short_term("latest_recommendations", result)
+        self.memory.add_to_short_term(f"recommendations_{user_id}", result)
         
-        self.logger.info(f"Generated {len(recommendations)} recommendations")
+        self.logger.info(f"Generated {len(recommendations)} recommendations for user {user_id}")
         return result
     
     def _generate_recommendations_with_prompt(self, initial_recommendations: List[Dict[str, Any]], 
@@ -379,29 +386,128 @@ class AdaptiveRecommendationAgent(Agent):
             """
             
             # Combine with the current optimization prompt
-            full_prompt = f"{self.current_prompt}\n\n{user_prompt}\n\nReturn the IDs of the top 10 recommended stories in JSON format as a list."
+            full_prompt = f"{self.current_prompt}\n\n{user_prompt}\n\nReturn ONLY the IDs of the top 10 recommended stories in a valid JSON array format, like this: [\"123456\", \"234567\", \"345678\"]"
             
             # Generate recommendations using LLM
             response = generate_with_model(
                 prompt=full_prompt,
                 model_name=self.model_name,
-                system_message="You are an expert recommendation system for stories.",
+                system_message="You are an expert recommendation system for stories. Respond ONLY with a valid JSON array of story IDs.",
                 temperature=0.7
             )
             
-            # Extract JSON list of IDs
-            if "[" in response and "]" in response:
-                json_str = response[response.find("["):response.rfind("]")+1]
-                recommended_ids = json.loads(json_str)
+            # More robust JSON extraction
+            recommended_ids = self._extract_json_array(response)
+            
+            if recommended_ids:
+                # Convert IDs to story objects and validate
+                stories = self.get_stories_by_ids(recommended_ids)
                 
-                # Convert IDs to story objects
-                return self.get_stories_by_ids(recommended_ids)
-                
+                # If we got at least some valid stories, return them
+                if stories:
+                    self.logger.info(f"Successfully refined recommendations with prompt: found {len(stories)} stories")
+                    return stories
+            
+            # If we couldn't extract valid IDs or find matching stories, try a simpler approach
+            self.logger.warning("First attempt at refining recommendations failed, trying simpler approach")
+            
+            # Simpler prompt for retry
+            simple_prompt = f"Based on preferences: {', '.join(preferences.keys())}, return IDs of 10 recommended stories from our dataset as a JSON array. Format: [\"id1\", \"id2\", ...]"
+            
+            # Generate with simpler prompt
+            retry_response = generate_with_model(
+                prompt=simple_prompt,
+                model_name=self.model_name,
+                system_message="You are an expert recommendation system. Respond ONLY with a valid JSON array.",
+                temperature=0.5
+            )
+            
+            # Try to extract IDs from the retry response
+            retry_ids = self._extract_json_array(retry_response)
+            
+            if retry_ids:
+                stories = self.get_stories_by_ids(retry_ids)
+                if stories:
+                    self.logger.info(f"Successfully refined recommendations with simplified prompt: found {len(stories)} stories")
+                    return stories
+            
         except Exception as e:
             self.logger.error(f"Error generating recommendations with prompt: {str(e)}")
         
         # Return the original recommendations if anything fails
         return initial_recommendations
+        
+    def _extract_json_array(self, text: str) -> List[str]:
+        """
+        Extract a JSON array from text using multiple approaches.
+        
+        Args:
+            text: Text containing a JSON array
+            
+        Returns:
+            List of extracted items or empty list if extraction fails
+        """
+        try:
+            # Try to find JSON array with standard square brackets
+            if "[" in text and "]" in text:
+                # Extract text between the first [ and the last ]
+                json_str = text[text.find("["):text.rfind("]")+1]
+                
+                # Handle both quoted and unquoted IDs
+                try:
+                    # Try parsing directly
+                    return json.loads(json_str)
+                except json.JSONDecodeError:
+                    # Try to clean up the JSON
+                    clean_json = self._clean_json_array(json_str)
+                    return json.loads(clean_json)
+            
+            # If no square brackets, try to extract comma-separated IDs
+            if "," in text:
+                # Look for patterns like: 123456, 234567, 345678
+                id_pattern = r'\b\d{6}\b'
+                matches = re.findall(id_pattern, text)
+                if matches:
+                    return matches
+            
+            # If we got here, no valid JSON array was found
+            return []
+            
+        except Exception as e:
+            self.logger.error(f"Error extracting JSON array: {str(e)}")
+            return []
+            
+    def _clean_json_array(self, json_str: str) -> str:
+        """
+        Clean a malformed JSON array string.
+        
+        Args:
+            json_str: Potentially malformed JSON array string
+            
+        Returns:
+            Cleaned JSON array string
+        """
+        # Remove any non-JSON content before the first [ and after the last ]
+        if "[" in json_str and "]" in json_str:
+            json_str = json_str[json_str.find("["):json_str.rfind("]")+1]
+        
+        # Fix common JSON formatting issues
+        
+        # Ensure all strings are properly quoted
+        # Find all items that look like IDs but aren't quoted
+        unquoted_pattern = r'([,\[]\s*)(\d{6})(\s*[,\]])'
+        json_str = re.sub(unquoted_pattern, r'\1"\2"\3', json_str)
+        
+        # Fix single quotes to double quotes
+        json_str = json_str.replace("'", '"')
+        
+        # Remove any invalid control characters
+        json_str = re.sub(r'[\x00-\x1F\x7F]', '', json_str)
+        
+        # Fix trailing commas
+        json_str = re.sub(r',\s*]', ']', json_str)
+        
+        return json_str
     
     def _similarity_search(self, preferences: Dict[str, float], num_results: int = 10) -> List[Dict[str, Any]]:
         """
