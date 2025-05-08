@@ -1,0 +1,127 @@
+{
+  "user_id": "user4",
+  "score": 0.6,
+  "strategy": "tag_based_search",
+  "strengths": [
+    {
+      "type": "tag_coverage",
+      "description": "Good coverage of tags: cyberpunk, philosophical debates, political intrigue",
+      "tags": [
+        "cyberpunk",
+        "philosophical debates",
+        "political intrigue",
+        "identity"
+      ]
+    },
+    {
+      "type": "ground_truth_overlap",
+      "description": "3 recommendations match the ground truth",
+      "overlap_count": 3
+    }
+  ],
+  "weaknesses": [
+    {
+      "type": "tag_coverage",
+      "description": "Missing coverage of tags: immersion, world-building, choice-driven",
+      "tags": [
+        "immersion",
+        "world-building",
+        "choice-driven",
+        "steampunk",
+        "dystopian",
+        "post-apocalyptic",
+        "time-travel",
+        "conspiracies",
+        "mind-bending puzzles",
+        "rebellion",
+        "free will vs. fate",
+        "nature of reality"
+      ]
+    },
+    {
+      "type": "diversity",
+      "description": "Low diversity with only 7 unique tags",
+      "unique_tags": 7
+    }
+  ],
+  "scores_by_metric": {
+    "precision@10": 0.6,
+    "recall": 0.3,
+    "semantic_overlap": 0.7644028512806825
+  },
+  "recommended_stories": [
+    {
+      "id": "540101",
+      "title": "Chronicles of Neon Shadows",
+      "intro": "In a city where neon lights mask the despair of its citizens, a rogue anti-hero embarks on a twisting time-travel odyssey to uncover the truth behind a political conspiracy that threatens to unravel the very fabric of identity and existence.",
+      "tags": [
+        "cyberpunk",
+        "dystopian societies",
+        "philosophical debates",
+        "political intrigue",
+        "identity",
+        "narrative consequences",
+        "time-travel adventures"
+      ]
+    },
+    {
+      "id": "5402",
+      "title": "Echoes of Tomorrow",
+      "intro": "In a neon-soaked city where the lines between man and machine blur, rogue anti-hero Kael Torque discovers a device that bends time and unravels truths, threatening the fragile balance of power in a dystopian society.",
+      "tags": [
+        "cyberpunk",
+        "dystopian societies",
+        "political intrigue",
+        "identity",
+        "narrative consequences",
+        "philosophical debates",
+        "time-travel adventures"
+      ]
+    },
+    {
+      "id": "5404",
+      "title": "Echoes of the Neon Past",
+      "intro": "In the sprawling neon city of Arcanum, where corporations reign and time is an elusive thread, a rogue anti-hero stumbles upon a secret capable of rewriting history. As timelines blur, choices must be made that will reshape both identity and destiny.",
+      "tags": [
+        "cyberpunk",
+        "dystopian societies",
+        "political intrigue",
+        "identity",
+        "philosophical debates",
+        "narrative consequences",
+        "time-travel adventures"
+      ]
+    },
+    {
+      "id": "540512",
+      "title": "Echoes in Neon Shadows",
+      "intro": "In a world where the line between human and machine blurs, a rogue anti-hero discovers a time-bending device that could alter the dystopian fate of their city, but each choice ripples through time with unforeseen consequences.",
+      "tags": [
+        "cyberpunk",
+        "dystopian societies",
+        "philosophical debates",
+        "political intrigue",
+        "identity",
+        "narrative consequences",
+        "time-travel adventures"
+      ]
+    },
+    {
+      "id": "5403",
+      "title": "Echoes of Tomorrow",
+      "intro": "In the neon-lit shadows of New Haven, where reality bends to the will of towering technocrats, a rogue anti-hero stumbles upon a relic from the past\u2014a device capable of rewriting history. But in a world where identity is as malleable as time itself, every choice becomes a battleground for power, truth, and survival.",
+      "tags": [
+        "cyberpunk",
+        "dystopian societies",
+        "political intrigue",
+        "identity",
+        "time-travel adventures",
+        "narrative consequences",
+        "philosophical debates"
+      ]
+    }
+  ],
+  "recommendation_status": "success",
+  "evaluation_status": "success",
+  "error": false
+}
