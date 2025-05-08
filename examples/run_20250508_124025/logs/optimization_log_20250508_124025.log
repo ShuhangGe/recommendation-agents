@@ -1,0 +1,535 @@
+2025-05-08 12:40:25,955 - INFO - main.py:132 - === STARTING AGENT-BASED RECOMMENDATION SYSTEM ===
+2025-05-08 12:40:25,955 - INFO - main.py:133 - Run directory: results/run_20250508_124025
+2025-05-08 12:40:25,955 - INFO - main.py:134 - Recommendation model: gpt-4o-mini
+2025-05-08 12:40:25,955 - INFO - main.py:135 - Evaluation model: gpt-4o
+2025-05-08 12:40:25,955 - INFO - main.py:136 - Optimizer model: gpt-4.1-2025-04-14
+2025-05-08 12:40:25,955 - INFO - main.py:137 - Metric: precision@10
+2025-05-08 12:40:25,955 - INFO - main.py:146 - Optimization enabled (max iterations: 20, score threshold: 0.9, improvement threshold: 0.001)
+2025-05-08 12:40:25,956 - INFO - main.py:175 - Loaded 105 stories and 5 users from disk
+2025-05-08 12:40:25,956 - INFO - main.py:182 - Testing with 5 user(s)
+2025-05-08 12:40:25,959 - INFO - main.py:227 - 
+=== Starting Optimization Loop ===
+2025-05-08 12:40:25,959 - INFO - main.py:228 - Max iterations: 20
+2025-05-08 12:40:25,959 - INFO - main.py:229 - Score threshold: 0.9
+2025-05-08 12:40:25,959 - INFO - main.py:230 - Improvement threshold: 0.001
+2025-05-08 12:40:25,959 - INFO - main.py:237 - 
+--- Optimization Iteration 1/20 ---
+2025-05-08 12:40:25,960 - INFO - main.py:257 - 
+Processing user user1...
+2025-05-08 12:40:35,152 - INFO - main.py:362 - User user1 score: 0.4000
+2025-05-08 12:40:35,153 - INFO - main.py:257 - 
+Processing user user2...
+2025-05-08 12:40:45,179 - INFO - main.py:362 - User user2 score: 0.6000
+2025-05-08 12:40:45,180 - INFO - main.py:257 - 
+Processing user user3...
+2025-05-08 12:40:52,445 - INFO - main.py:362 - User user3 score: 0.0000
+2025-05-08 12:40:52,445 - INFO - main.py:257 - 
+Processing user user4...
+2025-05-08 12:41:00,017 - INFO - main.py:362 - User user4 score: 1.0000
+2025-05-08 12:41:00,018 - INFO - main.py:257 - 
+Processing user user5...
+2025-05-08 12:41:09,221 - INFO - main.py:362 - User user5 score: 1.0000
+2025-05-08 12:41:09,222 - INFO - main.py:396 - 
+Iteration 1 average score: 0.6000
+2025-05-08 12:41:09,224 - INFO - main.py:443 - New best score: 0.6000
+2025-05-08 12:41:09,224 - INFO - main.py:468 - 
+Running optimizer agent to generate new prompt...
+2025-05-08 12:41:16,282 - INFO - main.py:487 - Applied optimized prompt for next iteration.
+2025-05-08 12:41:16,283 - INFO - main.py:237 - 
+--- Optimization Iteration 2/20 ---
+2025-05-08 12:41:16,283 - INFO - main.py:257 - 
+Processing user user1...
+2025-05-08 12:41:23,324 - INFO - main.py:362 - User user1 score: 0.8000
+2025-05-08 12:41:23,325 - INFO - main.py:257 - 
+Processing user user2...
+2025-05-08 12:41:32,649 - INFO - main.py:362 - User user2 score: 1.0000
+2025-05-08 12:41:32,649 - INFO - main.py:257 - 
+Processing user user3...
+2025-05-08 12:41:39,818 - INFO - main.py:362 - User user3 score: 0.0000
+2025-05-08 12:41:39,819 - INFO - main.py:257 - 
+Processing user user4...
+2025-05-08 12:41:45,930 - INFO - main.py:362 - User user4 score: 1.0000
+2025-05-08 12:41:45,930 - INFO - main.py:257 - 
+Processing user user5...
+2025-05-08 12:41:55,891 - INFO - main.py:362 - User user5 score: 1.0000
+2025-05-08 12:41:55,891 - INFO - main.py:393 - 
+Iteration 2 average score: 0.7600 (improvement: 0.1600)
+2025-05-08 12:41:55,893 - INFO - main.py:443 - New best score: 0.7600
+2025-05-08 12:41:55,893 - INFO - main.py:468 - 
+Running optimizer agent to generate new prompt...
+2025-05-08 12:42:11,920 - INFO - main.py:487 - Applied optimized prompt for next iteration.
+2025-05-08 12:42:11,920 - INFO - main.py:237 - 
+--- Optimization Iteration 3/20 ---
+2025-05-08 12:42:11,921 - INFO - main.py:257 - 
+Processing user user1...
+2025-05-08 12:42:18,977 - INFO - main.py:362 - User user1 score: 0.3333
+2025-05-08 12:42:18,977 - INFO - main.py:257 - 
+Processing user user2...
+2025-05-08 12:42:27,039 - INFO - main.py:362 - User user2 score: 1.0000
+2025-05-08 12:42:27,039 - INFO - main.py:257 - 
+Processing user user3...
+2025-05-08 12:42:34,043 - INFO - main.py:362 - User user3 score: 0.0000
+2025-05-08 12:42:34,044 - INFO - main.py:257 - 
+Processing user user4...
+2025-05-08 12:42:40,880 - INFO - main.py:362 - User user4 score: 1.0000
+2025-05-08 12:42:40,880 - INFO - main.py:257 - 
+Processing user user5...
+2025-05-08 12:42:51,543 - INFO - main.py:362 - User user5 score: 1.0000
+2025-05-08 12:42:51,544 - INFO - main.py:393 - 
+Iteration 3 average score: 0.6667 (improvement: -0.0933)
+2025-05-08 12:42:51,546 - INFO - main.py:468 - 
+Running optimizer agent to generate new prompt...
+2025-05-08 12:43:04,658 - INFO - main.py:487 - Applied optimized prompt for next iteration.
+2025-05-08 12:43:04,658 - INFO - main.py:237 - 
+--- Optimization Iteration 4/20 ---
+2025-05-08 12:43:04,659 - INFO - main.py:257 - 
+Processing user user1...
+2025-05-08 12:43:12,561 - INFO - main.py:362 - User user1 score: 0.8000
+2025-05-08 12:43:12,562 - INFO - main.py:257 - 
+Processing user user2...
+2025-05-08 12:43:19,389 - INFO - main.py:362 - User user2 score: 1.0000
+2025-05-08 12:43:19,389 - INFO - main.py:257 - 
+Processing user user3...
+2025-05-08 12:43:26,124 - INFO - main.py:362 - User user3 score: 0.0000
+2025-05-08 12:43:26,125 - INFO - main.py:257 - 
+Processing user user4...
+2025-05-08 12:43:35,732 - INFO - main.py:362 - User user4 score: 0.8000
+2025-05-08 12:43:35,733 - INFO - main.py:257 - 
+Processing user user5...
+2025-05-08 12:43:45,096 - INFO - main.py:362 - User user5 score: 1.0000
+2025-05-08 12:43:45,096 - INFO - main.py:393 - 
+Iteration 4 average score: 0.7200 (improvement: 0.0533)
+2025-05-08 12:43:45,098 - INFO - main.py:468 - 
+Running optimizer agent to generate new prompt...
+2025-05-08 12:43:55,881 - INFO - main.py:487 - Applied optimized prompt for next iteration.
+2025-05-08 12:43:55,882 - INFO - main.py:237 - 
+--- Optimization Iteration 5/20 ---
+2025-05-08 12:43:55,882 - INFO - main.py:257 - 
+Processing user user1...
+2025-05-08 12:44:03,734 - INFO - main.py:362 - User user1 score: 0.8000
+2025-05-08 12:44:03,735 - INFO - main.py:257 - 
+Processing user user2...
+2025-05-08 12:44:10,606 - INFO - main.py:362 - User user2 score: 1.0000
+2025-05-08 12:44:10,606 - INFO - main.py:257 - 
+Processing user user3...
+2025-05-08 12:44:17,377 - INFO - main.py:362 - User user3 score: 0.0000
+2025-05-08 12:44:17,377 - INFO - main.py:257 - 
+Processing user user4...
+2025-05-08 12:44:23,962 - INFO - main.py:362 - User user4 score: 0.8333
+2025-05-08 12:44:23,962 - INFO - main.py:257 - 
+Processing user user5...
+2025-05-08 12:44:30,619 - INFO - main.py:362 - User user5 score: 1.0000
+2025-05-08 12:44:30,620 - INFO - main.py:393 - 
+Iteration 5 average score: 0.7267 (improvement: 0.0067)
+2025-05-08 12:44:30,622 - INFO - main.py:468 - 
+Running optimizer agent to generate new prompt...
+2025-05-08 12:44:41,634 - INFO - main.py:487 - Applied optimized prompt for next iteration.
+2025-05-08 12:44:41,635 - INFO - main.py:237 - 
+--- Optimization Iteration 6/20 ---
+2025-05-08 12:44:41,635 - INFO - main.py:257 - 
+Processing user user1...
+2025-05-08 12:44:48,692 - INFO - main.py:362 - User user1 score: 0.8000
+2025-05-08 12:44:48,693 - INFO - main.py:257 - 
+Processing user user2...
+2025-05-08 12:44:57,314 - INFO - main.py:362 - User user2 score: 0.6000
+2025-05-08 12:44:57,314 - INFO - main.py:257 - 
+Processing user user3...
+2025-05-08 12:45:09,881 - INFO - main.py:362 - User user3 score: 0.0000
+2025-05-08 12:45:09,881 - INFO - main.py:257 - 
+Processing user user4...
+2025-05-08 12:45:18,262 - INFO - main.py:362 - User user4 score: 1.0000
+2025-05-08 12:45:18,263 - INFO - main.py:257 - 
+Processing user user5...
+2025-05-08 12:45:25,426 - INFO - main.py:362 - User user5 score: 1.0000
+2025-05-08 12:45:25,426 - INFO - main.py:393 - 
+Iteration 6 average score: 0.6800 (improvement: -0.0467)
+2025-05-08 12:45:25,427 - INFO - main.py:464 - Small improvement (-0.0467 < 0.001) but continuing optimization.
+2025-05-08 12:45:25,427 - INFO - main.py:468 - 
+Running optimizer agent to generate new prompt...
+2025-05-08 12:45:50,991 - INFO - main.py:487 - Applied optimized prompt for next iteration.
+2025-05-08 12:45:50,991 - INFO - main.py:237 - 
+--- Optimization Iteration 7/20 ---
+2025-05-08 12:45:50,992 - INFO - main.py:257 - 
+Processing user user1...
+2025-05-08 12:45:58,769 - INFO - main.py:362 - User user1 score: 0.6000
+2025-05-08 12:45:58,770 - INFO - main.py:257 - 
+Processing user user2...
+2025-05-08 12:46:06,937 - INFO - main.py:362 - User user2 score: 1.0000
+2025-05-08 12:46:06,938 - INFO - main.py:257 - 
+Processing user user3...
+2025-05-08 12:46:13,682 - INFO - main.py:362 - User user3 score: 0.0000
+2025-05-08 12:46:13,683 - INFO - main.py:257 - 
+Processing user user4...
+2025-05-08 12:46:21,776 - INFO - main.py:362 - User user4 score: 1.0000
+2025-05-08 12:46:21,777 - INFO - main.py:257 - 
+Processing user user5...
+2025-05-08 12:46:29,116 - INFO - main.py:362 - User user5 score: 1.0000
+2025-05-08 12:46:29,117 - INFO - main.py:393 - 
+Iteration 7 average score: 0.7200 (improvement: 0.0400)
+2025-05-08 12:46:29,124 - INFO - main.py:468 - 
+Running optimizer agent to generate new prompt...
+2025-05-08 12:46:47,666 - INFO - main.py:487 - Applied optimized prompt for next iteration.
+2025-05-08 12:46:47,667 - INFO - main.py:237 - 
+--- Optimization Iteration 8/20 ---
+2025-05-08 12:46:47,667 - INFO - main.py:257 - 
+Processing user user1...
+2025-05-08 12:46:57,009 - INFO - main.py:362 - User user1 score: 0.4000
+2025-05-08 12:46:57,009 - INFO - main.py:257 - 
+Processing user user2...
+2025-05-08 12:47:04,370 - INFO - main.py:362 - User user2 score: 0.5556
+2025-05-08 12:47:04,370 - INFO - main.py:257 - 
+Processing user user3...
+2025-05-08 12:47:11,119 - INFO - main.py:362 - User user3 score: 0.0000
+2025-05-08 12:47:11,120 - INFO - main.py:257 - 
+Processing user user4...
+2025-05-08 12:47:19,423 - INFO - main.py:362 - User user4 score: 0.7500
+2025-05-08 12:47:19,423 - INFO - main.py:257 - 
+Processing user user5...
+2025-05-08 12:47:28,434 - INFO - main.py:362 - User user5 score: 1.0000
+2025-05-08 12:47:28,434 - INFO - main.py:393 - 
+Iteration 8 average score: 0.5411 (improvement: -0.1789)
+2025-05-08 12:47:28,436 - INFO - main.py:458 - Score dropped significantly (-0.1789 < 0.001). Reverting to best prompt.
+2025-05-08 12:47:28,436 - INFO - main.py:468 - 
+Running optimizer agent to generate new prompt...
+2025-05-08 12:47:39,379 - INFO - main.py:487 - Applied optimized prompt for next iteration.
+2025-05-08 12:47:39,379 - INFO - main.py:237 - 
+--- Optimization Iteration 9/20 ---
+2025-05-08 12:47:39,380 - INFO - main.py:257 - 
+Processing user user1...
+2025-05-08 12:47:45,114 - INFO - main.py:362 - User user1 score: 1.0000
+2025-05-08 12:47:45,114 - INFO - main.py:257 - 
+Processing user user2...
+2025-05-08 12:47:52,089 - INFO - main.py:362 - User user2 score: 0.8000
+2025-05-08 12:47:52,089 - INFO - main.py:257 - 
+Processing user user3...
+2025-05-08 12:47:58,546 - INFO - main.py:362 - User user3 score: 0.2500
+2025-05-08 12:47:58,546 - INFO - main.py:257 - 
+Processing user user4...
+2025-05-08 12:48:05,265 - INFO - main.py:362 - User user4 score: 1.0000
+2025-05-08 12:48:05,265 - INFO - main.py:257 - 
+Processing user user5...
+2025-05-08 12:48:13,086 - INFO - main.py:362 - User user5 score: 1.0000
+2025-05-08 12:48:13,087 - INFO - main.py:393 - 
+Iteration 9 average score: 0.8100 (improvement: 0.2689)
+2025-05-08 12:48:13,089 - INFO - main.py:443 - New best score: 0.8100
+2025-05-08 12:48:13,089 - INFO - main.py:468 - 
+Running optimizer agent to generate new prompt...
+2025-05-08 12:48:25,755 - INFO - main.py:487 - Applied optimized prompt for next iteration.
+2025-05-08 12:48:25,755 - INFO - main.py:237 - 
+--- Optimization Iteration 10/20 ---
+2025-05-08 12:48:25,756 - INFO - main.py:257 - 
+Processing user user1...
+2025-05-08 12:48:34,806 - INFO - main.py:362 - User user1 score: 0.2222
+2025-05-08 12:48:34,807 - INFO - main.py:257 - 
+Processing user user2...
+2025-05-08 12:48:41,008 - INFO - main.py:362 - User user2 score: 1.0000
+2025-05-08 12:48:41,008 - INFO - main.py:257 - 
+Processing user user3...
+2025-05-08 12:48:52,539 - INFO - main.py:362 - User user3 score: 0.0000
+2025-05-08 12:48:52,539 - INFO - main.py:257 - 
+Processing user user4...
+2025-05-08 12:48:59,161 - INFO - main.py:362 - User user4 score: 0.7500
+2025-05-08 12:48:59,162 - INFO - main.py:257 - 
+Processing user user5...
+2025-05-08 12:49:05,927 - INFO - main.py:362 - User user5 score: 1.0000
+2025-05-08 12:49:05,928 - INFO - main.py:393 - 
+Iteration 10 average score: 0.5944 (improvement: -0.2156)
+2025-05-08 12:49:05,929 - INFO - main.py:458 - Score dropped significantly (-0.2156 < 0.001). Reverting to best prompt.
+2025-05-08 12:49:05,929 - INFO - main.py:468 - 
+Running optimizer agent to generate new prompt...
+2025-05-08 12:49:16,482 - INFO - main.py:487 - Applied optimized prompt for next iteration.
+2025-05-08 12:49:16,483 - INFO - main.py:237 - 
+--- Optimization Iteration 11/20 ---
+2025-05-08 12:49:16,483 - INFO - main.py:257 - 
+Processing user user1...
+2025-05-08 12:49:21,596 - INFO - main.py:362 - User user1 score: 0.4000
+2025-05-08 12:49:21,596 - INFO - main.py:257 - 
+Processing user user2...
+2025-05-08 12:49:30,293 - INFO - main.py:362 - User user2 score: 1.0000
+2025-05-08 12:49:30,294 - INFO - main.py:257 - 
+Processing user user3...
+2025-05-08 12:49:35,624 - INFO - main.py:362 - User user3 score: 0.0000
+2025-05-08 12:49:35,624 - INFO - main.py:257 - 
+Processing user user4...
+2025-05-08 12:49:42,167 - INFO - main.py:362 - User user4 score: 1.0000
+2025-05-08 12:49:42,168 - INFO - main.py:257 - 
+Processing user user5...
+2025-05-08 12:49:51,497 - INFO - main.py:362 - User user5 score: 1.0000
+2025-05-08 12:49:51,498 - INFO - main.py:393 - 
+Iteration 11 average score: 0.6800 (improvement: 0.0856)
+2025-05-08 12:49:51,499 - INFO - main.py:468 - 
+Running optimizer agent to generate new prompt...
+2025-05-08 12:50:12,393 - INFO - main.py:487 - Applied optimized prompt for next iteration.
+2025-05-08 12:50:12,393 - INFO - main.py:237 - 
+--- Optimization Iteration 12/20 ---
+2025-05-08 12:50:12,394 - INFO - main.py:257 - 
+Processing user user1...
+2025-05-08 12:50:20,691 - INFO - main.py:362 - User user1 score: 0.6000
+2025-05-08 12:50:20,692 - INFO - main.py:257 - 
+Processing user user2...
+2025-05-08 12:50:28,189 - INFO - main.py:362 - User user2 score: 1.0000
+2025-05-08 12:50:28,190 - INFO - main.py:257 - 
+Processing user user3...
+2025-05-08 12:50:33,892 - INFO - main.py:362 - User user3 score: 0.2000
+2025-05-08 12:50:33,892 - INFO - main.py:257 - 
+Processing user user4...
+2025-05-08 12:50:44,488 - INFO - main.py:362 - User user4 score: 1.0000
+2025-05-08 12:50:44,489 - INFO - main.py:257 - 
+Processing user user5...
+2025-05-08 12:50:54,353 - INFO - main.py:362 - User user5 score: 1.0000
+2025-05-08 12:50:54,354 - INFO - main.py:393 - 
+Iteration 12 average score: 0.7600 (improvement: 0.0800)
+2025-05-08 12:50:54,355 - INFO - main.py:468 - 
+Running optimizer agent to generate new prompt...
+2025-05-08 12:51:10,478 - INFO - main.py:487 - Applied optimized prompt for next iteration.
+2025-05-08 12:51:10,478 - INFO - main.py:237 - 
+--- Optimization Iteration 13/20 ---
+2025-05-08 12:51:10,479 - INFO - main.py:257 - 
+Processing user user1...
+2025-05-08 12:51:19,934 - INFO - main.py:362 - User user1 score: 0.6000
+2025-05-08 12:51:19,935 - INFO - main.py:257 - 
+Processing user user2...
+2025-05-08 12:51:26,770 - INFO - main.py:362 - User user2 score: 1.0000
+2025-05-08 12:51:26,770 - INFO - main.py:257 - 
+Processing user user3...
+2025-05-08 12:51:40,053 - INFO - main.py:362 - User user3 score: 0.0000
+2025-05-08 12:51:40,054 - INFO - main.py:257 - 
+Processing user user4...
+2025-05-08 12:51:47,400 - INFO - main.py:362 - User user4 score: 1.0000
+2025-05-08 12:51:47,400 - INFO - main.py:257 - 
+Processing user user5...
+2025-05-08 12:51:54,297 - INFO - main.py:362 - User user5 score: 1.0000
+2025-05-08 12:51:54,297 - INFO - main.py:393 - 
+Iteration 13 average score: 0.7200 (improvement: -0.0400)
+2025-05-08 12:51:54,299 - INFO - main.py:464 - Small improvement (-0.0400 < 0.001) but continuing optimization.
+2025-05-08 12:51:54,299 - INFO - main.py:468 - 
+Running optimizer agent to generate new prompt...
+2025-05-08 12:52:07,182 - INFO - main.py:487 - Applied optimized prompt for next iteration.
+2025-05-08 12:52:07,183 - INFO - main.py:237 - 
+--- Optimization Iteration 14/20 ---
+2025-05-08 12:52:07,183 - INFO - main.py:257 - 
+Processing user user1...
+2025-05-08 12:52:14,181 - INFO - main.py:362 - User user1 score: 0.8000
+2025-05-08 12:52:14,181 - INFO - main.py:257 - 
+Processing user user2...
+2025-05-08 12:52:22,058 - INFO - main.py:362 - User user2 score: 0.7143
+2025-05-08 12:52:22,059 - INFO - main.py:257 - 
+Processing user user3...
+2025-05-08 12:52:27,310 - INFO - main.py:362 - User user3 score: 0.8000
+2025-05-08 12:52:27,310 - INFO - main.py:257 - 
+Processing user user4...
+2025-05-08 12:52:32,674 - INFO - main.py:362 - User user4 score: 0.6000
+2025-05-08 12:52:32,675 - INFO - main.py:257 - 
+Processing user user5...
+2025-05-08 12:52:40,256 - INFO - main.py:362 - User user5 score: 1.0000
+2025-05-08 12:52:40,257 - INFO - main.py:393 - 
+Iteration 14 average score: 0.7829 (improvement: 0.0629)
+2025-05-08 12:52:40,258 - INFO - main.py:468 - 
+Running optimizer agent to generate new prompt...
+2025-05-08 12:53:05,943 - INFO - main.py:487 - Applied optimized prompt for next iteration.
+2025-05-08 12:53:05,943 - INFO - main.py:237 - 
+--- Optimization Iteration 15/20 ---
+2025-05-08 12:53:05,944 - INFO - main.py:257 - 
+Processing user user1...
+2025-05-08 12:53:12,615 - INFO - main.py:362 - User user1 score: 0.2222
+2025-05-08 12:53:12,617 - INFO - main.py:257 - 
+Processing user user2...
+2025-05-08 12:53:18,447 - INFO - main.py:362 - User user2 score: 0.7778
+2025-05-08 12:53:18,447 - INFO - main.py:257 - 
+Processing user user3...
+2025-05-08 12:53:25,445 - INFO - main.py:362 - User user3 score: 0.8333
+2025-05-08 12:53:25,445 - INFO - main.py:257 - 
+Processing user user4...
+2025-05-08 12:53:30,838 - INFO - main.py:362 - User user4 score: 1.0000
+2025-05-08 12:53:30,839 - INFO - main.py:257 - 
+Processing user user5...
+2025-05-08 12:53:36,067 - INFO - main.py:362 - User user5 score: 1.0000
+2025-05-08 12:53:36,068 - INFO - main.py:393 - 
+Iteration 15 average score: 0.7667 (improvement: -0.0162)
+2025-05-08 12:53:36,070 - INFO - main.py:464 - Small improvement (-0.0162 < 0.001) but continuing optimization.
+2025-05-08 12:53:36,073 - INFO - main.py:468 - 
+Running optimizer agent to generate new prompt...
+2025-05-08 12:54:06,299 - INFO - main.py:487 - Applied optimized prompt for next iteration.
+2025-05-08 12:54:06,300 - INFO - main.py:237 - 
+--- Optimization Iteration 16/20 ---
+2025-05-08 12:54:06,300 - INFO - main.py:257 - 
+Processing user user1...
+2025-05-08 12:54:12,212 - INFO - main.py:362 - User user1 score: 0.2000
+2025-05-08 12:54:12,212 - INFO - main.py:257 - 
+Processing user user2...
+2025-05-08 12:54:18,122 - INFO - main.py:362 - User user2 score: 1.0000
+2025-05-08 12:54:18,122 - INFO - main.py:257 - 
+Processing user user3...
+2025-05-08 12:54:24,495 - INFO - main.py:362 - User user3 score: 0.0000
+2025-05-08 12:54:24,496 - INFO - main.py:257 - 
+Processing user user4...
+2025-05-08 12:54:29,445 - INFO - main.py:362 - User user4 score: 0.6000
+2025-05-08 12:54:29,445 - INFO - main.py:257 - 
+Processing user user5...
+2025-05-08 12:54:37,656 - INFO - main.py:362 - User user5 score: 1.0000
+2025-05-08 12:54:37,656 - INFO - main.py:393 - 
+Iteration 16 average score: 0.5600 (improvement: -0.2067)
+2025-05-08 12:54:37,658 - INFO - main.py:458 - Score dropped significantly (-0.2067 < 0.001). Reverting to best prompt.
+2025-05-08 12:54:37,658 - INFO - main.py:468 - 
+Running optimizer agent to generate new prompt...
+2025-05-08 12:54:50,470 - INFO - main.py:487 - Applied optimized prompt for next iteration.
+2025-05-08 12:54:50,470 - INFO - main.py:237 - 
+--- Optimization Iteration 17/20 ---
+2025-05-08 12:54:50,471 - INFO - main.py:257 - 
+Processing user user1...
+2025-05-08 12:54:56,986 - INFO - main.py:362 - User user1 score: 0.8000
+2025-05-08 12:54:56,987 - INFO - main.py:257 - 
+Processing user user2...
+2025-05-08 12:55:04,024 - INFO - main.py:362 - User user2 score: 1.0000
+2025-05-08 12:55:04,024 - INFO - main.py:257 - 
+Processing user user3...
+2025-05-08 12:55:10,886 - INFO - main.py:362 - User user3 score: 0.0000
+2025-05-08 12:55:10,886 - INFO - main.py:257 - 
+Processing user user4...
+2025-05-08 12:55:17,197 - INFO - main.py:362 - User user4 score: 1.0000
+2025-05-08 12:55:17,197 - INFO - main.py:257 - 
+Processing user user5...
+2025-05-08 12:55:23,893 - INFO - main.py:362 - User user5 score: 1.0000
+2025-05-08 12:55:23,893 - INFO - main.py:393 - 
+Iteration 17 average score: 0.7600 (improvement: 0.2000)
+2025-05-08 12:55:23,895 - INFO - main.py:468 - 
+Running optimizer agent to generate new prompt...
+2025-05-08 12:55:34,553 - INFO - main.py:487 - Applied optimized prompt for next iteration.
+2025-05-08 12:55:34,553 - INFO - main.py:237 - 
+--- Optimization Iteration 18/20 ---
+2025-05-08 12:55:34,554 - INFO - main.py:257 - 
+Processing user user1...
+2025-05-08 12:55:40,998 - INFO - main.py:362 - User user1 score: 0.2000
+2025-05-08 12:55:40,999 - INFO - main.py:257 - 
+Processing user user2...
+2025-05-08 12:55:46,641 - INFO - main.py:362 - User user2 score: 1.0000
+2025-05-08 12:55:46,642 - INFO - main.py:257 - 
+Processing user user3...
+2025-05-08 12:55:53,591 - INFO - main.py:362 - User user3 score: 0.0000
+2025-05-08 12:55:53,591 - INFO - main.py:257 - 
+Processing user user4...
+2025-05-08 12:55:59,843 - INFO - main.py:362 - User user4 score: 0.7500
+2025-05-08 12:55:59,844 - INFO - main.py:257 - 
+Processing user user5...
+2025-05-08 12:56:05,671 - INFO - main.py:362 - User user5 score: 1.0000
+2025-05-08 12:56:05,671 - INFO - main.py:393 - 
+Iteration 18 average score: 0.5900 (improvement: -0.1700)
+2025-05-08 12:56:05,673 - INFO - main.py:458 - Score dropped significantly (-0.1700 < 0.001). Reverting to best prompt.
+2025-05-08 12:56:05,673 - INFO - main.py:468 - 
+Running optimizer agent to generate new prompt...
+2025-05-08 12:56:15,932 - INFO - main.py:487 - Applied optimized prompt for next iteration.
+2025-05-08 12:56:15,933 - INFO - main.py:237 - 
+--- Optimization Iteration 19/20 ---
+2025-05-08 12:56:15,933 - INFO - main.py:257 - 
+Processing user user1...
+2025-05-08 12:56:22,972 - INFO - main.py:362 - User user1 score: 0.4000
+2025-05-08 12:56:22,972 - INFO - main.py:257 - 
+Processing user user2...
+2025-05-08 12:56:31,445 - INFO - main.py:362 - User user2 score: 1.0000
+2025-05-08 12:56:31,446 - INFO - main.py:257 - 
+Processing user user3...
+2025-05-08 12:56:38,031 - INFO - main.py:362 - User user3 score: 0.0000
+2025-05-08 12:56:38,031 - INFO - main.py:257 - 
+Processing user user4...
+2025-05-08 12:56:45,141 - INFO - main.py:362 - User user4 score: 1.0000
+2025-05-08 12:56:45,141 - INFO - main.py:257 - 
+Processing user user5...
+2025-05-08 12:56:53,364 - INFO - main.py:362 - User user5 score: 1.0000
+2025-05-08 12:56:53,365 - INFO - main.py:393 - 
+Iteration 19 average score: 0.6800 (improvement: 0.0900)
+2025-05-08 12:56:53,367 - INFO - main.py:468 - 
+Running optimizer agent to generate new prompt...
+2025-05-08 12:57:03,935 - INFO - main.py:487 - Applied optimized prompt for next iteration.
+2025-05-08 12:57:03,936 - INFO - main.py:237 - 
+--- Optimization Iteration 20/20 ---
+2025-05-08 12:57:03,936 - INFO - main.py:257 - 
+Processing user user1...
+2025-05-08 12:57:11,238 - INFO - main.py:362 - User user1 score: 0.4000
+2025-05-08 12:57:11,238 - INFO - main.py:257 - 
+Processing user user2...
+2025-05-08 12:57:17,347 - INFO - main.py:362 - User user2 score: 1.0000
+2025-05-08 12:57:17,348 - INFO - main.py:257 - 
+Processing user user3...
+2025-05-08 12:57:22,640 - INFO - main.py:362 - User user3 score: 0.8000
+2025-05-08 12:57:22,640 - INFO - main.py:257 - 
+Processing user user4...
+2025-05-08 12:57:28,543 - INFO - main.py:362 - User user4 score: 1.0000
+2025-05-08 12:57:28,543 - INFO - main.py:257 - 
+Processing user user5...
+2025-05-08 12:57:36,934 - INFO - main.py:362 - User user5 score: 1.0000
+2025-05-08 12:57:36,935 - INFO - main.py:393 - 
+Iteration 20 average score: 0.8400 (improvement: 0.1600)
+2025-05-08 12:57:36,937 - INFO - main.py:443 - New best score: 0.8400
+2025-05-08 12:57:36,937 - INFO - main.py:468 - 
+Running optimizer agent to generate new prompt...
+2025-05-08 12:57:46,868 - INFO - main.py:487 - Applied optimized prompt for next iteration.
+2025-05-08 12:57:46,912 - INFO - main.py:762 - Optimization results saved to results/run_20250508_124025/csv and results/run_20250508_124025/json directories
+2025-05-08 12:57:46,912 - INFO - main.py:506 - 
+=== Optimization Complete ===
+2025-05-08 12:57:46,912 - INFO - main.py:507 - Best score: 0.8400 (iteration 20)
+2025-05-08 12:57:46,912 - INFO - main.py:513 - 
+=== Running Final Evaluation ===
+2025-05-08 12:57:46,913 - INFO - main.py:524 - 
+Processing user user1...
+2025-05-08 12:57:48,387 - INFO - main.py:530 - Extracted tags: ['choice-driven', 'high-agency', 'protector', 'strategist', 'underdog', 'rivalry', 'team-vs-team', 'hero-vs-villain', 'internal-struggle', 'tournament conflicts', 'power-fantasy', 'moral-ambiguity', 'isekai', 'romance', 'forbidden-love']
+2025-05-08 12:57:48,387 - INFO - main.py:540 - 
+Generating recommendations...
+2025-05-08 12:57:52,055 - INFO - main.py:545 - Used strategy: tag_based_search
+2025-05-08 12:57:52,055 - INFO - main.py:548 - 
+Evaluating recommendations...
+2025-05-08 12:57:54,027 - INFO - main.py:580 - User user1 score: 1.0000
+2025-05-08 12:57:54,028 - INFO - main.py:585 -   - precision@10: 1.0000
+2025-05-08 12:57:54,028 - INFO - main.py:585 -   - recall: 0.5000
+2025-05-08 12:57:54,028 - INFO - main.py:585 -   - semantic_overlap: 1.0000
+2025-05-08 12:57:54,028 - INFO - main.py:524 - 
+Processing user user2...
+2025-05-08 12:57:57,139 - INFO - main.py:530 - Extracted tags: ['action', 'romance', 'underdog', 'rivalry', 'supernatural', 'fantasy', 'harem', 'love triangles', 'power imbalance', 'enemies-to-lovers', 'redemption', 'magic', 'curses', 'Re:Zero', 'Naruto']
+2025-05-08 12:57:57,144 - INFO - main.py:540 - 
+Generating recommendations...
+2025-05-08 12:57:59,228 - INFO - main.py:545 - Used strategy: tag_based_search
+2025-05-08 12:57:59,228 - INFO - main.py:548 - 
+Evaluating recommendations...
+2025-05-08 12:58:00,538 - INFO - main.py:580 - User user2 score: 1.0000
+2025-05-08 12:58:00,538 - INFO - main.py:585 -   - precision@10: 1.0000
+2025-05-08 12:58:00,538 - INFO - main.py:585 -   - recall: 0.5000
+2025-05-08 12:58:00,538 - INFO - main.py:585 -   - semantic_overlap: 1.0000
+2025-05-08 12:58:00,538 - INFO - main.py:524 - 
+Processing user user3...
+2025-05-08 12:58:04,248 - INFO - main.py:530 - Extracted tags: ['roleplaying', 'immersive', 'choice-driven', 'self-insert', 'underdog', 'reluctant hero', 'dominant protector', 'romance', 'found-family', 'angst', 'trauma healing', 'supernatural', 'nine-tailed foxes', 'vampires', 'magic']
+2025-05-08 12:58:04,248 - INFO - main.py:540 - 
+Generating recommendations...
+2025-05-08 12:58:06,289 - INFO - main.py:545 - Used strategy: tag_based_search
+2025-05-08 12:58:06,291 - INFO - main.py:548 - 
+Evaluating recommendations...
+2025-05-08 12:58:08,354 - INFO - main.py:580 - User user3 score: 1.0000
+2025-05-08 12:58:08,354 - INFO - main.py:585 -   - precision@10: 1.0000
+2025-05-08 12:58:08,354 - INFO - main.py:585 -   - recall: 0.5000
+2025-05-08 12:58:08,354 - INFO - main.py:585 -   - semantic_overlap: 1.0000
+2025-05-08 12:58:08,354 - INFO - main.py:524 - 
+Processing user user4...
+2025-05-08 12:58:09,922 - INFO - main.py:530 - Extracted tags: ['immersive world-building', 'choice-driven narrative', 'cyberpunk', 'steampunk', 'dystopian', 'post-apocalyptic', 'time-travel', 'complex conspiracies', 'mind-bending puzzles', 'philosophical debates', 'political intrigue', 'rebellion', 'revolution', 'identity', 'free will vs. fate', 'nature of reality']
+2025-05-08 12:58:09,923 - INFO - main.py:540 - 
+Generating recommendations...
+2025-05-08 12:58:11,720 - INFO - main.py:545 - Used strategy: tag_based_search
+2025-05-08 12:58:11,720 - INFO - main.py:548 - 
+Evaluating recommendations...
+2025-05-08 12:58:13,871 - INFO - main.py:580 - User user4 score: 1.0000
+2025-05-08 12:58:13,871 - INFO - main.py:585 -   - precision@10: 1.0000
+2025-05-08 12:58:13,872 - INFO - main.py:585 -   - recall: 0.4000
+2025-05-08 12:58:13,872 - INFO - main.py:585 -   - semantic_overlap: 1.0000
+2025-05-08 12:58:13,872 - INFO - main.py:524 - 
+Processing user user5...
+2025-05-08 12:58:16,470 - INFO - main.py:530 - Extracted tags: ['mystery', 'discovery', 'nuanced protagonists', 'enigmatic detective', 'introspective scholar', 'cunning tactician', 'labyrinthine plots', 'hidden agendas', 'double-crosses', 'futuristic cities', 'haunted manors', 'isolated islands', 'sci-fi', 'thriller', 'gothic horror', 'identity', 'memory', 'nature of reality', 'Sherlock Holmes', 'Blade Runner', 'Twin Peaks', 'mentor-apprentice', 'intellectual rivalries', 'complicated friendships', 'existential undertones', 'grey areas of morality', 'slow reveals', 'plot twists', 'psychological depth', 'narrative complexity', 'emotional resonance']
+2025-05-08 12:58:16,470 - INFO - main.py:540 - 
+Generating recommendations...
+2025-05-08 12:58:18,961 - INFO - main.py:545 - Used strategy: tag_based_search
+2025-05-08 12:58:18,962 - INFO - main.py:548 - 
+Evaluating recommendations...
+2025-05-08 12:58:20,450 - INFO - main.py:580 - User user5 score: 1.0000
+2025-05-08 12:58:20,450 - INFO - main.py:585 -   - precision@10: 1.0000
+2025-05-08 12:58:20,450 - INFO - main.py:585 -   - recall: 0.5000
+2025-05-08 12:58:20,451 - INFO - main.py:585 -   - semantic_overlap: 1.0000
+2025-05-08 12:58:20,451 - INFO - main.py:589 - 
+Final average score across all users: 1.0000
+2025-05-08 12:58:20,452 - INFO - main.py:626 - 
+=== Recommendation Process Complete ===

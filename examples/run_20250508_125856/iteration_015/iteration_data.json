@@ -1,0 +1,14 @@
+{
+  "iteration": 15,
+  "score": 0.6199999999999999,
+  "user_scores": {
+    "user1": 0.4,
+    "user2": 1.0,
+    "user3": 0.2,
+    "user4": 0.5,
+    "user5": 1.0
+  },
+  "prompt_length": 4354,
+  "timestamp": 1746724243.782718,
+  "edge_case_count": 2
+}

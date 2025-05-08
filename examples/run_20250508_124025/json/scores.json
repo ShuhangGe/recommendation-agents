@@ -1,0 +1,142 @@
+[
+  {
+    "iteration": 1,
+    "score": 0.6,
+    "improvement": 0.0,
+    "edge_case_count": 2,
+    "timestamp": 1746722469.222132
+  },
+  {
+    "iteration": 2,
+    "score": 0.76,
+    "improvement": 0.16000000000000003,
+    "edge_case_count": 1,
+    "timestamp": 1746722515.891391
+  },
+  {
+    "iteration": 3,
+    "score": 0.6666666666666666,
+    "improvement": -0.09333333333333338,
+    "edge_case_count": 2,
+    "timestamp": 1746722571.544657
+  },
+  {
+    "iteration": 4,
+    "score": 0.72,
+    "improvement": 0.053333333333333344,
+    "edge_case_count": 1,
+    "timestamp": 1746722625.096647
+  },
+  {
+    "iteration": 5,
+    "score": 0.7266666666666667,
+    "improvement": 0.00666666666666671,
+    "edge_case_count": 1,
+    "timestamp": 1746722670.620755
+  },
+  {
+    "iteration": 6,
+    "score": 0.6799999999999999,
+    "improvement": -0.046666666666666745,
+    "edge_case_count": 1,
+    "timestamp": 1746722725.4265568
+  },
+  {
+    "iteration": 7,
+    "score": 0.72,
+    "improvement": 0.040000000000000036,
+    "edge_case_count": 1,
+    "timestamp": 1746722789.1173918
+  },
+  {
+    "iteration": 8,
+    "score": 0.5411111111111111,
+    "improvement": -0.17888888888888888,
+    "edge_case_count": 2,
+    "timestamp": 1746722848.4346082
+  },
+  {
+    "iteration": 9,
+    "score": 0.8099999999999999,
+    "improvement": 0.26888888888888884,
+    "edge_case_count": 1,
+    "timestamp": 1746722893.086993
+  },
+  {
+    "iteration": 10,
+    "score": 0.5944444444444444,
+    "improvement": -0.2155555555555555,
+    "edge_case_count": 2,
+    "timestamp": 1746722945.9280078
+  },
+  {
+    "iteration": 11,
+    "score": 0.6799999999999999,
+    "improvement": 0.0855555555555555,
+    "edge_case_count": 2,
+    "timestamp": 1746722991.498007
+  },
+  {
+    "iteration": 12,
+    "score": 0.76,
+    "improvement": 0.08000000000000007,
+    "edge_case_count": 1,
+    "timestamp": 1746723054.354162
+  },
+  {
+    "iteration": 13,
+    "score": 0.72,
+    "improvement": -0.040000000000000036,
+    "edge_case_count": 1,
+    "timestamp": 1746723114.297703
+  },
+  {
+    "iteration": 14,
+    "score": 0.7828571428571428,
+    "improvement": 0.06285714285714283,
+    "edge_case_count": 0,
+    "timestamp": 1746723160.257136
+  },
+  {
+    "iteration": 15,
+    "score": 0.7666666666666667,
+    "improvement": -0.01619047619047609,
+    "edge_case_count": 1,
+    "timestamp": 1746723216.068127
+  },
+  {
+    "iteration": 16,
+    "score": 0.5599999999999999,
+    "improvement": -0.20666666666666678,
+    "edge_case_count": 2,
+    "timestamp": 1746723277.656943
+  },
+  {
+    "iteration": 17,
+    "score": 0.76,
+    "improvement": 0.20000000000000007,
+    "edge_case_count": 1,
+    "timestamp": 1746723323.8937879
+  },
+  {
+    "iteration": 18,
+    "score": 0.5900000000000001,
+    "improvement": -0.16999999999999993,
+    "edge_case_count": 2,
+    "timestamp": 1746723365.671339
+  },
+  {
+    "iteration": 19,
+    "score": 0.6799999999999999,
+    "improvement": 0.08999999999999986,
+    "edge_case_count": 2,
+    "timestamp": 1746723413.3652658
+  },
+  {
+    "iteration": 20,
+    "score": 0.8400000000000001,
+    "improvement": 0.16000000000000014,
+    "edge_case_count": 1,
+    "timestamp": 1746723456.935273
+  }
+]

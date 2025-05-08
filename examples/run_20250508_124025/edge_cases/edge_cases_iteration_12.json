@@ -1,0 +1,66 @@
+[
+  {
+    "user_id": "user3",
+    "user_profile": "Male roleplayer seeking immersive, choice-driven narratives; self-insert underdog, reluctant hero, dominant protector power fantasy. Prefers one-on-one romance, found-family bonds, intense angst, trauma healing. Loves supernatural\u2014nine-tailed foxes, vampires, magic. Achievement-hunter chasing epic conclusions. Morally flexible exploration sans non-consensual, gore, character death. Co-creative, supportive, detail-rich storytelling. Leaderboard climber, protective sibling loyalty, guilt.",
+    "extracted_tags": [
+      "immersive",
+      "choice-driven",
+      "self-insert",
+      "underdog",
+      "reluctant hero",
+      "dominant protector",
+      "one-on-one romance",
+      "found-family",
+      "intense angst",
+      "trauma healing",
+      "supernatural",
+      "nine-tailed foxes",
+      "vampires",
+      "magic",
+      "achievement-hunter"
+    ],
+    "recommended_stories": [
+      "5313",
+      "5201",
+      "5202",
+      "520301",
+      "5204"
+    ],
+    "score": 0.2,
+    "iteration": 12,
+    "weaknesses": [
+      {
+        "type": "tag_coverage",
+        "description": "Missing coverage of tags: immersive, choice-driven, self-insert",
+        "tags": [
+          "immersive",
+          "choice-driven",
+          "self-insert",
+          "reluctant hero",
+          "dominant protector",
+          "one-on-one romance",
+          "nine-tailed foxes",
+          "vampires",
+          "achievement-hunter"
+        ]
+      },
+      {
+        "type": "ground_truth_overlap",
+        "description": "Only 1 recommendations match the ground truth",
+        "overlap_count": 1
+      }
+    ],
+    "ground_truth": [
+      "5301",
+      "5302",
+      "5303",
+      "5304",
+      "5306",
+      "530832",
+      "5310",
+      "5311",
+      "5312",
+      "5313"
+    ]
+  }
+]
