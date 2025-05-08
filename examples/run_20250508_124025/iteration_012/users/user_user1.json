@@ -1,0 +1,126 @@
+{
+  "user_id": "user1",
+  "score": 0.6,
+  "strategy": "tag_based_search",
+  "strengths": [
+    {
+      "type": "tag_coverage",
+      "description": "Good coverage of tags: moral-ambiguity, isekai, romance",
+      "tags": [
+        "moral-ambiguity",
+        "isekai",
+        "romance",
+        "strategy",
+        "anti-hero"
+      ]
+    },
+    {
+      "type": "ground_truth_overlap",
+      "description": "3 recommendations match the ground truth",
+      "overlap_count": 3
+    }
+  ],
+  "weaknesses": [
+    {
+      "type": "tag_coverage",
+      "description": "Missing coverage of tags: choice-driven, high-agency, power-fantasy",
+      "tags": [
+        "choice-driven",
+        "high-agency",
+        "power-fantasy",
+        "enemies-to-lovers",
+        "reincarnation",
+        "betrayal",
+        "redemption",
+        "Naruto",
+        "Jujutsu-Kaisen",
+        "underdog"
+      ]
+    },
+    {
+      "type": "diversity",
+      "description": "Low diversity with only 8 unique tags",
+      "unique_tags": 8
+    }
+  ],
+  "scores_by_metric": {
+    "precision@10": 0.6,
+    "recall": 0.3,
+    "semantic_overlap": 0.7414650645113895
+  },
+  "recommended_stories": [
+    {
+      "id": "510101",
+      "title": "Through the Veil: The Strategist's Dominion",
+      "intro": "In a world where kingdoms rise and fall with the stroke of a pen and the edge of a sword, an ordinary strategist awakens in a foreign realm where he must navigate the treacherous waters of power and passion to become the kingmaker he was always meant to be.",
+      "tags": [
+        "strategy",
+        "power-dynamics",
+        "romance",
+        "isekai",
+        "moral-ambiguity",
+        "anime",
+        "anti-hero"
+      ]
+    },
+    {
+      "id": "510210",
+      "title": "Shadow Architect: The Isekai Gambit",
+      "intro": "In a world where kingdoms rise and fall by the stroke of a strategist's pen, one unlikely hero finds himself transported to orchestrate a grand game of deceit, romance, and power. As the lines between hero and villain blur, he must navigate a web of alliances and betrayals to carve out his own destiny.",
+      "tags": [
+        "strategy",
+        "power-dynamics",
+        "romance",
+        "isekai",
+        "moral-ambiguity",
+        "anime",
+        "anti-hero"
+      ]
+    },
+    {
+      "id": "5103",
+      "title": "Chessboard of Realms",
+      "intro": "Transported to a world where kingdoms clash on a battlefield of wits, Raine must navigate treacherous courts and forbidden love, where a single move could spell victory or doom.",
+      "tags": [
+        "strategy",
+        "power-dynamics",
+        "romance",
+        "isekai",
+        "moral-ambiguity",
+        "anime",
+        "anti-hero"
+      ]
+    },
+    {
+      "id": "510489",
+      "title": "Throne's Shadow: The Strategist's Gambit",
+      "intro": "Thrown into an alternate realm where kingdoms rise and fall on the whims of cunning strategists, Lucas must navigate the fine line between savior and conqueror to protect those he loves and claim his place among the powerful.",
+      "tags": [
+        "strategy",
+        "power-dynamics",
+        "romance",
+        "isekai",
+        "moral-ambiguity",
+        "anime",
+        "anti-hero"
+      ]
+    },
+    {
+      "id": "5105",
+      "title": "Isekai: Rise of the Shadow Strategist",
+      "intro": "In a world where kingdoms clash and power reigns supreme, a modern-day tactician is suddenly thrust into a game of thrones where he must navigate complex alliances, forbidden love, and his own shadowy desires to survive.",
+      "tags": [
+        "strategy",
+        "power-dynamics",
+        "romance",
+        "isekai",
+        "moral-ambiguity",
+        "anti-hero",
+        "tournament"
+      ]
+    }
+  ],
+  "recommendation_status": "success",
+  "evaluation_status": "success",
+  "error": false
+}
