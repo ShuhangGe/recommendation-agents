@@ -1,0 +1,12 @@
+{
+  "average_score": 0.8,
+  "user_count": 5,
+  "recommendation_model": "gpt-4o-mini",
+  "evaluation_model": "gpt-4o",
+  "metric": "precision@10",
+  "timestamp": 1746720079.948382,
+  "optimization_enabled": true,
+  "optimization_iterations": 15,
+  "best_optimization_score": 0.96,
+  "edge_cases_collected": 21
+}

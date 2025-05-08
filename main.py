@@ -453,9 +453,16 @@ def run_agent_system(args):
                 prev_score = optimization_results[current_iteration-2]["score"]
                 improvement = avg_score - prev_score
                 if improvement < args.improvement_threshold and current_iteration > 3:
-                    logger.info(f"Insufficient improvement ({improvement:.4f} < {args.improvement_threshold}). Stopping optimization.")
-                    print(f"   ⚠️ Insufficient improvement ({improvement:.4f} < {args.improvement_threshold}). Stopping.")
-                    break
+                    # Instead of stopping, check if we had a significant drop in score
+                    if improvement < -0.05:  # If score dropped by more than 5%
+                        logger.info(f"Score dropped significantly ({improvement:.4f} < {args.improvement_threshold}). Reverting to best prompt.")
+                        print(f"   ⚠️ Score dropped by {abs(improvement):.4f}. Reverting to best prompt and trying a new direction.")
+                        # Revert to the best prompt so far
+                        recommendation_agent.update_prompt(best_prompt)
+                    else:
+                        # Small improvement but above negative threshold - continue as normal
+                        logger.info(f"Small improvement ({improvement:.4f} < {args.improvement_threshold}) but continuing optimization.")
+                        print(f"   ℹ️ Small improvement: {improvement:.4f}. Continuing optimization.")
             
             # Run optimizer agent to generate new prompt
             logger.info("\nRunning optimizer agent to generate new prompt...")
