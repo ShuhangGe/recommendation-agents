@@ -1,0 +1,119 @@
+{
+  "user_id": "user1",
+  "score": 0.4,
+  "strategy": "tag_based_search",
+  "strengths": [
+    {
+      "type": "tag_coverage",
+      "description": "Good coverage of tags: moral-ambiguity, isekai, romance",
+      "tags": [
+        "moral-ambiguity",
+        "isekai",
+        "romance"
+      ]
+    },
+    {
+      "type": "diversity",
+      "description": "High diversity with 15 unique tags across recommendations",
+      "unique_tags": 15
+    }
+  ],
+  "weaknesses": [
+    {
+      "type": "tag_coverage",
+      "description": "Missing coverage of tags: choice-driven, high-agency, protector",
+      "tags": [
+        "choice-driven",
+        "high-agency",
+        "protector",
+        "strategist",
+        "underdog",
+        "rivalry",
+        "team-vs-team",
+        "hero-vs-villain",
+        "power-fantasy",
+        "forbidden-love"
+      ]
+    }
+  ],
+  "scores_by_metric": {
+    "precision@10": 0.4,
+    "recall": 0.2,
+    "semantic_overlap": 0.6360768219357044
+  },
+  "recommended_stories": [
+    {
+      "id": "5105",
+      "title": "Isekai: Rise of the Shadow Strategist",
+      "intro": "In a world where kingdoms clash and power reigns supreme, a modern-day tactician is suddenly thrust into a game of thrones where he must navigate complex alliances, forbidden love, and his own shadowy desires to survive.",
+      "tags": [
+        "strategy",
+        "power-dynamics",
+        "romance",
+        "isekai",
+        "moral-ambiguity",
+        "anti-hero",
+        "tournament"
+      ]
+    },
+    {
+      "id": "5113",
+      "title": "Shadows of the Celestial Tournament",
+      "intro": "In a world where celestial powers are wielded by the few, a conniving anti-hero is summoned from another realm to tip the scales of an eternal tournament, battling not only foes but their own fractured morality.",
+      "tags": [
+        "strategy",
+        "power-dynamics",
+        "isekai",
+        "romance",
+        "anti-hero",
+        "tournament",
+        "internal-struggle"
+      ]
+    },
+    {
+      "id": "273613",
+      "title": "Trapped Between Four Anime Legends!",
+      "intro": "You're caught in a dimensional rift with four anime icons. Goku wants to spar...",
+      "tags": [
+        "crossover",
+        "jujutsu kaisen",
+        "dragon ball",
+        "naruto",
+        "isekai",
+        "dimensional travel",
+        "reverse harem"
+      ]
+    },
+    {
+      "id": "510101",
+      "title": "Through the Veil: The Strategist's Dominion",
+      "intro": "In a world where kingdoms rise and fall with the stroke of a pen and the edge of a sword, an ordinary strategist awakens in a foreign realm where he must navigate the treacherous waters of power and passion to become the kingmaker he was always meant to be.",
+      "tags": [
+        "strategy",
+        "power-dynamics",
+        "romance",
+        "isekai",
+        "moral-ambiguity",
+        "anime",
+        "anti-hero"
+      ]
+    },
+    {
+      "id": "510210",
+      "title": "Shadow Architect: The Isekai Gambit",
+      "intro": "In a world where kingdoms rise and fall by the stroke of a strategist's pen, one unlikely hero finds himself transported to orchestrate a grand game of deceit, romance, and power. As the lines between hero and villain blur, he must navigate a web of alliances and betrayals to carve out his own destiny.",
+      "tags": [
+        "strategy",
+        "power-dynamics",
+        "romance",
+        "isekai",
+        "moral-ambiguity",
+        "anime",
+        "anti-hero"
+      ]
+    }
+  ],
+  "recommendation_status": "success",
+  "evaluation_status": "success",
+  "error": false
+}

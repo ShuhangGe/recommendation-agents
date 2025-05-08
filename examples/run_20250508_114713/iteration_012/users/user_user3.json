@@ -1,0 +1,126 @@
+{
+  "user_id": "user3",
+  "score": 0.8,
+  "strategy": "tag_based_search",
+  "strengths": [
+    {
+      "type": "tag_coverage",
+      "description": "Good coverage of tags: roleplaying, immersive narratives, romance",
+      "tags": [
+        "roleplaying",
+        "immersive narratives",
+        "romance",
+        "found-family",
+        "trauma healing",
+        "supernatural"
+      ]
+    },
+    {
+      "type": "ground_truth_overlap",
+      "description": "4 recommendations match the ground truth",
+      "overlap_count": 4
+    }
+  ],
+  "weaknesses": [
+    {
+      "type": "tag_coverage",
+      "description": "Missing coverage of tags: choice-driven, self-insert, underdog",
+      "tags": [
+        "choice-driven",
+        "self-insert",
+        "underdog",
+        "reluctant hero",
+        "angst",
+        "vampires",
+        "magic",
+        "achievement hunter",
+        "morally flexible"
+      ]
+    },
+    {
+      "type": "diversity",
+      "description": "Low diversity with only 7 unique tags",
+      "unique_tags": 7
+    }
+  ],
+  "scores_by_metric": {
+    "precision@10": 0.8,
+    "recall": 0.4,
+    "semantic_overlap": 0.8882404396676685
+  },
+  "recommended_stories": [
+    {
+      "id": "5301",
+      "title": "Shadowbound: A Guardian's Redemption",
+      "intro": "In a world where the veil between realms is thinning, you, an unlikely protector with a haunted past, must choose between saving the ones you love and confronting the shadows within.",
+      "tags": [
+        "roleplaying",
+        "immersive narratives",
+        "romance",
+        "supernatural",
+        "found-family",
+        "trauma healing",
+        "achievement-hunting"
+      ]
+    },
+    {
+      "id": "5302",
+      "title": "Echoes of the Forgotten Heart",
+      "intro": "In a world where shadows whisper secrets and ancient powers lie dormant, you awaken as an ordinary man burdened with extraordinary potential. As destiny weaves its intricate tapestry, you are thrust into a journey of love and redemption, where the bonds you forge could save\u2014or destroy\u2014a realm teetering on the edge of chaos.",
+      "tags": [
+        "roleplaying",
+        "immersive narratives",
+        "romance",
+        "supernatural",
+        "found-family",
+        "trauma healing",
+        "achievement-hunting"
+      ]
+    },
+    {
+      "id": "5303",
+      "title": "Echoes of the Heart",
+      "intro": "In a world where the supernatural intertwines with the mundane, you are an underestimated guardian burdened by your past but destined for greatness. As shadows of your lost memories resurface, so does a chance for love and healing.",
+      "tags": [
+        "roleplaying",
+        "immersive narratives",
+        "romance",
+        "supernatural",
+        "found-family",
+        "trauma healing",
+        "achievement-hunting"
+      ]
+    },
+    {
+      "id": "5304",
+      "title": "Whispers of Chaos",
+      "intro": "In a world where shadows hold secrets and whispered promises can alter destinies, you are thrust into the role of an unlikely hero, bound by fate to protect a fractured realm teetering on the brink of darkness.",
+      "tags": [
+        "roleplaying",
+        "immersive narratives",
+        "romance",
+        "supernatural",
+        "found-family",
+        "trauma healing",
+        "achievement-hunting"
+      ]
+    },
+    {
+      "id": "530501",
+      "title": "The Guardian's Echo",
+      "intro": "In a world where the supernatural intertwines with reality, you, an unlikely hero, must navigate both a newfound family and a mysterious power that could save\u2014or doom\u2014the ones you love.",
+      "tags": [
+        "roleplaying",
+        "immersive narratives",
+        "romance",
+        "supernatural",
+        "found-family",
+        "trauma healing",
+        "achievement-hunting"
+      ]
+    }
+  ],
+  "recommendation_status": "success",
+  "evaluation_status": "success",
+  "error": false
+}

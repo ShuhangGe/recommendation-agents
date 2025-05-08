@@ -10,6 +10,8 @@ import csv
 import datetime
 import logging
 import shutil
+import random
+import traceback
 from typing import List, Dict, Any
 
 import config
@@ -244,14 +246,16 @@ def run_agent_system(args):
             total_score = 0.0
             user_scores = {}
             edge_cases = []
+            error_counts = {"recommendation": 0, "evaluation": 0, "total": 0}
             
             # Create user results directory
             users_dir = os.path.join(iteration_dir, "users")
             os.makedirs(users_dir, exist_ok=True)
             
             for user in all_users:
-                logger.info(f"\nProcessing user {user['id']}...")
-                print(f"   👤 Processing user {user['id']}...")
+                user_id = user['id']
+                logger.info(f"\nProcessing user {user_id}...")
+                print(f"   👤 Processing user {user_id}...")
                 user_profile = user['profile']
                 
                 # Step 1: Extract preferences
@@ -259,66 +263,112 @@ def run_agent_system(args):
                 
                 # Step 2: Prepare input for recommendation agent
                 recommendation_input = {
+                    "user_id": user_id,
                     "preferences": extracted_tags,
                     "profile": user_profile,
                     "past_interactions": []
                 }
                 
                 # Step 3: Run recommendation cycle
-                rec_result = recommendation_agent.run_perception_reasoning_action_loop(recommendation_input)
-                recommended_stories = rec_result.get("recommended_stories", [])
-                strategy_used = rec_result.get("strategy_used", "unknown")
+                recommendation_status = "pending"
+                try:
+                    rec_result = recommendation_agent.run_perception_reasoning_action_loop(recommendation_input)
+                    recommended_stories = rec_result.get("recommended_stories", [])
+                    strategy_used = rec_result.get("strategy_used", "unknown")
+                    
+                    if not recommended_stories:
+                        logger.warning(f"No recommendations generated for user {user_id}. Using fallback.")
+                        # Fallback to a simple recommendation if needed
+                        recommended_stories = random.sample(all_stories, min(10, len(all_stories)))
+                        strategy_used = "random_fallback"
+                        
+                    recommendation_status = "success"
+                except Exception as e:
+                    logger.error(f"Error in recommendation cycle for user {user_id}: {str(e)}")
+                    logger.error(f"Traceback: {traceback.format_exc()}")
+                    print(f"      ❌ Error generating recommendations: {str(e)}")
+                    
+                    # Fallback to a simple recommendation
+                    recommended_stories = random.sample(all_stories, min(10, len(all_stories)))
+                    strategy_used = "error_fallback"
+                    recommendation_status = "error"
+                    error_counts["recommendation"] += 1
+                    error_counts["total"] += 1
                 
                 # Step 4: Evaluate recommendations
-                evaluation_input = {
-                    "user_profile": user_profile,
-                    "recommended_stories": recommended_stories,
-                    "extracted_tags": extracted_tags,
-                    "metric": args.metric
-                }
-                
-                eval_result = evaluation_agent.run_perception_reasoning_action_loop(evaluation_input)
-                score = eval_result.get("score", 0.0)
-                total_score += score
-                user_scores[user['id']] = score
-                
-                # Identify edge cases (low-scoring results for prompt calibration)
-                if score < 0.5:  # Consider low scores as edge cases
-                    edge_case = {
-                        "user_id": user['id'],
-                        "user_profile": user_profile, 
+                evaluation_status = "pending"
+                try:
+                    evaluation_input = {
+                        "user_id": user_id,
+                        "user_profile": user_profile,
+                        "recommended_stories": recommended_stories,
                         "extracted_tags": extracted_tags,
-                        "recommended_stories": [story["id"] for story in recommended_stories[:5]],
-                        "score": score,
-                        "iteration": current_iteration,
-                        "weaknesses": eval_result.get("quality_analysis", {}).get("weaknesses", []),
-                        "ground_truth": eval_result.get("ground_truth_ids", [])
+                        "metric": args.metric
                     }
-                    edge_cases.append(edge_case)
-                    edge_cases_collection.append(edge_case)
+                    
+                    eval_result = evaluation_agent.run_perception_reasoning_action_loop(evaluation_input)
+                    score = eval_result.get("score", 0.0)
+                    total_score += score
+                    user_scores[user_id] = score
+                    evaluation_status = "success"
+                    
+                    # Identify edge cases (low-scoring results for prompt calibration)
+                    if score < 0.5:  # Consider low scores as edge cases
+                        edge_case = {
+                            "user_id": user_id,
+                            "user_profile": user_profile, 
+                            "extracted_tags": extracted_tags,
+                            "recommended_stories": [story["id"] for story in recommended_stories[:5]],
+                            "score": score,
+                            "iteration": current_iteration,
+                            "weaknesses": eval_result.get("quality_analysis", {}).get("weaknesses", []),
+                            "ground_truth": eval_result.get("ground_truth_ids", [])
+                        }
+                        edge_cases.append(edge_case)
+                        edge_cases_collection.append(edge_case)
+                except Exception as e:
+                    logger.error(f"Error in evaluation cycle for user {user_id}: {str(e)}")
+                    logger.error(f"Traceback: {traceback.format_exc()}")
+                    print(f"      ❌ Error evaluating recommendations: {str(e)}")
+                    
+                    # Default score for error cases
+                    score = 0.0
+                    total_score += score
+                    user_scores[user_id] = score
+                    evaluation_status = "error"
+                    error_counts["evaluation"] += 1
+                    error_counts["total"] += 1
                 
                 # Store user results
                 user_result = {
-                    "user_id": user['id'],
+                    "user_id": user_id,
                     "score": score,
                     "strategy": strategy_used,
-                    "strengths": eval_result.get("quality_analysis", {}).get("strengths", []),
-                    "weaknesses": eval_result.get("quality_analysis", {}).get("weaknesses", []),
-                    "scores_by_metric": eval_result.get("scores", {}),
-                    "recommended_stories": recommended_stories
+                    "strengths": eval_result.get("quality_analysis", {}).get("strengths", []) if evaluation_status == "success" else [],
+                    "weaknesses": eval_result.get("quality_analysis", {}).get("weaknesses", []) if evaluation_status == "success" else [],
+                    "scores_by_metric": eval_result.get("scores", {}) if evaluation_status == "success" else {},
+                    "recommended_stories": recommended_stories,
+                    "recommendation_status": recommendation_status,
+                    "evaluation_status": evaluation_status,
+                    "error": recommendation_status == "error" or evaluation_status == "error"
                 }
                 
                 # Save user result to JSON
-                user_result_file = os.path.join(users_dir, f"user_{user['id']}.json")
+                user_result_file = os.path.join(users_dir, f"user_{user_id}.json")
                 with open(user_result_file, 'w') as f:
                     json.dump(user_result, f, indent=2)
                 
                 iteration_results.append(user_result)
-                logger.info(f"User {user['id']} score: {score:.4f}")
+                logger.info(f"User {user_id} score: {score:.4f}")
                 print(f"      Score: {score:.4f}")
             
             # Calculate average score
             avg_score = total_score / len(all_users) if all_users else 0.0
+            
+            # Log error summary if any errors occurred
+            if error_counts["total"] > 0:
+                logger.warning(f"Errors encountered: {error_counts['total']} total errors ({error_counts['recommendation']} recommendation, {error_counts['evaluation']} evaluation)")
+                print(f"   ⚠️ Encountered {error_counts['total']} errors during processing")
             
             # Store iteration results
             timestamp = time.time()
@@ -330,7 +380,9 @@ def run_agent_system(args):
                 "prompt_length": len(recommendation_agent.get_current_prompt()),
                 "timestamp": timestamp,
                 "results": iteration_results,
-                "edge_cases": edge_cases
+                "edge_cases": edge_cases,
+                "error_counts": error_counts,
+                "success_rate": (len(all_users) - error_counts["total"]) / len(all_users) if len(all_users) > 0 else 0
             }
             
             # Add improvement metric if not first iteration
@@ -401,9 +453,16 @@ def run_agent_system(args):
                 prev_score = optimization_results[current_iteration-2]["score"]
                 improvement = avg_score - prev_score
                 if improvement < args.improvement_threshold and current_iteration > 3:
-                    logger.info(f"Insufficient improvement ({improvement:.4f} < {args.improvement_threshold}). Stopping optimization.")
-                    print(f"   ⚠️ Insufficient improvement ({improvement:.4f} < {args.improvement_threshold}). Stopping.")
-                    break
+                    # Instead of stopping, check if we had a significant drop in score
+                    if improvement < -0.05:  # If score dropped by more than 5%
+                        logger.info(f"Score dropped significantly ({improvement:.4f} < {args.improvement_threshold}). Reverting to best prompt.")
+                        print(f"   ⚠️ Score dropped by {abs(improvement):.4f}. Reverting to best prompt and trying a new direction.")
+                        # Revert to the best prompt so far
+                        recommendation_agent.update_prompt(best_prompt)
+                    else:
+                        # Small improvement but above negative threshold - continue as normal
+                        logger.info(f"Small improvement ({improvement:.4f} < {args.improvement_threshold}) but continuing optimization.")
+                        print(f"   ℹ️ Small improvement: {improvement:.4f}. Continuing optimization.")
             
             # Run optimizer agent to generate new prompt
             logger.info("\nRunning optimizer agent to generate new prompt...")

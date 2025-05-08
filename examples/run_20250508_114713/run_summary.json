@@ -1,0 +1,14 @@
+{
+  "final_score": 0.8,
+  "user_count": 5,
+  "story_count": 105,
+  "recommendation_model": "gpt-4o-mini",
+  "evaluation_model": "gpt-4o",
+  "optimizer_model": "gpt-4.1-2025-04-14",
+  "optimization_enabled": true,
+  "optimization_iterations": 15,
+  "best_optimization_score": 0.96,
+  "timestamp": 1746720079.9486752,
+  "runtime": 3.8285319805145264,
+  "edge_cases_collected": 21
+}

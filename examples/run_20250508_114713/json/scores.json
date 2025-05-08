@@ -1,0 +1,107 @@
+[
+  {
+    "iteration": 1,
+    "score": 0.72,
+    "improvement": 0.0,
+    "edge_case_count": 1,
+    "timestamp": 1746719277.332524
+  },
+  {
+    "iteration": 2,
+    "score": 0.6799999999999999,
+    "improvement": -0.040000000000000036,
+    "edge_case_count": 2,
+    "timestamp": 1746719327.448247
+  },
+  {
+    "iteration": 3,
+    "score": 0.52,
+    "improvement": -0.15999999999999992,
+    "edge_case_count": 3,
+    "timestamp": 1746719380.925314
+  },
+  {
+    "iteration": 4,
+    "score": 0.76,
+    "improvement": 0.24,
+    "edge_case_count": 1,
+    "timestamp": 1746719429.477799
+  },
+  {
+    "iteration": 5,
+    "score": 0.76,
+    "improvement": 0.0,
+    "edge_case_count": 1,
+    "timestamp": 1746719475.553351
+  },
+  {
+    "iteration": 6,
+    "score": 0.64,
+    "improvement": -0.12,
+    "edge_case_count": 2,
+    "timestamp": 1746719537.593506
+  },
+  {
+    "iteration": 7,
+    "score": 0.8800000000000001,
+    "improvement": 0.2400000000000001,
+    "edge_case_count": 0,
+    "timestamp": 1746719591.783838
+  },
+  {
+    "iteration": 8,
+    "score": 0.64,
+    "improvement": -0.2400000000000001,
+    "edge_case_count": 2,
+    "timestamp": 1746719644.5374851
+  },
+  {
+    "iteration": 9,
+    "score": 0.64,
+    "improvement": 0.0,
+    "edge_case_count": 2,
+    "timestamp": 1746719697.302254
+  },
+  {
+    "iteration": 10,
+    "score": 0.76,
+    "improvement": 0.12,
+    "edge_case_count": 1,
+    "timestamp": 1746719751.2427468
+  },
+  {
+    "iteration": 11,
+    "score": 0.6799999999999999,
+    "improvement": -0.08000000000000007,
+    "edge_case_count": 2,
+    "timestamp": 1746719807.857557
+  },
+  {
+    "iteration": 12,
+    "score": 0.8400000000000001,
+    "improvement": 0.16000000000000014,
+    "edge_case_count": 0,
+    "timestamp": 1746719877.310126
+  },
+  {
+    "iteration": 13,
+    "score": 0.64,
+    "improvement": -0.20000000000000007,
+    "edge_case_count": 2,
+    "timestamp": 1746719928.6229062
+  },
+  {
+    "iteration": 14,
+    "score": 0.6799999999999999,
+    "improvement": 0.039999999999999925,
+    "edge_case_count": 2,
+    "timestamp": 1746719981.152051
+  },
+  {
+    "iteration": 15,
+    "score": 0.96,
+    "improvement": 0.28,
+    "edge_case_count": 0,
+    "timestamp": 1746720033.977924
+  }
+]

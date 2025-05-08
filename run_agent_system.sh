@@ -10,7 +10,7 @@ JSON_OUTPUT=false
 ENABLE_OPTIMIZATION=false
 MAX_ITERATIONS=20
 SCORE_THRESHOLD=0.90
-IMPROVEMENT_THRESHOLD=-1.0
+IMPROVEMENT_THRESHOLD=0.001
 
 # Parse command-line options
 while [[ $# -gt 0 ]]; do
@@ -62,7 +62,7 @@ while [[ $# -gt 0 ]]; do
       echo "  --enable-optimization          Enable the prompt optimization loop"
       echo "  --max-iterations N             Maximum number of optimization iterations (default: 50)"
       echo "  --score-threshold N            Score threshold to stop optimization (default: 0.95)"
-      echo "  --improvement-threshold N      Minimum improvement to continue optimization (default: 0.001)"
+      echo "  --improvement-threshold N      Minimum improvement threshold - when below this, system reverts to best prompt instead of stopping (default: 0.001)"
       echo "  --help                         Show this help message"
       echo ""
       echo "Note: Terminal output will be concise and readable, while detailed logs are"

@@ -1,0 +1,91 @@
+[
+  {
+    "user_id": "user3",
+    "user_profile": "Male roleplayer seeking immersive, choice-driven narratives; self-insert underdog, reluctant hero, dominant protector power fantasy. Prefers one-on-one romance, found-family bonds, intense angst, trauma healing. Loves supernatural\u2014nine-tailed foxes, vampires, magic. Achievement-hunter chasing epic conclusions. Morally flexible exploration sans non-consensual, gore, character death. Co-creative, supportive, detail-rich storytelling. Leaderboard climber, protective sibling loyalty, guilt.",
+    "extracted_tags": [
+      "roleplay",
+      "immersive",
+      "choice-driven",
+      "self-insert",
+      "underdog",
+      "reluctant hero",
+      "dominant protector",
+      "power fantasy",
+      "romance",
+      "found-family",
+      "angst",
+      "trauma healing",
+      "supernatural",
+      "nine-tailed foxes",
+      "vampires",
+      "magic",
+      "achievement-hunter",
+      "morally flexible",
+      "co-creative",
+      "detail-rich",
+      "leaderboard",
+      "protective sibling",
+      "loyalty",
+      "guilt"
+    ],
+    "recommended_stories": [
+      "5201",
+      "5202",
+      "520301",
+      "5204",
+      "5205"
+    ],
+    "score": 0.0,
+    "iteration": 1,
+    "weaknesses": [
+      {
+        "type": "tag_coverage",
+        "description": "Missing coverage of tags: roleplay, immersive, choice-driven",
+        "tags": [
+          "roleplay",
+          "immersive",
+          "choice-driven",
+          "self-insert",
+          "reluctant hero",
+          "dominant protector",
+          "power fantasy",
+          "found-family",
+          "angst",
+          "trauma healing",
+          "nine-tailed foxes",
+          "vampires",
+          "achievement-hunter",
+          "morally flexible",
+          "co-creative",
+          "detail-rich",
+          "leaderboard",
+          "protective sibling",
+          "loyalty",
+          "guilt"
+        ]
+      },
+      {
+        "type": "diversity",
+        "description": "Low diversity with only 7 unique tags",
+        "unique_tags": 7
+      },
+      {
+        "type": "ground_truth_overlap",
+        "description": "Only 0 recommendations match the ground truth",
+        "overlap_count": 0
+      }
+    ],
+    "ground_truth": [
+      "5301",
+      "5302",
+      "5303",
+      "5304",
+      "530501",
+      "5306",
+      "530701",
+      "530832",
+      "530911",
+      "5310"
+    ]
+  }
+]
