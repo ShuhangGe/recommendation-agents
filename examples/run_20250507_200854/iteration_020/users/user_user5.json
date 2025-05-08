@@ -1,0 +1,202 @@
+{
+  "user_id": "user5",
+  "score": 0.7,
+  "strategy": "tag_based_search",
+  "strengths": [
+    {
+      "type": "tag_coverage",
+      "description": "Good coverage of tags: mystery, sci-fi, gothic horror",
+      "tags": [
+        "mystery",
+        "sci-fi",
+        "gothic horror",
+        "identity",
+        "psychological depth"
+      ]
+    },
+    {
+      "type": "ground_truth_overlap",
+      "description": "7 recommendations match the ground truth",
+      "overlap_count": 7
+    }
+  ],
+  "weaknesses": [
+    {
+      "type": "tag_coverage",
+      "description": "Missing coverage of tags: discovery, nuanced protagonists, enigmatic detective",
+      "tags": [
+        "discovery",
+        "nuanced protagonists",
+        "enigmatic detective",
+        "introspective scholar",
+        "cunning tactician",
+        "labyrinthine plots",
+        "futuristic cities",
+        "haunted manors",
+        "isolated islands",
+        "thriller",
+        "memory",
+        "nature of reality",
+        "Sherlock Holmes",
+        "Blade Runner",
+        "Twin Peaks",
+        "mentor-apprentice",
+        "intellectual rivalries",
+        "complicated friendships",
+        "existential undertones",
+        "grey areas of morality",
+        "slow reveals",
+        "plot twists",
+        "narrative complexity",
+        "emotional resonance"
+      ]
+    }
+  ],
+  "scores_by_metric": {
+    "precision@10": 0.7,
+    "recall": 0.7,
+    "semantic_overlap": 0.7665325492586523
+  },
+  "recommended_stories": [
+    {
+      "id": "550101",
+      "title": "The Shadow Network",
+      "intro": "In the year 2147, beneath the neon-lit skies of Neo-London, a reclusive detective is drawn into a web of conspiracies threatening to unravel the very fabric of reality. As he delves deeper, he uncovers a truth more terrifying than he could have imagined.",
+      "tags": [
+        "mystery",
+        "psychological depth",
+        "sci-fi",
+        "gothic horror",
+        "existential themes",
+        "complex narratives",
+        "futuristic settings"
+      ]
+    },
+    {
+      "id": "550200",
+      "title": "The Labyrinth's Echo",
+      "intro": "In the shadowed alleys of Neo-London, where reality intertwines with illusion, Detective Elara Windrider stumbles upon a series of cryptic murders that beckon her into a world where the boundaries of existence blur.",
+      "tags": [
+        "mystery",
+        "psychological depth",
+        "sci-fi",
+        "gothic horror",
+        "existential themes",
+        "complex narratives",
+        "futuristic settings"
+      ]
+    },
+    {
+      "id": "550301",
+      "title": "The Clockwork Labyrinth",
+      "intro": "In a sprawling city where towering spires pierce the smog-choked sky, a detective with an enigmatic past is drawn into a web of secrets when a series of cryptic murders threaten the fragile balance between man and machine.",
+      "tags": [
+        "mystery",
+        "psychological depth",
+        "sci-fi",
+        "gothic horror",
+        "existential themes",
+        "complex narratives",
+        "futuristic settings"
+      ]
+    },
+    {
+      "id": "550401",
+      "title": "The Labyrinth of Echoes",
+      "intro": "In the sprawling cityscape of Neo-Gothica, a reclusive detective with an enigmatic past is drawn into a web of mystery that transcends time and reality, where the echoes of an ancient consciousness threaten the very fabric of existence.",
+      "tags": [
+        "mystery",
+        "psychological depth",
+        "sci-fi",
+        "gothic horror",
+        "existential themes",
+        "complex narratives",
+        "futuristic settings"
+      ]
+    },
+    {
+      "id": "550501",
+      "title": "The Echoes of Elysium",
+      "intro": "In the sprawling, neon-lit metropolis of Elysium, where shadows harbor ancient secrets and the air hums with the dissonance of forgotten dreams, an enigmatic detective stumbles upon a case that will unravel the very fabric of reality.",
+      "tags": [
+        "mystery",
+        "psychological depth",
+        "sci-fi",
+        "gothic horror",
+        "existential themes",
+        "complex narratives",
+        "futuristic settings"
+      ]
+    },
+    {
+      "id": "550612",
+      "title": "The Labyrinth of Echoes",
+      "intro": "In a city where shadows pulse with secrets and the air hums with the whispers of the machines that overrun it, an enigmatic detective is drawn into a web of mystery that blurs the lines between reality and illusion.",
+      "tags": [
+        "mystery",
+        "psychological depth",
+        "sci-fi",
+        "gothic horror",
+        "existential themes",
+        "complex narratives",
+        "futuristic settings"
+      ]
+    },
+    {
+      "id": "550701",
+      "title": "The Enigma of Elysium",
+      "intro": "In a dystopian future where memories are traded as currency, a reclusive detective is drawn into a labyrinthine conspiracy that threatens to unravel the very fabric of reality. As the lines between memory and identity blur, he must confront the terrifying depths of his own mind to solve the mystery of Elysium.",
+      "tags": [
+        "mystery",
+        "psychological depth",
+        "sci-fi",
+        "gothic horror",
+        "existential themes",
+        "complex narratives",
+        "futuristic settings"
+      ]
+    },
+    {
+      "id": "540101",
+      "title": "Chronicles of Neon Shadows",
+      "intro": "In a city where neon lights mask the despair of its citizens, a rogue anti-hero embarks on a twisting time-travel odyssey to uncover the truth behind a political conspiracy that threatens to unravel the very fabric of identity and existence.",
+      "tags": [
+        "cyberpunk",
+        "dystopian societies",
+        "philosophical debates",
+        "political intrigue",
+        "identity",
+        "narrative consequences",
+        "time-travel adventures"
+      ]
+    },
+    {
+      "id": "5402",
+      "title": "Echoes of Tomorrow",
+      "intro": "In a neon-soaked city where the lines between man and machine blur, rogue anti-hero Kael Torque discovers a device that bends time and unravels truths, threatening the fragile balance of power in a dystopian society.",
+      "tags": [
+        "cyberpunk",
+        "dystopian societies",
+        "political intrigue",
+        "identity",
+        "narrative consequences",
+        "philosophical debates",
+        "time-travel adventures"
+      ]
+    },
+    {
+      "id": "5403",
+      "title": "Echoes of Tomorrow",
+      "intro": "In the neon-lit shadows of New Haven, where reality bends to the will of towering technocrats, a rogue anti-hero stumbles upon a relic from the past\u2014a device capable of rewriting history. But in a world where identity is as malleable as time itself, every choice becomes a battleground for power, truth, and survival.",
+      "tags": [
+        "cyberpunk",
+        "dystopian societies",
+        "political intrigue",
+        "identity",
+        "time-travel adventures",
+        "narrative consequences",
+        "philosophical debates"
+      ]
+    }
+  ]
+}

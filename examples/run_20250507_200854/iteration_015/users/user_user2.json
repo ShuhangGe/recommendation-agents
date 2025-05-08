@@ -1,0 +1,193 @@
+{
+  "user_id": "user2",
+  "score": 0.8,
+  "strategy": "tag_based_search",
+  "strengths": [
+    {
+      "type": "tag_coverage",
+      "description": "Good coverage of tags: action, romance, underdog",
+      "tags": [
+        "action",
+        "romance",
+        "underdog",
+        "supernatural",
+        "fantasy",
+        "magic",
+        "enemies-to-lovers"
+      ]
+    },
+    {
+      "type": "ground_truth_overlap",
+      "description": "8 recommendations match the ground truth",
+      "overlap_count": 8
+    }
+  ],
+  "weaknesses": [
+    {
+      "type": "tag_coverage",
+      "description": "Missing coverage of tags: rivalry, love triangle, harem",
+      "tags": [
+        "rivalry",
+        "love triangle",
+        "harem",
+        "redemption",
+        "curses",
+        "Re:Zero",
+        "MyHeroAcademia",
+        "royalty"
+      ]
+    },
+    {
+      "type": "diversity",
+      "description": "Low diversity with only 7 unique tags",
+      "unique_tags": 7
+    }
+  ],
+  "scores_by_metric": {
+    "precision@10": 0.8,
+    "recall": 0.8,
+    "semantic_overlap": 0.8660182134168398
+  },
+  "recommended_stories": [
+    {
+      "id": "5201",
+      "title": "Whispered Spells of the Hidden Heir",
+      "intro": "In the mystical realm of Aldoria, where magic flows as freely as the wind, a young, disguised royal enters the hallowed halls of the prestigious Arcane Academy. But their journey takes an unexpected turn when a fierce rival with a mysterious past becomes their unlikely ally.",
+      "tags": [
+        "fantasy",
+        "action",
+        "romance",
+        "supernatural",
+        "underdog",
+        "magic",
+        "enemies-to-lovers"
+      ]
+    },
+    {
+      "id": "5202",
+      "title": "The Hidden Crown of Arcanis",
+      "intro": "In the heart of Arcanis, an enchanted kingdom teetering on the brink of war, a young mage discovers her royal bloodline and an unexpected destiny intertwined with an enemy prince amidst the halls of the magical academy.",
+      "tags": [
+        "fantasy",
+        "action",
+        "romance",
+        "supernatural",
+        "underdog",
+        "magic",
+        "enemies-to-lovers"
+      ]
+    },
+    {
+      "id": "520301",
+      "title": "The Enchanted Duel of Hearts",
+      "intro": "In the shadowy alleys of the magical city of Lumina, a young, cloaked figure discovers their hidden royal heritage while navigating the treacherous trials of the Arcane Academy. As tensions rise, an unexpected bond forms with their fiercest rival.",
+      "tags": [
+        "fantasy",
+        "action",
+        "romance",
+        "supernatural",
+        "underdog",
+        "magic",
+        "enemies-to-lovers"
+      ]
+    },
+    {
+      "id": "5204",
+      "title": "The Enchanted Duel",
+      "intro": "In the enchanting kingdom of Elmswood, a hidden heir and a mysterious rival must set aside their differences as an ancient prophecy threatens their world.",
+      "tags": [
+        "fantasy",
+        "action",
+        "romance",
+        "supernatural",
+        "magic",
+        "underdog",
+        "enemies-to-lovers"
+      ]
+    },
+    {
+      "id": "5205",
+      "title": "The Hidden Empress and the Arcane Duel",
+      "intro": "In the mystical realm of Eldoria, where magic flows through the veins of its inhabitants, a disguised royal finds herself thrust into the heart of an academy's fierce competition, sparking an unexpected bond with her sworn rival.",
+      "tags": [
+        "fantasy",
+        "action",
+        "romance",
+        "magic",
+        "underdog",
+        "supernatural",
+        "enemies-to-lovers"
+      ]
+    },
+    {
+      "id": "5206",
+      "title": "Crown of Shadows and Sparks",
+      "intro": "In the hidden realm of Elaris, where magic weaves the fabric of daily life, a reluctant guardian discovers their true heritage amidst a tumultuous competition that could change the fate of kingdoms. As alliances shift and loyalties are tested, an unexpected bond forms with a mysterious rival, leading to an unforeseen destiny.",
+      "tags": [
+        "fantasy",
+        "action",
+        "romance",
+        "supernatural",
+        "underdog",
+        "magic",
+        "enemies-to-lovers"
+      ]
+    },
+    {
+      "id": "5207",
+      "title": "Whispers of the Enchanted: A Royal Oath",
+      "intro": "In the mystical kingdom of Elanthia, a reluctant guardian with a hidden royal lineage must navigate the treacherous halls of the magical academy, where a fateful encounter with a formidable rival threatens to unravel secrets and ignite forbidden passions.",
+      "tags": [
+        "fantasy",
+        "action",
+        "romance",
+        "supernatural",
+        "underdog",
+        "magic",
+        "enemies-to-lovers"
+      ]
+    },
+    {
+      "id": "5211",
+      "title": "The Enchanted Crown",
+      "intro": "In the mystical kingdom of Eldoria, where magic flows as freely as the wind, a young barista discovers her hidden royal lineage and becomes an unlikely guardian to a rebellious prince destined to save the realm.",
+      "tags": [
+        "fantasy",
+        "action",
+        "romance",
+        "supernatural",
+        "underdog",
+        "magic",
+        "enemies-to-lovers"
+      ]
+    },
+    {
+      "id": "521267",
+      "title": "Shadow of the Royal Flame",
+      "intro": "In the bustling heart of Arcadia Academy, where magic and mystery intertwine, a reluctant guardian must protect a secretive newcomer who holds the key to a hidden royal lineage and a destiny that could reshape the kingdom.",
+      "tags": [
+        "fantasy",
+        "action",
+        "romance",
+        "supernatural",
+        "magic",
+        "underdog",
+        "enemies-to-lovers"
+      ]
+    },
+    {
+      "id": "521301",
+      "title": "The Royal Enigma: Chronicles of Elaria",
+      "intro": "In the mystical realm of Elaria, where kingdoms vie for power, an unsuspecting rookie mage finds himself thrust into the role of guardian over a disguised princess with a dangerous secret. As tensions rise, the line between enemy and ally blurs, igniting an unexpected romance amidst the chaos of magical duels and dark prophecies.",
+      "tags": [
+        "fantasy",
+        "action",
+        "romance",
+        "supernatural",
+        "magic",
+        "underdog",
+        "enemies-to-lovers"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,195 @@
+2025-05-07 11:16:23,586 - INFO - main.py:130 - === STARTING AGENT-BASED RECOMMENDATION SYSTEM ===
+2025-05-07 11:16:23,586 - INFO - main.py:131 - Run directory: results/run_20250507_111623
+2025-05-07 11:16:23,586 - INFO - main.py:132 - Recommendation model: gpt-4o-mini
+2025-05-07 11:16:23,586 - INFO - main.py:133 - Evaluation model: gpt-4o
+2025-05-07 11:16:23,586 - INFO - main.py:134 - Optimizer model: gpt-4o
+2025-05-07 11:16:23,586 - INFO - main.py:135 - Metric: precision@10
+2025-05-07 11:16:23,586 - INFO - main.py:144 - Optimization enabled (max iterations: 50, score threshold: 0.95, improvement threshold: 0.001)
+2025-05-07 11:16:23,601 - INFO - main.py:173 - Loaded 105 stories and 5 users from disk
+2025-05-07 11:16:23,601 - INFO - main.py:180 - Testing with 5 user(s)
+2025-05-07 11:16:23,607 - INFO - main.py:225 - 
+=== Starting Optimization Loop ===
+2025-05-07 11:16:23,607 - INFO - main.py:226 - Max iterations: 50
+2025-05-07 11:16:23,607 - INFO - main.py:227 - Score threshold: 0.95
+2025-05-07 11:16:23,607 - INFO - main.py:228 - Improvement threshold: 0.001
+2025-05-07 11:16:23,608 - INFO - main.py:235 - 
+--- Optimization Iteration 1/50 ---
+2025-05-07 11:16:23,608 - INFO - main.py:253 - 
+Processing user user1...
+2025-05-07 11:16:38,049 - INFO - main.py:317 - User user1 score: 0.1111
+2025-05-07 11:16:38,050 - INFO - main.py:253 - 
+Processing user user2...
+2025-05-07 11:16:55,165 - INFO - main.py:317 - User user2 score: 1.0000
+2025-05-07 11:16:55,166 - INFO - main.py:253 - 
+Processing user user3...
+2025-05-07 11:17:08,578 - INFO - main.py:317 - User user3 score: 0.0000
+2025-05-07 11:17:08,579 - INFO - main.py:253 - 
+Processing user user4...
+2025-05-07 11:17:21,791 - INFO - main.py:317 - User user4 score: 0.7500
+2025-05-07 11:17:21,792 - INFO - main.py:253 - 
+Processing user user5...
+2025-05-07 11:17:37,650 - INFO - main.py:317 - User user5 score: 1.0000
+2025-05-07 11:17:37,650 - INFO - main.py:344 - 
+Iteration 1 average score: 0.5722
+2025-05-07 11:17:37,652 - INFO - main.py:391 - New best score: 0.5722
+2025-05-07 11:17:37,652 - INFO - main.py:409 - 
+Running optimizer agent to generate new prompt...
+2025-05-07 11:17:46,236 - INFO - main.py:428 - Applied optimized prompt for next iteration.
+2025-05-07 11:17:46,237 - INFO - main.py:235 - 
+--- Optimization Iteration 2/50 ---
+2025-05-07 11:17:46,237 - INFO - main.py:253 - 
+Processing user user1...
+2025-05-07 11:17:56,691 - INFO - main.py:317 - User user1 score: 0.4000
+2025-05-07 11:17:56,692 - INFO - main.py:253 - 
+Processing user user2...
+2025-05-07 11:18:04,699 - INFO - main.py:317 - User user2 score: 1.0000
+2025-05-07 11:18:04,700 - INFO - main.py:253 - 
+Processing user user3...
+2025-05-07 11:18:14,812 - INFO - main.py:317 - User user3 score: 0.0000
+2025-05-07 11:18:14,812 - INFO - main.py:253 - 
+Processing user user4...
+2025-05-07 11:18:32,008 - INFO - main.py:317 - User user4 score: 1.0000
+2025-05-07 11:18:32,008 - INFO - main.py:253 - 
+Processing user user5...
+2025-05-07 11:18:42,241 - INFO - main.py:317 - User user5 score: 1.0000
+2025-05-07 11:18:42,241 - INFO - main.py:341 - 
+Iteration 2 average score: 0.6800 (improvement: 0.1078)
+2025-05-07 11:18:42,243 - INFO - main.py:391 - New best score: 0.6800
+2025-05-07 11:18:42,243 - INFO - main.py:409 - 
+Running optimizer agent to generate new prompt...
+2025-05-07 11:18:48,698 - INFO - main.py:428 - Applied optimized prompt for next iteration.
+2025-05-07 11:18:48,699 - INFO - main.py:235 - 
+--- Optimization Iteration 3/50 ---
+2025-05-07 11:18:48,699 - INFO - main.py:253 - 
+Processing user user1...
+2025-05-07 11:19:03,625 - INFO - main.py:317 - User user1 score: 0.2222
+2025-05-07 11:19:03,625 - INFO - main.py:253 - 
+Processing user user2...
+2025-05-07 11:19:13,446 - INFO - main.py:317 - User user2 score: 1.0000
+2025-05-07 11:19:13,447 - INFO - main.py:253 - 
+Processing user user3...
+2025-05-07 11:19:24,139 - INFO - main.py:317 - User user3 score: 0.0000
+2025-05-07 11:19:24,139 - INFO - main.py:253 - 
+Processing user user4...
+2025-05-07 11:19:32,633 - INFO - main.py:317 - User user4 score: 1.0000
+2025-05-07 11:19:32,633 - INFO - main.py:253 - 
+Processing user user5...
+2025-05-07 11:19:43,614 - INFO - main.py:317 - User user5 score: 1.0000
+2025-05-07 11:19:43,616 - INFO - main.py:341 - 
+Iteration 3 average score: 0.6444 (improvement: -0.0356)
+2025-05-07 11:19:43,617 - INFO - main.py:409 - 
+Running optimizer agent to generate new prompt...
+2025-05-07 11:19:49,499 - INFO - main.py:428 - Applied optimized prompt for next iteration.
+2025-05-07 11:19:49,499 - INFO - main.py:235 - 
+--- Optimization Iteration 4/50 ---
+2025-05-07 11:19:49,500 - INFO - main.py:253 - 
+Processing user user1...
+2025-05-07 11:20:03,951 - INFO - main.py:317 - User user1 score: 0.8000
+2025-05-07 11:20:03,952 - INFO - main.py:253 - 
+Processing user user2...
+2025-05-07 11:20:11,364 - INFO - main.py:317 - User user2 score: 1.0000
+2025-05-07 11:20:11,364 - INFO - main.py:253 - 
+Processing user user3...
+2025-05-07 11:20:19,292 - INFO - main.py:317 - User user3 score: 0.8333
+2025-05-07 11:20:19,292 - INFO - main.py:253 - 
+Processing user user4...
+2025-05-07 11:20:29,071 - INFO - main.py:317 - User user4 score: 0.8000
+2025-05-07 11:20:29,071 - INFO - main.py:253 - 
+Processing user user5...
+2025-05-07 11:20:39,014 - INFO - main.py:317 - User user5 score: 1.0000
+2025-05-07 11:20:39,014 - INFO - main.py:341 - 
+Iteration 4 average score: 0.8867 (improvement: 0.2422)
+2025-05-07 11:20:39,016 - INFO - main.py:391 - New best score: 0.8867
+2025-05-07 11:20:39,016 - INFO - main.py:409 - 
+Running optimizer agent to generate new prompt...
+2025-05-07 11:20:46,113 - INFO - main.py:428 - Applied optimized prompt for next iteration.
+2025-05-07 11:20:46,114 - INFO - main.py:235 - 
+--- Optimization Iteration 5/50 ---
+2025-05-07 11:20:46,114 - INFO - main.py:253 - 
+Processing user user1...
+2025-05-07 11:20:54,452 - INFO - main.py:317 - User user1 score: 0.2000
+2025-05-07 11:20:54,452 - INFO - main.py:253 - 
+Processing user user2...
+2025-05-07 11:21:01,959 - INFO - main.py:317 - User user2 score: 1.0000
+2025-05-07 11:21:01,959 - INFO - main.py:253 - 
+Processing user user3...
+2025-05-07 11:21:09,682 - INFO - main.py:317 - User user3 score: 0.0000
+2025-05-07 11:21:09,683 - INFO - main.py:253 - 
+Processing user user4...
+2025-05-07 11:21:18,414 - INFO - main.py:317 - User user4 score: 1.0000
+2025-05-07 11:21:18,415 - INFO - main.py:253 - 
+Processing user user5...
+2025-05-07 11:21:26,483 - INFO - main.py:317 - User user5 score: 1.0000
+2025-05-07 11:21:26,484 - INFO - main.py:341 - 
+Iteration 5 average score: 0.6400 (improvement: -0.2467)
+2025-05-07 11:21:26,484 - INFO - main.py:404 - Insufficient improvement (-0.2467 < 0.001). Stopping optimization.
+2025-05-07 11:21:26,512 - INFO - main.py:703 - Optimization results saved to results/run_20250507_111623/csv and results/run_20250507_111623/json directories
+2025-05-07 11:21:26,513 - INFO - main.py:447 - 
+=== Optimization Complete ===
+2025-05-07 11:21:26,513 - INFO - main.py:448 - Best score: 0.8867 (iteration 4)
+2025-05-07 11:21:26,513 - INFO - main.py:454 - 
+=== Running Final Evaluation ===
+2025-05-07 11:21:26,552 - INFO - main.py:465 - 
+Processing user user1...
+2025-05-07 11:21:38,447 - INFO - main.py:471 - Extracted tags: ['choice-driven', 'high-agency', 'underdog', 'rivalry', 'hero-vs-villain', 'power-dynamics', 'isekai', 'romance', 'enemies-to-lovers', 'power-fantasy', 'moral-ambiguity', 'reincarnation', 'betrayal', 'survival', 'strategy']
+2025-05-07 11:21:38,448 - INFO - main.py:481 - 
+Generating recommendations...
+2025-05-07 11:21:41,119 - INFO - main.py:486 - Used strategy: tag_based_search
+2025-05-07 11:21:41,119 - INFO - main.py:489 - 
+Evaluating recommendations...
+2025-05-07 11:21:48,042 - INFO - main.py:521 - User user1 score: 0.6000
+2025-05-07 11:21:48,042 - INFO - main.py:526 -   - precision@10: 0.6000
+2025-05-07 11:21:48,043 - INFO - main.py:526 -   - recall: 0.3000
+2025-05-07 11:21:48,043 - INFO - main.py:526 -   - semantic_overlap: 0.7705
+2025-05-07 11:21:48,043 - INFO - main.py:465 - 
+Processing user user2...
+2025-05-07 11:21:50,144 - INFO - main.py:471 - Extracted tags: ['action', 'romance', 'underdog', 'rivalry', 'magic', 'supernatural', 'fantasy', 'horror', 'harem', 'love triangles', 'power imbalance', 'enemies-to-lovers', 'redemption', 'forbidden desires', 'royalty']
+2025-05-07 11:21:50,144 - INFO - main.py:481 - 
+Generating recommendations...
+2025-05-07 11:21:52,890 - INFO - main.py:486 - Used strategy: tag_based_search
+2025-05-07 11:21:52,891 - INFO - main.py:489 - 
+Evaluating recommendations...
+2025-05-07 11:21:55,093 - INFO - main.py:521 - User user2 score: 1.0000
+2025-05-07 11:21:55,094 - INFO - main.py:526 -   - precision@10: 1.0000
+2025-05-07 11:21:55,094 - INFO - main.py:526 -   - recall: 0.5000
+2025-05-07 11:21:55,094 - INFO - main.py:526 -   - semantic_overlap: 1.0000
+2025-05-07 11:21:55,094 - INFO - main.py:465 - 
+Processing user user3...
+2025-05-07 11:21:56,901 - INFO - main.py:471 - Extracted tags: ['roleplay', 'immersive', 'choice-driven', 'underdog', 'reluctant hero', 'dominant protector', 'one-on-one romance', 'found-family', 'angst', 'trauma healing', 'supernatural', 'nine-tailed foxes', 'vampires', 'magic', 'achievement-hunter']
+2025-05-07 11:21:56,902 - INFO - main.py:481 - 
+Generating recommendations...
+2025-05-07 11:22:02,882 - INFO - main.py:486 - Used strategy: tag_based_search
+2025-05-07 11:22:02,882 - INFO - main.py:489 - 
+Evaluating recommendations...
+2025-05-07 11:22:05,001 - INFO - main.py:521 - User user3 score: 0.0000
+2025-05-07 11:22:05,001 - INFO - main.py:526 -   - precision@10: 0.0000
+2025-05-07 11:22:05,001 - INFO - main.py:526 -   - recall: 0.0000
+2025-05-07 11:22:05,001 - INFO - main.py:526 -   - semantic_overlap: 0.1836
+2025-05-07 11:22:05,002 - INFO - main.py:465 - 
+Processing user user4...
+2025-05-07 11:22:08,685 - INFO - main.py:471 - Extracted tags: ['immersive world-building', 'choice-driven narrative', 'cyberpunk', 'steampunk', 'dystopian', 'post-apocalyptic', 'time-travel', 'complex conspiracies', 'philosophical debates', 'political intrigue', 'rebellion', 'identity', 'free will vs. fate', 'nature of reality', 'moral dilemmas']
+2025-05-07 11:22:08,685 - INFO - main.py:481 - 
+Generating recommendations...
+2025-05-07 11:22:10,953 - INFO - main.py:486 - Used strategy: tag_based_search
+2025-05-07 11:22:10,953 - INFO - main.py:489 - 
+Evaluating recommendations...
+2025-05-07 11:22:13,487 - INFO - main.py:521 - User user4 score: 1.0000
+2025-05-07 11:22:13,488 - INFO - main.py:526 -   - precision@10: 1.0000
+2025-05-07 11:22:13,488 - INFO - main.py:526 -   - recall: 0.5000
+2025-05-07 11:22:13,488 - INFO - main.py:526 -   - semantic_overlap: 1.0000
+2025-05-07 11:22:13,488 - INFO - main.py:465 - 
+Processing user user5...
+2025-05-07 11:22:17,116 - INFO - main.py:471 - Extracted tags: ['mystery', 'discovery', 'nuanced protagonists', 'enigmatic detective', 'labyrinthine plots', 'futuristic cities', 'haunted manors', 'isolated islands', 'sci-fi', 'thriller', 'gothic horror', 'identity', 'memory', 'nature of reality', 'existential undertones']
+2025-05-07 11:22:17,116 - INFO - main.py:481 - 
+Generating recommendations...
+2025-05-07 11:22:20,108 - INFO - main.py:486 - Used strategy: tag_based_search
+2025-05-07 11:22:20,108 - INFO - main.py:489 - 
+Evaluating recommendations...
+2025-05-07 11:22:23,347 - INFO - main.py:521 - User user5 score: 1.0000
+2025-05-07 11:22:23,347 - INFO - main.py:526 -   - precision@10: 1.0000
+2025-05-07 11:22:23,348 - INFO - main.py:526 -   - recall: 0.5000
+2025-05-07 11:22:23,348 - INFO - main.py:526 -   - semantic_overlap: 1.0000
+2025-05-07 11:22:23,348 - INFO - main.py:530 - 
+Final average score across all users: 0.7200
+2025-05-07 11:22:23,349 - INFO - main.py:567 - 
+=== Recommendation Process Complete ===

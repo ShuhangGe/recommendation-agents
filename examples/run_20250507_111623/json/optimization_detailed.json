@@ -1,0 +1,4116 @@
+{
+  "configuration": {
+    "recommendation_model": "gpt-4o-mini",
+    "evaluation_model": "gpt-4o",
+    "optimizer_model": "gpt-4o",
+    "metric": "precision@10",
+    "max_iterations": 50,
+    "score_threshold": 0.95,
+    "improvement_threshold": 0.001
+  },
+  "results": [
+    {
+      "iteration": 1,
+      "score": 0.5722222222222222,
+      "user_scores": {
+        "user1": 0.1111111111111111,
+        "user2": 1.0,
+        "user3": 0.0,
+        "user4": 0.75,
+        "user5": 1.0
+      },
+      "prompt": "\n        You are an adaptive recommendation agent for Sekai, a platform for interactive stories. \n        Your task is to recommend the most relevant stories for a user based on their preferences.\n        \n        Consider the user's explicit preferences but also try to infer implicit preferences.\n        Balance relevance with diversity in your recommendations.\n        ",
+      "prompt_length": 373,
+      "timestamp": 1746631057.650574,
+      "results": [
+        {
+          "user_id": "user1",
+          "score": 0.1111111111111111,
+          "strategy": "tag_based_search",
+          "strengths": [
+            {
+              "type": "tag_coverage",
+              "description": "Good coverage of tags: underdog, romance, enemies-to-lovers",
+              "tags": [
+                "underdog",
+                "romance",
+                "enemies-to-lovers"
+              ]
+            }
+          ],
+          "weaknesses": [
+            {
+              "type": "tag_coverage",
+              "description": "Missing coverage of tags: choice-driven, high-agency, strategist",
+              "tags": [
+                "choice-driven",
+                "high-agency",
+                "strategist",
+                "rivalry",
+                "power-dynamics",
+                "high-immersion",
+                "power-fantasy",
+                "moral-ambiguity",
+                "isekai",
+                "betrayal",
+                "survival",
+                "redemption"
+              ]
+            },
+            {
+              "type": "diversity",
+              "description": "Low diversity with only 7 unique tags",
+              "unique_tags": 7
+            },
+            {
+              "type": "ground_truth_overlap",
+              "description": "Only 1 recommendations match the ground truth",
+              "overlap_count": 1
+            }
+          ],
+          "scores_by_metric": {
+            "precision@10": 0.1111111111111111,
+            "recall": 0.1,
+            "semantic_overlap": 0.4086684828018812
+          },
+          "recommended_stories": [
+            {
+              "id": "5201",
+              "title": "Whispered Spells of the Hidden Heir",
+              "intro": "In the mystical realm of Aldoria, where magic flows as freely as the wind, a young, disguised royal enters the hallowed halls of the prestigious Arcane Academy. But their journey takes an unexpected turn when a fierce rival with a mysterious past becomes their unlikely ally.",
+              "tags": [
+                "fantasy",
+                "action",
+                "romance",
+                "supernatural",
+                "underdog",
+                "magic",
+                "enemies-to-lovers"
+              ]
+            },
+            {
+              "id": "5202",
+              "title": "The Hidden Crown of Arcanis",
+              "intro": "In the heart of Arcanis, an enchanted kingdom teetering on the brink of war, a young mage discovers her royal bloodline and an unexpected destiny intertwined with an enemy prince amidst the halls of the magical academy.",
+              "tags": [
+                "fantasy",
+                "action",
+                "romance",
+                "supernatural",
+                "underdog",
+                "magic",
+                "enemies-to-lovers"
+              ]
+            },
+            {
+              "id": "520301",
+              "title": "The Enchanted Duel of Hearts",
+              "intro": "In the shadowy alleys of the magical city of Lumina, a young, cloaked figure discovers their hidden royal heritage while navigating the treacherous trials of the Arcane Academy. As tensions rise, an unexpected bond forms with their fiercest rival.",
+              "tags": [
+                "fantasy",
+                "action",
+                "romance",
+                "supernatural",
+                "underdog",
+                "magic",
+                "enemies-to-lovers"
+              ]
+            },
+            {
+              "id": "5204",
+              "title": "The Enchanted Duel",
+              "intro": "In the enchanting kingdom of Elmswood, a hidden heir and a mysterious rival must set aside their differences as an ancient prophecy threatens their world.",
+              "tags": [
+                "fantasy",
+                "action",
+                "romance",
+                "supernatural",
+                "magic",
+                "underdog",
+                "enemies-to-lovers"
+              ]
+            },
+            {
+              "id": "5205",
+              "title": "The Hidden Empress and the Arcane Duel",
+              "intro": "In the mystical realm of Eldoria, where magic flows through the veins of its inhabitants, a disguised royal finds herself thrust into the heart of an academy's fierce competition, sparking an unexpected bond with her sworn rival.",
+              "tags": [
+                "fantasy",
+                "action",
+                "romance",
+                "magic",
+                "underdog",
+                "supernatural",
+                "enemies-to-lovers"
+              ]
+            },
+            {
+              "id": "5206",
+              "title": "Crown of Shadows and Sparks",
+              "intro": "In the hidden realm of Elaris, where magic weaves the fabric of daily life, a reluctant guardian discovers their true heritage amidst a tumultuous competition that could change the fate of kingdoms. As alliances shift and loyalties are tested, an unexpected bond forms with a mysterious rival, leading to an unforeseen destiny.",
+              "tags": [
+                "fantasy",
+                "action",
+                "romance",
+                "supernatural",
+                "underdog",
+                "magic",
+                "enemies-to-lovers"
+              ]
+            },
+            {
+              "id": "5207",
+              "title": "Whispers of the Enchanted: A Royal Oath",
+              "intro": "In the mystical kingdom of Elanthia, a reluctant guardian with a hidden royal lineage must navigate the treacherous halls of the magical academy, where a fateful encounter with a formidable rival threatens to unravel secrets and ignite forbidden passions.",
+              "tags": [
+                "fantasy",
+                "action",
+                "romance",
+                "supernatural",
+                "underdog",
+                "magic",
+                "enemies-to-lovers"
+              ]
+            },
+            {
+              "id": "5208",
+              "title": "Cursed Kingdom: Hearts in Disguise",
+              "intro": "In a realm where magic is forbidden, you, a hidden royal with untapped powers, are thrust into the role of guardian to a headstrong but enchanting rival. As a sinister force threatens the kingdom, your journey leads to the ultimate test of courage, magic, and unexpected love.",
+              "tags": [
+                "fantasy",
+                "action",
+                "romance",
+                "supernatural",
+                "underdog",
+                "magic",
+                "enemies-to-lovers"
+              ]
+            },
+            {
+              "id": "5210",
+              "title": "Crown of Shadows",
+              "intro": "In a world where magic is both a blessing and a curse, you find yourself masquerading as a humble guardian in a bustling magical academy, hiding your true identity as the heir to a fallen kingdom.",
+              "tags": [
+                "fantasy",
+                "action",
+                "romance",
+                "supernatural",
+                "underdog",
+                "magic",
+                "enemies-to-lovers"
+              ]
+            }
+          ]
+        },
+        {
+          "user_id": "user2",
+          "score": 1.0,
+          "strategy": "tag_based_search",
+          "strengths": [
+            {
+              "type": "tag_coverage",
+              "description": "Good coverage of tags: supernatural, action, magic",
+              "tags": [
+                "supernatural",
+                "action",
+                "magic",
+                "enemies-to-lovers"
+              ]
+            },
+            {
+              "type": "ground_truth_overlap",
+              "description": "9 recommendations match the ground truth",
+              "overlap_count": 9
+            }
+          ],
+          "weaknesses": [
+            {
+              "type": "tag_coverage",
+              "description": "Missing coverage of tags: self-insert, choice-driven, guardian",
+              "tags": [
+                "self-insert",
+                "choice-driven",
+                "guardian",
+                "disguised royalty",
+                "rookie",
+                "Re:Zero",
+                "Naruto",
+                "My Hero Academia",
+                "fantasy kingdoms",
+                "contemporary romance",
+                "historical romance",
+                "horror",
+                "love triangles"
+              ]
+            },
+            {
+              "type": "diversity",
+              "description": "Low diversity with only 7 unique tags",
+              "unique_tags": 7
+            }
+          ],
+          "scores_by_metric": {
+            "precision@10": 1.0,
+            "recall": 0.9,
+            "semantic_overlap": 1.0
+          },
+          "recommended_stories": [
+            {
+              "id": "5201",
+              "title": "Whispered Spells of the Hidden Heir",
+              "intro": "In the mystical realm of Aldoria, where magic flows as freely as the wind, a young, disguised royal enters the hallowed halls of the prestigious Arcane Academy. But their journey takes an unexpected turn when a fierce rival with a mysterious past becomes their unlikely ally.",
+              "tags": [
+                "fantasy",
+                "action",
+                "romance",
+                "supernatural",
+                "underdog",
+                "magic",
+                "enemies-to-lovers"
+              ]
+            },
+            {
+              "id": "5202",
+              "title": "The Hidden Crown of Arcanis",
+              "intro": "In the heart of Arcanis, an enchanted kingdom teetering on the brink of war, a young mage discovers her royal bloodline and an unexpected destiny intertwined with an enemy prince amidst the halls of the magical academy.",
+              "tags": [
+                "fantasy",
+                "action",
+                "romance",
+                "supernatural",
+                "underdog",
+                "magic",
+                "enemies-to-lovers"
+              ]
+            },
+            {
+              "id": "520301",
+              "title": "The Enchanted Duel of Hearts",
+              "intro": "In the shadowy alleys of the magical city of Lumina, a young, cloaked figure discovers their hidden royal heritage while navigating the treacherous trials of the Arcane Academy. As tensions rise, an unexpected bond forms with their fiercest rival.",
+              "tags": [
+                "fantasy",
+                "action",
+                "romance",
+                "supernatural",
+                "underdog",
+                "magic",
+                "enemies-to-lovers"
+              ]
+            },
+            {
+              "id": "5204",
+              "title": "The Enchanted Duel",
+              "intro": "In the enchanting kingdom of Elmswood, a hidden heir and a mysterious rival must set aside their differences as an ancient prophecy threatens their world.",
+              "tags": [
+                "fantasy",
+                "action",
+                "romance",
+                "supernatural",
+                "magic",
+                "underdog",
+                "enemies-to-lovers"
+              ]
+            },
+            {
+              "id": "5205",
+              "title": "The Hidden Empress and the Arcane Duel",
+              "intro": "In the mystical realm of Eldoria, where magic flows through the veins of its inhabitants, a disguised royal finds herself thrust into the heart of an academy's fierce competition, sparking an unexpected bond with her sworn rival.",
+              "tags": [
+                "fantasy",
+                "action",
+                "romance",
+                "magic",
+                "underdog",
+                "supernatural",
+                "enemies-to-lovers"
+              ]
+            },
+            {
+              "id": "5206",
+              "title": "Crown of Shadows and Sparks",
+              "intro": "In the hidden realm of Elaris, where magic weaves the fabric of daily life, a reluctant guardian discovers their true heritage amidst a tumultuous competition that could change the fate of kingdoms. As alliances shift and loyalties are tested, an unexpected bond forms with a mysterious rival, leading to an unforeseen destiny.",
+              "tags": [
+                "fantasy",
+                "action",
+                "romance",
+                "supernatural",
+                "underdog",
+                "magic",
+                "enemies-to-lovers"
+              ]
+            },
+            {
+              "id": "5207",
+              "title": "Whispers of the Enchanted: A Royal Oath",
+              "intro": "In the mystical kingdom of Elanthia, a reluctant guardian with a hidden royal lineage must navigate the treacherous halls of the magical academy, where a fateful encounter with a formidable rival threatens to unravel secrets and ignite forbidden passions.",
+              "tags": [
+                "fantasy",
+                "action",
+                "romance",
+                "supernatural",
+                "underdog",
+                "magic",
+                "enemies-to-lovers"
+              ]
+            },
+            {
+              "id": "5208",
+              "title": "Cursed Kingdom: Hearts in Disguise",
+              "intro": "In a realm where magic is forbidden, you, a hidden royal with untapped powers, are thrust into the role of guardian to a headstrong but enchanting rival. As a sinister force threatens the kingdom, your journey leads to the ultimate test of courage, magic, and unexpected love.",
+              "tags": [
+                "fantasy",
+                "action",
+                "romance",
+                "supernatural",
+                "underdog",
+                "magic",
+                "enemies-to-lovers"
+              ]
+            },
+            {
+              "id": "5210",
+              "title": "Crown of Shadows",
+              "intro": "In a world where magic is both a blessing and a curse, you find yourself masquerading as a humble guardian in a bustling magical academy, hiding your true identity as the heir to a fallen kingdom.",
+              "tags": [
+                "fantasy",
+                "action",
+                "romance",
+                "supernatural",
+                "underdog",
+                "magic",
+                "enemies-to-lovers"
+              ]
+            }
+          ]
+        },
+        {
+          "user_id": "user3",
+          "score": 0.0,
+          "strategy": "tag_based_search",
+          "strengths": [
+            {
+              "type": "tag_coverage",
+              "description": "Good coverage of tags: underdog, supernatural, magic",
+              "tags": [
+                "underdog",
+                "supernatural",
+                "magic"
+              ]
+            }
+          ],
+          "weaknesses": [
+            {
+              "type": "tag_coverage",
+              "description": "Missing coverage of tags: roleplay, immersive, choice-driven",
+              "tags": [
+                "roleplay",
+                "immersive",
+                "choice-driven",
+                "reluctant hero",
+                "dominant protector",
+                "one-on-one romance",
+                "found-family",
+                "angst",
+                "trauma healing",
+                "achievement-hunter",
+                "morally flexible",
+                "detail-rich storytelling"
+              ]
+            },
+            {
+              "type": "diversity",
+              "description": "Low diversity with only 7 unique tags",
+              "unique_tags": 7
+            },
+            {
+              "type": "ground_truth_overlap",
+              "description": "Only 0 recommendations match the ground truth",
+              "overlap_count": 0
+            }
+          ],
+          "scores_by_metric": {
+            "precision@10": 0.0,
+            "recall": 0.0,
+            "semantic_overlap": 0.19340590103579425
+          },
+          "recommended_stories": [
+            {
+              "id": "5201",
+              "title": "Whispered Spells of the Hidden Heir",
+              "intro": "In the mystical realm of Aldoria, where magic flows as freely as the wind, a young, disguised royal enters the hallowed halls of the prestigious Arcane Academy. But their journey takes an unexpected turn when a fierce rival with a mysterious past becomes their unlikely ally.",
+              "tags": [
+                "fantasy",
+                "action",
+                "romance",
+                "supernatural",
+                "underdog",
+                "magic",
+                "enemies-to-lovers"
+              ]
+            },
+            {
+              "id": "5202",
+              "title": "The Hidden Crown of Arcanis",
+              "intro": "In the heart of Arcanis, an enchanted kingdom teetering on the brink of war, a young mage discovers her royal bloodline and an unexpected destiny intertwined with an enemy prince amidst the halls of the magical academy.",
+              "tags": [
+                "fantasy",
+                "action",
+                "romance",
+                "supernatural",
+                "underdog",
+                "magic",
+                "enemies-to-lovers"
+              ]
+            },
+            {
+              "id": "520301",
+              "title": "The Enchanted Duel of Hearts",
+              "intro": "In the shadowy alleys of the magical city of Lumina, a young, cloaked figure discovers their hidden royal heritage while navigating the treacherous trials of the Arcane Academy. As tensions rise, an unexpected bond forms with their fiercest rival.",
+              "tags": [
+                "fantasy",
+                "action",
+                "romance",
+                "supernatural",
+                "underdog",
+                "magic",
+                "enemies-to-lovers"
+              ]
+            },
+            {
+              "id": "5204",
+              "title": "The Enchanted Duel",
+              "intro": "In the enchanting kingdom of Elmswood, a hidden heir and a mysterious rival must set aside their differences as an ancient prophecy threatens their world.",
+              "tags": [
+                "fantasy",
+                "action",
+                "romance",
+                "supernatural",
+                "magic",
+                "underdog",
+                "enemies-to-lovers"
+              ]
+            },
+            {
+              "id": "5205",
+              "title": "The Hidden Empress and the Arcane Duel",
+              "intro": "In the mystical realm of Eldoria, where magic flows through the veins of its inhabitants, a disguised royal finds herself thrust into the heart of an academy's fierce competition, sparking an unexpected bond with her sworn rival.",
+              "tags": [
+                "fantasy",
+                "action",
+                "romance",
+                "magic",
+                "underdog",
+                "supernatural",
+                "enemies-to-lovers"
+              ]
+            },
+            {
+              "id": "5206",
+              "title": "Crown of Shadows and Sparks",
+              "intro": "In the hidden realm of Elaris, where magic weaves the fabric of daily life, a reluctant guardian discovers their true heritage amidst a tumultuous competition that could change the fate of kingdoms. As alliances shift and loyalties are tested, an unexpected bond forms with a mysterious rival, leading to an unforeseen destiny.",
+              "tags": [
+                "fantasy",
+                "action",
+                "romance",
+                "supernatural",
+                "underdog",
+                "magic",
+                "enemies-to-lovers"
+              ]
+            },
+            {
+              "id": "5207",
+              "title": "Whispers of the Enchanted: A Royal Oath",
+              "intro": "In the mystical kingdom of Elanthia, a reluctant guardian with a hidden royal lineage must navigate the treacherous halls of the magical academy, where a fateful encounter with a formidable rival threatens to unravel secrets and ignite forbidden passions.",
+              "tags": [
+                "fantasy",
+                "action",
+                "romance",
+                "supernatural",
+                "underdog",
+                "magic",
+                "enemies-to-lovers"
+              ]
+            },
+            {
+              "id": "5208",
+              "title": "Cursed Kingdom: Hearts in Disguise",
+              "intro": "In a realm where magic is forbidden, you, a hidden royal with untapped powers, are thrust into the role of guardian to a headstrong but enchanting rival. As a sinister force threatens the kingdom, your journey leads to the ultimate test of courage, magic, and unexpected love.",
+              "tags": [
+                "fantasy",
+                "action",
+                "romance",
+                "supernatural",
+                "underdog",
+                "magic",
+                "enemies-to-lovers"
+              ]
+            },
+            {
+              "id": "5210",
+              "title": "Crown of Shadows",
+              "intro": "In a world where magic is both a blessing and a curse, you find yourself masquerading as a humble guardian in a bustling magical academy, hiding your true identity as the heir to a fallen kingdom.",
+              "tags": [
+                "fantasy",
+                "action",
+                "romance",
+                "supernatural",
+                "underdog",
+                "magic",
+                "enemies-to-lovers"
+              ]
+            }
+          ]
+        },
+        {
+          "user_id": "user4",
+          "score": 0.75,
+          "strategy": "tag_based_search",
+          "strengths": [
+            {
+              "type": "tag_coverage",
+              "description": "Good coverage of tags: cyberpunk, philosophical debates, political intrigue",
+              "tags": [
+                "cyberpunk",
+                "philosophical debates",
+                "political intrigue",
+                "identity"
+              ]
+            },
+            {
+              "type": "ground_truth_overlap",
+              "description": "6 recommendations match the ground truth",
+              "overlap_count": 6
+            }
+          ],
+          "weaknesses": [
+            {
+              "type": "tag_coverage",
+              "description": "Missing coverage of tags: immersive world-building, choice-driven narrative, steampunk",
+              "tags": [
+                "immersive world-building",
+                "choice-driven narrative",
+                "steampunk",
+                "dystopian",
+                "post-apocalyptic",
+                "time-travel",
+                "complex conspiracies",
+                "rebellion",
+                "revolution",
+                "free will vs. fate",
+                "nature of reality"
+              ]
+            },
+            {
+              "type": "diversity",
+              "description": "Low diversity with only 7 unique tags",
+              "unique_tags": 7
+            }
+          ],
+          "scores_by_metric": {
+            "precision@10": 0.75,
+            "recall": 0.6,
+            "semantic_overlap": 0.8629688694000675
+          },
+          "recommended_stories": [
+            {
+              "id": "540101",
+              "title": "Chronicles of Neon Shadows",
+              "intro": "In a city where neon lights mask the despair of its citizens, a rogue anti-hero embarks on a twisting time-travel odyssey to uncover the truth behind a political conspiracy that threatens to unravel the very fabric of identity and existence.",
+              "tags": [
+                "cyberpunk",
+                "dystopian societies",
+                "philosophical debates",
+                "political intrigue",
+                "identity",
+                "narrative consequences",
+                "time-travel adventures"
+              ]
+            },
+            {
+              "id": "5402",
+              "title": "Echoes of Tomorrow",
+              "intro": "In a neon-soaked city where the lines between man and machine blur, rogue anti-hero Kael Torque discovers a device that bends time and unravels truths, threatening the fragile balance of power in a dystopian society.",
+              "tags": [
+                "cyberpunk",
+                "dystopian societies",
+                "political intrigue",
+                "identity",
+                "narrative consequences",
+                "philosophical debates",
+                "time-travel adventures"
+              ]
+            },
+            {
+              "id": "5403",
+              "title": "Echoes of Tomorrow",
+              "intro": "In the neon-lit shadows of New Haven, where reality bends to the will of towering technocrats, a rogue anti-hero stumbles upon a relic from the past\u2014a device capable of rewriting history. But in a world where identity is as malleable as time itself, every choice becomes a battleground for power, truth, and survival.",
+              "tags": [
+                "cyberpunk",
+                "dystopian societies",
+                "political intrigue",
+                "identity",
+                "time-travel adventures",
+                "narrative consequences",
+                "philosophical debates"
+              ]
+            },
+            {
+              "id": "5404",
+              "title": "Echoes of the Neon Past",
+              "intro": "In the sprawling neon city of Arcanum, where corporations reign and time is an elusive thread, a rogue anti-hero stumbles upon a secret capable of rewriting history. As timelines blur, choices must be made that will reshape both identity and destiny.",
+              "tags": [
+                "cyberpunk",
+                "dystopian societies",
+                "political intrigue",
+                "identity",
+                "philosophical debates",
+                "narrative consequences",
+                "time-travel adventures"
+              ]
+            },
+            {
+              "id": "540512",
+              "title": "Echoes in Neon Shadows",
+              "intro": "In a world where the line between human and machine blurs, a rogue anti-hero discovers a time-bending device that could alter the dystopian fate of their city, but each choice ripples through time with unforeseen consequences.",
+              "tags": [
+                "cyberpunk",
+                "dystopian societies",
+                "philosophical debates",
+                "political intrigue",
+                "identity",
+                "narrative consequences",
+                "time-travel adventures"
+              ]
+            },
+            {
+              "id": "5407",
+              "title": "Echoes of Tomorrow",
+              "intro": "In a sprawling cyberpunk metropolis where the line between human and machine blurs, a rogue anti-hero stumbles upon a device promising to rewrite history, but every choice made ripples through time, altering the dystopian reality they seek to escape.",
+              "tags": [
+                "cyberpunk",
+                "dystopian societies",
+                "political intrigue",
+                "identity",
+                "narrative consequences",
+                "time-travel adventures"
+              ]
+            },
+            {
+              "id": "5408",
+              "title": "Echoes of the Neon Future",
+              "intro": "In a world where time-travel is the currency of power, rogue investigator Keira, burdened by a fragmented past, must navigate the neon-lit alleys of Neo-Tokyo to uncover a conspiracy that threatens to rewrite history itself.",
+              "tags": [
+                "cyberpunk",
+                "dystopian societies",
+                "political intrigue",
+                "identity",
+                "time-travel adventures",
+                "narrative consequences",
+                "philosophical debates"
+              ]
+            },
+            {
+              "id": "5409",
+              "title": "Echoes of Tomorrow",
+              "intro": "In the neon-lit sprawl of Neo-Tokyo, a rogue time-traveler uncovers a conspiracy that could unravel the fabric of time itself, forcing them to confront the very essence of identity in a world where truth is as fleeting as light.",
+              "tags": [
+                "cyberpunk",
+                "dystopian societies",
+                "political intrigue",
+                "time-travel adventures",
+                "identity",
+                "narrative consequences"
+              ]
+            }
+          ]
+        },
+        {
+          "user_id": "user5",
+          "score": 1.0,
+          "strategy": "tag_based_search",
+          "strengths": [
+            {
+              "type": "tag_coverage",
+              "description": "Good coverage of tags: mystery, sci-fi, gothic horror",
+              "tags": [
+                "mystery",
+                "sci-fi",
+                "gothic horror"
+              ]
+            },
+            {
+              "type": "ground_truth_overlap",
+              "description": "6 recommendations match the ground truth",
+              "overlap_count": 6
+            }
+          ],
+          "weaknesses": [
+            {
+              "type": "tag_coverage",
+              "description": "Missing coverage of tags: discovery, nuanced protagonists, enigmatic detective",
+              "tags": [
+                "discovery",
+                "nuanced protagonists",
+                "enigmatic detective",
+                "introspective scholar",
+                "cunning tactician",
+                "labyrinthine plots",
+                "futuristic cities",
+                "haunted manors",
+                "thriller",
+                "identity",
+                "memory",
+                "nature of reality"
+              ]
+            },
+            {
+              "type": "diversity",
+              "description": "Low diversity with only 7 unique tags",
+              "unique_tags": 7
+            }
+          ],
+          "scores_by_metric": {
+            "precision@10": 1.0,
+            "recall": 0.6,
+            "semantic_overlap": 1.0
+          },
+          "recommended_stories": [
+            {
+              "id": "550101",
+              "title": "The Shadow Network",
+              "intro": "In the year 2147, beneath the neon-lit skies of Neo-London, a reclusive detective is drawn into a web of conspiracies threatening to unravel the very fabric of reality. As he delves deeper, he uncovers a truth more terrifying than he could have imagined.",
+              "tags": [
+                "mystery",
+                "psychological depth",
+                "sci-fi",
+                "gothic horror",
+                "existential themes",
+                "complex narratives",
+                "futuristic settings"
+              ]
+            },
+            {
+              "id": "550200",
+              "title": "The Labyrinth's Echo",
+              "intro": "In the shadowed alleys of Neo-London, where reality intertwines with illusion, Detective Elara Windrider stumbles upon a series of cryptic murders that beckon her into a world where the boundaries of existence blur.",
+              "tags": [
+                "mystery",
+                "psychological depth",
+                "sci-fi",
+                "gothic horror",
+                "existential themes",
+                "complex narratives",
+                "futuristic settings"
+              ]
+            },
+            {
+              "id": "550301",
+              "title": "The Clockwork Labyrinth",
+              "intro": "In a sprawling city where towering spires pierce the smog-choked sky, a detective with an enigmatic past is drawn into a web of secrets when a series of cryptic murders threaten the fragile balance between man and machine.",
+              "tags": [
+                "mystery",
+                "psychological depth",
+                "sci-fi",
+                "gothic horror",
+                "existential themes",
+                "complex narratives",
+                "futuristic settings"
+              ]
+            },
+            {
+              "id": "550401",
+              "title": "The Labyrinth of Echoes",
+              "intro": "In the sprawling cityscape of Neo-Gothica, a reclusive detective with an enigmatic past is drawn into a web of mystery that transcends time and reality, where the echoes of an ancient consciousness threaten the very fabric of existence.",
+              "tags": [
+                "mystery",
+                "psychological depth",
+                "sci-fi",
+                "gothic horror",
+                "existential themes",
+                "complex narratives",
+                "futuristic settings"
+              ]
+            },
+            {
+              "id": "550501",
+              "title": "The Echoes of Elysium",
+              "intro": "In the sprawling, neon-lit metropolis of Elysium, where shadows harbor ancient secrets and the air hums with the dissonance of forgotten dreams, an enigmatic detective stumbles upon a case that will unravel the very fabric of reality.",
+              "tags": [
+                "mystery",
+                "psychological depth",
+                "sci-fi",
+                "gothic horror",
+                "existential themes",
+                "complex narratives",
+                "futuristic settings"
+              ]
+            },
+            {
+              "id": "550701",
+              "title": "The Enigma of Elysium",
+              "intro": "In a dystopian future where memories are traded as currency, a reclusive detective is drawn into a labyrinthine conspiracy that threatens to unravel the very fabric of reality. As the lines between memory and identity blur, he must confront the terrifying depths of his own mind to solve the mystery of Elysium.",
+              "tags": [
+                "mystery",
+                "psychological depth",
+                "sci-fi",
+                "gothic horror",
+                "existential themes",
+                "complex narratives",
+                "futuristic settings"
+              ]
+            }
+          ]
+        }
+      ],
+      "edge_cases": [
+        {
+          "user_id": "user1",
+          "user_profile": "choice-driven high-agency dominant protector strategist; underdog, rivalry, team-vs-team, hero-vs-villain, internal-struggle, tournament conflicts; master-servant, royalty-commoner, captor-captive power-dynamics; high-immersion lore-expander, community-engagement; power-fantasy, moral-ambiguity; isekai escapism; romance, forbidden-love, love-triangles, found-family, reverse-harem; enemies-to-lovers, slow-burn; reincarnation, devil-powers, jujitsu-sorcerer; betrayal, loyalty, survival, redemption; Naruto, Dragon Ball, Jujutsu-Kaisen, Genshin-Impact, One-Piece, Demon-Slayer, Chainsaw-Man, Marvel/DC; crossover, anti-hero, strategy, fan-groups.",
+          "extracted_tags": [
+            "choice-driven",
+            "high-agency",
+            "strategist",
+            "underdog",
+            "rivalry",
+            "power-dynamics",
+            "high-immersion",
+            "power-fantasy",
+            "moral-ambiguity",
+            "isekai",
+            "romance",
+            "enemies-to-lovers",
+            "betrayal",
+            "survival",
+            "redemption"
+          ],
+          "recommended_stories": [
+            "5201",
+            "5202",
+            "520301",
+            "5204",
+            "5205"
+          ],
+          "score": 0.1111111111111111,
+          "iteration": 1,
+          "weaknesses": [
+            {
+              "type": "tag_coverage",
+              "description": "Missing coverage of tags: choice-driven, high-agency, strategist",
+              "tags": [
+                "choice-driven",
+                "high-agency",
+                "strategist",
+                "rivalry",
+                "power-dynamics",
+                "high-immersion",
+                "power-fantasy",
+                "moral-ambiguity",
+                "isekai",
+                "betrayal",
+                "survival",
+                "redemption"
+              ]
+            },
+            {
+              "type": "diversity",
+              "description": "Low diversity with only 7 unique tags",
+              "unique_tags": 7
+            },
+            {
+              "type": "ground_truth_overlap",
+              "description": "Only 1 recommendations match the ground truth",
+              "overlap_count": 1
+            }
+          ],
+          "ground_truth": [
+            "273613",
+            "510101",
+            "510210",
+            "5103",
+            "510489",
+            "5105",
+            "5107",
+            "5113",
+            "5201",
+            "5301"
+          ]
+        },
+        {
+          "user_id": "user3",
+          "user_profile": "Male roleplayer seeking immersive, choice-driven narratives; self-insert underdog, reluctant hero, dominant protector power fantasy. Prefers one-on-one romance, found-family bonds, intense angst, trauma healing. Loves supernatural\u2014nine-tailed foxes, vampires, magic. Achievement-hunter chasing epic conclusions. Morally flexible exploration sans non-consensual, gore, character death. Co-creative, supportive, detail-rich storytelling. Leaderboard climber, protective sibling loyalty, guilt.",
+          "extracted_tags": [
+            "roleplay",
+            "immersive",
+            "choice-driven",
+            "underdog",
+            "reluctant hero",
+            "dominant protector",
+            "one-on-one romance",
+            "found-family",
+            "angst",
+            "trauma healing",
+            "supernatural",
+            "magic",
+            "achievement-hunter",
+            "morally flexible",
+            "detail-rich storytelling"
+          ],
+          "recommended_stories": [
+            "5201",
+            "5202",
+            "520301",
+            "5204",
+            "5205"
+          ],
+          "score": 0.0,
+          "iteration": 1,
+          "weaknesses": [
+            {
+              "type": "tag_coverage",
+              "description": "Missing coverage of tags: roleplay, immersive, choice-driven",
+              "tags": [
+                "roleplay",
+                "immersive",
+                "choice-driven",
+                "reluctant hero",
+                "dominant protector",
+                "one-on-one romance",
+                "found-family",
+                "angst",
+                "trauma healing",
+                "achievement-hunter",
+                "morally flexible",
+                "detail-rich storytelling"
+              ]
+            },
+            {
+              "type": "diversity",
+              "description": "Low diversity with only 7 unique tags",
+              "unique_tags": 7
+            },
+            {
+              "type": "ground_truth_overlap",
+              "description": "Only 0 recommendations match the ground truth",
+              "overlap_count": 0
+            }
+          ],
+          "ground_truth": [
+            "5301",
+            "5302",
+            "5303",
+            "5304",
+            "5306",
+            "530832",
+            "5310",
+            "5311",
+            "5313",
+            "5317"
+          ]
+        }
+      ]
+    },
+    {
+      "iteration": 2,
+      "score": 0.6799999999999999,
+      "user_scores": {
+        "user1": 0.4,
+        "user2": 1.0,
+        "user3": 0.0,
+        "user4": 1.0,
+        "user5": 1.0
+      },
+      "prompt": "``` \nYou are an adaptive recommendation agent for Sekai, a platform for interactive stories. Your task is to recommend the most relevant stories for a user by thoroughly analyzing their profile. \n\n- Identify explicit preferences from user-provided data such as favorite genres, authors, and previously liked stories. \n- Infer implicit preferences by examining reading patterns, such as reading time, story completion rates, and user interactions with story elements.\n- Analyze story tags and themes to match them with user interests, ensuring to cover a range of sub-genres and narrative styles.\n\nFocus on balancing relevance with diversity by including both familiar and new story types. Prioritize stories that align closely with identified preferences while introducing varied content to broaden the user's experience.\n\nRank stories by weighing preference alignment, novelty, and engagement potential. Select the top recommendations that offer a personalized yet explorative reading journey. Maintain adaptability to refine suggestions with evolving user data.\n```",
+      "prompt_length": 1067,
+      "timestamp": 1746631122.241558,
+      "results": [
+        {
+          "user_id": "user1",
+          "score": 0.4,
+          "strategy": "tag_based_search",
+          "strengths": [
+            {
+              "type": "tag_coverage",
+              "description": "Good coverage of tags: underdog, romance, enemies-to-lovers",
+              "tags": [
+                "underdog",
+                "romance",
+                "enemies-to-lovers"
+              ]
+            }
+          ],
+          "weaknesses": [
+            {
+              "type": "tag_coverage",
+              "description": "Missing coverage of tags: choice-driven, high-agency, rivalry",
+              "tags": [
+                "choice-driven",
+                "high-agency",
+                "rivalry",
+                "team-vs-team",
+                "hero-vs-villain",
+                "power-fantasy",
+                "forbidden-love",
+                "found-family"
+              ]
+            }
+          ],
+          "scores_by_metric": {
+            "precision@10": 0.4,
+            "recall": 0.2,
+            "semantic_overlap": 0.6163013213938882
+          },
+          "recommended_stories": [
+            {
+              "id": "5105",
+              "title": "Isekai: Rise of the Shadow Strategist",
+              "intro": "In a world where kingdoms clash and power reigns supreme, a modern-day tactician is suddenly thrust into a game of thrones where he must navigate complex alliances, forbidden love, and his own shadowy desires to survive.",
+              "tags": [
+                "strategy",
+                "power-dynamics",
+                "romance",
+                "isekai",
+                "moral-ambiguity",
+                "anti-hero",
+                "tournament"
+              ]
+            },
+            {
+              "id": "5113",
+              "title": "Shadows of the Celestial Tournament",
+              "intro": "In a world where celestial powers are wielded by the few, a conniving anti-hero is summoned from another realm to tip the scales of an eternal tournament, battling not only foes but their own fractured morality.",
+              "tags": [
+                "strategy",
+                "power-dynamics",
+                "isekai",
+                "romance",
+                "anti-hero",
+                "tournament",
+                "internal-struggle"
+              ]
+            },
+            {
+              "id": "5201",
+              "title": "Whispered Spells of the Hidden Heir",
+              "intro": "In the mystical realm of Aldoria, where magic flows as freely as the wind, a young, disguised royal enters the hallowed halls of the prestigious Arcane Academy. But their journey takes an unexpected turn when a fierce rival with a mysterious past becomes their unlikely ally.",
+              "tags": [
+                "fantasy",
+                "action",
+                "romance",
+                "supernatural",
+                "underdog",
+                "magic",
+                "enemies-to-lovers"
+              ]
+            },
+            {
+              "id": "5202",
+              "title": "The Hidden Crown of Arcanis",
+              "intro": "In the heart of Arcanis, an enchanted kingdom teetering on the brink of war, a young mage discovers her royal bloodline and an unexpected destiny intertwined with an enemy prince amidst the halls of the magical academy.",
+              "tags": [
+                "fantasy",
+                "action",
+                "romance",
+                "supernatural",
+                "underdog",
+                "magic",
+                "enemies-to-lovers"
+              ]
+            },
+            {
+              "id": "520301",
+              "title": "The Enchanted Duel of Hearts",
+              "intro": "In the shadowy alleys of the magical city of Lumina, a young, cloaked figure discovers their hidden royal heritage while navigating the treacherous trials of the Arcane Academy. As tensions rise, an unexpected bond forms with their fiercest rival.",
+              "tags": [
+                "fantasy",
+                "action",
+                "romance",
+                "supernatural",
+                "underdog",
+                "magic",
+                "enemies-to-lovers"
+              ]
+            }
+          ]
+        },
+        {
+          "user_id": "user2",
+          "score": 1.0,
+          "strategy": "tag_based_search",
+          "strengths": [
+            {
+              "type": "tag_coverage",
+              "description": "Good coverage of tags: magic, action, romance",
+              "tags": [
+                "magic",
+                "action",
+                "romance",
+                "enemies-to-lovers"
+              ]
+            },
+            {
+              "type": "ground_truth_overlap",
+              "description": "5 recommendations match the ground truth",
+              "overlap_count": 5
+            }
+          ],
+          "weaknesses": [
+            {
+              "type": "tag_coverage",
+              "description": "Missing coverage of tags: self-insert, choice-driven, guardian",
+              "tags": [
+                "self-insert",
+                "choice-driven",
+                "guardian",
+                "disguised royalty",
+                "rookie competitor",
+                "Re:Zero",
+                "Naruto",
+                "MyHeroAcademia",
+                "fantasy kingdoms",
+                "academies",
+                "supernatural beings"
+              ]
+            },
+            {
+              "type": "diversity",
+              "description": "Low diversity with only 7 unique tags",
+              "unique_tags": 7
+            }
+          ],
+          "scores_by_metric": {
+            "precision@10": 1.0,
+            "recall": 0.5,
+            "semantic_overlap": 1.0
+          },
+          "recommended_stories": [
+            {
+              "id": "5201",
+              "title": "Whispered Spells of the Hidden Heir",
+              "intro": "In the mystical realm of Aldoria, where magic flows as freely as the wind, a young, disguised royal enters the hallowed halls of the prestigious Arcane Academy. But their journey takes an unexpected turn when a fierce rival with a mysterious past becomes their unlikely ally.",
+              "tags": [
+                "fantasy",
+                "action",
+                "romance",
+                "supernatural",
+                "underdog",
+                "magic",
+                "enemies-to-lovers"
+              ]
+            },
+            {
+              "id": "5202",
+              "title": "The Hidden Crown of Arcanis",
+              "intro": "In the heart of Arcanis, an enchanted kingdom teetering on the brink of war, a young mage discovers her royal bloodline and an unexpected destiny intertwined with an enemy prince amidst the halls of the magical academy.",
+              "tags": [
+                "fantasy",
+                "action",
+                "romance",
+                "supernatural",
+                "underdog",
+                "magic",
+                "enemies-to-lovers"
+              ]
+            },
+            {
+              "id": "520301",
+              "title": "The Enchanted Duel of Hearts",
+              "intro": "In the shadowy alleys of the magical city of Lumina, a young, cloaked figure discovers their hidden royal heritage while navigating the treacherous trials of the Arcane Academy. As tensions rise, an unexpected bond forms with their fiercest rival.",
+              "tags": [
+                "fantasy",
+                "action",
+                "romance",
+                "supernatural",
+                "underdog",
+                "magic",
+                "enemies-to-lovers"
+              ]
+            },
+            {
+              "id": "5204",
+              "title": "The Enchanted Duel",
+              "intro": "In the enchanting kingdom of Elmswood, a hidden heir and a mysterious rival must set aside their differences as an ancient prophecy threatens their world.",
+              "tags": [
+                "fantasy",
+                "action",
+                "romance",
+                "supernatural",
+                "magic",
+                "underdog",
+                "enemies-to-lovers"
+              ]
+            },
+            {
+              "id": "5205",
+              "title": "The Hidden Empress and the Arcane Duel",
+              "intro": "In the mystical realm of Eldoria, where magic flows through the veins of its inhabitants, a disguised royal finds herself thrust into the heart of an academy's fierce competition, sparking an unexpected bond with her sworn rival.",
+              "tags": [
+                "fantasy",
+                "action",
+                "romance",
+                "magic",
+                "underdog",
+                "supernatural",
+                "enemies-to-lovers"
+              ]
+            }
+          ]
+        },
+        {
+          "user_id": "user3",
+          "score": 0.0,
+          "strategy": "tag_based_search",
+          "strengths": [
+            {
+              "type": "tag_coverage",
+              "description": "Good coverage of tags: underdog, romance, supernatural",
+              "tags": [
+                "underdog",
+                "romance",
+                "supernatural",
+                "magic"
+              ]
+            }
+          ],
+          "weaknesses": [
+            {
+              "type": "tag_coverage",
+              "description": "Missing coverage of tags: roleplaying, immersive, choice-driven",
+              "tags": [
+                "roleplaying",
+                "immersive",
+                "choice-driven",
+                "reluctant hero",
+                "dominant protector",
+                "found family",
+                "angst",
+                "trauma healing",
+                "achievement hunter",
+                "morally flexible",
+                "leaderboard"
+              ]
+            },
+            {
+              "type": "diversity",
+              "description": "Low diversity with only 7 unique tags",
+              "unique_tags": 7
+            },
+            {
+              "type": "ground_truth_overlap",
+              "description": "Only 0 recommendations match the ground truth",
+              "overlap_count": 0
+            }
+          ],
+          "scores_by_metric": {
+            "precision@10": 0.0,
+            "recall": 0.0,
+            "semantic_overlap": 0.1948719822191192
+          },
+          "recommended_stories": [
+            {
+              "id": "5201",
+              "title": "Whispered Spells of the Hidden Heir",
+              "intro": "In the mystical realm of Aldoria, where magic flows as freely as the wind, a young, disguised royal enters the hallowed halls of the prestigious Arcane Academy. But their journey takes an unexpected turn when a fierce rival with a mysterious past becomes their unlikely ally.",
+              "tags": [
+                "fantasy",
+                "action",
+                "romance",
+                "supernatural",
+                "underdog",
+                "magic",
+                "enemies-to-lovers"
+              ]
+            },
+            {
+              "id": "5202",
+              "title": "The Hidden Crown of Arcanis",
+              "intro": "In the heart of Arcanis, an enchanted kingdom teetering on the brink of war, a young mage discovers her royal bloodline and an unexpected destiny intertwined with an enemy prince amidst the halls of the magical academy.",
+              "tags": [
+                "fantasy",
+                "action",
+                "romance",
+                "supernatural",
+                "underdog",
+                "magic",
+                "enemies-to-lovers"
+              ]
+            },
+            {
+              "id": "520301",
+              "title": "The Enchanted Duel of Hearts",
+              "intro": "In the shadowy alleys of the magical city of Lumina, a young, cloaked figure discovers their hidden royal heritage while navigating the treacherous trials of the Arcane Academy. As tensions rise, an unexpected bond forms with their fiercest rival.",
+              "tags": [
+                "fantasy",
+                "action",
+                "romance",
+                "supernatural",
+                "underdog",
+                "magic",
+                "enemies-to-lovers"
+              ]
+            },
+            {
+              "id": "5204",
+              "title": "The Enchanted Duel",
+              "intro": "In the enchanting kingdom of Elmswood, a hidden heir and a mysterious rival must set aside their differences as an ancient prophecy threatens their world.",
+              "tags": [
+                "fantasy",
+                "action",
+                "romance",
+                "supernatural",
+                "magic",
+                "underdog",
+                "enemies-to-lovers"
+              ]
+            },
+            {
+              "id": "5205",
+              "title": "The Hidden Empress and the Arcane Duel",
+              "intro": "In the mystical realm of Eldoria, where magic flows through the veins of its inhabitants, a disguised royal finds herself thrust into the heart of an academy's fierce competition, sparking an unexpected bond with her sworn rival.",
+              "tags": [
+                "fantasy",
+                "action",
+                "romance",
+                "magic",
+                "underdog",
+                "supernatural",
+                "enemies-to-lovers"
+              ]
+            },
+            {
+              "id": "5206",
+              "title": "Crown of Shadows and Sparks",
+              "intro": "In the hidden realm of Elaris, where magic weaves the fabric of daily life, a reluctant guardian discovers their true heritage amidst a tumultuous competition that could change the fate of kingdoms. As alliances shift and loyalties are tested, an unexpected bond forms with a mysterious rival, leading to an unforeseen destiny.",
+              "tags": [
+                "fantasy",
+                "action",
+                "romance",
+                "supernatural",
+                "underdog",
+                "magic",
+                "enemies-to-lovers"
+              ]
+            },
+            {
+              "id": "5207",
+              "title": "Whispers of the Enchanted: A Royal Oath",
+              "intro": "In the mystical kingdom of Elanthia, a reluctant guardian with a hidden royal lineage must navigate the treacherous halls of the magical academy, where a fateful encounter with a formidable rival threatens to unravel secrets and ignite forbidden passions.",
+              "tags": [
+                "fantasy",
+                "action",
+                "romance",
+                "supernatural",
+                "underdog",
+                "magic",
+                "enemies-to-lovers"
+              ]
+            },
+            {
+              "id": "5208",
+              "title": "Cursed Kingdom: Hearts in Disguise",
+              "intro": "In a realm where magic is forbidden, you, a hidden royal with untapped powers, are thrust into the role of guardian to a headstrong but enchanting rival. As a sinister force threatens the kingdom, your journey leads to the ultimate test of courage, magic, and unexpected love.",
+              "tags": [
+                "fantasy",
+                "action",
+                "romance",
+                "supernatural",
+                "underdog",
+                "magic",
+                "enemies-to-lovers"
+              ]
+            },
+            {
+              "id": "5210",
+              "title": "Crown of Shadows",
+              "intro": "In a world where magic is both a blessing and a curse, you find yourself masquerading as a humble guardian in a bustling magical academy, hiding your true identity as the heir to a fallen kingdom.",
+              "tags": [
+                "fantasy",
+                "action",
+                "romance",
+                "supernatural",
+                "underdog",
+                "magic",
+                "enemies-to-lovers"
+              ]
+            }
+          ]
+        },
+        {
+          "user_id": "user4",
+          "score": 1.0,
+          "strategy": "tag_based_search",
+          "strengths": [
+            {
+              "type": "tag_coverage",
+              "description": "Good coverage of tags: cyberpunk, philosophical debates, political intrigue",
+              "tags": [
+                "cyberpunk",
+                "philosophical debates",
+                "political intrigue",
+                "identity",
+                "narrative consequences"
+              ]
+            },
+            {
+              "type": "ground_truth_overlap",
+              "description": "5 recommendations match the ground truth",
+              "overlap_count": 5
+            }
+          ],
+          "weaknesses": [
+            {
+              "type": "tag_coverage",
+              "description": "Missing coverage of tags: immersive world-building, choice-driven narrative, steampunk",
+              "tags": [
+                "immersive world-building",
+                "choice-driven narrative",
+                "steampunk",
+                "dystopian",
+                "post-apocalyptic",
+                "time-travel",
+                "complex conspiracies",
+                "rebellion",
+                "free will vs. fate",
+                "nature of reality"
+              ]
+            },
+            {
+              "type": "diversity",
+              "description": "Low diversity with only 7 unique tags",
+              "unique_tags": 7
+            }
+          ],
+          "scores_by_metric": {
+            "precision@10": 1.0,
+            "recall": 0.5,
+            "semantic_overlap": 1.0
+          },
+          "recommended_stories": [
+            {
+              "id": "540101",
+              "title": "Chronicles of Neon Shadows",
+              "intro": "In a city where neon lights mask the despair of its citizens, a rogue anti-hero embarks on a twisting time-travel odyssey to uncover the truth behind a political conspiracy that threatens to unravel the very fabric of identity and existence.",
+              "tags": [
+                "cyberpunk",
+                "dystopian societies",
+                "philosophical debates",
+                "political intrigue",
+                "identity",
+                "narrative consequences",
+                "time-travel adventures"
+              ]
+            },
+            {
+              "id": "5402",
+              "title": "Echoes of Tomorrow",
+              "intro": "In a neon-soaked city where the lines between man and machine blur, rogue anti-hero Kael Torque discovers a device that bends time and unravels truths, threatening the fragile balance of power in a dystopian society.",
+              "tags": [
+                "cyberpunk",
+                "dystopian societies",
+                "political intrigue",
+                "identity",
+                "narrative consequences",
+                "philosophical debates",
+                "time-travel adventures"
+              ]
+            },
+            {
+              "id": "5403",
+              "title": "Echoes of Tomorrow",
+              "intro": "In the neon-lit shadows of New Haven, where reality bends to the will of towering technocrats, a rogue anti-hero stumbles upon a relic from the past\u2014a device capable of rewriting history. But in a world where identity is as malleable as time itself, every choice becomes a battleground for power, truth, and survival.",
+              "tags": [
+                "cyberpunk",
+                "dystopian societies",
+                "political intrigue",
+                "identity",
+                "time-travel adventures",
+                "narrative consequences",
+                "philosophical debates"
+              ]
+            },
+            {
+              "id": "5404",
+              "title": "Echoes of the Neon Past",
+              "intro": "In the sprawling neon city of Arcanum, where corporations reign and time is an elusive thread, a rogue anti-hero stumbles upon a secret capable of rewriting history. As timelines blur, choices must be made that will reshape both identity and destiny.",
+              "tags": [
+                "cyberpunk",
+                "dystopian societies",
+                "political intrigue",
+                "identity",
+                "philosophical debates",
+                "narrative consequences",
+                "time-travel adventures"
+              ]
+            },
+            {
+              "id": "540512",
+              "title": "Echoes in Neon Shadows",
+              "intro": "In a world where the line between human and machine blurs, a rogue anti-hero discovers a time-bending device that could alter the dystopian fate of their city, but each choice ripples through time with unforeseen consequences.",
+              "tags": [
+                "cyberpunk",
+                "dystopian societies",
+                "philosophical debates",
+                "political intrigue",
+                "identity",
+                "narrative consequences",
+                "time-travel adventures"
+              ]
+            }
+          ]
+        },
+        {
+          "user_id": "user5",
+          "score": 1.0,
+          "strategy": "tag_based_search",
+          "strengths": [
+            {
+              "type": "tag_coverage",
+              "description": "Good coverage of tags: mystery, sci-fi, gothic horror",
+              "tags": [
+                "mystery",
+                "sci-fi",
+                "gothic horror",
+                "psychological depth"
+              ]
+            },
+            {
+              "type": "ground_truth_overlap",
+              "description": "5 recommendations match the ground truth",
+              "overlap_count": 5
+            }
+          ],
+          "weaknesses": [
+            {
+              "type": "tag_coverage",
+              "description": "Missing coverage of tags: discovery, nuanced protagonists, enigmatic detective",
+              "tags": [
+                "discovery",
+                "nuanced protagonists",
+                "enigmatic detective",
+                "introspective scholar",
+                "cunning tactician",
+                "labyrinthine plots",
+                "hidden agendas",
+                "double-crosses",
+                "futuristic cities",
+                "haunted manors",
+                "isolated islands",
+                "thriller",
+                "identity",
+                "memory",
+                "nature of reality",
+                "Sherlock Holmes",
+                "Blade Runner",
+                "Twin Peaks",
+                "mentor-apprentice",
+                "intellectual rivalries",
+                "complicated friendships",
+                "existential undertones",
+                "grey areas of morality",
+                "slow reveals",
+                "plot twists",
+                "narrative complexity",
+                "emotional resonance"
+              ]
+            },
+            {
+              "type": "diversity",
+              "description": "Low diversity with only 7 unique tags",
+              "unique_tags": 7
+            }
+          ],
+          "scores_by_metric": {
+            "precision@10": 1.0,
+            "recall": 0.5,
+            "semantic_overlap": 1.0
+          },
+          "recommended_stories": [
+            {
+              "id": "550101",
+              "title": "The Shadow Network",
+              "intro": "In the year 2147, beneath the neon-lit skies of Neo-London, a reclusive detective is drawn into a web of conspiracies threatening to unravel the very fabric of reality. As he delves deeper, he uncovers a truth more terrifying than he could have imagined.",
+              "tags": [
+                "mystery",
+                "psychological depth",
+                "sci-fi",
+                "gothic horror",
+                "existential themes",
+                "complex narratives",
+                "futuristic settings"
+              ]
+            },
+            {
+              "id": "550200",
+              "title": "The Labyrinth's Echo",
+              "intro": "In the shadowed alleys of Neo-London, where reality intertwines with illusion, Detective Elara Windrider stumbles upon a series of cryptic murders that beckon her into a world where the boundaries of existence blur.",
+              "tags": [
+                "mystery",
+                "psychological depth",
+                "sci-fi",
+                "gothic horror",
+                "existential themes",
+                "complex narratives",
+                "futuristic settings"
+              ]
+            },
+            {
+              "id": "550301",
+              "title": "The Clockwork Labyrinth",
+              "intro": "In a sprawling city where towering spires pierce the smog-choked sky, a detective with an enigmatic past is drawn into a web of secrets when a series of cryptic murders threaten the fragile balance between man and machine.",
+              "tags": [
+                "mystery",
+                "psychological depth",
+                "sci-fi",
+                "gothic horror",
+                "existential themes",
+                "complex narratives",
+                "futuristic settings"
+              ]
+            },
+            {
+              "id": "550401",
+              "title": "The Labyrinth of Echoes",
+              "intro": "In the sprawling cityscape of Neo-Gothica, a reclusive detective with an enigmatic past is drawn into a web of mystery that transcends time and reality, where the echoes of an ancient consciousness threaten the very fabric of existence.",
+              "tags": [
+                "mystery",
+                "psychological depth",
+                "sci-fi",
+                "gothic horror",
+                "existential themes",
+                "complex narratives",
+                "futuristic settings"
+              ]
+            },
+            {
+              "id": "550501",
+              "title": "The Echoes of Elysium",
+              "intro": "In the sprawling, neon-lit metropolis of Elysium, where shadows harbor ancient secrets and the air hums with the dissonance of forgotten dreams, an enigmatic detective stumbles upon a case that will unravel the very fabric of reality.",
+              "tags": [
+                "mystery",
+                "psychological depth",
+                "sci-fi",
+                "gothic horror",
+                "existential themes",
+                "complex narratives",
+                "futuristic settings"
+              ]
+            }
+          ]
+        }
+      ],
+      "edge_cases": [
+        {
+          "user_id": "user1",
+          "user_profile": "choice-driven high-agency dominant protector strategist; underdog, rivalry, team-vs-team, hero-vs-villain, internal-struggle, tournament conflicts; master-servant, royalty-commoner, captor-captive power-dynamics; high-immersion lore-expander, community-engagement; power-fantasy, moral-ambiguity; isekai escapism; romance, forbidden-love, love-triangles, found-family, reverse-harem; enemies-to-lovers, slow-burn; reincarnation, devil-powers, jujitsu-sorcerer; betrayal, loyalty, survival, redemption; Naruto, Dragon Ball, Jujutsu-Kaisen, Genshin-Impact, One-Piece, Demon-Slayer, Chainsaw-Man, Marvel/DC; crossover, anti-hero, strategy, fan-groups.",
+          "extracted_tags": [
+            "choice-driven",
+            "high-agency",
+            "underdog",
+            "rivalry",
+            "team-vs-team",
+            "hero-vs-villain",
+            "internal-struggle",
+            "tournament",
+            "power-fantasy",
+            "moral-ambiguity",
+            "isekai",
+            "romance",
+            "forbidden-love",
+            "found-family",
+            "enemies-to-lovers"
+          ],
+          "recommended_stories": [
+            "5105",
+            "5113",
+            "5201",
+            "5202",
+            "520301"
+          ],
+          "score": 0.4,
+          "iteration": 2,
+          "weaknesses": [
+            {
+              "type": "tag_coverage",
+              "description": "Missing coverage of tags: choice-driven, high-agency, rivalry",
+              "tags": [
+                "choice-driven",
+                "high-agency",
+                "rivalry",
+                "team-vs-team",
+                "hero-vs-villain",
+                "power-fantasy",
+                "forbidden-love",
+                "found-family"
+              ]
+            }
+          ],
+          "ground_truth": [
+            "273613",
+            "510101",
+            "510210",
+            "5103",
+            "510489",
+            "5105",
+            "5107",
+            "510812",
+            "5111",
+            "5201"
+          ]
+        },
+        {
+          "user_id": "user3",
+          "user_profile": "Male roleplayer seeking immersive, choice-driven narratives; self-insert underdog, reluctant hero, dominant protector power fantasy. Prefers one-on-one romance, found-family bonds, intense angst, trauma healing. Loves supernatural\u2014nine-tailed foxes, vampires, magic. Achievement-hunter chasing epic conclusions. Morally flexible exploration sans non-consensual, gore, character death. Co-creative, supportive, detail-rich storytelling. Leaderboard climber, protective sibling loyalty, guilt.",
+          "extracted_tags": [
+            "roleplaying",
+            "immersive",
+            "choice-driven",
+            "underdog",
+            "reluctant hero",
+            "dominant protector",
+            "romance",
+            "found family",
+            "angst",
+            "trauma healing",
+            "supernatural",
+            "magic",
+            "achievement hunter",
+            "morally flexible",
+            "leaderboard"
+          ],
+          "recommended_stories": [
+            "5201",
+            "5202",
+            "520301",
+            "5204",
+            "5205"
+          ],
+          "score": 0.0,
+          "iteration": 2,
+          "weaknesses": [
+            {
+              "type": "tag_coverage",
+              "description": "Missing coverage of tags: roleplaying, immersive, choice-driven",
+              "tags": [
+                "roleplaying",
+                "immersive",
+                "choice-driven",
+                "reluctant hero",
+                "dominant protector",
+                "found family",
+                "angst",
+                "trauma healing",
+                "achievement hunter",
+                "morally flexible",
+                "leaderboard"
+              ]
+            },
+            {
+              "type": "diversity",
+              "description": "Low diversity with only 7 unique tags",
+              "unique_tags": 7
+            },
+            {
+              "type": "ground_truth_overlap",
+              "description": "Only 0 recommendations match the ground truth",
+              "overlap_count": 0
+            }
+          ],
+          "ground_truth": [
+            "5301",
+            "5302",
+            "5303",
+            "5304",
+            "5306",
+            "5310",
+            "5311",
+            "5312",
+            "5313",
+            "5314"
+          ]
+        }
+      ],
+      "improvement": 0.10777777777777775
+    },
+    {
+      "iteration": 3,
+      "score": 0.6444444444444445,
+      "user_scores": {
+        "user1": 0.2222222222222222,
+        "user2": 1.0,
+        "user3": 0.0,
+        "user4": 1.0,
+        "user5": 1.0
+      },
+      "prompt": "``` \nYou are an adaptive recommendation agent for Sekai, a platform for interactive stories. Your task is to recommend the most relevant stories for a user by conducting a comprehensive analysis of their profile.\n\n- Accurately identify explicit preferences using detailed user data such as favorite genres, authors, previously liked stories, and any stated dislikes.\n- Derive implicit preferences by scrutinizing reading behaviors, including average reading times, completion rates, and interactions with story elements like comments or ratings.\n- Precisely analyze story tags and themes, focusing on key elements such as sub-genres, narrative styles, tone, and thematic depth to ensure alignment with user interests.\n\nAchieve a balance between relevance and diversity by integrating both familiar favorites and novel story types. Emphasize stories that resonate with the user's established preferences while also broadening their experience with varied content.\n\nRank stories by systematically weighing factors such as preference alignment, novelty, and potential for high engagement. Select the top recommendations that promise a personalized yet diverse reading adventure. Ensure adaptability by continuously refining suggestions using the latest user data.\n```",
+      "prompt_length": 1264,
+      "timestamp": 1746631183.616204,
+      "results": [
+        {
+          "user_id": "user1",
+          "score": 0.2222222222222222,
+          "strategy": "tag_based_search",
+          "strengths": [
+            {
+              "type": "tag_coverage",
+              "description": "Good coverage of tags: underdog, romance, enemies-to-lovers",
+              "tags": [
+                "underdog",
+                "romance",
+                "enemies-to-lovers"
+              ]
+            }
+          ],
+          "weaknesses": [
+            {
+              "type": "tag_coverage",
+              "description": "Missing coverage of tags: choice-driven, high-agency, rivalry",
+              "tags": [
+                "choice-driven",
+                "high-agency",
+                "rivalry",
+                "team-vs-team",
+                "hero-vs-villain",
+                "power-dynamics",
+                "power-fantasy",
+                "moral-ambiguity",
+                "isekai",
+                "reincarnation",
+                "betrayal",
+                "loyalty",
+                "Naruto",
+                "Jujutsu-Kaisen"
+              ]
+            },
+            {
+              "type": "diversity",
+              "description": "Low diversity with only 7 unique tags",
+              "unique_tags": 7
+            }
+          ],
+          "scores_by_metric": {
+            "precision@10": 0.2222222222222222,
+            "recall": 0.2,
+            "semantic_overlap": 0.4841383246524253
+          },
+          "recommended_stories": [
+            {
+              "id": "5201",
+              "title": "Whispered Spells of the Hidden Heir",
+              "intro": "In the mystical realm of Aldoria, where magic flows as freely as the wind, a young, disguised royal enters the hallowed halls of the prestigious Arcane Academy. But their journey takes an unexpected turn when a fierce rival with a mysterious past becomes their unlikely ally.",
+              "tags": [
+                "fantasy",
+                "action",
+                "romance",
+                "supernatural",
+                "underdog",
+                "magic",
+                "enemies-to-lovers"
+              ]
+            },
+            {
+              "id": "5202",
+              "title": "The Hidden Crown of Arcanis",
+              "intro": "In the heart of Arcanis, an enchanted kingdom teetering on the brink of war, a young mage discovers her royal bloodline and an unexpected destiny intertwined with an enemy prince amidst the halls of the magical academy.",
+              "tags": [
+                "fantasy",
+                "action",
+                "romance",
+                "supernatural",
+                "underdog",
+                "magic",
+                "enemies-to-lovers"
+              ]
+            },
+            {
+              "id": "520301",
+              "title": "The Enchanted Duel of Hearts",
+              "intro": "In the shadowy alleys of the magical city of Lumina, a young, cloaked figure discovers their hidden royal heritage while navigating the treacherous trials of the Arcane Academy. As tensions rise, an unexpected bond forms with their fiercest rival.",
+              "tags": [
+                "fantasy",
+                "action",
+                "romance",
+                "supernatural",
+                "underdog",
+                "magic",
+                "enemies-to-lovers"
+              ]
+            },
+            {
+              "id": "5204",
+              "title": "The Enchanted Duel",
+              "intro": "In the enchanting kingdom of Elmswood, a hidden heir and a mysterious rival must set aside their differences as an ancient prophecy threatens their world.",
+              "tags": [
+                "fantasy",
+                "action",
+                "romance",
+                "supernatural",
+                "magic",
+                "underdog",
+                "enemies-to-lovers"
+              ]
+            },
+            {
+              "id": "5205",
+              "title": "The Hidden Empress and the Arcane Duel",
+              "intro": "In the mystical realm of Eldoria, where magic flows through the veins of its inhabitants, a disguised royal finds herself thrust into the heart of an academy's fierce competition, sparking an unexpected bond with her sworn rival.",
+              "tags": [
+                "fantasy",
+                "action",
+                "romance",
+                "magic",
+                "underdog",
+                "supernatural",
+                "enemies-to-lovers"
+              ]
+            },
+            {
+              "id": "5206",
+              "title": "Crown of Shadows and Sparks",
+              "intro": "In the hidden realm of Elaris, where magic weaves the fabric of daily life, a reluctant guardian discovers their true heritage amidst a tumultuous competition that could change the fate of kingdoms. As alliances shift and loyalties are tested, an unexpected bond forms with a mysterious rival, leading to an unforeseen destiny.",
+              "tags": [
+                "fantasy",
+                "action",
+                "romance",
+                "supernatural",
+                "underdog",
+                "magic",
+                "enemies-to-lovers"
+              ]
+            },
+            {
+              "id": "5207",
+              "title": "Whispers of the Enchanted: A Royal Oath",
+              "intro": "In the mystical kingdom of Elanthia, a reluctant guardian with a hidden royal lineage must navigate the treacherous halls of the magical academy, where a fateful encounter with a formidable rival threatens to unravel secrets and ignite forbidden passions.",
+              "tags": [
+                "fantasy",
+                "action",
+                "romance",
+                "supernatural",
+                "underdog",
+                "magic",
+                "enemies-to-lovers"
+              ]
+            },
+            {
+              "id": "5208",
+              "title": "Cursed Kingdom: Hearts in Disguise",
+              "intro": "In a realm where magic is forbidden, you, a hidden royal with untapped powers, are thrust into the role of guardian to a headstrong but enchanting rival. As a sinister force threatens the kingdom, your journey leads to the ultimate test of courage, magic, and unexpected love.",
+              "tags": [
+                "fantasy",
+                "action",
+                "romance",
+                "supernatural",
+                "underdog",
+                "magic",
+                "enemies-to-lovers"
+              ]
+            },
+            {
+              "id": "5210",
+              "title": "Crown of Shadows",
+              "intro": "In a world where magic is both a blessing and a curse, you find yourself masquerading as a humble guardian in a bustling magical academy, hiding your true identity as the heir to a fallen kingdom.",
+              "tags": [
+                "fantasy",
+                "action",
+                "romance",
+                "supernatural",
+                "underdog",
+                "magic",
+                "enemies-to-lovers"
+              ]
+            }
+          ]
+        },
+        {
+          "user_id": "user2",
+          "score": 1.0,
+          "strategy": "tag_based_search",
+          "strengths": [
+            {
+              "type": "tag_coverage",
+              "description": "Good coverage of tags: action, romance, underdog",
+              "tags": [
+                "action",
+                "romance",
+                "underdog",
+                "supernatural",
+                "fantasy",
+                "enemies-to-lovers",
+                "magic"
+              ]
+            },
+            {
+              "type": "ground_truth_overlap",
+              "description": "5 recommendations match the ground truth",
+              "overlap_count": 5
+            }
+          ],
+          "weaknesses": [
+            {
+              "type": "tag_coverage",
+              "description": "Missing coverage of tags: rivalry, harem, love triangles",
+              "tags": [
+                "rivalry",
+                "harem",
+                "love triangles",
+                "legacy",
+                "supernatural beings",
+                "academy",
+                "redemption",
+                "forbidden desires"
+              ]
+            },
+            {
+              "type": "diversity",
+              "description": "Low diversity with only 7 unique tags",
+              "unique_tags": 7
+            }
+          ],
+          "scores_by_metric": {
+            "precision@10": 1.0,
+            "recall": 0.5,
+            "semantic_overlap": 1.0000000000000002
+          },
+          "recommended_stories": [
+            {
+              "id": "5201",
+              "title": "Whispered Spells of the Hidden Heir",
+              "intro": "In the mystical realm of Aldoria, where magic flows as freely as the wind, a young, disguised royal enters the hallowed halls of the prestigious Arcane Academy. But their journey takes an unexpected turn when a fierce rival with a mysterious past becomes their unlikely ally.",
+              "tags": [
+                "fantasy",
+                "action",
+                "romance",
+                "supernatural",
+                "underdog",
+                "magic",
+                "enemies-to-lovers"
+              ]
+            },
+            {
+              "id": "5202",
+              "title": "The Hidden Crown of Arcanis",
+              "intro": "In the heart of Arcanis, an enchanted kingdom teetering on the brink of war, a young mage discovers her royal bloodline and an unexpected destiny intertwined with an enemy prince amidst the halls of the magical academy.",
+              "tags": [
+                "fantasy",
+                "action",
+                "romance",
+                "supernatural",
+                "underdog",
+                "magic",
+                "enemies-to-lovers"
+              ]
+            },
+            {
+              "id": "520301",
+              "title": "The Enchanted Duel of Hearts",
+              "intro": "In the shadowy alleys of the magical city of Lumina, a young, cloaked figure discovers their hidden royal heritage while navigating the treacherous trials of the Arcane Academy. As tensions rise, an unexpected bond forms with their fiercest rival.",
+              "tags": [
+                "fantasy",
+                "action",
+                "romance",
+                "supernatural",
+                "underdog",
+                "magic",
+                "enemies-to-lovers"
+              ]
+            },
+            {
+              "id": "5204",
+              "title": "The Enchanted Duel",
+              "intro": "In the enchanting kingdom of Elmswood, a hidden heir and a mysterious rival must set aside their differences as an ancient prophecy threatens their world.",
+              "tags": [
+                "fantasy",
+                "action",
+                "romance",
+                "supernatural",
+                "magic",
+                "underdog",
+                "enemies-to-lovers"
+              ]
+            },
+            {
+              "id": "5205",
+              "title": "The Hidden Empress and the Arcane Duel",
+              "intro": "In the mystical realm of Eldoria, where magic flows through the veins of its inhabitants, a disguised royal finds herself thrust into the heart of an academy's fierce competition, sparking an unexpected bond with her sworn rival.",
+              "tags": [
+                "fantasy",
+                "action",
+                "romance",
+                "magic",
+                "underdog",
+                "supernatural",
+                "enemies-to-lovers"
+              ]
+            }
+          ]
+        },
+        {
+          "user_id": "user3",
+          "score": 0.0,
+          "strategy": "tag_based_search",
+          "strengths": [
+            {
+              "type": "tag_coverage",
+              "description": "Good coverage of tags: underdog, supernatural, magic",
+              "tags": [
+                "underdog",
+                "supernatural",
+                "magic"
+              ]
+            }
+          ],
+          "weaknesses": [
+            {
+              "type": "tag_coverage",
+              "description": "Missing coverage of tags: roleplayer, immersive, choice-driven",
+              "tags": [
+                "roleplayer",
+                "immersive",
+                "choice-driven",
+                "self-insert",
+                "reluctant hero",
+                "dominant protector",
+                "one-on-one romance",
+                "found-family",
+                "angst",
+                "trauma healing",
+                "nine-tailed foxes",
+                "vampires"
+              ]
+            },
+            {
+              "type": "diversity",
+              "description": "Low diversity with only 7 unique tags",
+              "unique_tags": 7
+            },
+            {
+              "type": "ground_truth_overlap",
+              "description": "Only 0 recommendations match the ground truth",
+              "overlap_count": 0
+            }
+          ],
+          "scores_by_metric": {
+            "precision@10": 0.0,
+            "recall": 0.0,
+            "semantic_overlap": 0.1836409883012999
+          },
+          "recommended_stories": [
+            {
+              "id": "5201",
+              "title": "Whispered Spells of the Hidden Heir",
+              "intro": "In the mystical realm of Aldoria, where magic flows as freely as the wind, a young, disguised royal enters the hallowed halls of the prestigious Arcane Academy. But their journey takes an unexpected turn when a fierce rival with a mysterious past becomes their unlikely ally.",
+              "tags": [
+                "fantasy",
+                "action",
+                "romance",
+                "supernatural",
+                "underdog",
+                "magic",
+                "enemies-to-lovers"
+              ]
+            },
+            {
+              "id": "5202",
+              "title": "The Hidden Crown of Arcanis",
+              "intro": "In the heart of Arcanis, an enchanted kingdom teetering on the brink of war, a young mage discovers her royal bloodline and an unexpected destiny intertwined with an enemy prince amidst the halls of the magical academy.",
+              "tags": [
+                "fantasy",
+                "action",
+                "romance",
+                "supernatural",
+                "underdog",
+                "magic",
+                "enemies-to-lovers"
+              ]
+            },
+            {
+              "id": "520301",
+              "title": "The Enchanted Duel of Hearts",
+              "intro": "In the shadowy alleys of the magical city of Lumina, a young, cloaked figure discovers their hidden royal heritage while navigating the treacherous trials of the Arcane Academy. As tensions rise, an unexpected bond forms with their fiercest rival.",
+              "tags": [
+                "fantasy",
+                "action",
+                "romance",
+                "supernatural",
+                "underdog",
+                "magic",
+                "enemies-to-lovers"
+              ]
+            },
+            {
+              "id": "5204",
+              "title": "The Enchanted Duel",
+              "intro": "In the enchanting kingdom of Elmswood, a hidden heir and a mysterious rival must set aside their differences as an ancient prophecy threatens their world.",
+              "tags": [
+                "fantasy",
+                "action",
+                "romance",
+                "supernatural",
+                "magic",
+                "underdog",
+                "enemies-to-lovers"
+              ]
+            },
+            {
+              "id": "5205",
+              "title": "The Hidden Empress and the Arcane Duel",
+              "intro": "In the mystical realm of Eldoria, where magic flows through the veins of its inhabitants, a disguised royal finds herself thrust into the heart of an academy's fierce competition, sparking an unexpected bond with her sworn rival.",
+              "tags": [
+                "fantasy",
+                "action",
+                "romance",
+                "magic",
+                "underdog",
+                "supernatural",
+                "enemies-to-lovers"
+              ]
+            }
+          ]
+        },
+        {
+          "user_id": "user4",
+          "score": 1.0,
+          "strategy": "tag_based_search",
+          "strengths": [
+            {
+              "type": "tag_coverage",
+              "description": "Good coverage of tags: cyberpunk, philosophical debates, political intrigue",
+              "tags": [
+                "cyberpunk",
+                "philosophical debates",
+                "political intrigue",
+                "identity"
+              ]
+            },
+            {
+              "type": "ground_truth_overlap",
+              "description": "5 recommendations match the ground truth",
+              "overlap_count": 5
+            }
+          ],
+          "weaknesses": [
+            {
+              "type": "tag_coverage",
+              "description": "Missing coverage of tags: immersive world-building, choice-driven narrative, steampunk",
+              "tags": [
+                "immersive world-building",
+                "choice-driven narrative",
+                "steampunk",
+                "dystopian",
+                "post-apocalyptic",
+                "time-travel",
+                "complex conspiracies",
+                "rebellion",
+                "mentor-mentee",
+                "free will vs. fate",
+                "nature of reality"
+              ]
+            },
+            {
+              "type": "diversity",
+              "description": "Low diversity with only 7 unique tags",
+              "unique_tags": 7
+            }
+          ],
+          "scores_by_metric": {
+            "precision@10": 1.0,
+            "recall": 0.5,
+            "semantic_overlap": 1.0
+          },
+          "recommended_stories": [
+            {
+              "id": "540101",
+              "title": "Chronicles of Neon Shadows",
+              "intro": "In a city where neon lights mask the despair of its citizens, a rogue anti-hero embarks on a twisting time-travel odyssey to uncover the truth behind a political conspiracy that threatens to unravel the very fabric of identity and existence.",
+              "tags": [
+                "cyberpunk",
+                "dystopian societies",
+                "philosophical debates",
+                "political intrigue",
+                "identity",
+                "narrative consequences",
+                "time-travel adventures"
+              ]
+            },
+            {
+              "id": "5402",
+              "title": "Echoes of Tomorrow",
+              "intro": "In a neon-soaked city where the lines between man and machine blur, rogue anti-hero Kael Torque discovers a device that bends time and unravels truths, threatening the fragile balance of power in a dystopian society.",
+              "tags": [
+                "cyberpunk",
+                "dystopian societies",
+                "political intrigue",
+                "identity",
+                "narrative consequences",
+                "philosophical debates",
+                "time-travel adventures"
+              ]
+            },
+            {
+              "id": "5403",
+              "title": "Echoes of Tomorrow",
+              "intro": "In the neon-lit shadows of New Haven, where reality bends to the will of towering technocrats, a rogue anti-hero stumbles upon a relic from the past\u2014a device capable of rewriting history. But in a world where identity is as malleable as time itself, every choice becomes a battleground for power, truth, and survival.",
+              "tags": [
+                "cyberpunk",
+                "dystopian societies",
+                "political intrigue",
+                "identity",
+                "time-travel adventures",
+                "narrative consequences",
+                "philosophical debates"
+              ]
+            },
+            {
+              "id": "5404",
+              "title": "Echoes of the Neon Past",
+              "intro": "In the sprawling neon city of Arcanum, where corporations reign and time is an elusive thread, a rogue anti-hero stumbles upon a secret capable of rewriting history. As timelines blur, choices must be made that will reshape both identity and destiny.",
+              "tags": [
+                "cyberpunk",
+                "dystopian societies",
+                "political intrigue",
+                "identity",
+                "philosophical debates",
+                "narrative consequences",
+                "time-travel adventures"
+              ]
+            },
+            {
+              "id": "540512",
+              "title": "Echoes in Neon Shadows",
+              "intro": "In a world where the line between human and machine blurs, a rogue anti-hero discovers a time-bending device that could alter the dystopian fate of their city, but each choice ripples through time with unforeseen consequences.",
+              "tags": [
+                "cyberpunk",
+                "dystopian societies",
+                "philosophical debates",
+                "political intrigue",
+                "identity",
+                "narrative consequences",
+                "time-travel adventures"
+              ]
+            }
+          ]
+        },
+        {
+          "user_id": "user5",
+          "score": 1.0,
+          "strategy": "tag_based_search",
+          "strengths": [
+            {
+              "type": "tag_coverage",
+              "description": "Good coverage of tags: mystery, sci-fi, gothic horror",
+              "tags": [
+                "mystery",
+                "sci-fi",
+                "gothic horror",
+                "psychological depth"
+              ]
+            },
+            {
+              "type": "ground_truth_overlap",
+              "description": "5 recommendations match the ground truth",
+              "overlap_count": 5
+            }
+          ],
+          "weaknesses": [
+            {
+              "type": "tag_coverage",
+              "description": "Missing coverage of tags: discovery, nuanced protagonists, labyrinthine plots",
+              "tags": [
+                "discovery",
+                "nuanced protagonists",
+                "labyrinthine plots",
+                "futuristic cities",
+                "haunted manors",
+                "isolated islands",
+                "thriller",
+                "identity",
+                "memory",
+                "nature of reality",
+                "mentor-apprentice",
+                "intellectual rivalries"
+              ]
+            },
+            {
+              "type": "diversity",
+              "description": "Low diversity with only 7 unique tags",
+              "unique_tags": 7
+            }
+          ],
+          "scores_by_metric": {
+            "precision@10": 1.0,
+            "recall": 0.5,
+            "semantic_overlap": 1.0
+          },
+          "recommended_stories": [
+            {
+              "id": "550101",
+              "title": "The Shadow Network",
+              "intro": "In the year 2147, beneath the neon-lit skies of Neo-London, a reclusive detective is drawn into a web of conspiracies threatening to unravel the very fabric of reality. As he delves deeper, he uncovers a truth more terrifying than he could have imagined.",
+              "tags": [
+                "mystery",
+                "psychological depth",
+                "sci-fi",
+                "gothic horror",
+                "existential themes",
+                "complex narratives",
+                "futuristic settings"
+              ]
+            },
+            {
+              "id": "550200",
+              "title": "The Labyrinth's Echo",
+              "intro": "In the shadowed alleys of Neo-London, where reality intertwines with illusion, Detective Elara Windrider stumbles upon a series of cryptic murders that beckon her into a world where the boundaries of existence blur.",
+              "tags": [
+                "mystery",
+                "psychological depth",
+                "sci-fi",
+                "gothic horror",
+                "existential themes",
+                "complex narratives",
+                "futuristic settings"
+              ]
+            },
+            {
+              "id": "550301",
+              "title": "The Clockwork Labyrinth",
+              "intro": "In a sprawling city where towering spires pierce the smog-choked sky, a detective with an enigmatic past is drawn into a web of secrets when a series of cryptic murders threaten the fragile balance between man and machine.",
+              "tags": [
+                "mystery",
+                "psychological depth",
+                "sci-fi",
+                "gothic horror",
+                "existential themes",
+                "complex narratives",
+                "futuristic settings"
+              ]
+            },
+            {
+              "id": "550401",
+              "title": "The Labyrinth of Echoes",
+              "intro": "In the sprawling cityscape of Neo-Gothica, a reclusive detective with an enigmatic past is drawn into a web of mystery that transcends time and reality, where the echoes of an ancient consciousness threaten the very fabric of existence.",
+              "tags": [
+                "mystery",
+                "psychological depth",
+                "sci-fi",
+                "gothic horror",
+                "existential themes",
+                "complex narratives",
+                "futuristic settings"
+              ]
+            },
+            {
+              "id": "550501",
+              "title": "The Echoes of Elysium",
+              "intro": "In the sprawling, neon-lit metropolis of Elysium, where shadows harbor ancient secrets and the air hums with the dissonance of forgotten dreams, an enigmatic detective stumbles upon a case that will unravel the very fabric of reality.",
+              "tags": [
+                "mystery",
+                "psychological depth",
+                "sci-fi",
+                "gothic horror",
+                "existential themes",
+                "complex narratives",
+                "futuristic settings"
+              ]
+            }
+          ]
+        }
+      ],
+      "edge_cases": [
+        {
+          "user_id": "user1",
+          "user_profile": "choice-driven high-agency dominant protector strategist; underdog, rivalry, team-vs-team, hero-vs-villain, internal-struggle, tournament conflicts; master-servant, royalty-commoner, captor-captive power-dynamics; high-immersion lore-expander, community-engagement; power-fantasy, moral-ambiguity; isekai escapism; romance, forbidden-love, love-triangles, found-family, reverse-harem; enemies-to-lovers, slow-burn; reincarnation, devil-powers, jujitsu-sorcerer; betrayal, loyalty, survival, redemption; Naruto, Dragon Ball, Jujutsu-Kaisen, Genshin-Impact, One-Piece, Demon-Slayer, Chainsaw-Man, Marvel/DC; crossover, anti-hero, strategy, fan-groups.",
+          "extracted_tags": [
+            "choice-driven",
+            "high-agency",
+            "underdog",
+            "rivalry",
+            "team-vs-team",
+            "hero-vs-villain",
+            "power-dynamics",
+            "power-fantasy",
+            "moral-ambiguity",
+            "isekai",
+            "romance",
+            "enemies-to-lovers",
+            "reincarnation",
+            "betrayal",
+            "loyalty",
+            "Naruto",
+            "Jujutsu-Kaisen"
+          ],
+          "recommended_stories": [
+            "5201",
+            "5202",
+            "520301",
+            "5204",
+            "5205"
+          ],
+          "score": 0.2222222222222222,
+          "iteration": 3,
+          "weaknesses": [
+            {
+              "type": "tag_coverage",
+              "description": "Missing coverage of tags: choice-driven, high-agency, rivalry",
+              "tags": [
+                "choice-driven",
+                "high-agency",
+                "rivalry",
+                "team-vs-team",
+                "hero-vs-villain",
+                "power-dynamics",
+                "power-fantasy",
+                "moral-ambiguity",
+                "isekai",
+                "reincarnation",
+                "betrayal",
+                "loyalty",
+                "Naruto",
+                "Jujutsu-Kaisen"
+              ]
+            },
+            {
+              "type": "diversity",
+              "description": "Low diversity with only 7 unique tags",
+              "unique_tags": 7
+            }
+          ],
+          "ground_truth": [
+            "273613",
+            "5105",
+            "5103",
+            "5107",
+            "5113",
+            "510210",
+            "510101",
+            "5113",
+            "5201",
+            "5206"
+          ]
+        },
+        {
+          "user_id": "user3",
+          "user_profile": "Male roleplayer seeking immersive, choice-driven narratives; self-insert underdog, reluctant hero, dominant protector power fantasy. Prefers one-on-one romance, found-family bonds, intense angst, trauma healing. Loves supernatural\u2014nine-tailed foxes, vampires, magic. Achievement-hunter chasing epic conclusions. Morally flexible exploration sans non-consensual, gore, character death. Co-creative, supportive, detail-rich storytelling. Leaderboard climber, protective sibling loyalty, guilt.",
+          "extracted_tags": [
+            "roleplayer",
+            "immersive",
+            "choice-driven",
+            "self-insert",
+            "underdog",
+            "reluctant hero",
+            "dominant protector",
+            "one-on-one romance",
+            "found-family",
+            "angst",
+            "trauma healing",
+            "supernatural",
+            "nine-tailed foxes",
+            "vampires",
+            "magic"
+          ],
+          "recommended_stories": [
+            "5201",
+            "5202",
+            "520301",
+            "5204",
+            "5205"
+          ],
+          "score": 0.0,
+          "iteration": 3,
+          "weaknesses": [
+            {
+              "type": "tag_coverage",
+              "description": "Missing coverage of tags: roleplayer, immersive, choice-driven",
+              "tags": [
+                "roleplayer",
+                "immersive",
+                "choice-driven",
+                "self-insert",
+                "reluctant hero",
+                "dominant protector",
+                "one-on-one romance",
+                "found-family",
+                "angst",
+                "trauma healing",
+                "nine-tailed foxes",
+                "vampires"
+              ]
+            },
+            {
+              "type": "diversity",
+              "description": "Low diversity with only 7 unique tags",
+              "unique_tags": 7
+            },
+            {
+              "type": "ground_truth_overlap",
+              "description": "Only 0 recommendations match the ground truth",
+              "overlap_count": 0
+            }
+          ],
+          "ground_truth": [
+            "5301",
+            "5302",
+            "5303",
+            "5304",
+            "530501",
+            "5306",
+            "530701",
+            "530832",
+            "530911",
+            "5310"
+          ]
+        }
+      ],
+      "improvement": -0.03555555555555545
+    },
+    {
+      "iteration": 4,
+      "score": 0.8866666666666667,
+      "user_scores": {
+        "user1": 0.8,
+        "user2": 1.0,
+        "user3": 0.8333333333333334,
+        "user4": 0.8,
+        "user5": 1.0
+      },
+      "prompt": "```\nYou are an adaptive recommendation agent for Sekai, a platform for interactive stories. Your task is to recommend the most relevant stories for a user by conducting a precise analysis of their profile.\n\n- Extract explicit preferences by examining user data such as favorite genres, authors, previously liked stories, and any stated dislikes with attention to detail.\n- Infer implicit preferences by analyzing reading behaviors, including peak reading times, completion rates, and interactions with story elements like comments or ratings.\n- Analyze story tags and themes with specificity, focusing on sub-genres, narrative styles, tone, thematic depth, and unique elements to ensure alignment with user interests.\n\nBalance relevance with diversity by integrating both familiar favorites and novel story types. Prioritize stories that align with established preferences while introducing varied content that broadens the user's experience.\n\nRank stories by critically weighing factors such as preference alignment, novelty, and potential for high engagement. Select the top recommendations that offer a personalized yet diverse reading journey. Maintain adaptability by continuously refining suggestions with the latest user data.\n```",
+      "prompt_length": 1237,
+      "timestamp": 1746631239.0147798,
+      "results": [
+        {
+          "user_id": "user1",
+          "score": 0.8,
+          "strategy": "tag_based_search",
+          "strengths": [
+            {
+              "type": "tag_coverage",
+              "description": "Good coverage of tags: power-dynamics, moral-ambiguity, isekai",
+              "tags": [
+                "power-dynamics",
+                "moral-ambiguity",
+                "isekai",
+                "romance",
+                "strategy"
+              ]
+            },
+            {
+              "type": "ground_truth_overlap",
+              "description": "4 recommendations match the ground truth",
+              "overlap_count": 4
+            }
+          ],
+          "weaknesses": [
+            {
+              "type": "tag_coverage",
+              "description": "Missing coverage of tags: choice-driven, high-agency, protector",
+              "tags": [
+                "choice-driven",
+                "high-agency",
+                "protector",
+                "strategist",
+                "underdog",
+                "rivalry",
+                "power-fantasy",
+                "found-family",
+                "enemies-to-lovers",
+                "reincarnation",
+                "betrayal",
+                "Naruto",
+                "Dragon Ball",
+                "Jujutsu-Kaisen",
+                "Marvel/DC"
+              ]
+            },
+            {
+              "type": "diversity",
+              "description": "Low diversity with only 8 unique tags",
+              "unique_tags": 8
+            }
+          ],
+          "scores_by_metric": {
+            "precision@10": 0.8,
+            "recall": 0.4,
+            "semantic_overlap": 0.8746816879893531
+          },
+          "recommended_stories": [
+            {
+              "id": "510101",
+              "title": "Through the Veil: The Strategist's Dominion",
+              "intro": "In a world where kingdoms rise and fall with the stroke of a pen and the edge of a sword, an ordinary strategist awakens in a foreign realm where he must navigate the treacherous waters of power and passion to become the kingmaker he was always meant to be.",
+              "tags": [
+                "strategy",
+                "power-dynamics",
+                "romance",
+                "isekai",
+                "moral-ambiguity",
+                "anime",
+                "anti-hero"
+              ]
+            },
+            {
+              "id": "510210",
+              "title": "Shadow Architect: The Isekai Gambit",
+              "intro": "In a world where kingdoms rise and fall by the stroke of a strategist's pen, one unlikely hero finds himself transported to orchestrate a grand game of deceit, romance, and power. As the lines between hero and villain blur, he must navigate a web of alliances and betrayals to carve out his own destiny.",
+              "tags": [
+                "strategy",
+                "power-dynamics",
+                "romance",
+                "isekai",
+                "moral-ambiguity",
+                "anime",
+                "anti-hero"
+              ]
+            },
+            {
+              "id": "5103",
+              "title": "Chessboard of Realms",
+              "intro": "Transported to a world where kingdoms clash on a battlefield of wits, Raine must navigate treacherous courts and forbidden love, where a single move could spell victory or doom.",
+              "tags": [
+                "strategy",
+                "power-dynamics",
+                "romance",
+                "isekai",
+                "moral-ambiguity",
+                "anime",
+                "anti-hero"
+              ]
+            },
+            {
+              "id": "510489",
+              "title": "Throne's Shadow: The Strategist's Gambit",
+              "intro": "Thrown into an alternate realm where kingdoms rise and fall on the whims of cunning strategists, Lucas must navigate the fine line between savior and conqueror to protect those he loves and claim his place among the powerful.",
+              "tags": [
+                "strategy",
+                "power-dynamics",
+                "romance",
+                "isekai",
+                "moral-ambiguity",
+                "anime",
+                "anti-hero"
+              ]
+            },
+            {
+              "id": "5105",
+              "title": "Isekai: Rise of the Shadow Strategist",
+              "intro": "In a world where kingdoms clash and power reigns supreme, a modern-day tactician is suddenly thrust into a game of thrones where he must navigate complex alliances, forbidden love, and his own shadowy desires to survive.",
+              "tags": [
+                "strategy",
+                "power-dynamics",
+                "romance",
+                "isekai",
+                "moral-ambiguity",
+                "anti-hero",
+                "tournament"
+              ]
+            }
+          ]
+        },
+        {
+          "user_id": "user2",
+          "score": 1.0,
+          "strategy": "tag_based_search",
+          "strengths": [
+            {
+              "type": "tag_coverage",
+              "description": "Good coverage of tags: action, underdog, enemies-to-lovers",
+              "tags": [
+                "action",
+                "underdog",
+                "enemies-to-lovers",
+                "magic"
+              ]
+            },
+            {
+              "type": "ground_truth_overlap",
+              "description": "5 recommendations match the ground truth",
+              "overlap_count": 5
+            }
+          ],
+          "weaknesses": [
+            {
+              "type": "tag_coverage",
+              "description": "Missing coverage of tags: self-insert, choice-driven, reluctant guardian",
+              "tags": [
+                "self-insert",
+                "choice-driven",
+                "reluctant guardian",
+                "supportive guardian",
+                "disguised royalty",
+                "rookie competitor",
+                "Re:Zero",
+                "Naruto",
+                "My Hero Academia",
+                "fantasy kingdoms",
+                "supernatural romance",
+                "historical romance",
+                "horror",
+                "power imbalance",
+                "forbidden desires"
+              ]
+            },
+            {
+              "type": "diversity",
+              "description": "Low diversity with only 7 unique tags",
+              "unique_tags": 7
+            }
+          ],
+          "scores_by_metric": {
+            "precision@10": 1.0,
+            "recall": 0.5,
+            "semantic_overlap": 1.0
+          },
+          "recommended_stories": [
+            {
+              "id": "5201",
+              "title": "Whispered Spells of the Hidden Heir",
+              "intro": "In the mystical realm of Aldoria, where magic flows as freely as the wind, a young, disguised royal enters the hallowed halls of the prestigious Arcane Academy. But their journey takes an unexpected turn when a fierce rival with a mysterious past becomes their unlikely ally.",
+              "tags": [
+                "fantasy",
+                "action",
+                "romance",
+                "supernatural",
+                "underdog",
+                "magic",
+                "enemies-to-lovers"
+              ]
+            },
+            {
+              "id": "5202",
+              "title": "The Hidden Crown of Arcanis",
+              "intro": "In the heart of Arcanis, an enchanted kingdom teetering on the brink of war, a young mage discovers her royal bloodline and an unexpected destiny intertwined with an enemy prince amidst the halls of the magical academy.",
+              "tags": [
+                "fantasy",
+                "action",
+                "romance",
+                "supernatural",
+                "underdog",
+                "magic",
+                "enemies-to-lovers"
+              ]
+            },
+            {
+              "id": "520301",
+              "title": "The Enchanted Duel of Hearts",
+              "intro": "In the shadowy alleys of the magical city of Lumina, a young, cloaked figure discovers their hidden royal heritage while navigating the treacherous trials of the Arcane Academy. As tensions rise, an unexpected bond forms with their fiercest rival.",
+              "tags": [
+                "fantasy",
+                "action",
+                "romance",
+                "supernatural",
+                "underdog",
+                "magic",
+                "enemies-to-lovers"
+              ]
+            },
+            {
+              "id": "5204",
+              "title": "The Enchanted Duel",
+              "intro": "In the enchanting kingdom of Elmswood, a hidden heir and a mysterious rival must set aside their differences as an ancient prophecy threatens their world.",
+              "tags": [
+                "fantasy",
+                "action",
+                "romance",
+                "supernatural",
+                "magic",
+                "underdog",
+                "enemies-to-lovers"
+              ]
+            },
+            {
+              "id": "5205",
+              "title": "The Hidden Empress and the Arcane Duel",
+              "intro": "In the mystical realm of Eldoria, where magic flows through the veins of its inhabitants, a disguised royal finds herself thrust into the heart of an academy's fierce competition, sparking an unexpected bond with her sworn rival.",
+              "tags": [
+                "fantasy",
+                "action",
+                "romance",
+                "magic",
+                "underdog",
+                "supernatural",
+                "enemies-to-lovers"
+              ]
+            }
+          ]
+        },
+        {
+          "user_id": "user3",
+          "score": 0.8333333333333334,
+          "strategy": "tag_based_search",
+          "strengths": [
+            {
+              "type": "tag_coverage",
+              "description": "Good coverage of tags: roleplaying, romance, found-family",
+              "tags": [
+                "roleplaying",
+                "romance",
+                "found-family",
+                "trauma healing",
+                "supernatural"
+              ]
+            },
+            {
+              "type": "ground_truth_overlap",
+              "description": "5 recommendations match the ground truth",
+              "overlap_count": 5
+            }
+          ],
+          "weaknesses": [
+            {
+              "type": "tag_coverage",
+              "description": "Missing coverage of tags: immersive, choice-driven, underdog",
+              "tags": [
+                "immersive",
+                "choice-driven",
+                "underdog",
+                "reluctant hero",
+                "protector",
+                "angst",
+                "magic",
+                "vampires",
+                "nine-tailed foxes",
+                "morally flexible"
+              ]
+            },
+            {
+              "type": "diversity",
+              "description": "Low diversity with only 7 unique tags",
+              "unique_tags": 7
+            }
+          ],
+          "scores_by_metric": {
+            "precision@10": 0.8333333333333334,
+            "recall": 0.5,
+            "semantic_overlap": 0.9070765344890894
+          },
+          "recommended_stories": [
+            {
+              "id": "5301",
+              "title": "Shadowbound: A Guardian's Redemption",
+              "intro": "In a world where the veil between realms is thinning, you, an unlikely protector with a haunted past, must choose between saving the ones you love and confronting the shadows within.",
+              "tags": [
+                "roleplaying",
+                "immersive narratives",
+                "romance",
+                "supernatural",
+                "found-family",
+                "trauma healing",
+                "achievement-hunting"
+              ]
+            },
+            {
+              "id": "5302",
+              "title": "Echoes of the Forgotten Heart",
+              "intro": "In a world where shadows whisper secrets and ancient powers lie dormant, you awaken as an ordinary man burdened with extraordinary potential. As destiny weaves its intricate tapestry, you are thrust into a journey of love and redemption, where the bonds you forge could save\u2014or destroy\u2014a realm teetering on the edge of chaos.",
+              "tags": [
+                "roleplaying",
+                "immersive narratives",
+                "romance",
+                "supernatural",
+                "found-family",
+                "trauma healing",
+                "achievement-hunting"
+              ]
+            },
+            {
+              "id": "5303",
+              "title": "Echoes of the Heart",
+              "intro": "In a world where the supernatural intertwines with the mundane, you are an underestimated guardian burdened by your past but destined for greatness. As shadows of your lost memories resurface, so does a chance for love and healing.",
+              "tags": [
+                "roleplaying",
+                "immersive narratives",
+                "romance",
+                "supernatural",
+                "found-family",
+                "trauma healing",
+                "achievement-hunting"
+              ]
+            },
+            {
+              "id": "5304",
+              "title": "Whispers of Chaos",
+              "intro": "In a world where shadows hold secrets and whispered promises can alter destinies, you are thrust into the role of an unlikely hero, bound by fate to protect a fractured realm teetering on the brink of darkness.",
+              "tags": [
+                "roleplaying",
+                "immersive narratives",
+                "romance",
+                "supernatural",
+                "found-family",
+                "trauma healing",
+                "achievement-hunting"
+              ]
+            },
+            {
+              "id": "530501",
+              "title": "The Guardian's Echo",
+              "intro": "In a world where the supernatural intertwines with reality, you, an unlikely hero, must navigate both a newfound family and a mysterious power that could save\u2014or doom\u2014the ones you love.",
+              "tags": [
+                "roleplaying",
+                "immersive narratives",
+                "romance",
+                "supernatural",
+                "found-family",
+                "trauma healing",
+                "achievement-hunting"
+              ]
+            },
+            {
+              "id": "5306",
+              "title": "Eclipse of the Heart",
+              "intro": "In a world where shadows whisper secrets and moonlit paths lead to hidden realms, you're thrust into an ancient struggle as a reluctant hero with a haunted past. Will your courage mend the broken bonds of a found family, and ignite a romance that transcends time itself?",
+              "tags": [
+                "roleplaying",
+                "immersive narratives",
+                "romance",
+                "supernatural",
+                "found-family",
+                "trauma healing",
+                "achievement-hunting"
+              ]
+            }
+          ]
+        },
+        {
+          "user_id": "user4",
+          "score": 0.8,
+          "strategy": "tag_based_search",
+          "strengths": [
+            {
+              "type": "tag_coverage",
+              "description": "Good coverage of tags: cyberpunk, philosophical debates, political intrigue",
+              "tags": [
+                "cyberpunk",
+                "philosophical debates",
+                "political intrigue",
+                "identity"
+              ]
+            },
+            {
+              "type": "ground_truth_overlap",
+              "description": "4 recommendations match the ground truth",
+              "overlap_count": 4
+            }
+          ],
+          "weaknesses": [
+            {
+              "type": "tag_coverage",
+              "description": "Missing coverage of tags: immersive world-building, choice-driven narrative, steampunk",
+              "tags": [
+                "immersive world-building",
+                "choice-driven narrative",
+                "steampunk",
+                "dystopian",
+                "post-apocalyptic",
+                "time-travel",
+                "conspiracies",
+                "mind-bending puzzles",
+                "rebellion",
+                "mentor-mentee",
+                "free will vs. fate"
+              ]
+            },
+            {
+              "type": "diversity",
+              "description": "Low diversity with only 7 unique tags",
+              "unique_tags": 7
+            }
+          ],
+          "scores_by_metric": {
+            "precision@10": 0.8,
+            "recall": 0.4,
+            "semantic_overlap": 0.8877244850422527
+          },
+          "recommended_stories": [
+            {
+              "id": "540101",
+              "title": "Chronicles of Neon Shadows",
+              "intro": "In a city where neon lights mask the despair of its citizens, a rogue anti-hero embarks on a twisting time-travel odyssey to uncover the truth behind a political conspiracy that threatens to unravel the very fabric of identity and existence.",
+              "tags": [
+                "cyberpunk",
+                "dystopian societies",
+                "philosophical debates",
+                "political intrigue",
+                "identity",
+                "narrative consequences",
+                "time-travel adventures"
+              ]
+            },
+            {
+              "id": "5402",
+              "title": "Echoes of Tomorrow",
+              "intro": "In a neon-soaked city where the lines between man and machine blur, rogue anti-hero Kael Torque discovers a device that bends time and unravels truths, threatening the fragile balance of power in a dystopian society.",
+              "tags": [
+                "cyberpunk",
+                "dystopian societies",
+                "political intrigue",
+                "identity",
+                "narrative consequences",
+                "philosophical debates",
+                "time-travel adventures"
+              ]
+            },
+            {
+              "id": "5403",
+              "title": "Echoes of Tomorrow",
+              "intro": "In the neon-lit shadows of New Haven, where reality bends to the will of towering technocrats, a rogue anti-hero stumbles upon a relic from the past\u2014a device capable of rewriting history. But in a world where identity is as malleable as time itself, every choice becomes a battleground for power, truth, and survival.",
+              "tags": [
+                "cyberpunk",
+                "dystopian societies",
+                "political intrigue",
+                "identity",
+                "time-travel adventures",
+                "narrative consequences",
+                "philosophical debates"
+              ]
+            },
+            {
+              "id": "5404",
+              "title": "Echoes of the Neon Past",
+              "intro": "In the sprawling neon city of Arcanum, where corporations reign and time is an elusive thread, a rogue anti-hero stumbles upon a secret capable of rewriting history. As timelines blur, choices must be made that will reshape both identity and destiny.",
+              "tags": [
+                "cyberpunk",
+                "dystopian societies",
+                "political intrigue",
+                "identity",
+                "philosophical debates",
+                "narrative consequences",
+                "time-travel adventures"
+              ]
+            },
+            {
+              "id": "540512",
+              "title": "Echoes in Neon Shadows",
+              "intro": "In a world where the line between human and machine blurs, a rogue anti-hero discovers a time-bending device that could alter the dystopian fate of their city, but each choice ripples through time with unforeseen consequences.",
+              "tags": [
+                "cyberpunk",
+                "dystopian societies",
+                "philosophical debates",
+                "political intrigue",
+                "identity",
+                "narrative consequences",
+                "time-travel adventures"
+              ]
+            }
+          ]
+        },
+        {
+          "user_id": "user5",
+          "score": 1.0,
+          "strategy": "tag_based_search",
+          "strengths": [
+            {
+              "type": "tag_coverage",
+              "description": "Good coverage of tags: mystery, sci-fi, gothic horror",
+              "tags": [
+                "mystery",
+                "sci-fi",
+                "gothic horror",
+                "psychological depth"
+              ]
+            },
+            {
+              "type": "ground_truth_overlap",
+              "description": "5 recommendations match the ground truth",
+              "overlap_count": 5
+            }
+          ],
+          "weaknesses": [
+            {
+              "type": "tag_coverage",
+              "description": "Missing coverage of tags: discovery, nuanced protagonists, labyrinthine plots",
+              "tags": [
+                "discovery",
+                "nuanced protagonists",
+                "labyrinthine plots",
+                "hidden agendas",
+                "futuristic cities",
+                "haunted manors",
+                "isolated islands",
+                "thriller",
+                "themes of identity",
+                "nature of reality",
+                "Sherlock Holmes",
+                "Blade Runner"
+              ]
+            },
+            {
+              "type": "diversity",
+              "description": "Low diversity with only 7 unique tags",
+              "unique_tags": 7
+            }
+          ],
+          "scores_by_metric": {
+            "precision@10": 1.0,
+            "recall": 0.5,
+            "semantic_overlap": 0.9999999999999998
+          },
+          "recommended_stories": [
+            {
+              "id": "550101",
+              "title": "The Shadow Network",
+              "intro": "In the year 2147, beneath the neon-lit skies of Neo-London, a reclusive detective is drawn into a web of conspiracies threatening to unravel the very fabric of reality. As he delves deeper, he uncovers a truth more terrifying than he could have imagined.",
+              "tags": [
+                "mystery",
+                "psychological depth",
+                "sci-fi",
+                "gothic horror",
+                "existential themes",
+                "complex narratives",
+                "futuristic settings"
+              ]
+            },
+            {
+              "id": "550200",
+              "title": "The Labyrinth's Echo",
+              "intro": "In the shadowed alleys of Neo-London, where reality intertwines with illusion, Detective Elara Windrider stumbles upon a series of cryptic murders that beckon her into a world where the boundaries of existence blur.",
+              "tags": [
+                "mystery",
+                "psychological depth",
+                "sci-fi",
+                "gothic horror",
+                "existential themes",
+                "complex narratives",
+                "futuristic settings"
+              ]
+            },
+            {
+              "id": "550301",
+              "title": "The Clockwork Labyrinth",
+              "intro": "In a sprawling city where towering spires pierce the smog-choked sky, a detective with an enigmatic past is drawn into a web of secrets when a series of cryptic murders threaten the fragile balance between man and machine.",
+              "tags": [
+                "mystery",
+                "psychological depth",
+                "sci-fi",
+                "gothic horror",
+                "existential themes",
+                "complex narratives",
+                "futuristic settings"
+              ]
+            },
+            {
+              "id": "550401",
+              "title": "The Labyrinth of Echoes",
+              "intro": "In the sprawling cityscape of Neo-Gothica, a reclusive detective with an enigmatic past is drawn into a web of mystery that transcends time and reality, where the echoes of an ancient consciousness threaten the very fabric of existence.",
+              "tags": [
+                "mystery",
+                "psychological depth",
+                "sci-fi",
+                "gothic horror",
+                "existential themes",
+                "complex narratives",
+                "futuristic settings"
+              ]
+            },
+            {
+              "id": "550501",
+              "title": "The Echoes of Elysium",
+              "intro": "In the sprawling, neon-lit metropolis of Elysium, where shadows harbor ancient secrets and the air hums with the dissonance of forgotten dreams, an enigmatic detective stumbles upon a case that will unravel the very fabric of reality.",
+              "tags": [
+                "mystery",
+                "psychological depth",
+                "sci-fi",
+                "gothic horror",
+                "existential themes",
+                "complex narratives",
+                "futuristic settings"
+              ]
+            }
+          ]
+        }
+      ],
+      "edge_cases": [],
+      "improvement": 0.24222222222222223
+    },
+    {
+      "iteration": 5,
+      "score": 0.64,
+      "user_scores": {
+        "user1": 0.2,
+        "user2": 1.0,
+        "user3": 0.0,
+        "user4": 1.0,
+        "user5": 1.0
+      },
+      "prompt": "``` \nYou are a dynamic recommendation agent for Sekai, specializing in interactive stories. Your mission is to deliver the most pertinent story recommendations by performing an in-depth analysis of user profiles.\n\n- Identify explicit preferences by meticulously reviewing user data: favorite genres, authors, previously liked stories, and noted dislikes. Pay close attention to detail to capture nuanced user interests.\n- Detect implicit preferences by interpreting reading behaviors such as peak reading times, story completion rates, and engagement with story features like comments and ratings.\n- Analyze story tags and themes with precision, emphasizing sub-genres, narrative styles, tones, thematic richness, and distinctive elements to ensure they resonate with user interests.\n\nAchieve a balance between relevance and diversity by blending familiar favorites with innovative story types. Prioritize stories that closely match established preferences while introducing varied content that enriches the user's reading experience.\n\nRank stories by evaluating preference alignment, novelty, and engagement potential. Choose top recommendations that provide a tailored yet diverse reading adventure. Demonstrate adaptability by continually updating suggestions with the freshest user data.\n```",
+      "prompt_length": 1295,
+      "timestamp": 1746631286.484326,
+      "results": [
+        {
+          "user_id": "user1",
+          "score": 0.2,
+          "strategy": "tag_based_search",
+          "strengths": [
+            {
+              "type": "tag_coverage",
+              "description": "Good coverage of tags: underdog, romance, enemies-to-lovers",
+              "tags": [
+                "underdog",
+                "romance",
+                "enemies-to-lovers"
+              ]
+            }
+          ],
+          "weaknesses": [
+            {
+              "type": "tag_coverage",
+              "description": "Missing coverage of tags: choice-driven, high-agency, rivalry",
+              "tags": [
+                "choice-driven",
+                "high-agency",
+                "rivalry",
+                "hero-vs-villain",
+                "power-fantasy",
+                "isekai",
+                "forbidden-love",
+                "reincarnation",
+                "betrayal",
+                "Naruto",
+                "Marvel/DC",
+                "anti-hero"
+              ]
+            },
+            {
+              "type": "diversity",
+              "description": "Low diversity with only 7 unique tags",
+              "unique_tags": 7
+            },
+            {
+              "type": "ground_truth_overlap",
+              "description": "Only 1 recommendations match the ground truth",
+              "overlap_count": 1
+            }
+          ],
+          "scores_by_metric": {
+            "precision@10": 0.2,
+            "recall": 0.1,
+            "semantic_overlap": 0.532029590672104
+          },
+          "recommended_stories": [
+            {
+              "id": "5201",
+              "title": "Whispered Spells of the Hidden Heir",
+              "intro": "In the mystical realm of Aldoria, where magic flows as freely as the wind, a young, disguised royal enters the hallowed halls of the prestigious Arcane Academy. But their journey takes an unexpected turn when a fierce rival with a mysterious past becomes their unlikely ally.",
+              "tags": [
+                "fantasy",
+                "action",
+                "romance",
+                "supernatural",
+                "underdog",
+                "magic",
+                "enemies-to-lovers"
+              ]
+            },
+            {
+              "id": "5202",
+              "title": "The Hidden Crown of Arcanis",
+              "intro": "In the heart of Arcanis, an enchanted kingdom teetering on the brink of war, a young mage discovers her royal bloodline and an unexpected destiny intertwined with an enemy prince amidst the halls of the magical academy.",
+              "tags": [
+                "fantasy",
+                "action",
+                "romance",
+                "supernatural",
+                "underdog",
+                "magic",
+                "enemies-to-lovers"
+              ]
+            },
+            {
+              "id": "520301",
+              "title": "The Enchanted Duel of Hearts",
+              "intro": "In the shadowy alleys of the magical city of Lumina, a young, cloaked figure discovers their hidden royal heritage while navigating the treacherous trials of the Arcane Academy. As tensions rise, an unexpected bond forms with their fiercest rival.",
+              "tags": [
+                "fantasy",
+                "action",
+                "romance",
+                "supernatural",
+                "underdog",
+                "magic",
+                "enemies-to-lovers"
+              ]
+            },
+            {
+              "id": "5204",
+              "title": "The Enchanted Duel",
+              "intro": "In the enchanting kingdom of Elmswood, a hidden heir and a mysterious rival must set aside their differences as an ancient prophecy threatens their world.",
+              "tags": [
+                "fantasy",
+                "action",
+                "romance",
+                "supernatural",
+                "magic",
+                "underdog",
+                "enemies-to-lovers"
+              ]
+            },
+            {
+              "id": "5205",
+              "title": "The Hidden Empress and the Arcane Duel",
+              "intro": "In the mystical realm of Eldoria, where magic flows through the veins of its inhabitants, a disguised royal finds herself thrust into the heart of an academy's fierce competition, sparking an unexpected bond with her sworn rival.",
+              "tags": [
+                "fantasy",
+                "action",
+                "romance",
+                "magic",
+                "underdog",
+                "supernatural",
+                "enemies-to-lovers"
+              ]
+            }
+          ]
+        },
+        {
+          "user_id": "user2",
+          "score": 1.0,
+          "strategy": "tag_based_search",
+          "strengths": [
+            {
+              "type": "tag_coverage",
+              "description": "Good coverage of tags: supernatural, action, magic",
+              "tags": [
+                "supernatural",
+                "action",
+                "magic",
+                "enemies-to-lovers",
+                "underdog"
+              ]
+            },
+            {
+              "type": "ground_truth_overlap",
+              "description": "5 recommendations match the ground truth",
+              "overlap_count": 5
+            }
+          ],
+          "weaknesses": [
+            {
+              "type": "tag_coverage",
+              "description": "Missing coverage of tags: self-insert, choice-driven, guardian",
+              "tags": [
+                "self-insert",
+                "choice-driven",
+                "guardian",
+                "disguised royalty",
+                "rookie competitor",
+                "Re:Zero",
+                "Naruto",
+                "My Hero Academia",
+                "fantasy kingdoms",
+                "contemporary romance",
+                "harem"
+              ]
+            },
+            {
+              "type": "diversity",
+              "description": "Low diversity with only 7 unique tags",
+              "unique_tags": 7
+            }
+          ],
+          "scores_by_metric": {
+            "precision@10": 1.0,
+            "recall": 0.5,
+            "semantic_overlap": 1.0000000000000002
+          },
+          "recommended_stories": [
+            {
+              "id": "5201",
+              "title": "Whispered Spells of the Hidden Heir",
+              "intro": "In the mystical realm of Aldoria, where magic flows as freely as the wind, a young, disguised royal enters the hallowed halls of the prestigious Arcane Academy. But their journey takes an unexpected turn when a fierce rival with a mysterious past becomes their unlikely ally.",
+              "tags": [
+                "fantasy",
+                "action",
+                "romance",
+                "supernatural",
+                "underdog",
+                "magic",
+                "enemies-to-lovers"
+              ]
+            },
+            {
+              "id": "5202",
+              "title": "The Hidden Crown of Arcanis",
+              "intro": "In the heart of Arcanis, an enchanted kingdom teetering on the brink of war, a young mage discovers her royal bloodline and an unexpected destiny intertwined with an enemy prince amidst the halls of the magical academy.",
+              "tags": [
+                "fantasy",
+                "action",
+                "romance",
+                "supernatural",
+                "underdog",
+                "magic",
+                "enemies-to-lovers"
+              ]
+            },
+            {
+              "id": "520301",
+              "title": "The Enchanted Duel of Hearts",
+              "intro": "In the shadowy alleys of the magical city of Lumina, a young, cloaked figure discovers their hidden royal heritage while navigating the treacherous trials of the Arcane Academy. As tensions rise, an unexpected bond forms with their fiercest rival.",
+              "tags": [
+                "fantasy",
+                "action",
+                "romance",
+                "supernatural",
+                "underdog",
+                "magic",
+                "enemies-to-lovers"
+              ]
+            },
+            {
+              "id": "5204",
+              "title": "The Enchanted Duel",
+              "intro": "In the enchanting kingdom of Elmswood, a hidden heir and a mysterious rival must set aside their differences as an ancient prophecy threatens their world.",
+              "tags": [
+                "fantasy",
+                "action",
+                "romance",
+                "supernatural",
+                "magic",
+                "underdog",
+                "enemies-to-lovers"
+              ]
+            },
+            {
+              "id": "5205",
+              "title": "The Hidden Empress and the Arcane Duel",
+              "intro": "In the mystical realm of Eldoria, where magic flows through the veins of its inhabitants, a disguised royal finds herself thrust into the heart of an academy's fierce competition, sparking an unexpected bond with her sworn rival.",
+              "tags": [
+                "fantasy",
+                "action",
+                "romance",
+                "magic",
+                "underdog",
+                "supernatural",
+                "enemies-to-lovers"
+              ]
+            }
+          ]
+        },
+        {
+          "user_id": "user3",
+          "score": 0.0,
+          "strategy": "tag_based_search",
+          "strengths": [
+            {
+              "type": "tag_coverage",
+              "description": "Good coverage of tags: underdog, romance, supernatural",
+              "tags": [
+                "underdog",
+                "romance",
+                "supernatural",
+                "magic"
+              ]
+            }
+          ],
+          "weaknesses": [
+            {
+              "type": "tag_coverage",
+              "description": "Missing coverage of tags: roleplay, immersive, choice-driven",
+              "tags": [
+                "roleplay",
+                "immersive",
+                "choice-driven",
+                "reluctant hero",
+                "dominant protector",
+                "found-family",
+                "angst",
+                "trauma healing",
+                "nine-tailed foxes",
+                "vampires",
+                "achievement-hunter"
+              ]
+            },
+            {
+              "type": "diversity",
+              "description": "Low diversity with only 7 unique tags",
+              "unique_tags": 7
+            },
+            {
+              "type": "ground_truth_overlap",
+              "description": "Only 0 recommendations match the ground truth",
+              "overlap_count": 0
+            }
+          ],
+          "scores_by_metric": {
+            "precision@10": 0.0,
+            "recall": 0.0,
+            "semantic_overlap": 0.19786580591250344
+          },
+          "recommended_stories": [
+            {
+              "id": "5201",
+              "title": "Whispered Spells of the Hidden Heir",
+              "intro": "In the mystical realm of Aldoria, where magic flows as freely as the wind, a young, disguised royal enters the hallowed halls of the prestigious Arcane Academy. But their journey takes an unexpected turn when a fierce rival with a mysterious past becomes their unlikely ally.",
+              "tags": [
+                "fantasy",
+                "action",
+                "romance",
+                "supernatural",
+                "underdog",
+                "magic",
+                "enemies-to-lovers"
+              ]
+            },
+            {
+              "id": "5202",
+              "title": "The Hidden Crown of Arcanis",
+              "intro": "In the heart of Arcanis, an enchanted kingdom teetering on the brink of war, a young mage discovers her royal bloodline and an unexpected destiny intertwined with an enemy prince amidst the halls of the magical academy.",
+              "tags": [
+                "fantasy",
+                "action",
+                "romance",
+                "supernatural",
+                "underdog",
+                "magic",
+                "enemies-to-lovers"
+              ]
+            },
+            {
+              "id": "520301",
+              "title": "The Enchanted Duel of Hearts",
+              "intro": "In the shadowy alleys of the magical city of Lumina, a young, cloaked figure discovers their hidden royal heritage while navigating the treacherous trials of the Arcane Academy. As tensions rise, an unexpected bond forms with their fiercest rival.",
+              "tags": [
+                "fantasy",
+                "action",
+                "romance",
+                "supernatural",
+                "underdog",
+                "magic",
+                "enemies-to-lovers"
+              ]
+            },
+            {
+              "id": "5204",
+              "title": "The Enchanted Duel",
+              "intro": "In the enchanting kingdom of Elmswood, a hidden heir and a mysterious rival must set aside their differences as an ancient prophecy threatens their world.",
+              "tags": [
+                "fantasy",
+                "action",
+                "romance",
+                "supernatural",
+                "magic",
+                "underdog",
+                "enemies-to-lovers"
+              ]
+            },
+            {
+              "id": "5205",
+              "title": "The Hidden Empress and the Arcane Duel",
+              "intro": "In the mystical realm of Eldoria, where magic flows through the veins of its inhabitants, a disguised royal finds herself thrust into the heart of an academy's fierce competition, sparking an unexpected bond with her sworn rival.",
+              "tags": [
+                "fantasy",
+                "action",
+                "romance",
+                "magic",
+                "underdog",
+                "supernatural",
+                "enemies-to-lovers"
+              ]
+            }
+          ]
+        },
+        {
+          "user_id": "user4",
+          "score": 1.0,
+          "strategy": "tag_based_search",
+          "strengths": [
+            {
+              "type": "tag_coverage",
+              "description": "Good coverage of tags: cyberpunk, philosophical debates, political intrigue",
+              "tags": [
+                "cyberpunk",
+                "philosophical debates",
+                "political intrigue",
+                "identity"
+              ]
+            },
+            {
+              "type": "ground_truth_overlap",
+              "description": "5 recommendations match the ground truth",
+              "overlap_count": 5
+            }
+          ],
+          "weaknesses": [
+            {
+              "type": "tag_coverage",
+              "description": "Missing coverage of tags: immersive world-building, choice-driven narrative, steampunk",
+              "tags": [
+                "immersive world-building",
+                "choice-driven narrative",
+                "steampunk",
+                "dystopian",
+                "post-apocalyptic",
+                "time-travel",
+                "complex conspiracies",
+                "rebellion",
+                "mentor-mentee dynamics",
+                "free will vs. fate",
+                "nature of reality"
+              ]
+            },
+            {
+              "type": "diversity",
+              "description": "Low diversity with only 7 unique tags",
+              "unique_tags": 7
+            }
+          ],
+          "scores_by_metric": {
+            "precision@10": 1.0,
+            "recall": 0.5,
+            "semantic_overlap": 1.0
+          },
+          "recommended_stories": [
+            {
+              "id": "540101",
+              "title": "Chronicles of Neon Shadows",
+              "intro": "In a city where neon lights mask the despair of its citizens, a rogue anti-hero embarks on a twisting time-travel odyssey to uncover the truth behind a political conspiracy that threatens to unravel the very fabric of identity and existence.",
+              "tags": [
+                "cyberpunk",
+                "dystopian societies",
+                "philosophical debates",
+                "political intrigue",
+                "identity",
+                "narrative consequences",
+                "time-travel adventures"
+              ]
+            },
+            {
+              "id": "5402",
+              "title": "Echoes of Tomorrow",
+              "intro": "In a neon-soaked city where the lines between man and machine blur, rogue anti-hero Kael Torque discovers a device that bends time and unravels truths, threatening the fragile balance of power in a dystopian society.",
+              "tags": [
+                "cyberpunk",
+                "dystopian societies",
+                "political intrigue",
+                "identity",
+                "narrative consequences",
+                "philosophical debates",
+                "time-travel adventures"
+              ]
+            },
+            {
+              "id": "5403",
+              "title": "Echoes of Tomorrow",
+              "intro": "In the neon-lit shadows of New Haven, where reality bends to the will of towering technocrats, a rogue anti-hero stumbles upon a relic from the past\u2014a device capable of rewriting history. But in a world where identity is as malleable as time itself, every choice becomes a battleground for power, truth, and survival.",
+              "tags": [
+                "cyberpunk",
+                "dystopian societies",
+                "political intrigue",
+                "identity",
+                "time-travel adventures",
+                "narrative consequences",
+                "philosophical debates"
+              ]
+            },
+            {
+              "id": "5404",
+              "title": "Echoes of the Neon Past",
+              "intro": "In the sprawling neon city of Arcanum, where corporations reign and time is an elusive thread, a rogue anti-hero stumbles upon a secret capable of rewriting history. As timelines blur, choices must be made that will reshape both identity and destiny.",
+              "tags": [
+                "cyberpunk",
+                "dystopian societies",
+                "political intrigue",
+                "identity",
+                "philosophical debates",
+                "narrative consequences",
+                "time-travel adventures"
+              ]
+            },
+            {
+              "id": "540512",
+              "title": "Echoes in Neon Shadows",
+              "intro": "In a world where the line between human and machine blurs, a rogue anti-hero discovers a time-bending device that could alter the dystopian fate of their city, but each choice ripples through time with unforeseen consequences.",
+              "tags": [
+                "cyberpunk",
+                "dystopian societies",
+                "philosophical debates",
+                "political intrigue",
+                "identity",
+                "narrative consequences",
+                "time-travel adventures"
+              ]
+            }
+          ]
+        },
+        {
+          "user_id": "user5",
+          "score": 1.0,
+          "strategy": "tag_based_search",
+          "strengths": [
+            {
+              "type": "tag_coverage",
+              "description": "Good coverage of tags: mystery, sci-fi, gothic horror",
+              "tags": [
+                "mystery",
+                "sci-fi",
+                "gothic horror",
+                "psychological depth"
+              ]
+            },
+            {
+              "type": "ground_truth_overlap",
+              "description": "5 recommendations match the ground truth",
+              "overlap_count": 5
+            }
+          ],
+          "weaknesses": [
+            {
+              "type": "tag_coverage",
+              "description": "Missing coverage of tags: discovery, nuanced protagonists, enigmatic detective",
+              "tags": [
+                "discovery",
+                "nuanced protagonists",
+                "enigmatic detective",
+                "introspective scholar",
+                "cunning tactician",
+                "labyrinthine plots",
+                "futuristic cities",
+                "haunted manors",
+                "isolated islands",
+                "thriller",
+                "identity",
+                "memory",
+                "nature of reality",
+                "Sherlock Holmes",
+                "Blade Runner",
+                "Twin Peaks",
+                "mentor-apprentice",
+                "intellectual rivalries",
+                "complicated friendships",
+                "existential undertones",
+                "grey areas of morality",
+                "slow reveals",
+                "plot twists",
+                "narrative complexity",
+                "emotional resonance"
+              ]
+            },
+            {
+              "type": "diversity",
+              "description": "Low diversity with only 7 unique tags",
+              "unique_tags": 7
+            }
+          ],
+          "scores_by_metric": {
+            "precision@10": 1.0,
+            "recall": 0.5,
+            "semantic_overlap": 1.0
+          },
+          "recommended_stories": [
+            {
+              "id": "550101",
+              "title": "The Shadow Network",
+              "intro": "In the year 2147, beneath the neon-lit skies of Neo-London, a reclusive detective is drawn into a web of conspiracies threatening to unravel the very fabric of reality. As he delves deeper, he uncovers a truth more terrifying than he could have imagined.",
+              "tags": [
+                "mystery",
+                "psychological depth",
+                "sci-fi",
+                "gothic horror",
+                "existential themes",
+                "complex narratives",
+                "futuristic settings"
+              ]
+            },
+            {
+              "id": "550200",
+              "title": "The Labyrinth's Echo",
+              "intro": "In the shadowed alleys of Neo-London, where reality intertwines with illusion, Detective Elara Windrider stumbles upon a series of cryptic murders that beckon her into a world where the boundaries of existence blur.",
+              "tags": [
+                "mystery",
+                "psychological depth",
+                "sci-fi",
+                "gothic horror",
+                "existential themes",
+                "complex narratives",
+                "futuristic settings"
+              ]
+            },
+            {
+              "id": "550301",
+              "title": "The Clockwork Labyrinth",
+              "intro": "In a sprawling city where towering spires pierce the smog-choked sky, a detective with an enigmatic past is drawn into a web of secrets when a series of cryptic murders threaten the fragile balance between man and machine.",
+              "tags": [
+                "mystery",
+                "psychological depth",
+                "sci-fi",
+                "gothic horror",
+                "existential themes",
+                "complex narratives",
+                "futuristic settings"
+              ]
+            },
+            {
+              "id": "550401",
+              "title": "The Labyrinth of Echoes",
+              "intro": "In the sprawling cityscape of Neo-Gothica, a reclusive detective with an enigmatic past is drawn into a web of mystery that transcends time and reality, where the echoes of an ancient consciousness threaten the very fabric of existence.",
+              "tags": [
+                "mystery",
+                "psychological depth",
+                "sci-fi",
+                "gothic horror",
+                "existential themes",
+                "complex narratives",
+                "futuristic settings"
+              ]
+            },
+            {
+              "id": "550501",
+              "title": "The Echoes of Elysium",
+              "intro": "In the sprawling, neon-lit metropolis of Elysium, where shadows harbor ancient secrets and the air hums with the dissonance of forgotten dreams, an enigmatic detective stumbles upon a case that will unravel the very fabric of reality.",
+              "tags": [
+                "mystery",
+                "psychological depth",
+                "sci-fi",
+                "gothic horror",
+                "existential themes",
+                "complex narratives",
+                "futuristic settings"
+              ]
+            }
+          ]
+        }
+      ],
+      "edge_cases": [
+        {
+          "user_id": "user1",
+          "user_profile": "choice-driven high-agency dominant protector strategist; underdog, rivalry, team-vs-team, hero-vs-villain, internal-struggle, tournament conflicts; master-servant, royalty-commoner, captor-captive power-dynamics; high-immersion lore-expander, community-engagement; power-fantasy, moral-ambiguity; isekai escapism; romance, forbidden-love, love-triangles, found-family, reverse-harem; enemies-to-lovers, slow-burn; reincarnation, devil-powers, jujitsu-sorcerer; betrayal, loyalty, survival, redemption; Naruto, Dragon Ball, Jujutsu-Kaisen, Genshin-Impact, One-Piece, Demon-Slayer, Chainsaw-Man, Marvel/DC; crossover, anti-hero, strategy, fan-groups.",
+          "extracted_tags": [
+            "choice-driven",
+            "high-agency",
+            "underdog",
+            "rivalry",
+            "hero-vs-villain",
+            "power-fantasy",
+            "isekai",
+            "romance",
+            "forbidden-love",
+            "enemies-to-lovers",
+            "reincarnation",
+            "betrayal",
+            "Naruto",
+            "Marvel/DC",
+            "anti-hero"
+          ],
+          "recommended_stories": [
+            "5201",
+            "5202",
+            "520301",
+            "5204",
+            "5205"
+          ],
+          "score": 0.2,
+          "iteration": 5,
+          "weaknesses": [
+            {
+              "type": "tag_coverage",
+              "description": "Missing coverage of tags: choice-driven, high-agency, rivalry",
+              "tags": [
+                "choice-driven",
+                "high-agency",
+                "rivalry",
+                "hero-vs-villain",
+                "power-fantasy",
+                "isekai",
+                "forbidden-love",
+                "reincarnation",
+                "betrayal",
+                "Naruto",
+                "Marvel/DC",
+                "anti-hero"
+              ]
+            },
+            {
+              "type": "diversity",
+              "description": "Low diversity with only 7 unique tags",
+              "unique_tags": 7
+            },
+            {
+              "type": "ground_truth_overlap",
+              "description": "Only 1 recommendations match the ground truth",
+              "overlap_count": 1
+            }
+          ],
+          "ground_truth": [
+            "273613",
+            "510101",
+            "510210",
+            "5103",
+            "510489",
+            "5105",
+            "5107",
+            "5113",
+            "5201",
+            "5301"
+          ]
+        },
+        {
+          "user_id": "user3",
+          "user_profile": "Male roleplayer seeking immersive, choice-driven narratives; self-insert underdog, reluctant hero, dominant protector power fantasy. Prefers one-on-one romance, found-family bonds, intense angst, trauma healing. Loves supernatural\u2014nine-tailed foxes, vampires, magic. Achievement-hunter chasing epic conclusions. Morally flexible exploration sans non-consensual, gore, character death. Co-creative, supportive, detail-rich storytelling. Leaderboard climber, protective sibling loyalty, guilt.",
+          "extracted_tags": [
+            "roleplay",
+            "immersive",
+            "choice-driven",
+            "underdog",
+            "reluctant hero",
+            "dominant protector",
+            "romance",
+            "found-family",
+            "angst",
+            "trauma healing",
+            "supernatural",
+            "nine-tailed foxes",
+            "vampires",
+            "magic",
+            "achievement-hunter"
+          ],
+          "recommended_stories": [
+            "5201",
+            "5202",
+            "520301",
+            "5204",
+            "5205"
+          ],
+          "score": 0.0,
+          "iteration": 5,
+          "weaknesses": [
+            {
+              "type": "tag_coverage",
+              "description": "Missing coverage of tags: roleplay, immersive, choice-driven",
+              "tags": [
+                "roleplay",
+                "immersive",
+                "choice-driven",
+                "reluctant hero",
+                "dominant protector",
+                "found-family",
+                "angst",
+                "trauma healing",
+                "nine-tailed foxes",
+                "vampires",
+                "achievement-hunter"
+              ]
+            },
+            {
+              "type": "diversity",
+              "description": "Low diversity with only 7 unique tags",
+              "unique_tags": 7
+            },
+            {
+              "type": "ground_truth_overlap",
+              "description": "Only 0 recommendations match the ground truth",
+              "overlap_count": 0
+            }
+          ],
+          "ground_truth": [
+            "5301",
+            "5302",
+            "5303",
+            "5304",
+            "5306",
+            "530832",
+            "530911",
+            "5310",
+            "5311",
+            "5319"
+          ]
+        }
+      ],
+      "improvement": -0.2466666666666667
+    }
+  ],
+  "timestamp": 1746631286.495692
+}

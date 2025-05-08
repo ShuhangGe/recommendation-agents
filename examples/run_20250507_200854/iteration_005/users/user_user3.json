@@ -1,0 +1,174 @@
+{
+  "user_id": "user3",
+  "score": 0.4444444444444444,
+  "strategy": "tag_based_search",
+  "strengths": [
+    {
+      "type": "tag_coverage",
+      "description": "Good coverage of tags: underdog, found-family, trauma healing",
+      "tags": [
+        "underdog",
+        "found-family",
+        "trauma healing",
+        "supernatural",
+        "magic"
+      ]
+    },
+    {
+      "type": "ground_truth_overlap",
+      "description": "4 recommendations match the ground truth",
+      "overlap_count": 4
+    }
+  ],
+  "weaknesses": [
+    {
+      "type": "tag_coverage",
+      "description": "Missing coverage of tags: immersive, choice-driven, self-insert",
+      "tags": [
+        "immersive",
+        "choice-driven",
+        "self-insert",
+        "reluctant hero",
+        "dominant protector",
+        "one-on-one romance",
+        "angst",
+        "vampires",
+        "achievement-hunter",
+        "morally flexible"
+      ]
+    }
+  ],
+  "scores_by_metric": {
+    "precision@10": 0.4444444444444444,
+    "recall": 0.4,
+    "semantic_overlap": 0.5424333133797363
+  },
+  "recommended_stories": [
+    {
+      "id": "5201",
+      "title": "Whispered Spells of the Hidden Heir",
+      "intro": "In the mystical realm of Aldoria, where magic flows as freely as the wind, a young, disguised royal enters the hallowed halls of the prestigious Arcane Academy. But their journey takes an unexpected turn when a fierce rival with a mysterious past becomes their unlikely ally.",
+      "tags": [
+        "fantasy",
+        "action",
+        "romance",
+        "supernatural",
+        "underdog",
+        "magic",
+        "enemies-to-lovers"
+      ]
+    },
+    {
+      "id": "5202",
+      "title": "The Hidden Crown of Arcanis",
+      "intro": "In the heart of Arcanis, an enchanted kingdom teetering on the brink of war, a young mage discovers her royal bloodline and an unexpected destiny intertwined with an enemy prince amidst the halls of the magical academy.",
+      "tags": [
+        "fantasy",
+        "action",
+        "romance",
+        "supernatural",
+        "underdog",
+        "magic",
+        "enemies-to-lovers"
+      ]
+    },
+    {
+      "id": "520301",
+      "title": "The Enchanted Duel of Hearts",
+      "intro": "In the shadowy alleys of the magical city of Lumina, a young, cloaked figure discovers their hidden royal heritage while navigating the treacherous trials of the Arcane Academy. As tensions rise, an unexpected bond forms with their fiercest rival.",
+      "tags": [
+        "fantasy",
+        "action",
+        "romance",
+        "supernatural",
+        "underdog",
+        "magic",
+        "enemies-to-lovers"
+      ]
+    },
+    {
+      "id": "5204",
+      "title": "The Enchanted Duel",
+      "intro": "In the enchanting kingdom of Elmswood, a hidden heir and a mysterious rival must set aside their differences as an ancient prophecy threatens their world.",
+      "tags": [
+        "fantasy",
+        "action",
+        "romance",
+        "supernatural",
+        "magic",
+        "underdog",
+        "enemies-to-lovers"
+      ]
+    },
+    {
+      "id": "5205",
+      "title": "The Hidden Empress and the Arcane Duel",
+      "intro": "In the mystical realm of Eldoria, where magic flows through the veins of its inhabitants, a disguised royal finds herself thrust into the heart of an academy's fierce competition, sparking an unexpected bond with her sworn rival.",
+      "tags": [
+        "fantasy",
+        "action",
+        "romance",
+        "magic",
+        "underdog",
+        "supernatural",
+        "enemies-to-lovers"
+      ]
+    },
+    {
+      "id": "5301",
+      "title": "Shadowbound: A Guardian's Redemption",
+      "intro": "In a world where the veil between realms is thinning, you, an unlikely protector with a haunted past, must choose between saving the ones you love and confronting the shadows within.",
+      "tags": [
+        "roleplaying",
+        "immersive narratives",
+        "romance",
+        "supernatural",
+        "found-family",
+        "trauma healing",
+        "achievement-hunting"
+      ]
+    },
+    {
+      "id": "5302",
+      "title": "Echoes of the Forgotten Heart",
+      "intro": "In a world where shadows whisper secrets and ancient powers lie dormant, you awaken as an ordinary man burdened with extraordinary potential. As destiny weaves its intricate tapestry, you are thrust into a journey of love and redemption, where the bonds you forge could save\u2014or destroy\u2014a realm teetering on the edge of chaos.",
+      "tags": [
+        "roleplaying",
+        "immersive narratives",
+        "romance",
+        "supernatural",
+        "found-family",
+        "trauma healing",
+        "achievement-hunting"
+      ]
+    },
+    {
+      "id": "5303",
+      "title": "Echoes of the Heart",
+      "intro": "In a world where the supernatural intertwines with the mundane, you are an underestimated guardian burdened by your past but destined for greatness. As shadows of your lost memories resurface, so does a chance for love and healing.",
+      "tags": [
+        "roleplaying",
+        "immersive narratives",
+        "romance",
+        "supernatural",
+        "found-family",
+        "trauma healing",
+        "achievement-hunting"
+      ]
+    },
+    {
+      "id": "5304",
+      "title": "Whispers of Chaos",
+      "intro": "In a world where shadows hold secrets and whispered promises can alter destinies, you are thrust into the role of an unlikely hero, bound by fate to protect a fractured realm teetering on the brink of darkness.",
+      "tags": [
+        "roleplaying",
+        "immersive narratives",
+        "romance",
+        "supernatural",
+        "found-family",
+        "trauma healing",
+        "achievement-hunting"
+      ]
+    }
+  ]
+}

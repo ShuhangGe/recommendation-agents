@@ -1,25 +1,38 @@
 """
-Adaptive Optimizer Agent that dynamically improves recommendation prompts.
-This agent analyzes evaluation results and improves prompts for better recommendations.
+Adaptive Optimizer Agent that analyzes evaluation results to optimize recommendation prompts.
+This agent is inspired by AutoPrompt's Intent-based Prompt Calibration approach to 
+systematically improve prompts by identifying and addressing edge cases.
 """
 import json
 import random
 import time
 from typing import List, Dict, Any, Optional
+import numpy as np
 
 import config
-from utils.data_utils import generate_with_model
+from utils.data_utils import generate_with_model, create_openai_client
 from utils.cache_utils import PromptCache
 from agents.agent_core import Agent, Memory
+# Import prompt templates
+from utils.prompt_templates import (
+    INTENT_BASED_CALIBRATION_SYSTEM_PROMPT,
+    OPTIMIZATION_STANDARD_TEMPLATE,
+    OPTIMIZATION_EXPLORATION_TEMPLATE,
+    OPTIMIZATION_REFINEMENT_TEMPLATE,
+    FALLBACK_OPTIMIZATION_TEMPLATE,
+    EDGE_CASE_TEST_TEMPLATE
+)
 
 class AdaptiveOptimizerAgent(Agent):
     """
-    Adaptive agent that optimizes recommendation prompts based on evaluation results.
-    This agent can:
-    1. Analyze evaluation results to identify strengths and weaknesses
-    2. Generate improved prompts using various strategies
-    3. Track prompt performance over time
-    4. Adapt optimization strategies based on context
+    Adaptive agent that optimizes prompts based on evaluation results.
+    
+    Implements Intent-based Prompt Calibration from AutoPrompt to:
+    1. Identify boundary/edge cases where recommendations fail
+    2. Extract patterns from successful vs unsuccessful recommendations
+    3. Generate improved prompts that handle these edge cases
+    4. Maintain a memory of optimization history for detecting trends
+    5. Balance exploration (trying new approaches) with exploitation (refining successful ones)
     """
     
     def __init__(self, model_name: str = None):
@@ -31,21 +44,22 @@ class AdaptiveOptimizerAgent(Agent):
         """
         super().__init__(name="AdaptiveOptimizer", model_name=model_name or config.OPTIMIZER_MODEL)
         self.prompt_cache = PromptCache()
-        self.iteration = 0
         
-        # Register available tools
-        self.register_tool("analyze_results", self._analyze_results)
-        self.register_tool("optimize_prompt", self._optimize_prompt)
-        self.register_tool("fetch_best_prompt", self._fetch_best_prompt)
+        # Tracking optimization progress
+        self.optimization_history = []
+        self.best_score = 0.0
+        self.best_prompt = ""
+        self.plateau_counter = 0
+        self.min_improvement_threshold = 0.005  # 0.5% improvement threshold
         
         # Set initial goals
-        self.set_goal("Optimize recommendation prompts for better performance")
-        self.set_goal("Identify patterns in successful and unsuccessful recommendations")
-        self.set_goal("Adapt optimization strategy based on progress patterns")
-    
+        self.set_goal("Analyze evaluation results to identify optimization opportunities")
+        self.set_goal("Generate improved prompts that handle edge cases")
+        self.set_goal("Balance prompt complexity with effectiveness")
+        
     def perceive(self, input_data: Dict[str, Any]) -> Dict[str, Any]:
         """
-        Analyze evaluation results to understand improvement opportunities.
+        Process input data to understand the optimization context.
         
         Args:
             input_data: Dictionary containing current prompt, evaluation results, etc.
@@ -53,103 +67,139 @@ class AdaptiveOptimizerAgent(Agent):
         Returns:
             Dictionary of perceptions
         """
-        self.logger.info("Analyzing evaluation results")
-        self.iteration += 1
+        self.logger.info("Perceiving optimization context and evaluation results")
         
         # Extract input data
         current_prompt = input_data.get("current_prompt", "")
         evaluation_results = input_data.get("evaluation_results", [])
         current_score = input_data.get("current_score", 0.0)
-        previous_scores = input_data.get("previous_scores", [])
-        available_stories = input_data.get("available_stories", [])
+        iteration = input_data.get("iteration", 0)
         
-        # Analyze the evaluation results
-        analysis = self._analyze_results(evaluation_results, current_score, previous_scores)
+        # Get previous scores from history
+        previous_scores = [item["score"] for item in self.optimization_history] if self.optimization_history else []
         
-        # Construct perceptions
+        # Analyze results to identify patterns and edge cases
+        result_analysis = self._analyze_results(evaluation_results, current_score, previous_scores)
+        
+        # Store the current optimization step in history
+        self.optimization_history.append({
+            "iteration": iteration,
+            "score": current_score,
+            "prompt": current_prompt,
+            "timestamp": time.time()
+        })
+        
+        # Update best score and prompt if improved
+        if current_score > self.best_score:
+            self.best_score = current_score
+            self.best_prompt = current_prompt
+            self.plateau_counter = 0
+        else:
+            self.plateau_counter += 1
+        
+        # Extract common tags from successful and unsuccessful cases
+        successful_cases = [r for r in evaluation_results if r.get("score", 0) > 0.7]
+        unsuccessful_cases = [r for r in evaluation_results if r.get("score", 0) <= 0.3]
+        
+        successful_tags = self._extract_common_tags(successful_cases)
+        unsuccessful_tags = self._extract_common_tags(unsuccessful_cases)
+        
+        # Analyze score trends
+        score_trend = self._analyze_score_trends(previous_scores + [current_score])
+        
+        # Compile perceptions
         perceptions = {
             "current_prompt": current_prompt,
             "current_score": current_score,
-            "score_history": previous_scores + [current_score],
-            "iteration": self.iteration,
-            "analysis": analysis,
-            "prompt_length": len(current_prompt),
-            "story_count": len(available_stories),
-            "score_trends": self._analyze_score_trends(previous_scores + [current_score]),
-            "improvement_needed": current_score < config.SCORE_THRESHOLD
+            "iteration": iteration,
+            "result_analysis": result_analysis,
+            "successful_tags": successful_tags,
+            "unsuccessful_tags": unsuccessful_tags,
+            "score_trend": score_trend,
+            "best_score": self.best_score,
+            "plateau_counter": self.plateau_counter
         }
-        
-        # Check for cached best prompt if this is the first iteration
-        if self.iteration == 1:
-            best_cached = self.prompt_cache.get_best_prompt()
-            if best_cached:
-                perceptions["best_cached_prompt"] = best_cached.get("prompt")
-                perceptions["best_cached_score"] = best_cached.get("score", 0.0)
         
         # Store perceptions in memory
         self.memory.add_to_short_term("latest_perceptions", perceptions)
         
-        self.logger.info(f"Perceived score: {current_score:.4f} at iteration {self.iteration}")
+        self.logger.info(f"Current score: {current_score:.4f}, Best score: {self.best_score:.4f}")
         return perceptions
     
     def _analyze_results(self, evaluation_results: List[Dict[str, Any]], 
                        current_score: float, previous_scores: List[float]) -> Dict[str, Any]:
         """
-        Analyze evaluation results for insights.
+        Analyze evaluation results to identify patterns and edge cases.
         
         Args:
-            evaluation_results: List of evaluation results
+            evaluation_results: List of evaluation results for each user
             current_score: Current average score
             previous_scores: List of previous scores
             
         Returns:
-            Analysis dictionary with insights
+            Dictionary with analysis results
         """
         if not evaluation_results:
-            return {"status": "no_data"}
+            return {"status": "insufficient_data", "edge_cases": []}
             
-        # Calculate successful vs unsuccessful cases
-        successful_cases = []
-        unsuccessful_cases = []
-        
+        # Identify edge cases (low-scoring results)
+        edge_cases = []
         for result in evaluation_results:
-            score = result.get("score", 0.0)
-            if score >= 0.5:  # Consider cases with score >= 0.5 as successful
-                successful_cases.append(result)
-            else:
-                unsuccessful_cases.append(result)
+            score = result.get("score", 0)
+            if score < 0.5:  # Consider low scores as edge cases
+                edge_cases.append({
+                    "user_id": result.get("user_id", "unknown"),
+                    "score": score,
+                    "strategy": result.get("strategy", "unknown"),
+                    "weaknesses": result.get("weaknesses", [])
+                })
         
-        # Calculate success rate
-        success_rate = len(successful_cases) / len(evaluation_results) if evaluation_results else 0
+        # Extract common weakness patterns
+        weakness_patterns = {}
+        for case in edge_cases:
+            for weakness in case.get("weaknesses", []):
+                weakness_type = weakness.get("type", "unknown")
+                weakness_patterns[weakness_type] = weakness_patterns.get(weakness_type, 0) + 1
         
-        # Check for score plateau
-        is_plateauing = False
-        if len(previous_scores) >= 3:
-            recent_improvements = [previous_scores[i] - previous_scores[i-1] for i in range(1, len(previous_scores))]
-            is_plateauing = all(imp < config.IMPROVEMENT_THRESHOLD for imp in recent_improvements[-2:])
+        # Sort weaknesses by frequency
+        sorted_weaknesses = sorted(weakness_patterns.items(), key=lambda x: x[1], reverse=True)
         
-        # Extract commonly occurring tags in successful and unsuccessful cases
-        successful_tags = self._extract_common_tags(successful_cases)
-        unsuccessful_tags = self._extract_common_tags(unsuccessful_cases)
+        # Calculate improvement trend
+        improvement = 0
+        if len(previous_scores) > 0:
+            last_score = previous_scores[-1] if previous_scores else 0
+            improvement = current_score - last_score
         
-        # Prepare analysis
-        analysis = {
-            "successful_count": len(successful_cases),
-            "unsuccessful_count": len(unsuccessful_cases),
-            "success_rate": success_rate,
-            "is_plateauing": is_plateauing,
-            "successful_tags": successful_tags,
-            "unsuccessful_tags": unsuccessful_tags
+        # Check for plateau
+        is_plateau = len(previous_scores) >= 3 and all(
+            abs(current_score - prev) < self.min_improvement_threshold 
+            for prev in previous_scores[-3:]
+        )
+        
+        # Identify most common strategy in high-scoring cases
+        high_score_strategies = {}
+        for result in evaluation_results:
+            if result.get("score", 0) > 0.7:
+                strategy = result.get("strategy", "unknown")
+                high_score_strategies[strategy] = high_score_strategies.get(strategy, 0) + 1
+        
+        best_strategy = max(high_score_strategies.items(), key=lambda x: x[1])[0] if high_score_strategies else "unknown"
+        
+        return {
+            "edge_cases": edge_cases,
+            "edge_case_count": len(edge_cases),
+            "weakness_patterns": sorted_weaknesses,
+            "improvement": improvement,
+            "is_plateau": is_plateau,
+            "best_strategy": best_strategy
         }
-        
-        return analysis
     
     def _extract_common_tags(self, cases: List[Dict[str, Any]]) -> List[str]:
         """
-        Extract commonly occurring tags from cases.
+        Extract common tags from a list of cases.
         
         Args:
-            cases: List of evaluation result cases
+            cases: List of evaluation cases
             
         Returns:
             List of common tags
@@ -157,24 +207,35 @@ class AdaptiveOptimizerAgent(Agent):
         if not cases:
             return []
             
-        # Collect all tags
+        # Extract all tags mentioned in strengths or weaknesses
         all_tags = []
         for case in cases:
-            all_tags.extend(case.get("extracted_tags", []))
+            strengths = case.get("strengths", [])
+            weaknesses = case.get("weaknesses", [])
             
-        # Count tag frequencies
-        from collections import Counter
-        tag_counts = Counter(all_tags)
+            for item in strengths + weaknesses:
+                tags = item.get("tags", [])
+                all_tags.extend(tags)
+                
+            # Add any explicitly mentioned tags
+            if "extracted_tags" in case:
+                all_tags.extend(case.get("extracted_tags", []))
         
-        # Return the most common tags (up to 10)
-        return [tag for tag, _ in tag_counts.most_common(10)]
+        # Count occurrences of each tag
+        tag_counts = {}
+        for tag in all_tags:
+            tag_counts[tag] = tag_counts.get(tag, 0) + 1
+            
+        # Sort by frequency and return top tags
+        sorted_tags = sorted(tag_counts.items(), key=lambda x: x[1], reverse=True)
+        return [tag for tag, count in sorted_tags[:10]]
     
     def _analyze_score_trends(self, scores: List[float]) -> Dict[str, Any]:
         """
-        Analyze score trends to determine optimization strategy.
+        Analyze trends in optimization scores.
         
         Args:
-            scores: List of historical scores
+            scores: List of scores from optimization history
             
         Returns:
             Dictionary with trend analysis
@@ -182,32 +243,38 @@ class AdaptiveOptimizerAgent(Agent):
         if len(scores) < 2:
             return {"trend": "insufficient_data"}
             
-        # Calculate improvements
-        improvements = [scores[i] - scores[i-1] for i in range(1, len(scores))]
+        # Calculate differences between consecutive scores
+        differences = [scores[i] - scores[i-1] for i in range(1, len(scores))]
         
-        # Calculate average improvement
-        avg_improvement = sum(improvements) / len(improvements)
+        # Calculate moving average of differences (last 3)
+        window_size = min(3, len(differences))
+        recent_diffs = differences[-window_size:]
+        avg_recent_diff = sum(recent_diffs) / window_size
         
-        # Determine if improvements are diminishing
-        diminishing = False
-        if len(improvements) >= 3:
-            diminishing = improvements[-1] < improvements[-2] < improvements[-3]
-        
-        # Determine current trend
-        if avg_improvement < 0:
-            trend = "negative"
-        elif avg_improvement < config.IMPROVEMENT_THRESHOLD / 2:
-            trend = "stagnating"
-        elif diminishing:
-            trend = "diminishing"
-        else:
+        # Determine overall trend
+        if avg_recent_diff > self.min_improvement_threshold:
             trend = "improving"
+        elif avg_recent_diff < -self.min_improvement_threshold:
+            trend = "declining"
+        else:
+            trend = "plateau"
             
+        # Check for convergence (diminishing improvements)
+        is_converging = False
+        if len(differences) >= 3:
+            # Check if improvements are getting smaller
+            if all(differences[i] < differences[i-1] for i in range(len(differences)-1, len(differences)-3, -1)) and differences[-1] > 0:
+                is_converging = True
+                
+        # Calculate volatility (standard deviation of recent differences)
+        volatility = np.std(recent_diffs) if len(recent_diffs) > 1 else 0
+        
         return {
             "trend": trend,
-            "avg_improvement": avg_improvement,
-            "improvements": improvements,
-            "diminishing": diminishing
+            "avg_recent_diff": avg_recent_diff,
+            "is_converging": is_converging,
+            "volatility": float(volatility),
+            "latest_score": scores[-1] if scores else 0
         }
     
     def reason(self, perceptions: Dict[str, Any]) -> Dict[str, Any]:
@@ -218,77 +285,76 @@ class AdaptiveOptimizerAgent(Agent):
             perceptions: Dictionary of perceptions about evaluation results
             
         Returns:
-            Plan of action for optimizing the prompt
+            Plan of action for optimization
         """
         self.logger.info("Reasoning about optimization strategy")
         
         # Extract key perceptions
         current_prompt = perceptions.get("current_prompt", "")
         current_score = perceptions.get("current_score", 0.0)
-        score_history = perceptions.get("score_history", [])
         iteration = perceptions.get("iteration", 0)
-        analysis = perceptions.get("analysis", {})
-        score_trends = perceptions.get("score_trends", {})
-        best_cached_prompt = perceptions.get("best_cached_prompt")
-        best_cached_score = perceptions.get("best_cached_score", 0.0)
+        result_analysis = perceptions.get("result_analysis", {})
+        successful_tags = perceptions.get("successful_tags", [])
+        unsuccessful_tags = perceptions.get("unsuccessful_tags", [])
+        score_trend = perceptions.get("score_trend", {})
+        plateau_counter = perceptions.get("plateau_counter", 0)
         
-        # Determine whether to use cached prompt (only on first iteration)
-        use_cached_prompt = (iteration == 1 and 
-                            best_cached_prompt and 
-                            best_cached_score > current_score)
+        # Determine if we should try something radically different
+        should_explore = (
+            plateau_counter >= 3 or  # Stuck in plateau for too long
+            score_trend.get("trend") == "declining" or  # Scores are declining
+            (current_score < 0.3 and iteration > 2)  # Really poor performance
+        )
         
-        # Decide on optimization approach based on trends
-        trend = score_trends.get("trend", "")
+        # Should we focus on refining what works?
+        should_exploit = (
+            score_trend.get("trend") == "improving" and  # Scores are improving
+            not score_trend.get("is_converging", False) and  # Not converging yet
+            current_score > 0.6  # Already decent performance
+        )
         
-        if use_cached_prompt:
-            strategy = "use_cached_prompt"
-            temperature = 0.7  # Standard temperature
-        elif trend == "negative":
-            strategy = "radical_revision"
-            temperature = 1.2  # High temperature for creative exploration
-        elif trend == "stagnating":
-            strategy = "structural_change"
-            temperature = 1.0  # Higher temperature to escape plateau
-        elif trend == "diminishing":
-            strategy = "focused_enhancement"
-            temperature = 0.8  # Moderate temperature
-        else:  # "improving"
-            strategy = "iterative_refinement"
-            temperature = 0.7  # Standard temperature
-            
-        # Add randomness to temperature to avoid local optima
-        # Higher iterations get more temperature variation
-        temperature_variation = min(0.3, iteration * 0.02)
-        temperature = max(0.5, min(1.3, temperature + random.uniform(-temperature_variation, temperature_variation)))
-        
-        # Decide on focus areas based on analysis
+        # Determine areas to focus on based on weaknesses
         focus_areas = []
-        
-        if analysis.get("unsuccessful_count", 0) > 0:
-            focus_areas.append("unsuccessful_cases")
-        
-        if analysis.get("is_plateauing", False):
-            focus_areas.append("structural_prompting")
-            
-        # If we have a good success rate, focus on making good cases even better
-        if analysis.get("success_rate", 0) > 0.7:
-            focus_areas.append("amplify_strengths")
-            
-        # Default focus if none selected
+        if result_analysis and "weakness_patterns" in result_analysis:
+            for weakness_type, count in result_analysis.get("weakness_patterns", []):
+                if count >= 2:  # Weakness appears multiple times
+                    focus_areas.append(weakness_type)
+                    
+        # If no clear weaknesses, focus on general improvements
         if not focus_areas:
-            focus_areas.append("general_improvement")
+            focus_areas = ["relevance", "diversity", "specificity"]
+            
+        # Determine optimization strategy
+        if should_explore:
+            strategy = "explore_new_approach"
+            temperature = 0.8  # Higher temperature for more creativity
+        elif should_exploit:
+            strategy = "refine_current_approach"
+            temperature = 0.4  # Lower temperature for more focused refinement
+        else:
+            strategy = "balanced_optimization"
+            temperature = 0.6  # Balanced temperature
+            
+        # Check if we should revert to the best prompt and try again
+        should_revert = (
+            score_trend.get("trend") == "declining" and
+            current_score < perceptions.get("best_score", 0) - 0.1  # Significant decline from best
+        )
         
-        # Create optimization plan
+        # Create the optimization plan
         plan = {
             "strategy": strategy,
             "temperature": temperature,
             "focus_areas": focus_areas,
-            "use_cached_prompt": use_cached_prompt,
-            "best_cached_prompt": best_cached_prompt if use_cached_prompt else None,
-            "explanation_detail": "high" if current_score > 0.6 else "moderate"
+            "should_revert": should_revert,
+            "best_strategy": result_analysis.get("best_strategy", "hybrid_search"),
+            "edge_case_count": result_analysis.get("edge_case_count", 0)
         }
         
-        self.logger.info(f"Selected strategy: {strategy} with temperature {temperature:.2f}")
+        # Log the chosen strategy
+        self.logger.info(f"Selected optimization strategy: {strategy} (Temperature: {temperature})")
+        self.logger.info(f"Focus areas: {', '.join(focus_areas)}")
+        
         return plan
     
     def act(self, plan: Dict[str, Any]) -> Dict[str, Any]:
@@ -299,9 +365,9 @@ class AdaptiveOptimizerAgent(Agent):
             plan: Plan of action for optimization
             
         Returns:
-            Dictionary with optimized prompt and metadata
+            Dictionary with optimized prompt
         """
-        self.logger.info(f"Executing plan with strategy: {plan['strategy']}")
+        self.logger.info("Executing optimization plan")
         
         # Get perceptions from memory
         perceptions = self.memory.get_from_short_term("latest_perceptions", {})
@@ -312,204 +378,262 @@ class AdaptiveOptimizerAgent(Agent):
         # Extract needed data
         current_prompt = perceptions.get("current_prompt", "")
         evaluation_results = perceptions.get("evaluation_results", [])
-        available_stories = perceptions.get("available_stories", [])
         current_score = perceptions.get("current_score", 0.0)
         
-        # If using cached prompt, return it
-        if plan.get("use_cached_prompt", False) and plan.get("best_cached_prompt"):
-            optimized_prompt = plan["best_cached_prompt"]
-            self.logger.info("Using cached best prompt")
-        else:
-            # Generate optimized prompt
-            optimized_prompt = self._optimize_prompt(
-                current_prompt, 
-                evaluation_results, 
-                available_stories,
-                plan.get("strategy", "iterative_refinement"),
-                plan.get("temperature", 0.7),
-                plan.get("focus_areas", ["general_improvement"])
-            )
+        # Get optimization parameters from plan
+        strategy = plan.get("strategy", "balanced_optimization")
+        temperature = plan.get("temperature", 0.6)
+        focus_areas = plan.get("focus_areas", ["relevance"])
+        should_revert = plan.get("should_revert", False)
+        best_strategy = plan.get("best_strategy", "hybrid_search")
         
-        # Store the optimized prompt in cache
-        self.prompt_cache.add_prompt(
-            optimized_prompt, 
-            current_score, 
-            {
-                "iteration": self.iteration, 
-                "strategy": plan.get("strategy"),
-                "temperature": plan.get("temperature")
-            }
+        # If we should revert to the best prompt
+        if should_revert and self.best_prompt:
+            self.logger.info("Reverting to best prompt and trying a different approach")
+            current_prompt = self.best_prompt
+        
+        # Try to fetch stories from evaluation results
+        stories = []
+        for result in evaluation_results:
+            if "recommended_stories" in result:
+                stories.extend(result["recommended_stories"][:3])  # Take a few example stories
+                break
+                
+        # Optimize the prompt
+        optimized_prompt = self._optimize_prompt(
+            current_prompt, 
+            evaluation_results, 
+            stories, 
+            best_strategy,
+            temperature,
+            focus_areas
         )
         
-        # Prepare result
+        # If optimization failed, try fallback approach
+        if not optimized_prompt or optimized_prompt == current_prompt:
+            self.logger.warning("Primary optimization failed, trying fallback approach")
+            optimized_prompt = self._fallback_optimization(current_prompt, evaluation_results)
+        
+        # If fallback also failed, try cached prompt
+        if not optimized_prompt or optimized_prompt == current_prompt:
+            self.logger.warning("Fallback optimization failed, trying cached prompt")
+            best_cached = self._fetch_best_prompt()
+            if best_cached and best_cached["score"] > current_score:
+                optimized_prompt = best_cached["prompt"]
+                
+        # Ensure we have a prompt, even if it's the current one
+        if not optimized_prompt:
+            optimized_prompt = current_prompt
+            
+        # Store the optimized prompt and score in cache
+        if optimized_prompt != current_prompt:
+            self.prompt_cache.add_prompt(
+                optimized_prompt, 
+                current_score,
+                {"timestamp": time.time(), "strategy": strategy}
+            )
+        
+        # Return the optimization result
         result = {
             "optimized_prompt": optimized_prompt,
-            "strategy": plan.get("strategy"),
-            "temperature": plan.get("temperature"),
-            "focus_areas": plan.get("focus_areas", []),
-            "iteration": self.iteration,
-            "prompt_difference": len(optimized_prompt) - len(current_prompt)
+            "optimization_strategy": strategy,
+            "focus_areas": focus_areas,
+            "timestamp": time.time()
         }
         
-        # Store the result in memory
-        self.memory.add_to_short_term("latest_optimization", result)
-        
-        self.logger.info(f"Generated optimized prompt (length: {len(optimized_prompt)} chars)")
+        self.logger.info("Optimization complete")
         return result
     
     def _optimize_prompt(self, current_prompt: str, evaluation_results: List[Dict[str, Any]], 
                       stories: List[Dict[str, Any]], strategy: str, temperature: float,
                       focus_areas: List[str]) -> str:
         """
-        Generate an optimized prompt using LLM.
+        Optimize the prompt using Intent-based Prompt Calibration.
         
         Args:
             current_prompt: Current recommendation prompt
             evaluation_results: List of evaluation results
-            stories: List of available stories
-            strategy: Optimization strategy to use
+            stories: List of example stories
+            strategy: Recommendation strategy that works best
             temperature: Temperature for generation
-            focus_areas: Areas to focus on for improvement
+            focus_areas: Areas to focus optimization on
             
         Returns:
-            Optimized prompt
+            Optimized prompt text
         """
-        # Prepare strategy-specific guidance
-        strategy_guidance = {
-            "iterative_refinement": """
-                Refine the current prompt with targeted improvements while preserving its structure.
-                Focus on improving how user preferences are matched to story attributes.
-            """,
-            "focused_enhancement": """
-                Enhance specific sections of the prompt that handle preference matching.
-                Pay special attention to how diverse preferences are balanced.
-            """,
-            "structural_change": """
-                IMPORTANT: Make significant structural changes to the prompt to overcome plateauing.
-                Consider completely different approaches to organizing information and reasoning.
-                Try a different prompt structure, different reasoning flows, or different emphasis points.
-            """,
-            "radical_revision": """
-                CRITICAL: The current approach is not working well. Start from first principles and 
-                create a substantially different prompt with a fresh approach.
-                Discard most of the current structure and reasoning, keeping only what's essential.
-            """
-        }
+        # Extract successful and unsuccessful cases
+        successful_cases = [r for r in evaluation_results if r.get("score", 0) > 0.7]
+        unsuccessful_cases = [r for r in evaluation_results if r.get("score", 0) <= 0.3]
         
-        # Prepare focus area guidance
-        focus_guidance = {
-            "unsuccessful_cases": f"""
-                Focus on improving performance for unsuccessful cases.
-                These tags were common in unsuccessful recommendations:
-                {json.dumps(self._extract_common_tags([r for r in evaluation_results if r.get('score', 0) < 0.5]), indent=2)}
-            """,
-            "amplify_strengths": f"""
-                Build upon what's already working well.
-                These tags were common in successful recommendations:
-                {json.dumps(self._extract_common_tags([r for r in evaluation_results if r.get('score', 0) >= 0.5]), indent=2)}
-            """,
-            "structural_prompting": """
-                The optimization seems to have plateaued. Try a completely different prompt structure.
-                Consider:
-                1. Different ordering of information
-                2. Different reasoning steps
-                3. Different ways to match preferences to stories
-                4. More explicit reasoning about matching logic
-            """,
-            "general_improvement": """
-                Improve the overall quality of the prompt for better recommendations.
-                Focus on clarity, precision, and comprehensive coverage of user preferences.
-            """
-        }
+        # If no evaluation data, use a more generic approach
+        if not evaluation_results:
+            self.logger.warning("No evaluation results available, using generic optimization")
+            return self._fallback_optimization(current_prompt, [])
+
+        # Calculate average score        
+        avg_score = sum(r.get("score", 0) for r in evaluation_results) / max(1, len(evaluation_results))
+            
+        # Extract example cases for learning
+        example_successes = []
+        for case in successful_cases[:2]:  # Limit to 2 examples
+            user_id = case.get("user_id", "unknown")
+            score = case.get("score", 0)
+            strengths = [s.get("description", "") for s in case.get("strengths", [])]
+            example_successes.append({
+                "user": user_id,
+                "score": score,
+                "strengths": strengths
+            })
+            
+        example_failures = []
+        for case in unsuccessful_cases[:2]:  # Limit to 2 examples
+            user_id = case.get("user_id", "unknown")
+            score = case.get("score", 0)
+            weaknesses = [w.get("description", "") for w in case.get("weaknesses", [])]
+            example_failures.append({
+                "user": user_id,
+                "score": score,
+                "weaknesses": weaknesses
+            })
         
-        # Calculate average score
-        avg_score = sum(r.get("score", 0) for r in evaluation_results) / len(evaluation_results) if evaluation_results else 0
+        # Format story examples    
+        story_examples = json.dumps([{"title": s.get("title", ""), "tags": s.get("tags", [])} for s in stories[:3]], indent=2)
         
-        # Create the optimization prompt
-        optimization_prompt = f"""
-        You are a prompt optimization expert. Your task is to improve a prompt for a story recommendation system.
+        # Extract weakness patterns for exploration template
+        weakness_patterns = ""
+        if evaluation_results:
+            weakness_counts = {}
+            for result in unsuccessful_cases:
+                for weakness in result.get("weaknesses", []):
+                    weakness_type = weakness.get("description", "")
+                    weakness_counts[weakness_type] = weakness_counts.get(weakness_type, 0) + 1
+                    
+            # Format weakness patterns
+            weakness_patterns = "\n".join([f"- {weakness} (found {count} times)" 
+                                          for weakness, count in sorted(weakness_counts.items(), 
+                                                                      key=lambda x: x[1], 
+                                                                      reverse=True)[:5]])
+            if not weakness_patterns:
+                weakness_patterns = "No specific weaknesses identified"
         
-        Current prompt:
-        ```
-        {current_prompt}
-        ```
-        
-        Current average evaluation score: {avg_score:.4f}
-        Iteration: {self.iteration}
-        
-        {strategy_guidance.get(strategy, '')}
-        
-        {' '.join(focus_guidance.get(focus, '') for focus in focus_areas)}
-        
-        Evaluation results:
-        {json.dumps(evaluation_results[:3], indent=2)}
-        
-        Example stories:
-        {json.dumps(stories[:3], indent=2)}
-        
-        Please create an improved version of the recommendation prompt that will:
-        1. Better match user preferences to relevant story attributes
-        2. Improve the precision of recommendations
-        3. Handle diverse user preferences more effectively
-        4. Be concise yet comprehensive
-        
-        Return ONLY the improved prompt without any explanation or additional text.
-        """
-        
+        # Format edge case examples for refinement template
+        edge_case_examples = ""
+        if unsuccessful_cases:
+            edge_case_tags = set()
+            for case in unsuccessful_cases:
+                for weakness in case.get("weaknesses", []):
+                    edge_case_tags.update(weakness.get("tags", []))
+            
+            edge_case_examples = ", ".join(list(edge_case_tags)[:10])
+            if not edge_case_examples:
+                edge_case_examples = "ambiguous preferences, conflicting interests, rare combinations"
+            
+        # Select the appropriate optimization template based on strategy
+        if strategy == "explore_new_approach":
+            # Use exploration template for radical changes
+            prompt_template = OPTIMIZATION_EXPLORATION_TEMPLATE.format(
+                current_prompt=current_prompt,
+                average_score=avg_score,
+                plateau_counter=self.plateau_counter,
+                weakness_patterns=weakness_patterns
+            )
+        elif strategy == "refine_current_approach":
+            # Use refinement template for incremental improvements
+            prompt_template = OPTIMIZATION_REFINEMENT_TEMPLATE.format(
+                current_prompt=current_prompt,
+                average_score=avg_score,
+                best_strategy=strategy,
+                focus_areas=", ".join(focus_areas),
+                edge_case_examples=edge_case_examples
+            )
+        else:
+            # Use standard template for balanced optimization
+            prompt_template = OPTIMIZATION_STANDARD_TEMPLATE.format(
+                current_prompt=current_prompt,
+                successful_count=len(successful_cases),
+                unsuccessful_count=len(unsuccessful_cases),
+                average_score=avg_score,
+                best_strategy=strategy,
+                success_examples=json.dumps(example_successes, indent=2),
+                failure_examples=json.dumps(example_failures, indent=2),
+                focus_areas=", ".join(focus_areas),
+                story_examples=story_examples
+            )
+            
         try:
-            optimized_prompt = generate_with_model(
-                prompt=optimization_prompt,
+            # Generate the optimized prompt
+            response = generate_with_model(
+                prompt=prompt_template,
                 model_name=self.model_name,
-                system_message="You are an expert prompt engineer specializing in recommendation systems.",
+                system_message=INTENT_BASED_CALIBRATION_SYSTEM_PROMPT,
                 temperature=temperature,
                 max_tokens=1000
             )
             
-            # Basic validation
-            if len(optimized_prompt) > 100:
-                return optimized_prompt.strip()
+            # Extract the optimized prompt
+            optimized_prompt = response.strip()
+            
+            # Remove any markdown formatting or section headers
+            lines = optimized_prompt.split("\n")
+            cleaned_lines = []
+            for line in lines:
+                if line.startswith("#") or line.startswith("```"):
+                    continue
+                cleaned_lines.append(line)
                 
+            optimized_prompt = "\n".join(cleaned_lines).strip()
+            
+            # Ensure the prompt is meaningful
+            if len(optimized_prompt) < 20:
+                return current_prompt
+                
+            return optimized_prompt
+            
         except Exception as e:
             self.logger.error(f"Error optimizing prompt: {str(e)}")
-        
-        # Fallback: return slightly modified current prompt
-        self.logger.warning("Using fallback optimization approach")
-        return self._fallback_optimization(current_prompt, evaluation_results)
-        
+            return current_prompt
+    
     def _fallback_optimization(self, current_prompt: str, evaluation_results: List[Dict[str, Any]]) -> str:
         """
-        Fallback optimization method when LLM optimization fails.
+        Fallback method for prompt optimization when primary method fails.
         
         Args:
             current_prompt: Current recommendation prompt
             evaluation_results: List of evaluation results
             
         Returns:
-            Modified prompt
+            Optimized prompt text
         """
-        # Extract tags from evaluation results
-        all_tags = []
-        for result in evaluation_results:
-            all_tags.extend(result.get("extracted_tags", []))
+        # Use the fallback template
+        prompt = FALLBACK_OPTIMIZATION_TEMPLATE.format(
+            current_prompt=current_prompt
+        )
+        
+        try:
+            # Generate the optimized prompt
+            response = generate_with_model(
+                prompt=prompt,
+                model_name=self.model_name,
+                system_message=INTENT_BASED_CALIBRATION_SYSTEM_PROMPT,
+                temperature=0.7,
+                max_tokens=800
+            )
             
-        # Count tag frequencies
-        from collections import Counter
-        tag_counts = Counter(all_tags)
-        
-        # Get most common tags
-        common_tags = [tag for tag, _ in tag_counts.most_common(10)]
-        emphasis = ", ".join(common_tags)
-        
-        # Add emphasis to current prompt
-        return current_prompt + f"\n\nPay special attention to these important themes and preferences: {emphasis}."
+            # Clean up the response
+            optimized_prompt = response.strip()
+            
+            # Ensure the prompt is meaningful
+            if len(optimized_prompt) < 20:
+                return current_prompt
+                
+            return optimized_prompt
+            
+        except Exception as e:
+            self.logger.error(f"Error in fallback optimization: {str(e)}")
+            return current_prompt
     
     def _fetch_best_prompt(self) -> Optional[Dict[str, Any]]:
-        """
-        Fetch the best performing prompt from cache.
-        
-        Returns:
-            Best prompt entry or None if cache is empty
-        """
+        """Get the best performing prompt from the cache."""
         return self.prompt_cache.get_best_prompt()
     
     def optimize(self, current_prompt: str, evaluation_results: List[Dict[str, Any]], 
@@ -522,27 +646,23 @@ class AdaptiveOptimizerAgent(Agent):
         Args:
             current_prompt: Current recommendation prompt
             evaluation_results: List of evaluation results
-            stories: List of all available stories
+            stories: List of stories in the system
             previous_scores: Optional list of previous scores
             model_name: Optional model name to use
             
         Returns:
-            Optimized prompt
+            Optimized prompt text
         """
         # Update model if specified
         if model_name:
             self.model_name = model_name
             
-        # Calculate current score
-        current_score = sum(r.get("score", 0) for r in evaluation_results) / len(evaluation_results) if evaluation_results else 0
-            
         # Prepare input data
         input_data = {
             "current_prompt": current_prompt,
             "evaluation_results": evaluation_results,
-            "available_stories": stories,
-            "current_score": current_score,
-            "previous_scores": previous_scores or []
+            "current_score": sum(r.get("score", 0) for r in evaluation_results) / max(1, len(evaluation_results)) if evaluation_results else 0,
+            "iteration": len(self.optimization_history) + 1
         }
         
         # Run the full perception-reasoning-action loop
@@ -565,6 +685,9 @@ class AdaptiveOptimizerAgent(Agent):
         agent = cls(model_name=data.get("model_name"))
         agent.memory = Memory.deserialize(data.get("memory", {}))
         agent.goals = data.get("goals", [])
-        agent.iteration = data.get("iteration", 0)
+        agent.optimization_history = data.get("optimization_history", [])
+        agent.best_score = data.get("best_score", 0.0)
+        agent.best_prompt = data.get("best_prompt", "")
+        agent.plateau_counter = data.get("plateau_counter", 0)
         
         return agent 

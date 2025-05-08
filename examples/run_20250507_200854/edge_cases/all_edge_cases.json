@@ -1,0 +1,2033 @@
+[
+  {
+    "user_id": "user1",
+    "user_profile": "choice-driven high-agency dominant protector strategist; underdog, rivalry, team-vs-team, hero-vs-villain, internal-struggle, tournament conflicts; master-servant, royalty-commoner, captor-captive power-dynamics; high-immersion lore-expander, community-engagement; power-fantasy, moral-ambiguity; isekai escapism; romance, forbidden-love, love-triangles, found-family, reverse-harem; enemies-to-lovers, slow-burn; reincarnation, devil-powers, jujitsu-sorcerer; betrayal, loyalty, survival, redemption; Naruto, Dragon Ball, Jujutsu-Kaisen, Genshin-Impact, One-Piece, Demon-Slayer, Chainsaw-Man, Marvel/DC; crossover, anti-hero, strategy, fan-groups.",
+    "extracted_tags": [
+      "choice-driven",
+      "high-agency",
+      "protector",
+      "underdog",
+      "rivalry",
+      "team-vs-team",
+      "hero-vs-villain",
+      "internal-struggle",
+      "power-dynamics",
+      "power-fantasy",
+      "moral-ambiguity",
+      "romance",
+      "forbidden-love",
+      "enemies-to-lovers",
+      "reincarnation"
+    ],
+    "recommended_stories": [
+      "5201",
+      "5202",
+      "520301",
+      "5204",
+      "5205"
+    ],
+    "score": 0.3,
+    "iteration": 1,
+    "weaknesses": [
+      {
+        "type": "tag_coverage",
+        "description": "Missing coverage of tags: choice-driven, high-agency, protector",
+        "tags": [
+          "choice-driven",
+          "high-agency",
+          "protector",
+          "rivalry",
+          "team-vs-team",
+          "hero-vs-villain",
+          "internal-struggle",
+          "power-fantasy",
+          "forbidden-love",
+          "reincarnation"
+        ]
+      }
+    ],
+    "ground_truth": [
+      "273613",
+      "263242",
+      "510101",
+      "510210",
+      "5105",
+      "5113",
+      "5201",
+      "5301",
+      "5302",
+      "5303"
+    ]
+  },
+  {
+    "user_id": "user3",
+    "user_profile": "Male roleplayer seeking immersive, choice-driven narratives; self-insert underdog, reluctant hero, dominant protector power fantasy. Prefers one-on-one romance, found-family bonds, intense angst, trauma healing. Loves supernatural\u2014nine-tailed foxes, vampires, magic. Achievement-hunter chasing epic conclusions. Morally flexible exploration sans non-consensual, gore, character death. Co-creative, supportive, detail-rich storytelling. Leaderboard climber, protective sibling loyalty, guilt.",
+    "extracted_tags": [
+      "roleplay",
+      "immersive",
+      "choice-driven",
+      "self-insert",
+      "underdog",
+      "reluctant hero",
+      "dominant protector",
+      "power fantasy",
+      "one-on-one romance",
+      "found-family",
+      "angst",
+      "trauma healing",
+      "supernatural",
+      "nine-tailed foxes",
+      "vampires",
+      "magic",
+      "achievement-hunter",
+      "morally flexible",
+      "detail-rich",
+      "protective sibling"
+    ],
+    "recommended_stories": [
+      "5201",
+      "5202",
+      "520301",
+      "5204",
+      "5205"
+    ],
+    "score": 0.0,
+    "iteration": 1,
+    "weaknesses": [
+      {
+        "type": "tag_coverage",
+        "description": "Missing coverage of tags: roleplay, immersive, choice-driven",
+        "tags": [
+          "roleplay",
+          "immersive",
+          "choice-driven",
+          "self-insert",
+          "reluctant hero",
+          "dominant protector",
+          "power fantasy",
+          "one-on-one romance",
+          "found-family",
+          "angst",
+          "trauma healing",
+          "nine-tailed foxes",
+          "vampires",
+          "achievement-hunter",
+          "morally flexible",
+          "detail-rich",
+          "protective sibling"
+        ]
+      },
+      {
+        "type": "diversity",
+        "description": "Low diversity with only 7 unique tags",
+        "unique_tags": 7
+      },
+      {
+        "type": "ground_truth_overlap",
+        "description": "Only 0 recommendations match the ground truth",
+        "overlap_count": 0
+      }
+    ],
+    "ground_truth": [
+      "5301",
+      "5302",
+      "5303",
+      "5304",
+      "5306",
+      "530701",
+      "530832",
+      "530911",
+      "5310",
+      "5311"
+    ]
+  },
+  {
+    "user_id": "user3",
+    "user_profile": "Male roleplayer seeking immersive, choice-driven narratives; self-insert underdog, reluctant hero, dominant protector power fantasy. Prefers one-on-one romance, found-family bonds, intense angst, trauma healing. Loves supernatural\u2014nine-tailed foxes, vampires, magic. Achievement-hunter chasing epic conclusions. Morally flexible exploration sans non-consensual, gore, character death. Co-creative, supportive, detail-rich storytelling. Leaderboard climber, protective sibling loyalty, guilt.",
+    "extracted_tags": [
+      "roleplay",
+      "immersive",
+      "choice-driven",
+      "underdog",
+      "reluctant hero",
+      "dominant protector",
+      "romance",
+      "found-family",
+      "angst",
+      "trauma healing",
+      "supernatural",
+      "nine-tailed foxes",
+      "vampires",
+      "magic",
+      "morally flexible"
+    ],
+    "recommended_stories": [
+      "5201",
+      "5202",
+      "520301",
+      "5204",
+      "5205"
+    ],
+    "score": 0.0,
+    "iteration": 2,
+    "weaknesses": [
+      {
+        "type": "tag_coverage",
+        "description": "Missing coverage of tags: roleplay, immersive, choice-driven",
+        "tags": [
+          "roleplay",
+          "immersive",
+          "choice-driven",
+          "reluctant hero",
+          "dominant protector",
+          "found-family",
+          "angst",
+          "trauma healing",
+          "nine-tailed foxes",
+          "vampires",
+          "morally flexible"
+        ]
+      },
+      {
+        "type": "diversity",
+        "description": "Low diversity with only 7 unique tags",
+        "unique_tags": 7
+      },
+      {
+        "type": "ground_truth_overlap",
+        "description": "Only 0 recommendations match the ground truth",
+        "overlap_count": 0
+      }
+    ],
+    "ground_truth": [
+      "5301",
+      "5302",
+      "5303",
+      "5304",
+      "530501",
+      "5306",
+      "530701",
+      "530832",
+      "530911",
+      "5310"
+    ]
+  },
+  {
+    "user_id": "user1",
+    "user_profile": "choice-driven high-agency dominant protector strategist; underdog, rivalry, team-vs-team, hero-vs-villain, internal-struggle, tournament conflicts; master-servant, royalty-commoner, captor-captive power-dynamics; high-immersion lore-expander, community-engagement; power-fantasy, moral-ambiguity; isekai escapism; romance, forbidden-love, love-triangles, found-family, reverse-harem; enemies-to-lovers, slow-burn; reincarnation, devil-powers, jujitsu-sorcerer; betrayal, loyalty, survival, redemption; Naruto, Dragon Ball, Jujutsu-Kaisen, Genshin-Impact, One-Piece, Demon-Slayer, Chainsaw-Man, Marvel/DC; crossover, anti-hero, strategy, fan-groups.",
+    "extracted_tags": [
+      "choice-driven",
+      "high-agency",
+      "underdog",
+      "rivalry",
+      "team-vs-team",
+      "hero-vs-villain",
+      "power-fantasy",
+      "moral-ambiguity",
+      "isekai",
+      "romance",
+      "forbidden-love",
+      "found-family",
+      "enemies-to-lovers",
+      "reincarnation",
+      "betrayal"
+    ],
+    "recommended_stories": [
+      "5201",
+      "5202",
+      "520301",
+      "5204",
+      "5205"
+    ],
+    "score": 0.4,
+    "iteration": 3,
+    "weaknesses": [
+      {
+        "type": "tag_coverage",
+        "description": "Missing coverage of tags: choice-driven, high-agency, rivalry",
+        "tags": [
+          "choice-driven",
+          "high-agency",
+          "rivalry",
+          "team-vs-team",
+          "hero-vs-villain",
+          "power-fantasy",
+          "moral-ambiguity",
+          "isekai",
+          "forbidden-love",
+          "found-family",
+          "reincarnation",
+          "betrayal"
+        ]
+      },
+      {
+        "type": "diversity",
+        "description": "Low diversity with only 7 unique tags",
+        "unique_tags": 7
+      }
+    ],
+    "ground_truth": [
+      "273613",
+      "235701",
+      "263242",
+      "510101",
+      "510210",
+      "5105",
+      "5107",
+      "5201",
+      "5205",
+      "5301"
+    ]
+  },
+  {
+    "user_id": "user3",
+    "user_profile": "Male roleplayer seeking immersive, choice-driven narratives; self-insert underdog, reluctant hero, dominant protector power fantasy. Prefers one-on-one romance, found-family bonds, intense angst, trauma healing. Loves supernatural\u2014nine-tailed foxes, vampires, magic. Achievement-hunter chasing epic conclusions. Morally flexible exploration sans non-consensual, gore, character death. Co-creative, supportive, detail-rich storytelling. Leaderboard climber, protective sibling loyalty, guilt.",
+    "extracted_tags": [
+      "roleplaying",
+      "immersive",
+      "choice-driven",
+      "underdog",
+      "reluctant hero",
+      "power fantasy",
+      "one-on-one romance",
+      "found-family",
+      "intense angst",
+      "trauma healing",
+      "supernatural",
+      "magic",
+      "achievement-hunter",
+      "morally flexible",
+      "co-creative storytelling"
+    ],
+    "recommended_stories": [
+      "5201",
+      "5202",
+      "520301",
+      "5204",
+      "5205"
+    ],
+    "score": 0.0,
+    "iteration": 3,
+    "weaknesses": [
+      {
+        "type": "tag_coverage",
+        "description": "Missing coverage of tags: roleplaying, immersive, choice-driven",
+        "tags": [
+          "roleplaying",
+          "immersive",
+          "choice-driven",
+          "reluctant hero",
+          "power fantasy",
+          "one-on-one romance",
+          "found-family",
+          "intense angst",
+          "trauma healing",
+          "achievement-hunter",
+          "morally flexible",
+          "co-creative storytelling"
+        ]
+      },
+      {
+        "type": "diversity",
+        "description": "Low diversity with only 7 unique tags",
+        "unique_tags": 7
+      },
+      {
+        "type": "ground_truth_overlap",
+        "description": "Only 0 recommendations match the ground truth",
+        "overlap_count": 0
+      }
+    ],
+    "ground_truth": [
+      "5301",
+      "5302",
+      "5303",
+      "5304",
+      "5306",
+      "530832",
+      "530911",
+      "5310",
+      "5312",
+      "5319"
+    ]
+  },
+  {
+    "user_id": "user3",
+    "user_profile": "Male roleplayer seeking immersive, choice-driven narratives; self-insert underdog, reluctant hero, dominant protector power fantasy. Prefers one-on-one romance, found-family bonds, intense angst, trauma healing. Loves supernatural\u2014nine-tailed foxes, vampires, magic. Achievement-hunter chasing epic conclusions. Morally flexible exploration sans non-consensual, gore, character death. Co-creative, supportive, detail-rich storytelling. Leaderboard climber, protective sibling loyalty, guilt.",
+    "extracted_tags": [
+      "roleplay",
+      "immersive",
+      "choice-driven",
+      "underdog",
+      "reluctant hero",
+      "dominant protector",
+      "one-on-one romance",
+      "found-family",
+      "angst",
+      "trauma healing",
+      "supernatural",
+      "nine-tailed foxes",
+      "vampires",
+      "magic",
+      "achievement-hunting"
+    ],
+    "recommended_stories": [
+      "5201",
+      "5202",
+      "520301",
+      "5204",
+      "5205"
+    ],
+    "score": 0.0,
+    "iteration": 4,
+    "weaknesses": [
+      {
+        "type": "tag_coverage",
+        "description": "Missing coverage of tags: roleplay, immersive, choice-driven",
+        "tags": [
+          "roleplay",
+          "immersive",
+          "choice-driven",
+          "reluctant hero",
+          "dominant protector",
+          "one-on-one romance",
+          "found-family",
+          "angst",
+          "trauma healing",
+          "nine-tailed foxes",
+          "vampires",
+          "achievement-hunting"
+        ]
+      },
+      {
+        "type": "diversity",
+        "description": "Low diversity with only 7 unique tags",
+        "unique_tags": 7
+      },
+      {
+        "type": "ground_truth_overlap",
+        "description": "Only 0 recommendations match the ground truth",
+        "overlap_count": 0
+      }
+    ],
+    "ground_truth": [
+      "5301",
+      "5302",
+      "5303",
+      "5304",
+      "530501",
+      "5306",
+      "530832",
+      "5311",
+      "5313",
+      "5317"
+    ]
+  },
+  {
+    "user_id": "user1",
+    "user_profile": "choice-driven high-agency dominant protector strategist; underdog, rivalry, team-vs-team, hero-vs-villain, internal-struggle, tournament conflicts; master-servant, royalty-commoner, captor-captive power-dynamics; high-immersion lore-expander, community-engagement; power-fantasy, moral-ambiguity; isekai escapism; romance, forbidden-love, love-triangles, found-family, reverse-harem; enemies-to-lovers, slow-burn; reincarnation, devil-powers, jujitsu-sorcerer; betrayal, loyalty, survival, redemption; Naruto, Dragon Ball, Jujutsu-Kaisen, Genshin-Impact, One-Piece, Demon-Slayer, Chainsaw-Man, Marvel/DC; crossover, anti-hero, strategy, fan-groups.",
+    "extracted_tags": [
+      "choice-driven",
+      "high-agency",
+      "underdog",
+      "rivalry",
+      "power-fantasy",
+      "moral-ambiguity",
+      "isekai",
+      "romance",
+      "found-family",
+      "enemies-to-lovers",
+      "reincarnation",
+      "betrayal",
+      "survival",
+      "Naruto",
+      "Jujutsu-Kaisen"
+    ],
+    "recommended_stories": [
+      "5201",
+      "5202",
+      "520301",
+      "5204",
+      "5205"
+    ],
+    "score": 0.2,
+    "iteration": 5,
+    "weaknesses": [
+      {
+        "type": "tag_coverage",
+        "description": "Missing coverage of tags: choice-driven, high-agency, rivalry",
+        "tags": [
+          "choice-driven",
+          "high-agency",
+          "rivalry",
+          "power-fantasy",
+          "moral-ambiguity",
+          "isekai",
+          "found-family",
+          "reincarnation",
+          "betrayal",
+          "survival",
+          "Naruto",
+          "Jujutsu-Kaisen"
+        ]
+      },
+      {
+        "type": "diversity",
+        "description": "Low diversity with only 7 unique tags",
+        "unique_tags": 7
+      },
+      {
+        "type": "ground_truth_overlap",
+        "description": "Only 1 recommendations match the ground truth",
+        "overlap_count": 1
+      }
+    ],
+    "ground_truth": [
+      "273613",
+      "510101",
+      "510210",
+      "5103",
+      "510489",
+      "5105",
+      "5107",
+      "5113",
+      "5201",
+      "5301"
+    ]
+  },
+  {
+    "user_id": "user3",
+    "user_profile": "Male roleplayer seeking immersive, choice-driven narratives; self-insert underdog, reluctant hero, dominant protector power fantasy. Prefers one-on-one romance, found-family bonds, intense angst, trauma healing. Loves supernatural\u2014nine-tailed foxes, vampires, magic. Achievement-hunter chasing epic conclusions. Morally flexible exploration sans non-consensual, gore, character death. Co-creative, supportive, detail-rich storytelling. Leaderboard climber, protective sibling loyalty, guilt.",
+    "extracted_tags": [
+      "immersive",
+      "choice-driven",
+      "self-insert",
+      "underdog",
+      "reluctant hero",
+      "dominant protector",
+      "one-on-one romance",
+      "found-family",
+      "angst",
+      "trauma healing",
+      "supernatural",
+      "vampires",
+      "magic",
+      "achievement-hunter",
+      "morally flexible"
+    ],
+    "recommended_stories": [
+      "5201",
+      "5202",
+      "520301",
+      "5204",
+      "5205"
+    ],
+    "score": 0.4444444444444444,
+    "iteration": 5,
+    "weaknesses": [
+      {
+        "type": "tag_coverage",
+        "description": "Missing coverage of tags: immersive, choice-driven, self-insert",
+        "tags": [
+          "immersive",
+          "choice-driven",
+          "self-insert",
+          "reluctant hero",
+          "dominant protector",
+          "one-on-one romance",
+          "angst",
+          "vampires",
+          "achievement-hunter",
+          "morally flexible"
+        ]
+      }
+    ],
+    "ground_truth": [
+      "5301",
+      "5302",
+      "5303",
+      "5304",
+      "530501",
+      "5306",
+      "530701",
+      "530832",
+      "530911",
+      "5310"
+    ]
+  },
+  {
+    "user_id": "user1",
+    "user_profile": "choice-driven high-agency dominant protector strategist; underdog, rivalry, team-vs-team, hero-vs-villain, internal-struggle, tournament conflicts; master-servant, royalty-commoner, captor-captive power-dynamics; high-immersion lore-expander, community-engagement; power-fantasy, moral-ambiguity; isekai escapism; romance, forbidden-love, love-triangles, found-family, reverse-harem; enemies-to-lovers, slow-burn; reincarnation, devil-powers, jujitsu-sorcerer; betrayal, loyalty, survival, redemption; Naruto, Dragon Ball, Jujutsu-Kaisen, Genshin-Impact, One-Piece, Demon-Slayer, Chainsaw-Man, Marvel/DC; crossover, anti-hero, strategy, fan-groups.",
+    "extracted_tags": [
+      "choice-driven",
+      "high-agency",
+      "power-fantasy",
+      "moral-ambiguity",
+      "isekai",
+      "romance",
+      "enemies-to-lovers",
+      "strategy",
+      "betrayal",
+      "loyalty",
+      "underdog",
+      "rivalry",
+      "Naruto",
+      "Jujutsu-Kaisen",
+      "Genshin-Impact"
+    ],
+    "recommended_stories": [
+      "5201",
+      "5202",
+      "520301",
+      "5204",
+      "5205"
+    ],
+    "score": 0.4,
+    "iteration": 6,
+    "weaknesses": [
+      {
+        "type": "tag_coverage",
+        "description": "Missing coverage of tags: choice-driven, high-agency, power-fantasy",
+        "tags": [
+          "choice-driven",
+          "high-agency",
+          "power-fantasy",
+          "betrayal",
+          "loyalty",
+          "rivalry",
+          "Naruto",
+          "Jujutsu-Kaisen",
+          "Genshin-Impact"
+        ]
+      }
+    ],
+    "ground_truth": [
+      "273613",
+      "510101",
+      "510210",
+      "5105",
+      "5107",
+      "5113",
+      "5201",
+      "5202",
+      "5301",
+      "5302"
+    ]
+  },
+  {
+    "user_id": "user3",
+    "user_profile": "Male roleplayer seeking immersive, choice-driven narratives; self-insert underdog, reluctant hero, dominant protector power fantasy. Prefers one-on-one romance, found-family bonds, intense angst, trauma healing. Loves supernatural\u2014nine-tailed foxes, vampires, magic. Achievement-hunter chasing epic conclusions. Morally flexible exploration sans non-consensual, gore, character death. Co-creative, supportive, detail-rich storytelling. Leaderboard climber, protective sibling loyalty, guilt.",
+    "extracted_tags": [
+      "roleplay",
+      "immersive",
+      "choice-driven",
+      "underdog",
+      "reluctant hero",
+      "dominant protector",
+      "romance",
+      "found-family",
+      "angst",
+      "trauma healing",
+      "supernatural",
+      "vampires",
+      "magic",
+      "achievement-hunter",
+      "morally flexible"
+    ],
+    "recommended_stories": [
+      "5201",
+      "5202",
+      "520301",
+      "5204",
+      "5205"
+    ],
+    "score": 0.0,
+    "iteration": 6,
+    "weaknesses": [
+      {
+        "type": "tag_coverage",
+        "description": "Missing coverage of tags: roleplay, immersive, choice-driven",
+        "tags": [
+          "roleplay",
+          "immersive",
+          "choice-driven",
+          "reluctant hero",
+          "dominant protector",
+          "found-family",
+          "angst",
+          "trauma healing",
+          "vampires",
+          "achievement-hunter",
+          "morally flexible"
+        ]
+      },
+      {
+        "type": "diversity",
+        "description": "Low diversity with only 7 unique tags",
+        "unique_tags": 7
+      },
+      {
+        "type": "ground_truth_overlap",
+        "description": "Only 0 recommendations match the ground truth",
+        "overlap_count": 0
+      }
+    ],
+    "ground_truth": [
+      "5301",
+      "5302",
+      "5303",
+      "5304",
+      "5306",
+      "5310",
+      "5311",
+      "5313",
+      "5317",
+      "5320"
+    ]
+  },
+  {
+    "user_id": "user1",
+    "user_profile": "choice-driven high-agency dominant protector strategist; underdog, rivalry, team-vs-team, hero-vs-villain, internal-struggle, tournament conflicts; master-servant, royalty-commoner, captor-captive power-dynamics; high-immersion lore-expander, community-engagement; power-fantasy, moral-ambiguity; isekai escapism; romance, forbidden-love, love-triangles, found-family, reverse-harem; enemies-to-lovers, slow-burn; reincarnation, devil-powers, jujitsu-sorcerer; betrayal, loyalty, survival, redemption; Naruto, Dragon Ball, Jujutsu-Kaisen, Genshin-Impact, One-Piece, Demon-Slayer, Chainsaw-Man, Marvel/DC; crossover, anti-hero, strategy, fan-groups.",
+    "extracted_tags": [
+      "choice-driven",
+      "high-agency",
+      "strategist",
+      "underdog",
+      "rivalry",
+      "power-dynamics",
+      "isekai",
+      "romance",
+      "forbidden-love",
+      "enemies-to-lovers",
+      "reincarnation",
+      "betrayal",
+      "loyalty",
+      "survival",
+      "redemption"
+    ],
+    "recommended_stories": [
+      "5201",
+      "5202",
+      "520301",
+      "5204",
+      "5205"
+    ],
+    "score": 0.1111111111111111,
+    "iteration": 7,
+    "weaknesses": [
+      {
+        "type": "tag_coverage",
+        "description": "Missing coverage of tags: choice-driven, high-agency, strategist",
+        "tags": [
+          "choice-driven",
+          "high-agency",
+          "strategist",
+          "rivalry",
+          "power-dynamics",
+          "isekai",
+          "forbidden-love",
+          "reincarnation",
+          "betrayal",
+          "loyalty",
+          "survival",
+          "redemption"
+        ]
+      },
+      {
+        "type": "diversity",
+        "description": "Low diversity with only 7 unique tags",
+        "unique_tags": 7
+      },
+      {
+        "type": "ground_truth_overlap",
+        "description": "Only 1 recommendations match the ground truth",
+        "overlap_count": 1
+      }
+    ],
+    "ground_truth": [
+      "273613",
+      "510101",
+      "510210",
+      "5103",
+      "510489",
+      "5105",
+      "5106",
+      "5107",
+      "5113",
+      "5201"
+    ]
+  },
+  {
+    "user_id": "user3",
+    "user_profile": "Male roleplayer seeking immersive, choice-driven narratives; self-insert underdog, reluctant hero, dominant protector power fantasy. Prefers one-on-one romance, found-family bonds, intense angst, trauma healing. Loves supernatural\u2014nine-tailed foxes, vampires, magic. Achievement-hunter chasing epic conclusions. Morally flexible exploration sans non-consensual, gore, character death. Co-creative, supportive, detail-rich storytelling. Leaderboard climber, protective sibling loyalty, guilt.",
+    "extracted_tags": [
+      "roleplay",
+      "immersive",
+      "choice-driven",
+      "underdog",
+      "reluctant hero",
+      "power fantasy",
+      "romance",
+      "found-family",
+      "angst",
+      "trauma healing",
+      "supernatural",
+      "vampires",
+      "magic",
+      "achievement-hunter",
+      "morally flexible"
+    ],
+    "recommended_stories": [
+      "5201",
+      "5202",
+      "520301",
+      "5204",
+      "5205"
+    ],
+    "score": 0.0,
+    "iteration": 7,
+    "weaknesses": [
+      {
+        "type": "tag_coverage",
+        "description": "Missing coverage of tags: roleplay, immersive, choice-driven",
+        "tags": [
+          "roleplay",
+          "immersive",
+          "choice-driven",
+          "reluctant hero",
+          "power fantasy",
+          "found-family",
+          "angst",
+          "trauma healing",
+          "vampires",
+          "achievement-hunter",
+          "morally flexible"
+        ]
+      },
+      {
+        "type": "diversity",
+        "description": "Low diversity with only 7 unique tags",
+        "unique_tags": 7
+      },
+      {
+        "type": "ground_truth_overlap",
+        "description": "Only 0 recommendations match the ground truth",
+        "overlap_count": 0
+      }
+    ],
+    "ground_truth": [
+      "5301",
+      "5302",
+      "5303",
+      "5304",
+      "5306",
+      "5309",
+      "5310",
+      "5311",
+      "5312",
+      "5319"
+    ]
+  },
+  {
+    "user_id": "user1",
+    "user_profile": "choice-driven high-agency dominant protector strategist; underdog, rivalry, team-vs-team, hero-vs-villain, internal-struggle, tournament conflicts; master-servant, royalty-commoner, captor-captive power-dynamics; high-immersion lore-expander, community-engagement; power-fantasy, moral-ambiguity; isekai escapism; romance, forbidden-love, love-triangles, found-family, reverse-harem; enemies-to-lovers, slow-burn; reincarnation, devil-powers, jujitsu-sorcerer; betrayal, loyalty, survival, redemption; Naruto, Dragon Ball, Jujutsu-Kaisen, Genshin-Impact, One-Piece, Demon-Slayer, Chainsaw-Man, Marvel/DC; crossover, anti-hero, strategy, fan-groups.",
+    "extracted_tags": [
+      "choice-driven",
+      "high-agency",
+      "underdog",
+      "rivalry",
+      "team-vs-team",
+      "hero-vs-villain",
+      "internal-struggle",
+      "power-fantasy",
+      "moral-ambiguity",
+      "isekai",
+      "romance",
+      "forbidden-love",
+      "enemies-to-lovers",
+      "reincarnation",
+      "betrayal"
+    ],
+    "recommended_stories": [
+      "5201",
+      "5202",
+      "520301",
+      "5204",
+      "5205"
+    ],
+    "score": 0.0,
+    "iteration": 8,
+    "weaknesses": [
+      {
+        "type": "tag_coverage",
+        "description": "Missing coverage of tags: choice-driven, high-agency, rivalry",
+        "tags": [
+          "choice-driven",
+          "high-agency",
+          "rivalry",
+          "team-vs-team",
+          "hero-vs-villain",
+          "internal-struggle",
+          "power-fantasy",
+          "moral-ambiguity",
+          "isekai",
+          "forbidden-love",
+          "reincarnation",
+          "betrayal"
+        ]
+      },
+      {
+        "type": "diversity",
+        "description": "Low diversity with only 7 unique tags",
+        "unique_tags": 7
+      },
+      {
+        "type": "ground_truth_overlap",
+        "description": "Only 0 recommendations match the ground truth",
+        "overlap_count": 0
+      }
+    ],
+    "ground_truth": [
+      "273613",
+      "510101",
+      "510210",
+      "5103",
+      "510489",
+      "5105",
+      "5110",
+      "217107",
+      "5107",
+      "510812"
+    ]
+  },
+  {
+    "user_id": "user3",
+    "user_profile": "Male roleplayer seeking immersive, choice-driven narratives; self-insert underdog, reluctant hero, dominant protector power fantasy. Prefers one-on-one romance, found-family bonds, intense angst, trauma healing. Loves supernatural\u2014nine-tailed foxes, vampires, magic. Achievement-hunter chasing epic conclusions. Morally flexible exploration sans non-consensual, gore, character death. Co-creative, supportive, detail-rich storytelling. Leaderboard climber, protective sibling loyalty, guilt.",
+    "extracted_tags": [
+      "roleplayer",
+      "immersive",
+      "choice-driven",
+      "self-insert",
+      "underdog",
+      "reluctant hero",
+      "dominant protector",
+      "one-on-one romance",
+      "found-family",
+      "angst",
+      "supernatural",
+      "magic",
+      "achievement-hunter",
+      "morally flexible",
+      "co-creative"
+    ],
+    "recommended_stories": [
+      "5201",
+      "5202",
+      "520301",
+      "5204",
+      "5205"
+    ],
+    "score": 0.3,
+    "iteration": 8,
+    "weaknesses": [
+      {
+        "type": "tag_coverage",
+        "description": "Missing coverage of tags: roleplayer, immersive, choice-driven",
+        "tags": [
+          "roleplayer",
+          "immersive",
+          "choice-driven",
+          "self-insert",
+          "reluctant hero",
+          "dominant protector",
+          "one-on-one romance",
+          "angst",
+          "achievement-hunter",
+          "morally flexible",
+          "co-creative"
+        ]
+      }
+    ],
+    "ground_truth": [
+      "5301",
+      "5302",
+      "5303",
+      "5304",
+      "5306",
+      "530832",
+      "530911",
+      "5311",
+      "5313",
+      "5315"
+    ]
+  },
+  {
+    "user_id": "user1",
+    "user_profile": "choice-driven high-agency dominant protector strategist; underdog, rivalry, team-vs-team, hero-vs-villain, internal-struggle, tournament conflicts; master-servant, royalty-commoner, captor-captive power-dynamics; high-immersion lore-expander, community-engagement; power-fantasy, moral-ambiguity; isekai escapism; romance, forbidden-love, love-triangles, found-family, reverse-harem; enemies-to-lovers, slow-burn; reincarnation, devil-powers, jujitsu-sorcerer; betrayal, loyalty, survival, redemption; Naruto, Dragon Ball, Jujutsu-Kaisen, Genshin-Impact, One-Piece, Demon-Slayer, Chainsaw-Man, Marvel/DC; crossover, anti-hero, strategy, fan-groups.",
+    "extracted_tags": [
+      "choice-driven",
+      "high-agency",
+      "protector",
+      "strategist",
+      "underdog",
+      "rivalry",
+      "team-vs-team",
+      "hero-vs-villain",
+      "power-dynamics",
+      "power-fantasy",
+      "isekai",
+      "romance",
+      "found-family",
+      "enemies-to-lovers",
+      "reincarnation"
+    ],
+    "recommended_stories": [
+      "5201",
+      "5202",
+      "520301",
+      "5204",
+      "5205"
+    ],
+    "score": 0.42857142857142855,
+    "iteration": 9,
+    "weaknesses": [
+      {
+        "type": "tag_coverage",
+        "description": "Missing coverage of tags: choice-driven, high-agency, protector",
+        "tags": [
+          "choice-driven",
+          "high-agency",
+          "protector",
+          "strategist",
+          "rivalry",
+          "team-vs-team",
+          "hero-vs-villain",
+          "power-dynamics",
+          "power-fantasy",
+          "isekai",
+          "reincarnation"
+        ]
+      }
+    ],
+    "ground_truth": [
+      "273613",
+      "510101",
+      "510210",
+      "5105",
+      "5107",
+      "5113",
+      "5201",
+      "5202",
+      "5301",
+      "5302"
+    ]
+  },
+  {
+    "user_id": "user1",
+    "user_profile": "choice-driven high-agency dominant protector strategist; underdog, rivalry, team-vs-team, hero-vs-villain, internal-struggle, tournament conflicts; master-servant, royalty-commoner, captor-captive power-dynamics; high-immersion lore-expander, community-engagement; power-fantasy, moral-ambiguity; isekai escapism; romance, forbidden-love, love-triangles, found-family, reverse-harem; enemies-to-lovers, slow-burn; reincarnation, devil-powers, jujitsu-sorcerer; betrayal, loyalty, survival, redemption; Naruto, Dragon Ball, Jujutsu-Kaisen, Genshin-Impact, One-Piece, Demon-Slayer, Chainsaw-Man, Marvel/DC; crossover, anti-hero, strategy, fan-groups.",
+    "extracted_tags": [
+      "choice-driven",
+      "high-agency",
+      "underdog",
+      "rivalry",
+      "team-vs-team",
+      "hero-vs-villain",
+      "power-dynamics",
+      "high-immersion",
+      "power-fantasy",
+      "moral-ambiguity",
+      "isekai",
+      "romance",
+      "enemies-to-lovers",
+      "reincarnation",
+      "betrayal"
+    ],
+    "recommended_stories": [
+      "5201",
+      "5202",
+      "520301",
+      "5204",
+      "5205"
+    ],
+    "score": 0.1111111111111111,
+    "iteration": 10,
+    "weaknesses": [
+      {
+        "type": "tag_coverage",
+        "description": "Missing coverage of tags: choice-driven, high-agency, rivalry",
+        "tags": [
+          "choice-driven",
+          "high-agency",
+          "rivalry",
+          "team-vs-team",
+          "hero-vs-villain",
+          "power-dynamics",
+          "high-immersion",
+          "power-fantasy",
+          "moral-ambiguity",
+          "isekai",
+          "reincarnation",
+          "betrayal"
+        ]
+      },
+      {
+        "type": "ground_truth_overlap",
+        "description": "Only 1 recommendations match the ground truth",
+        "overlap_count": 1
+      }
+    ],
+    "ground_truth": [
+      "273613",
+      "510101",
+      "510210",
+      "5103",
+      "510489",
+      "5105",
+      "5107",
+      "510812",
+      "5113",
+      "5201"
+    ]
+  },
+  {
+    "user_id": "user1",
+    "user_profile": "choice-driven high-agency dominant protector strategist; underdog, rivalry, team-vs-team, hero-vs-villain, internal-struggle, tournament conflicts; master-servant, royalty-commoner, captor-captive power-dynamics; high-immersion lore-expander, community-engagement; power-fantasy, moral-ambiguity; isekai escapism; romance, forbidden-love, love-triangles, found-family, reverse-harem; enemies-to-lovers, slow-burn; reincarnation, devil-powers, jujitsu-sorcerer; betrayal, loyalty, survival, redemption; Naruto, Dragon Ball, Jujutsu-Kaisen, Genshin-Impact, One-Piece, Demon-Slayer, Chainsaw-Man, Marvel/DC; crossover, anti-hero, strategy, fan-groups.",
+    "extracted_tags": [
+      "choice-driven",
+      "high-agency",
+      "underdog",
+      "rivalry",
+      "tournament",
+      "power-dynamics",
+      "power-fantasy",
+      "isekai",
+      "romance",
+      "enemies-to-lovers",
+      "reincarnation",
+      "betrayal",
+      "Naruto",
+      "Dragon Ball",
+      "Jujutsu-Kaisen"
+    ],
+    "recommended_stories": [
+      "5201",
+      "5202",
+      "520301",
+      "5204",
+      "5205"
+    ],
+    "score": 0.0,
+    "iteration": 11,
+    "weaknesses": [
+      {
+        "type": "tag_coverage",
+        "description": "Missing coverage of tags: choice-driven, high-agency, rivalry",
+        "tags": [
+          "choice-driven",
+          "high-agency",
+          "rivalry",
+          "tournament",
+          "power-dynamics",
+          "power-fantasy",
+          "isekai",
+          "reincarnation",
+          "betrayal",
+          "Naruto",
+          "Dragon Ball",
+          "Jujutsu-Kaisen"
+        ]
+      },
+      {
+        "type": "diversity",
+        "description": "Low diversity with only 7 unique tags",
+        "unique_tags": 7
+      },
+      {
+        "type": "ground_truth_overlap",
+        "description": "Only 0 recommendations match the ground truth",
+        "overlap_count": 0
+      }
+    ],
+    "ground_truth": [
+      "273613",
+      "510101",
+      "510210",
+      "5103",
+      "510489",
+      "5105",
+      "5107",
+      "510812",
+      "521267",
+      "5301"
+    ]
+  },
+  {
+    "user_id": "user3",
+    "user_profile": "Male roleplayer seeking immersive, choice-driven narratives; self-insert underdog, reluctant hero, dominant protector power fantasy. Prefers one-on-one romance, found-family bonds, intense angst, trauma healing. Loves supernatural\u2014nine-tailed foxes, vampires, magic. Achievement-hunter chasing epic conclusions. Morally flexible exploration sans non-consensual, gore, character death. Co-creative, supportive, detail-rich storytelling. Leaderboard climber, protective sibling loyalty, guilt.",
+    "extracted_tags": [
+      "immersive",
+      "choice-driven",
+      "self-insert",
+      "underdog",
+      "reluctant hero",
+      "dominant protector",
+      "one-on-one romance",
+      "found-family",
+      "intense angst",
+      "trauma healing",
+      "supernatural",
+      "nine-tailed foxes",
+      "vampires",
+      "magic",
+      "morally flexible"
+    ],
+    "recommended_stories": [
+      "5313",
+      "5201",
+      "5202",
+      "520301",
+      "5204"
+    ],
+    "score": 0.0,
+    "iteration": 11,
+    "weaknesses": [
+      {
+        "type": "tag_coverage",
+        "description": "Missing coverage of tags: immersive, choice-driven, self-insert",
+        "tags": [
+          "immersive",
+          "choice-driven",
+          "self-insert",
+          "reluctant hero",
+          "dominant protector",
+          "one-on-one romance",
+          "nine-tailed foxes",
+          "vampires",
+          "morally flexible"
+        ]
+      },
+      {
+        "type": "ground_truth_overlap",
+        "description": "Only 0 recommendations match the ground truth",
+        "overlap_count": 0
+      }
+    ],
+    "ground_truth": [
+      "5301",
+      "5302",
+      "5303",
+      "5304",
+      "5306",
+      "530701",
+      "530832",
+      "530911",
+      "5310",
+      "5311"
+    ]
+  },
+  {
+    "user_id": "user3",
+    "user_profile": "Male roleplayer seeking immersive, choice-driven narratives; self-insert underdog, reluctant hero, dominant protector power fantasy. Prefers one-on-one romance, found-family bonds, intense angst, trauma healing. Loves supernatural\u2014nine-tailed foxes, vampires, magic. Achievement-hunter chasing epic conclusions. Morally flexible exploration sans non-consensual, gore, character death. Co-creative, supportive, detail-rich storytelling. Leaderboard climber, protective sibling loyalty, guilt.",
+    "extracted_tags": [
+      "immersive",
+      "choice-driven",
+      "underdog",
+      "reluctant hero",
+      "dominant protector",
+      "power fantasy",
+      "one-on-one romance",
+      "found-family",
+      "intense angst",
+      "trauma healing",
+      "supernatural",
+      "nine-tailed foxes",
+      "vampires",
+      "magic",
+      "morally flexible"
+    ],
+    "recommended_stories": [
+      "5313",
+      "5201",
+      "5202",
+      "520301",
+      "5204"
+    ],
+    "score": 0.3,
+    "iteration": 12,
+    "weaknesses": [
+      {
+        "type": "tag_coverage",
+        "description": "Missing coverage of tags: immersive, choice-driven, reluctant hero",
+        "tags": [
+          "immersive",
+          "choice-driven",
+          "reluctant hero",
+          "dominant protector",
+          "power fantasy",
+          "one-on-one romance",
+          "nine-tailed foxes",
+          "vampires",
+          "morally flexible"
+        ]
+      }
+    ],
+    "ground_truth": [
+      "5301",
+      "5302",
+      "5303",
+      "5304",
+      "530501",
+      "5306",
+      "530701",
+      "530832",
+      "530911",
+      "5310"
+    ]
+  },
+  {
+    "user_id": "user3",
+    "user_profile": "Male roleplayer seeking immersive, choice-driven narratives; self-insert underdog, reluctant hero, dominant protector power fantasy. Prefers one-on-one romance, found-family bonds, intense angst, trauma healing. Loves supernatural\u2014nine-tailed foxes, vampires, magic. Achievement-hunter chasing epic conclusions. Morally flexible exploration sans non-consensual, gore, character death. Co-creative, supportive, detail-rich storytelling. Leaderboard climber, protective sibling loyalty, guilt.",
+    "extracted_tags": [
+      "roleplay",
+      "immersive",
+      "choice-driven",
+      "underdog",
+      "reluctant hero",
+      "dominant protector",
+      "one-on-one romance",
+      "found-family",
+      "angst",
+      "trauma healing",
+      "supernatural",
+      "nine-tailed foxes",
+      "vampires",
+      "magic",
+      "achievement-hunter"
+    ],
+    "recommended_stories": [
+      "5201",
+      "5202",
+      "520301",
+      "5204",
+      "5205"
+    ],
+    "score": 0.0,
+    "iteration": 13,
+    "weaknesses": [
+      {
+        "type": "tag_coverage",
+        "description": "Missing coverage of tags: roleplay, immersive, choice-driven",
+        "tags": [
+          "roleplay",
+          "immersive",
+          "choice-driven",
+          "reluctant hero",
+          "dominant protector",
+          "one-on-one romance",
+          "found-family",
+          "angst",
+          "trauma healing",
+          "nine-tailed foxes",
+          "vampires",
+          "achievement-hunter"
+        ]
+      },
+      {
+        "type": "diversity",
+        "description": "Low diversity with only 7 unique tags",
+        "unique_tags": 7
+      },
+      {
+        "type": "ground_truth_overlap",
+        "description": "Only 0 recommendations match the ground truth",
+        "overlap_count": 0
+      }
+    ],
+    "ground_truth": [
+      "5301",
+      "5302",
+      "5303",
+      "5304",
+      "5306",
+      "530832",
+      "530911",
+      "5310",
+      "5315",
+      "5319"
+    ]
+  },
+  {
+    "user_id": "user1",
+    "user_profile": "choice-driven high-agency dominant protector strategist; underdog, rivalry, team-vs-team, hero-vs-villain, internal-struggle, tournament conflicts; master-servant, royalty-commoner, captor-captive power-dynamics; high-immersion lore-expander, community-engagement; power-fantasy, moral-ambiguity; isekai escapism; romance, forbidden-love, love-triangles, found-family, reverse-harem; enemies-to-lovers, slow-burn; reincarnation, devil-powers, jujitsu-sorcerer; betrayal, loyalty, survival, redemption; Naruto, Dragon Ball, Jujutsu-Kaisen, Genshin-Impact, One-Piece, Demon-Slayer, Chainsaw-Man, Marvel/DC; crossover, anti-hero, strategy, fan-groups.",
+    "extracted_tags": [
+      "choice-driven",
+      "high-agency",
+      "underdog",
+      "rivalry",
+      "power-dynamics",
+      "power-fantasy",
+      "moral-ambiguity",
+      "isekai",
+      "romance",
+      "enemies-to-lovers",
+      "reincarnation",
+      "betrayal",
+      "redemption",
+      "Naruto",
+      "Jujutsu-Kaisen"
+    ],
+    "recommended_stories": [
+      "5201",
+      "5202",
+      "520301",
+      "5204",
+      "5205"
+    ],
+    "score": 0.4,
+    "iteration": 14,
+    "weaknesses": [
+      {
+        "type": "tag_coverage",
+        "description": "Missing coverage of tags: choice-driven, high-agency, rivalry",
+        "tags": [
+          "choice-driven",
+          "high-agency",
+          "rivalry",
+          "power-dynamics",
+          "power-fantasy",
+          "moral-ambiguity",
+          "isekai",
+          "reincarnation",
+          "betrayal",
+          "redemption",
+          "Naruto",
+          "Jujutsu-Kaisen"
+        ]
+      },
+      {
+        "type": "diversity",
+        "description": "Low diversity with only 7 unique tags",
+        "unique_tags": 7
+      }
+    ],
+    "ground_truth": [
+      "273613",
+      "510101",
+      "510210",
+      "5103",
+      "5105",
+      "5107",
+      "5201",
+      "5202",
+      "5301",
+      "5302"
+    ]
+  },
+  {
+    "user_id": "user3",
+    "user_profile": "Male roleplayer seeking immersive, choice-driven narratives; self-insert underdog, reluctant hero, dominant protector power fantasy. Prefers one-on-one romance, found-family bonds, intense angst, trauma healing. Loves supernatural\u2014nine-tailed foxes, vampires, magic. Achievement-hunter chasing epic conclusions. Morally flexible exploration sans non-consensual, gore, character death. Co-creative, supportive, detail-rich storytelling. Leaderboard climber, protective sibling loyalty, guilt.",
+    "extracted_tags": [
+      "roleplayer",
+      "immersive",
+      "choice-driven",
+      "underdog",
+      "reluctant hero",
+      "dominant protector",
+      "one-on-one romance",
+      "found-family",
+      "angst",
+      "trauma healing",
+      "supernatural",
+      "nine-tailed foxes",
+      "vampires",
+      "magic",
+      "morally flexible"
+    ],
+    "recommended_stories": [
+      "5201",
+      "5202",
+      "520301",
+      "5204",
+      "5205"
+    ],
+    "score": 0.0,
+    "iteration": 14,
+    "weaknesses": [
+      {
+        "type": "tag_coverage",
+        "description": "Missing coverage of tags: roleplayer, immersive, choice-driven",
+        "tags": [
+          "roleplayer",
+          "immersive",
+          "choice-driven",
+          "reluctant hero",
+          "dominant protector",
+          "one-on-one romance",
+          "found-family",
+          "angst",
+          "trauma healing",
+          "nine-tailed foxes",
+          "vampires",
+          "morally flexible"
+        ]
+      },
+      {
+        "type": "diversity",
+        "description": "Low diversity with only 7 unique tags",
+        "unique_tags": 7
+      },
+      {
+        "type": "ground_truth_overlap",
+        "description": "Only 0 recommendations match the ground truth",
+        "overlap_count": 0
+      }
+    ],
+    "ground_truth": [
+      "5301",
+      "5302",
+      "5303",
+      "5304",
+      "5306",
+      "530911",
+      "5310",
+      "5315",
+      "5319",
+      "5320"
+    ]
+  },
+  {
+    "user_id": "user3",
+    "user_profile": "Male roleplayer seeking immersive, choice-driven narratives; self-insert underdog, reluctant hero, dominant protector power fantasy. Prefers one-on-one romance, found-family bonds, intense angst, trauma healing. Loves supernatural\u2014nine-tailed foxes, vampires, magic. Achievement-hunter chasing epic conclusions. Morally flexible exploration sans non-consensual, gore, character death. Co-creative, supportive, detail-rich storytelling. Leaderboard climber, protective sibling loyalty, guilt.",
+    "extracted_tags": [
+      "roleplayer",
+      "immersive",
+      "choice-driven",
+      "self-insert",
+      "underdog",
+      "reluctant hero",
+      "dominant protector",
+      "romance",
+      "found-family",
+      "angst",
+      "trauma healing",
+      "supernatural",
+      "nine-tailed foxes",
+      "vampires",
+      "magic"
+    ],
+    "recommended_stories": [
+      "5201",
+      "5202",
+      "520301",
+      "5204",
+      "5205"
+    ],
+    "score": 0.16666666666666666,
+    "iteration": 15,
+    "weaknesses": [
+      {
+        "type": "tag_coverage",
+        "description": "Missing coverage of tags: roleplayer, immersive, choice-driven",
+        "tags": [
+          "roleplayer",
+          "immersive",
+          "choice-driven",
+          "self-insert",
+          "reluctant hero",
+          "dominant protector",
+          "angst",
+          "nine-tailed foxes",
+          "vampires"
+        ]
+      },
+      {
+        "type": "ground_truth_overlap",
+        "description": "Only 1 recommendations match the ground truth",
+        "overlap_count": 1
+      }
+    ],
+    "ground_truth": [
+      "5301",
+      "5302",
+      "5303",
+      "5304",
+      "5306",
+      "530832",
+      "530911",
+      "5310",
+      "5313",
+      "531642"
+    ]
+  },
+  {
+    "user_id": "user1",
+    "user_profile": "choice-driven high-agency dominant protector strategist; underdog, rivalry, team-vs-team, hero-vs-villain, internal-struggle, tournament conflicts; master-servant, royalty-commoner, captor-captive power-dynamics; high-immersion lore-expander, community-engagement; power-fantasy, moral-ambiguity; isekai escapism; romance, forbidden-love, love-triangles, found-family, reverse-harem; enemies-to-lovers, slow-burn; reincarnation, devil-powers, jujitsu-sorcerer; betrayal, loyalty, survival, redemption; Naruto, Dragon Ball, Jujutsu-Kaisen, Genshin-Impact, One-Piece, Demon-Slayer, Chainsaw-Man, Marvel/DC; crossover, anti-hero, strategy, fan-groups.",
+    "extracted_tags": [
+      "choice-driven",
+      "high-agency",
+      "underdog",
+      "rivalry",
+      "team-vs-team",
+      "hero-vs-villain",
+      "internal-struggle",
+      "power-fantasy",
+      "moral-ambiguity",
+      "isekai",
+      "romance",
+      "forbidden-love",
+      "enemies-to-lovers",
+      "reincarnation",
+      "betrayal"
+    ],
+    "recommended_stories": [
+      "5201",
+      "5202",
+      "520301",
+      "5204",
+      "5205"
+    ],
+    "score": 0.2,
+    "iteration": 16,
+    "weaknesses": [
+      {
+        "type": "tag_coverage",
+        "description": "Missing coverage of tags: choice-driven, high-agency, rivalry",
+        "tags": [
+          "choice-driven",
+          "high-agency",
+          "rivalry",
+          "team-vs-team",
+          "hero-vs-villain",
+          "internal-struggle",
+          "power-fantasy",
+          "moral-ambiguity",
+          "isekai",
+          "forbidden-love",
+          "reincarnation",
+          "betrayal"
+        ]
+      },
+      {
+        "type": "diversity",
+        "description": "Low diversity with only 7 unique tags",
+        "unique_tags": 7
+      },
+      {
+        "type": "ground_truth_overlap",
+        "description": "Only 1 recommendations match the ground truth",
+        "overlap_count": 1
+      }
+    ],
+    "ground_truth": [
+      "273613",
+      "510101",
+      "510210",
+      "5103",
+      "510489",
+      "5105",
+      "5106",
+      "5107",
+      "5210",
+      "5201"
+    ]
+  },
+  {
+    "user_id": "user3",
+    "user_profile": "Male roleplayer seeking immersive, choice-driven narratives; self-insert underdog, reluctant hero, dominant protector power fantasy. Prefers one-on-one romance, found-family bonds, intense angst, trauma healing. Loves supernatural\u2014nine-tailed foxes, vampires, magic. Achievement-hunter chasing epic conclusions. Morally flexible exploration sans non-consensual, gore, character death. Co-creative, supportive, detail-rich storytelling. Leaderboard climber, protective sibling loyalty, guilt.",
+    "extracted_tags": [
+      "immersive",
+      "choice-driven",
+      "self-insert",
+      "underdog",
+      "reluctant hero",
+      "dominant protector",
+      "power fantasy",
+      "one-on-one romance",
+      "found-family",
+      "angst",
+      "trauma healing",
+      "supernatural",
+      "magic",
+      "vampires",
+      "achievement-hunter"
+    ],
+    "recommended_stories": [
+      "5201",
+      "5202",
+      "520301",
+      "5204",
+      "5205"
+    ],
+    "score": 0.0,
+    "iteration": 16,
+    "weaknesses": [
+      {
+        "type": "tag_coverage",
+        "description": "Missing coverage of tags: immersive, choice-driven, self-insert",
+        "tags": [
+          "immersive",
+          "choice-driven",
+          "self-insert",
+          "reluctant hero",
+          "dominant protector",
+          "power fantasy",
+          "one-on-one romance",
+          "found-family",
+          "angst",
+          "trauma healing",
+          "vampires",
+          "achievement-hunter"
+        ]
+      },
+      {
+        "type": "diversity",
+        "description": "Low diversity with only 7 unique tags",
+        "unique_tags": 7
+      },
+      {
+        "type": "ground_truth_overlap",
+        "description": "Only 0 recommendations match the ground truth",
+        "overlap_count": 0
+      }
+    ],
+    "ground_truth": [
+      "5301",
+      "5302",
+      "5303",
+      "5304",
+      "5306",
+      "5307",
+      "5308",
+      "5311",
+      "5312",
+      "5315"
+    ]
+  },
+  {
+    "user_id": "user1",
+    "user_profile": "choice-driven high-agency dominant protector strategist; underdog, rivalry, team-vs-team, hero-vs-villain, internal-struggle, tournament conflicts; master-servant, royalty-commoner, captor-captive power-dynamics; high-immersion lore-expander, community-engagement; power-fantasy, moral-ambiguity; isekai escapism; romance, forbidden-love, love-triangles, found-family, reverse-harem; enemies-to-lovers, slow-burn; reincarnation, devil-powers, jujitsu-sorcerer; betrayal, loyalty, survival, redemption; Naruto, Dragon Ball, Jujutsu-Kaisen, Genshin-Impact, One-Piece, Demon-Slayer, Chainsaw-Man, Marvel/DC; crossover, anti-hero, strategy, fan-groups.",
+    "extracted_tags": [
+      "choice-driven",
+      "high-agency",
+      "underdog",
+      "rivalry",
+      "tournament",
+      "power-dynamics",
+      "isekai",
+      "romance",
+      "forbidden-love",
+      "found-family",
+      "enemies-to-lovers",
+      "reincarnation",
+      "betrayal",
+      "survival",
+      "redemption"
+    ],
+    "recommended_stories": [
+      "5201",
+      "5202",
+      "520301",
+      "5204",
+      "5205"
+    ],
+    "score": 0.2,
+    "iteration": 18,
+    "weaknesses": [
+      {
+        "type": "tag_coverage",
+        "description": "Missing coverage of tags: choice-driven, high-agency, rivalry",
+        "tags": [
+          "choice-driven",
+          "high-agency",
+          "rivalry",
+          "tournament",
+          "power-dynamics",
+          "isekai",
+          "forbidden-love",
+          "found-family",
+          "reincarnation",
+          "betrayal",
+          "survival",
+          "redemption"
+        ]
+      },
+      {
+        "type": "diversity",
+        "description": "Low diversity with only 7 unique tags",
+        "unique_tags": 7
+      },
+      {
+        "type": "ground_truth_overlap",
+        "description": "Only 1 recommendations match the ground truth",
+        "overlap_count": 1
+      }
+    ],
+    "ground_truth": [
+      "273613",
+      "510101",
+      "510210",
+      "5103",
+      "510489",
+      "5105",
+      "5107",
+      "5113",
+      "5201",
+      "5301"
+    ]
+  },
+  {
+    "user_id": "user3",
+    "user_profile": "Male roleplayer seeking immersive, choice-driven narratives; self-insert underdog, reluctant hero, dominant protector power fantasy. Prefers one-on-one romance, found-family bonds, intense angst, trauma healing. Loves supernatural\u2014nine-tailed foxes, vampires, magic. Achievement-hunter chasing epic conclusions. Morally flexible exploration sans non-consensual, gore, character death. Co-creative, supportive, detail-rich storytelling. Leaderboard climber, protective sibling loyalty, guilt.",
+    "extracted_tags": [
+      "roleplaying",
+      "immersive narratives",
+      "choice-driven",
+      "underdog",
+      "reluctant hero",
+      "dominant protector",
+      "power fantasy",
+      "one-on-one romance",
+      "found-family",
+      "angst",
+      "trauma healing",
+      "supernatural",
+      "vampires",
+      "magic",
+      "morally flexible"
+    ],
+    "recommended_stories": [
+      "5201",
+      "5202",
+      "520301",
+      "5204",
+      "5205"
+    ],
+    "score": 0.0,
+    "iteration": 18,
+    "weaknesses": [
+      {
+        "type": "tag_coverage",
+        "description": "Missing coverage of tags: roleplaying, immersive narratives, choice-driven",
+        "tags": [
+          "roleplaying",
+          "immersive narratives",
+          "choice-driven",
+          "reluctant hero",
+          "dominant protector",
+          "power fantasy",
+          "one-on-one romance",
+          "found-family",
+          "angst",
+          "trauma healing",
+          "vampires",
+          "morally flexible"
+        ]
+      },
+      {
+        "type": "diversity",
+        "description": "Low diversity with only 7 unique tags",
+        "unique_tags": 7
+      },
+      {
+        "type": "ground_truth_overlap",
+        "description": "Only 0 recommendations match the ground truth",
+        "overlap_count": 0
+      }
+    ],
+    "ground_truth": [
+      "5301",
+      "5302",
+      "5303",
+      "5304",
+      "5306",
+      "5309",
+      "5310",
+      "5312",
+      "5313",
+      "530832"
+    ]
+  },
+  {
+    "user_id": "user2",
+    "user_profile": "Self-insert choice-driven narrator as reluctant/supportive guardian, disguised royalty, rookie competitor. Likes Re:Zero/Naruto/MyHeroAcademia. Prefers cafes, academies, fantasy kingdoms (Konoha, Hogwarts, Teyvat), cities. Genres: supernatural/contemporary/historical romance, fantasy, action, horror. Enjoys supernatural beings, magic/curses/quirks. Favors harem, love triangles, power imbalance, enemies-to-lovers, underdog, redemption. Emotional catalysts: forbidden desires, rival advances, legacy. Content: action, romance.",
+    "extracted_tags": [
+      "action",
+      "romance",
+      "fantasy",
+      "supernatural",
+      "historical romance",
+      "magic",
+      "harem",
+      "love triangles",
+      "power imbalance",
+      "enemies-to-lovers",
+      "underdog",
+      "redemption",
+      "forbidden desires",
+      "rival advances",
+      "legacy"
+    ],
+    "recommended_stories": [
+      "5201",
+      "5202",
+      "520301",
+      "5204",
+      "5205"
+    ],
+    "score": 0.4,
+    "iteration": 19,
+    "weaknesses": [
+      {
+        "type": "tag_coverage",
+        "description": "Missing coverage of tags: historical romance, harem, love triangles",
+        "tags": [
+          "historical romance",
+          "harem",
+          "love triangles",
+          "power imbalance",
+          "redemption",
+          "forbidden desires",
+          "rival advances",
+          "legacy"
+        ]
+      },
+      {
+        "type": "diversity",
+        "description": "Low diversity with only 7 unique tags",
+        "unique_tags": 7
+      }
+    ],
+    "ground_truth": [
+      "273613",
+      "235701",
+      "263242",
+      "5201",
+      "5202",
+      "520301",
+      "5205",
+      "5208",
+      "520901",
+      "5210"
+    ]
+  },
+  {
+    "user_id": "user1",
+    "user_profile": "choice-driven high-agency dominant protector strategist; underdog, rivalry, team-vs-team, hero-vs-villain, internal-struggle, tournament conflicts; master-servant, royalty-commoner, captor-captive power-dynamics; high-immersion lore-expander, community-engagement; power-fantasy, moral-ambiguity; isekai escapism; romance, forbidden-love, love-triangles, found-family, reverse-harem; enemies-to-lovers, slow-burn; reincarnation, devil-powers, jujitsu-sorcerer; betrayal, loyalty, survival, redemption; Naruto, Dragon Ball, Jujutsu-Kaisen, Genshin-Impact, One-Piece, Demon-Slayer, Chainsaw-Man, Marvel/DC; crossover, anti-hero, strategy, fan-groups.",
+    "extracted_tags": [
+      "choice-driven",
+      "high-agency",
+      "underdog",
+      "rivalry",
+      "hero-vs-villain",
+      "power-fantasy",
+      "moral-ambiguity",
+      "isekai",
+      "romance",
+      "enemies-to-lovers",
+      "reincarnation",
+      "betrayal",
+      "loyalty",
+      "Naruto",
+      "Jujutsu-Kaisen"
+    ],
+    "recommended_stories": [
+      "5201",
+      "5202",
+      "520301",
+      "5204",
+      "5205"
+    ],
+    "score": 0.4,
+    "iteration": 20,
+    "weaknesses": [
+      {
+        "type": "tag_coverage",
+        "description": "Missing coverage of tags: choice-driven, high-agency, rivalry",
+        "tags": [
+          "choice-driven",
+          "high-agency",
+          "rivalry",
+          "hero-vs-villain",
+          "power-fantasy",
+          "reincarnation",
+          "betrayal",
+          "loyalty",
+          "Naruto",
+          "Jujutsu-Kaisen"
+        ]
+      }
+    ],
+    "ground_truth": [
+      "273613",
+      "510101",
+      "510210",
+      "5105",
+      "5113",
+      "511400",
+      "273613",
+      "5201",
+      "5301",
+      "217107"
+    ]
+  },
+  {
+    "user_id": "user3",
+    "user_profile": "Male roleplayer seeking immersive, choice-driven narratives; self-insert underdog, reluctant hero, dominant protector power fantasy. Prefers one-on-one romance, found-family bonds, intense angst, trauma healing. Loves supernatural\u2014nine-tailed foxes, vampires, magic. Achievement-hunter chasing epic conclusions. Morally flexible exploration sans non-consensual, gore, character death. Co-creative, supportive, detail-rich storytelling. Leaderboard climber, protective sibling loyalty, guilt.",
+    "extracted_tags": [
+      "immersive",
+      "choice-driven",
+      "underdog",
+      "reluctant hero",
+      "protector",
+      "one-on-one romance",
+      "found-family",
+      "angst",
+      "trauma healing",
+      "supernatural",
+      "nine-tailed foxes",
+      "vampires",
+      "magic",
+      "morally flexible",
+      "co-creative"
+    ],
+    "recommended_stories": [
+      "5201",
+      "5202",
+      "520301",
+      "5204",
+      "5205"
+    ],
+    "score": 0.3,
+    "iteration": 20,
+    "weaknesses": [
+      {
+        "type": "tag_coverage",
+        "description": "Missing coverage of tags: immersive, choice-driven, reluctant hero",
+        "tags": [
+          "immersive",
+          "choice-driven",
+          "reluctant hero",
+          "protector",
+          "one-on-one romance",
+          "angst",
+          "nine-tailed foxes",
+          "vampires",
+          "morally flexible",
+          "co-creative"
+        ]
+      }
+    ],
+    "ground_truth": [
+      "5301",
+      "5302",
+      "5303",
+      "5304",
+      "530501",
+      "5306",
+      "530701",
+      "530832",
+      "530911",
+      "5310"
+    ]
+  }
+]

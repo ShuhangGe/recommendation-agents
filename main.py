@@ -1,6 +1,6 @@
 """
 Main module for the Sekai Recommendation Agent system.
-Uses the agent-based architecture for intelligent recommendations.
+Uses the agent-based architecture for intelligent recommendations with AutoPrompt-inspired optimization.
 """
 import argparse
 import json
@@ -37,6 +37,7 @@ def setup_directories():
     os.makedirs(os.path.join(run_dir, "logs"), exist_ok=True)
     os.makedirs(os.path.join(run_dir, "csv"), exist_ok=True)
     os.makedirs(os.path.join(run_dir, "json"), exist_ok=True)
+    os.makedirs(os.path.join(run_dir, "edge_cases"), exist_ok=True)  # New directory for edge cases
     
     # Store the run directory path for later use
     CURRENT_RUN_DIR = run_dir
@@ -50,6 +51,7 @@ def setup_directories():
         f.write("- logs/: Contains log files with detailed process information\n")
         f.write("- csv/: Contains CSV files with optimization results\n")
         f.write("- json/: Contains JSON files with detailed optimization data\n")
+        f.write("- edge_cases/: Contains challenging examples used for prompt calibration\n")
     
     print(f"Created run directory: {run_dir}")
     return run_dir
@@ -200,6 +202,7 @@ def run_agent_system(args):
     current_iteration = 0
     best_score = 0.0
     best_prompt = recommendation_agent.get_current_prompt()
+    edge_cases_collection = []
     
     # Create real-time optimization log file in the run directory
     realtime_log_file = os.path.join(run_dir, "csv", "optimization_realtime.csv")
@@ -207,7 +210,7 @@ def run_agent_system(args):
     with open(realtime_log_file, 'w', newline='') as f:
         writer = csv.writer(f)
         writer.writerow(["Timestamp", "Iteration", "Score", "Improvement", "Best Score", 
-                         "Strategy", "Prompt Length", "User Scores"])
+                         "Strategy", "Prompt Length", "User Scores", "Edge Cases"])
     
     # Save initial prompts
     initial_prompts_file = os.path.join(run_dir, "json", "initial_prompts.json")
@@ -240,6 +243,7 @@ def run_agent_system(args):
             iteration_results = []
             total_score = 0.0
             user_scores = {}
+            edge_cases = []
             
             # Create user results directory
             users_dir = os.path.join(iteration_dir, "users")
@@ -278,6 +282,21 @@ def run_agent_system(args):
                 total_score += score
                 user_scores[user['id']] = score
                 
+                # Identify edge cases (low-scoring results for prompt calibration)
+                if score < 0.5:  # Consider low scores as edge cases
+                    edge_case = {
+                        "user_id": user['id'],
+                        "user_profile": user_profile, 
+                        "extracted_tags": extracted_tags,
+                        "recommended_stories": [story["id"] for story in recommended_stories[:5]],
+                        "score": score,
+                        "iteration": current_iteration,
+                        "weaknesses": eval_result.get("quality_analysis", {}).get("weaknesses", []),
+                        "ground_truth": eval_result.get("ground_truth_ids", [])
+                    }
+                    edge_cases.append(edge_case)
+                    edge_cases_collection.append(edge_case)
+                
                 # Store user results
                 user_result = {
                     "user_id": user['id'],
@@ -310,7 +329,8 @@ def run_agent_system(args):
                 "prompt": recommendation_agent.get_current_prompt(),
                 "prompt_length": len(recommendation_agent.get_current_prompt()),
                 "timestamp": timestamp,
-                "results": iteration_results
+                "results": iteration_results,
+                "edge_cases": edge_cases
             }
             
             # Add improvement metric if not first iteration
@@ -324,6 +344,13 @@ def run_agent_system(args):
                 logger.info(f"\nIteration {current_iteration} average score: {avg_score:.4f}")
                 print(f"   📈 Average score: {avg_score:.4f}")
             
+            # Save edge cases to file
+            if edge_cases:
+                edge_cases_file = os.path.join(run_dir, "edge_cases", f"edge_cases_iteration_{current_iteration}.json")
+                with open(edge_cases_file, 'w') as f:
+                    json.dump(edge_cases, f, indent=2)
+                print(f"   ⚠️ Found {len(edge_cases)} edge cases for prompt calibration")
+            
             optimization_results.append(iteration_data)
             
             # Save iteration data
@@ -334,14 +361,16 @@ def run_agent_system(args):
                     "score": avg_score,
                     "user_scores": user_scores,
                     "prompt_length": len(recommendation_agent.get_current_prompt()),
-                    "timestamp": timestamp
+                    "timestamp": timestamp,
+                    "edge_case_count": len(edge_cases)
                 }, f, indent=2)
             
             # Log to real-time file
             log_optimization_iteration(
                 realtime_log_file, 
                 iteration_data, 
-                strategy_used if len(all_users) == 1 else "multiple"
+                strategy_used if len(all_users) == 1 else "multiple",
+                len(edge_cases)
             )
             
             # Update best score and prompt if improved
@@ -385,7 +414,8 @@ def run_agent_system(args):
                 "current_prompt": recommendation_agent.get_current_prompt(),
                 "evaluation_results": iteration_results,
                 "current_score": avg_score,
-                "iteration": current_iteration
+                "iteration": current_iteration,
+                "edge_cases": edge_cases
             }
             
             # Run optimizer agent
@@ -400,6 +430,14 @@ def run_agent_system(args):
             else:
                 logger.warning("Optimizer agent did not return an optimized prompt.")
                 print(f"   ❌ Failed to generate optimized prompt")
+        
+        # Save all edge cases collected during optimization
+        if edge_cases_collection:
+            all_edge_cases_file = os.path.join(run_dir, "edge_cases", "all_edge_cases.json")
+            with open(all_edge_cases_file, 'w') as f:
+                json.dump(edge_cases_collection, f, indent=2)
+            
+            print(f"\n📊 Collected {len(edge_cases_collection)} edge cases across all iterations")
         
         # Save optimization results
         save_optimization_results(optimization_results, args, run_dir, logger)
@@ -504,7 +542,8 @@ def run_agent_system(args):
             "timestamp": time.time(),
             "optimization_enabled": args.enable_optimization,
             "optimization_iterations": current_iteration if args.enable_optimization else 0,
-            "best_optimization_score": best_score if args.enable_optimization else None
+            "best_optimization_score": best_score if args.enable_optimization else None,
+            "edge_cases_collected": len(edge_cases_collection)
         }, f, indent=2)
     
     # Create run summary
@@ -521,7 +560,8 @@ def run_agent_system(args):
             "optimization_iterations": current_iteration if args.enable_optimization else 0,
             "best_optimization_score": best_score if args.enable_optimization else None,
             "timestamp": time.time(),
-            "runtime": time.time() - start_time
+            "runtime": time.time() - start_time,
+            "edge_cases_collected": len(edge_cases_collection)
         }, f, indent=2)
     
     logger.info(f"\n=== Recommendation Process Complete ===")
@@ -534,7 +574,7 @@ def run_agent_system(args):
         "run_directory": run_dir
     }
 
-def log_optimization_iteration(log_file, iteration_data, strategy_used):
+def log_optimization_iteration(log_file, iteration_data, strategy_used, edge_case_count=0):
     """
     Log optimization iteration to real-time CSV file.
     
@@ -542,6 +582,7 @@ def log_optimization_iteration(log_file, iteration_data, strategy_used):
         log_file: Path to log file
         iteration_data: Data for this iteration
         strategy_used: Strategy used for recommendations
+        edge_case_count: Number of edge cases found in this iteration
     """
     with open(log_file, 'a', newline='') as f:
         writer = csv.writer(f)
@@ -561,7 +602,8 @@ def log_optimization_iteration(log_file, iteration_data, strategy_used):
             iteration_data.get("best_score_so_far", iteration_data["score"]),
             strategy_used,
             iteration_data.get("prompt_length", 0),
-            user_scores_str
+            user_scores_str,
+            edge_case_count
         ])
 
 def save_optimization_results(optimization_results, args, run_dir, logger):
@@ -578,7 +620,7 @@ def save_optimization_results(optimization_results, args, run_dir, logger):
         writer = csv.writer(f)
         writer.writerow([
             "Iteration", "Score", "Improvement", "Best Score So Far", 
-            "Prompt Length", "Prompt Change Size", "Timestamp"
+            "Prompt Length", "Prompt Change Size", "Edge Case Count", "Timestamp"
         ])
         
         prev_prompt_length = 0
@@ -592,6 +634,7 @@ def save_optimization_results(optimization_results, args, run_dir, logger):
             prev_prompt_length = prompt_length
             
             best_score_so_far = max([r["score"] for r in optimization_results[:i+1]])
+            edge_cases = result.get("edge_cases", [])
             
             writer.writerow([
                 result["iteration"], 
@@ -600,6 +643,7 @@ def save_optimization_results(optimization_results, args, run_dir, logger):
                 best_score_so_far,
                 prompt_length,
                 prompt_change,
+                len(edge_cases),
                 datetime.datetime.fromtimestamp(result.get("timestamp", time.time())).strftime("%Y-%m-%d %H:%M:%S")
             ])
     
@@ -624,13 +668,18 @@ def save_optimization_results(optimization_results, args, run_dir, logger):
     scores_csv_file = os.path.join(csv_dir, "scores.csv")
     with open(scores_csv_file, 'w', newline='') as f:
         writer = csv.writer(f)
-        writer.writerow(["Iteration", "Score", "Improvement"])
+        writer.writerow(["Iteration", "Score", "Improvement", "Edge Cases"])
         
         for i, result in enumerate(optimization_results):
             improvement = 0.0
             if i > 0:
                 improvement = result["score"] - optimization_results[i-1]["score"]
-            writer.writerow([result["iteration"], result["score"], improvement])
+            writer.writerow([
+                result["iteration"], 
+                result["score"], 
+                improvement, 
+                len(result.get("edge_cases", []))
+            ])
     
     # Create a visualization-friendly JSON with just scores
     scores_json_file = os.path.join(json_dir, "scores.json")
@@ -645,6 +694,7 @@ def save_optimization_results(optimization_results, args, run_dir, logger):
                 "iteration": result["iteration"],
                 "score": result["score"],
                 "improvement": improvement,
+                "edge_case_count": len(result.get("edge_cases", [])),
                 "timestamp": result.get("timestamp", 0)
             })
         
@@ -693,6 +743,10 @@ def main():
                         help=f'Score threshold to stop optimization (default: {config.SCORE_THRESHOLD})')
     parser.add_argument('--improvement-threshold', type=float, default=config.IMPROVEMENT_THRESHOLD,
                         help=f'Minimum improvement to continue optimization (default: {config.IMPROVEMENT_THRESHOLD})')
+    
+    # Budget constraint
+    parser.add_argument('--max-budget', type=float, default=None,
+                        help='Maximum budget in dollars for the optimization run (default: no limit)')
     
     # Evaluation settings
     parser.add_argument('--metric', type=str, choices=['precision@10', 'recall', 'semantic_overlap'],

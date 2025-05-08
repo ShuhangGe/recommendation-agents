@@ -27,8 +27,9 @@ ENV/
 .cache/
 data/*.json
 
-# Results
+# Results - exclude all results except examples
 results/
+!examples/
 
 # OS files
 .DS_Store
