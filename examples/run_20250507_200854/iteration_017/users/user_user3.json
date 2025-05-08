@@ -1,0 +1,152 @@
+{
+  "user_id": "user3",
+  "score": 0.8571428571428571,
+  "strategy": "tag_based_search",
+  "strengths": [
+    {
+      "type": "tag_coverage",
+      "description": "Good coverage of tags: roleplaying, romance, found-family",
+      "tags": [
+        "roleplaying",
+        "romance",
+        "found-family",
+        "trauma healing",
+        "supernatural"
+      ]
+    },
+    {
+      "type": "ground_truth_overlap",
+      "description": "6 recommendations match the ground truth",
+      "overlap_count": 6
+    }
+  ],
+  "weaknesses": [
+    {
+      "type": "tag_coverage",
+      "description": "Missing coverage of tags: immersive, choice-driven, underdog",
+      "tags": [
+        "immersive",
+        "choice-driven",
+        "underdog",
+        "reluctant hero",
+        "power fantasy",
+        "angst",
+        "vampires",
+        "magic",
+        "achievement-hunter",
+        "morally flexible",
+        "supportive storytelling"
+      ]
+    },
+    {
+      "type": "diversity",
+      "description": "Low diversity with only 7 unique tags",
+      "unique_tags": 7
+    }
+  ],
+  "scores_by_metric": {
+    "precision@10": 0.8571428571428571,
+    "recall": 0.6,
+    "semantic_overlap": 0.9107230794686682
+  },
+  "recommended_stories": [
+    {
+      "id": "5301",
+      "title": "Shadowbound: A Guardian's Redemption",
+      "intro": "In a world where the veil between realms is thinning, you, an unlikely protector with a haunted past, must choose between saving the ones you love and confronting the shadows within.",
+      "tags": [
+        "roleplaying",
+        "immersive narratives",
+        "romance",
+        "supernatural",
+        "found-family",
+        "trauma healing",
+        "achievement-hunting"
+      ]
+    },
+    {
+      "id": "5302",
+      "title": "Echoes of the Forgotten Heart",
+      "intro": "In a world where shadows whisper secrets and ancient powers lie dormant, you awaken as an ordinary man burdened with extraordinary potential. As destiny weaves its intricate tapestry, you are thrust into a journey of love and redemption, where the bonds you forge could save\u2014or destroy\u2014a realm teetering on the edge of chaos.",
+      "tags": [
+        "roleplaying",
+        "immersive narratives",
+        "romance",
+        "supernatural",
+        "found-family",
+        "trauma healing",
+        "achievement-hunting"
+      ]
+    },
+    {
+      "id": "5303",
+      "title": "Echoes of the Heart",
+      "intro": "In a world where the supernatural intertwines with the mundane, you are an underestimated guardian burdened by your past but destined for greatness. As shadows of your lost memories resurface, so does a chance for love and healing.",
+      "tags": [
+        "roleplaying",
+        "immersive narratives",
+        "romance",
+        "supernatural",
+        "found-family",
+        "trauma healing",
+        "achievement-hunting"
+      ]
+    },
+    {
+      "id": "5304",
+      "title": "Whispers of Chaos",
+      "intro": "In a world where shadows hold secrets and whispered promises can alter destinies, you are thrust into the role of an unlikely hero, bound by fate to protect a fractured realm teetering on the brink of darkness.",
+      "tags": [
+        "roleplaying",
+        "immersive narratives",
+        "romance",
+        "supernatural",
+        "found-family",
+        "trauma healing",
+        "achievement-hunting"
+      ]
+    },
+    {
+      "id": "530501",
+      "title": "The Guardian's Echo",
+      "intro": "In a world where the supernatural intertwines with reality, you, an unlikely hero, must navigate both a newfound family and a mysterious power that could save\u2014or doom\u2014the ones you love.",
+      "tags": [
+        "roleplaying",
+        "immersive narratives",
+        "romance",
+        "supernatural",
+        "found-family",
+        "trauma healing",
+        "achievement-hunting"
+      ]
+    },
+    {
+      "id": "5310",
+      "title": "The Guardian's Reckoning",
+      "intro": "In a world where shadows whisper secrets and the supernatural is feared, you, a reluctant hero with a hidden power, must protect those who have become the family you never had, all while seeking your own path to healing and love.",
+      "tags": [
+        "roleplaying",
+        "immersive narratives",
+        "romance",
+        "supernatural",
+        "found-family",
+        "trauma healing",
+        "achievement-hunting"
+      ]
+    },
+    {
+      "id": "5320",
+      "title": "Echoes of Evernight",
+      "intro": "In a realm where shadows whisper secrets, you awaken as Caelum, a reluctant hero whose tragic past intertwines with a destiny to protect the innocent from an ancient darkness. As bonds are forged and hearts are tested, can love heal the wounds of the past?",
+      "tags": [
+        "roleplaying",
+        "immersive narratives",
+        "romance",
+        "supernatural",
+        "found-family",
+        "trauma healing",
+        "achievement-hunting"
+      ]
+    }
+  ]
+}
